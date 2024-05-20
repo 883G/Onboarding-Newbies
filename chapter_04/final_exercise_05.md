@@ -5,7 +5,9 @@ Welcome to the Spark RDD Exercises with a Joker and Batman twist! In this exerci
 
 :warning: **How to setup Spark Cluster?**
 - For this exercise, you will need to setup a Spark Cluster. You can use the [Databricks Community Edition](https://community.cloud.databricks.com/login.html) for this exercise, use the free version for 14 days, it's enough for this exercise. (we hope so... :smile:)
-
+after the first page of sign up click on "Get started with community edition"
+<img width="200" alt="image" src="https://github.com/883G/Onboarding-Newbies/assets/60566128/fd517a13-d3d3-48fe-9295-fa7fd6308d0e">
+ 
 
 ## Exercise 1: The Joker's Challenge - Calculate Factorial
 The Joker has a mathematical puzzle for you! Write a Spark program that receives a number `N` and returns its factorial. Can you solve the Joker's riddle?
