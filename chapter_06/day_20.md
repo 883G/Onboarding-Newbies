@@ -139,7 +139,7 @@ Secret Key: trino-compose
 
 1. Create a file named `hive.properties` in the following path:
    ```
-   etc/catalog/hive.properties
+   {onboarding-repo-path}/chapter_06/exercise_files/trino-compose/etc/catalog/hive.properties
    ```
 2. Add the required configuration for the Hive connector.  
    Refer to the official documentation for help:  
