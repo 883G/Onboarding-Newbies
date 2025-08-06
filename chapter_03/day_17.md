@@ -33,7 +33,7 @@ The time limit for this session is a day and a half.
 
 1. What is Argo? How is it used to create automations?
 1. Explain the difference between Argo and Argo CD.
-1. What are the main components of an Argo Airflow? Explain
+1. What are the main components of an Argo workflow? Explain
 1. Research how to define an Argo workflow. Which basic parameters are mandatory to define a basic Argo workflow?
 1. How to create an automation that automatically deploys a chart that changes were pushed into?
 1. What are `step` and `template` in Argo?
