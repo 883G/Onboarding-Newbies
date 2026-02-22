@@ -1,0 +1,39 @@
+# Introduction to HBase :elephant:
+
+## Overview
+Today’s session dives deeper into column‑oriented databases with a focus on Apache HBase, the Hadoop ecosystem’s wide‑column store. Understanding HBase will help you see how low‑latency random access is provided over massive data sets.
+
+**The emphasis is on HBase’s architecture, core components, and operational model.**
+
+## Goals
+- Grasp the columnar database model and why HBase exists.
+- Learn the responsibilities of key HBase components (RegionServer, ZooKeeper, HFile, etc.).
+- Improve your ability to plan and self‑direct learning.
+
+:warning: **Note:**
+- This is a self‑study day; independence and time management are crucial.
+- If you can’t explain a concept clearly, you probably need to revisit it.
+- Read the [Exercise](#exercise) before starting so you know what to emphasize.
+- Ask your mentor if you’re unsure what to research.
+
+## Core Concepts
+
+Answer these five questions to cover HBase’s major areas:
+
+1. **Architecture & Data Model:**  Describe HBase’s overall architecture, including tables, rows keyed by row key, column families, and the storage format (HFile). How do these elements differ from a traditional relational database?
+2. **Components & Storage Flow:**  Explain the roles of RegionServers, regions, MemStore, HFiles, and the Write‑Ahead Log (WAL). How does data flow from a client write to durable storage?
+3. **Performance & Maintenance:**  What are compactions (minor vs. major), MOBs, and the block cache? How do they affect read/write latency and storage efficiency?
+4. **Fault Tolerance & Coordination:**  How does HBase use ZooKeeper, WAL replay, and region re‑assignment to handle failures and maintain availability? What happens when a RegionServer crashes?
+5. **Scalability & Operations:**  Discuss how HBase scales horizontally, how regions split and are balanced, and what administrative actions (e.g., snapshot, backup, recovery) users might perform.
+
+## Wrapping Up :trophy:
+Go over your answers with your mentor and clarify any uncertainties. Relate HBase concepts back to the broader data platform.
+
+## Action Items
+- Identify HBase topics you want to delve into further.
+- Collect a list of real‑world HBase deployments or related technologies.
+- Prepare questions for the next mentor Q&A session.
+
+## Recommended Resources
+- [Official HBase Reference Guide](https://hbase.apache.org/book.html) – the definitive documentation.
+- *Hadoop: The Definitive Guide* (O'Reilly) – chapters on HBase.
