@@ -7,11 +7,8 @@ Today is all about getting comfortable and understanding the big picture. You'll
 ## **Goals:**
 - Familiarize yourself with the onboarding process.
 - Understand the 883 Group's vision, mission, and strategic objectives.
-- Get to know your colleagues, mentors, and the teams that have in the 883 Group.
-- **Learn yourself and your learning style!**
-
-:warning: **Note:**
-- This is the first step in your journey with the 883 Group, and it's all about getting comfortable and understanding the big picture.
+- Get to know your colleagues, mentors, and the teams in 883.
+- ****Understand how you learn best, and take ownership of that process!****
 - Feel free to ask questions and interact with your colleagues to start building your network within the team.
 - Remember, everyone in the group was once in your shoes, and they're here to support you!
 - To do the full onboarding process, you need to have a privete computer. (If you don't have one, please ask your mentor to provide you one or find a solution for you).
@@ -24,7 +21,6 @@ Today is all about getting comfortable and understanding the big picture. You'll
 
 ### **The 883 Group's Vision and Mission:**
   - Presentation about the 883 Group's strategic objectives and core values.
-  - Understand how your role aligns with the group's mission and how your work contributes to our collective goals.
   - Understand the group stracture, flat hiraechy, and the team and project work.
 
 ### **Unit Setup**:
