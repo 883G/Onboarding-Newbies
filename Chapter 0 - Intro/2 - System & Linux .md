@@ -1,13 +1,13 @@
-# Introduction to Core Data Concepts :baby:
+# Introduction to System & Linux :computer:
 
 ## **Goals**
 - Understand Linux core concepts.
 - Explore the basics of `Bash`.
-- Gain a comprehensive overview ofdiffrent operating system.
+- Gain a comprehensive overview of different operating systems.
 
 
 > ⚠️ **Note:** 
-> Today will not be a part of this Git ask your mentors how to enter into the mocck course about Linux & System.
+> Today will not be part of this Git; ask your mentors how to enter the mock course about Linux & System.
 
 ## Wrapping Up
 

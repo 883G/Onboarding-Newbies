@@ -11,7 +11,7 @@ Today is all about getting comfortable and understanding the big picture. You'll
 - ****Understand how you learn best, and take ownership of that process!****
 - Feel free to ask questions and interact with your colleagues to start building your network within the team.
 - Remember, everyone in the group was once in your shoes, and they're here to support you!
-- To do the full onboarding process, you need to have a privete computer. (If you don't have one, please ask your mentor to provide you one or find a solution for you).
+- To do the full onboarding process, you need to have a private computer. (If you don't have one, please ask your mentor to provide you one or find a solution for you).
 
 ## 1. Introduction to the 883 Group -  Understanding the Onboarding Process (With Your Mentor)
 
@@ -21,7 +21,7 @@ Today is all about getting comfortable and understanding the big picture. You'll
 
 ### **The 883 Group's Vision and Mission:**
   - Presentation about the 883 Group's strategic objectives and core values.
-  - Understand the group stracture, flat hiraechy, and the team and project work.
+  - Understand the group structure, flat hierarchy, and the team and project work.
 
 
 ## Wrapping Up:
