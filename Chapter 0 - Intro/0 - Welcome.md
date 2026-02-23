@@ -2,6 +2,13 @@
 
 ## **Overview:**
 Welcome to the 883 Group! We're thrilled to have you join our group. Your journey with us begins today, and we're excited to guide you through the onboarding process and help you get acquainted with the group's vision, mission, and strategic objectives.
+
+To get started, make sure you **clone this repository** to your local machine; we'll use it to track your progress, store answers to questions, and maintain onboarding materials. You can clone it with:
+
+```bash
+git clone https://github.com/883G/Onboarding-Newbies.git
+```
+
 Today is all about getting comfortable and understanding the big picture. You'll meet your mentors and colleagues, learn about the group you'll be working with, and get a sense of the exciting projects you'll be contributing to.
 
 ## **Goals:**
