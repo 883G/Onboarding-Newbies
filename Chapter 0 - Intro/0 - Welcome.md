@@ -23,15 +23,6 @@ Today is all about getting comfortable and understanding the big picture. You'll
   - Presentation about the 883 Group's strategic objectives and core values.
   - Understand the group stracture, flat hiraechy, and the team and project work.
 
-### **Unit Setup**:
-- Ask your mentor to guide you - how to insert your fingerprint to the system, so you can create an internal account.
-- After you insert your fingerprint, Ask your mentor to open for you a profile in "One Identitiy" so that you can belong organizationally to the 883 group
-- After that you will get an user and password to the and ask your mentor to join you to 883 mail and whastapp group.
-- Talk with your mentor about TORANOYUT" (תורניות) and insert your אי זמינויות to the "BUSY" platform.
-- Ask your mentor about the following platforms:
-  - [ ] BUSY
-  - [ ] MI
-  - [ ] GO
 
 ## Wrapping Up:
  - Note down key takeaways and any questions or uncertainties you have.
