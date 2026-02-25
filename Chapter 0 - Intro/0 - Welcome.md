@@ -127,6 +127,7 @@ Today is all about getting comfortable and understanding the big picture. You'll
 
 ## Linear Timeline
 
+<!--HTML version-->
 <style>
 .timeline-arrow-container {
   width: 200%;
@@ -212,7 +213,6 @@ Today is all about getting comfortable and understanding the big picture. You'll
     <div class="timeline-segment Project" style="flex: 5;"></div>
   </div>
 
-  <!-- Labels under the arrow -->
   <div class="timeline-labels">
     <div class="timeline-label">Intro (Week 1)</div>
     <div class="timeline-label">System (Week 1)</div>
