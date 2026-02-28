@@ -5,7 +5,7 @@
 - Explore the importance of data operations and the role of data in guiding business decisions.
 - Gain a comprehensive overview of the data lifecycle and its implications for the organization.
 
-## Overview
+## **Overview**
 Today’s session lays the foundation for your journey into data operations. You will examine the core concepts that underpin the modern data landscape and gain insight into data management, processing, and analysis. The emphasis is on appreciating how data drives business decisions and shapes the strategic direction of an organization.
 
 > ⚠️ **Note:**  

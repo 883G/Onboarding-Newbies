@@ -2,21 +2,128 @@
 
 ## **Overview:**
 Welcome to the 883 Group! We're thrilled to have you join our group. Your journey with us begins today, and we're excited to guide you through the onboarding process and help you get acquainted with the group's vision, mission, and strategic objectives.
+
+To get started, make sure you **clone this repository** to your local machine; we'll use it to track your progress, store answers to questions, and maintain onboarding materials. You can clone it with:
+
+```bash
+git clone https://github.com/883G/Onboarding-Newbies.git
+```
+
 Today is all about getting comfortable and understanding the big picture. You'll meet your mentors and colleagues, learn about the group you'll be working with, and get a sense of the exciting projects you'll be contributing to.
 
 ## **Goals:**
 - Familiarize yourself with the onboarding process.
 - Understand the 883 Group's vision, mission, and strategic objectives.
-- Get to know your colleagues, mentors, and the teams that have in the 883 Group.
-- **Learn yourself and your learning style!**
-
-:warning: **Note:**
-- This is the first step in your journey with the 883 Group, and it's all about getting comfortable and understanding the big picture.
+- Get to know your colleagues, mentors, and the teams in 883.
+- ****Understand how you learn best, and take ownership of that process!****
 - Feel free to ask questions and interact with your colleagues to start building your network within the team.
 - Remember, everyone in the group was once in your shoes, and they're here to support you!
-- To do the full onboarding process, you need to have a privete computer. (If you don't have one, please ask your mentor to provide you one or find a solution for you).
+- To do the full onboarding process, you need to have a private computer. (If you don't have one, please ask your mentor to provide you one or find a solution for you).
 
-## 1. Introduction to the 883 Group -  Understanding the Onboarding Process (With Your Mentor)
+## TimeLine:
+
+<table border="1" cellspacing="0" cellpadding="5" style="border-collapse: collapse; font-family: Arial, sans-serif; width: 100%;">
+  <thead>
+    <tr style="background-color: #f0f0f0;">
+      <th>Week</th>
+      <th>Overlap 1</th>
+      <th>Overlap 2</th>
+      <th>Overlap 3</th>
+      <th>Overlap 4</th>
+      <th>Overlap 5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Week 1</td>
+      <td style="background-color: #ccccff;">Intro</td>
+      <td style="background-color: #ccccff;">Intro</td>
+      <td style="background-color: #ccccff;">System</td>
+      <td style="background-color: #ccccff;">Kerberos & LDAP + Zookeeper</td>
+      <td style="background-color: #ffffcc;">FS + HDFS</td>
+    </tr>
+    <tr>
+      <td>Week 2</td>
+      <td style="background-color: #ffffcc;">HDFS</td>
+      <td style="background-color: #ffffcc;">HDFS + S3</td>
+      <td style="background-color: #ffffcc;">Wide column DB + HBase</td>
+      <td style="background-color: #ffffcc;">HBase</td>
+      <td style="background-color: #ffffcc;">HBase</td>
+    </tr>
+    <tr>
+      <td>Week 3</td>
+      <td style="background-color: #ffffcc;">Hive table format & HMS</td>
+      <td style="background-color: #ffffcc;">Catalogs & table formats</td>
+      <td style="background-color: #ffffcc;">Partitioning</td>
+      <td style="background-color: #ffffcc;">Metadata Layer - Skila</td>
+      <td style="background-color: #ffffcc;">Iceberg</td>
+    </tr>
+    <tr>
+      <td>Week 4</td>
+      <td style="background-color: #ffffcc;">Iceberg</td>
+      <td style="background-color: #cce5ff;">Map & Reduce + Hive query engine</td>
+      <td style="background-color: #cce5ff;">Trino</td>
+      <td style="background-color: #cce5ff;">Trino</td>
+      <td style="background-color: #cce5ff;">Trino</td>
+    </tr>
+    <tr>
+      <td>Week 5</td>
+      <td style="background-color: #ffccbb;">Spark</td>
+      <td style="background-color: #ffccbb;">Spark</td>
+      <td style="background-color: #ffccbb;">Spark</td>
+      <td style="background-color: #ffccbb;">Scheduling Principles</td>
+      <td style="background-color: #ffccbb;">Airflow</td>
+    </tr>
+    <tr>
+      <td>Week 6</td>
+      <td style="background-color: #ffccbb;">Airflow</td>
+      <td style="background-color: #ffccbb;">Airflow</td>
+      <td style="background-color: #dddddd;">Presentation</td>
+      <td style="background-color: #dddddd;">Simulator</td>
+      <td style="background-color: #dddddd;">Simulator</td>
+    </tr>
+    <tr>
+      <td>Week 7</td>
+      <td style="background-color: #dddddd;">Simulator</td>
+      <td style="background-color: #dddddd;">Simulator</td>
+      <td style="background-color: #dddddd;">Shared simulator</td>
+      <td style="background-color: #ccffcc;">Development Principles</td>
+      <td style="background-color: #ccffcc;">Development Principles</td>
+    </tr>
+    <tr>
+      <td>Week 8</td>
+      <td style="background-color: #ccffcc;">Development Exercise</td>
+      <td style="background-color: #ccffcc;">Development Exercise</td>
+      <td style="background-color: #ccffcc;">Development Exercise</td>
+      <td style="background-color: #ccffcc;">Docker</td>
+      <td style="background-color: #ccffcc;">Docker Practice</td>
+    </tr>
+    <tr>
+      <td>Week 9</td>
+      <td style="background-color: #ccffcc;">Orca Labs</td>
+74      <td style="background-color: #ccffcc;">Orca Labs</td>
+      <td style="background-color: #ccbbff;">Openshift Practice</td>
+      <td style="background-color: #ccbbff;">Openshift Practice</td>
+      <td style="background-color: #ffccff;">Final Project</td>
+    </tr>
+    <tr>
+      <td>Week 10</td>
+      <td style="background-color: #ffccff;">Final Project</td>
+      <td style="background-color: #ffccff;">Final Project</td>
+      <td style="background-color: #ffccff;">Final Project</td>
+      <td style="background-color: #ffccff;">Final Project</td>
+      <td style="background-color: #ffccff;">Final Project</td>
+    </tr>
+    <tr>
+      <td>Week 11</td>
+      <td style="background-color: #ffccff;">Final Project</td>
+      <td style="background-color: #ffccff;">Final Project</td>
+      <td style="background-color: #ffccff;">Final Project</td>
+      <td style="background-color: #ffccff;">Final Project</td>
+      <td style="background-color: #ffccff;">Final Project</td>
+    </tr>
+  </tbody>
+</table>
 
 ### **Onboarding Overview:**
   - Overview of the onboarding schedule, expectations, and the journey ahead.
@@ -24,18 +131,8 @@ Today is all about getting comfortable and understanding the big picture. You'll
 
 ### **The 883 Group's Vision and Mission:**
   - Presentation about the 883 Group's strategic objectives and core values.
-  - Understand how your role aligns with the group's mission and how your work contributes to our collective goals.
-  - Understand the group stracture, flat hiraechy, and the team and project work.
+  - Understand the group structure, flat hierarchy, and the team and project work.
 
-### **Unit Setup**:
-- Ask your mentor to guide you - how to insert your fingerprint to the system, so you can create an internal account.
-- After you insert your fingerprint, Ask your mentor to open for you a profile in "One Identitiy" so that you can belong organizationally to the 883 group
-- After that you will get an user and password to the and ask your mentor to join you to 883 mail and whastapp group.
-- Talk with your mentor about TORANOYUT" (תורניות) and insert your אי זמינויות to the "BUSY" platform.
-- Ask your mentor about the following platforms:
-  - [ ] BUSY
-  - [ ] MI
-  - [ ] GO
 
 ## Wrapping Up:
  - Note down key takeaways and any questions or uncertainties you have.
