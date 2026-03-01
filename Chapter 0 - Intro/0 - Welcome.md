@@ -27,11 +27,11 @@ Today is all about getting comfortable and understanding the big picture. You'll
   <thead>
     <tr style="background-color: #f0f0f0;">
       <th>Week</th>
-      <th>Overlap 1</th>
-      <th>Overlap 2</th>
-      <th>Overlap 3</th>
-      <th>Overlap 4</th>
-      <th>Overlap 5</th>
+      <th>Day 1</th>
+      <th>Day 2</th>
+      <th>Day 3</th>
+      <th>Day 4</th>
+      <th>Day 5</th>
     </tr>
   </thead>
   <tbody>
