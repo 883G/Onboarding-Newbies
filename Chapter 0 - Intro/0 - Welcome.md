@@ -102,7 +102,6 @@ Today is all about getting comfortable and understanding the big picture. You'll
     <tr>
       <td>Week 9</td>
       <td style="background-color: #ccffcc;">Orca Labs</td>
-74      <td style="background-color: #ccffcc;">Orca Labs</td>
       <td style="background-color: #ccbbff;">Openshift Practice</td>
       <td style="background-color: #ccbbff;">Openshift Practice</td>
       <td style="background-color: #ffccff;">Final Project</td>
