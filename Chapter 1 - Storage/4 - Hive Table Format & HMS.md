@@ -32,7 +32,7 @@ Answer the following questions to explore the metastore:
 
 ## Hive Table Formats
 
-Answer these five questions to understand table formats:
+Answer the following questions to understand table formats:
 
 1. **Definition & Role:**  What does a “table format” mean in Hive? How does it differ from table metadata stored in the metastore? Explain the relationship between logical schema and physical file layout.
 
@@ -40,11 +40,7 @@ Answer these five questions to understand table formats:
 
 3. **Schema & Tables:**  Explain the difference between managed and external tables, including ownership, lifecycle, and storage location semantics. How does the metastore map logical tables to physical data in storage systems like HDFS or object storage?
 
-4. **Extensibility & Clients:**  **(Moved from metastore earlier)** How do external engines such as Apache Spark, Trino, and other tools interact with the metastore? What APIs and protocols are used?
-
-5. **Administration:**  What are common administrative tasks (backup, schema upgrades, migration, repair)? What happens if the metastore becomes unavailable, and why is it considered a critical dependency in data platforms?
-
-6. **Integration with Storage:**  How do table formats map to physical storage (directories, files)? What conventions does Hive use for partitions, buckets, and file naming?
+4. **Integration with Storage:**  How do table formats map to physical storage (directories, files)? What conventions does Hive use for partitions, buckets, and file naming?
 
 ## Wrapping Up :trophy:
 Review your answers with your mentor and make sure you can articulate how the metastore and formats enable interoperability across Hadoop tools.
