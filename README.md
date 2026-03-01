@@ -25,7 +25,6 @@ This chapter covers foundational storage concepts, moving from general file syst
 - **[Data Partitioning](./Chapter%201%20-%20Storage/6%20-%20Partitioning.md)** – partitioning strategy, pruning, maintenance, and interaction with formats.
 - **[Apache Iceberg](./Chapter%201%20-%20Storage/7%20-%20Iceberg.md)** – deep dive on the Iceberg table format questions.
 
-- **Final Exercise 01 - SKILA:** Introduction to Data Ops Team and Hadoop Ecosystem concepts Q&A :question:
 - **Practical Exercise 01:** Meet the Hadoop Ecosystem in Action
 - **Showcase 01:** Develop a high-level understanding of the Hadoop ecosystem and its role in big data processing. :mag_right:
 
