@@ -2,7 +2,7 @@
 
 ## Overview
 Apache Iceberg is an open table format for huge analytic datasets. This day focuses
-on Iceberg’s design and how it improves upon traditional Hive-style tables.
+on Iceberg’s design and how it improves upon traditional hive format tables.
 You’ll answer five questions chosen by the user that dive deeply into its
 architecture and behavior.
 
