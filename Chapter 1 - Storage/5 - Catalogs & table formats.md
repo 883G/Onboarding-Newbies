@@ -7,6 +7,8 @@ about the big picture: what is a *data warehouse* versus a *data lake* versus a
 *lakehouse*, and why do teams care about catalogs and table formats in each
 case?  (Hint: consistency, governance, and performance are the common threads.)
 
+> reviewer comments.
+
 We’re not going to install or run Spark/Trino/etc.; the material stays at the
 metadata level.  That said, good formats enable optimizations such as
 partition pruning, predicate push‑down, and efficient file compaction, all of
@@ -42,6 +44,8 @@ Iceberg.**
    characteristics of each?  Why do architects care about a separate metadata
    layer in a lakehouse versus a traditional warehouse?  (Put this question
    first since it sets the context for everything that follows.)
+
+> ✅ **Done:** re‑ordered and expanded questions to match reviewer feedback.
 
 2. **What is a Catalog?**  Describe the purpose of a metadata catalog.  How
    does it compare to Hive Metastore (hint: the metastore *is* a catalog)
