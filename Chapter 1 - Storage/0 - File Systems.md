@@ -37,14 +37,9 @@ Rather than focusing on one technology, think about how these ideas show up in c
 ## Wrapping Up :trophy:
 Discuss your answers and any areas of confusion with your mentor. Reflect on how these general concepts will help when you later study specific systems such as HDFS.
 
-## Action Items
-- Review your notes and identify topics you want to explore deeper.
-- Collect a list of real-world file systems you’d like to examine in future chapters.
-- Prepare questions for the upcoming mentor Q&A session.
-- Continue the Day 01 challenge by mapping these ideas to future chapters.
-
-## Wrapping Up :trophy:
-Discuss your answers and any areas of confusion with your mentor. Reflect on how these general concepts will help when you later study specific systems such as HDFS.
+## Additional Topics from Review
+- The I/O path: what happens when an application calls `read()` or `write()`? Understand the kernel I/O path, page cache, and block layer.
+- Mounting & abstraction layers: what “mounting a filesystem” means, and the separation between filesystem, block device, partition, volume manager. These ideas are essential later for containers, cloud disks, distributed storage, RAID/LVM.
 
 ## Action Items
 - Review your notes and identify topics you want to explore deeper.

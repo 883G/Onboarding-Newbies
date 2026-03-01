@@ -1,7 +1,7 @@
 # 883 Group Onboarding - Newbies :baby_bottle:
 
 Welcome to the 883 Group Onboarding for Newbies! This repository is your gateway to a structured 10-chapter program, designed to seamlessly integrate you into our dynamic Data Ops team.
-Each day will have a set of tasks, goals, and resources to guide you through the learning process. You'll also have the opportunity to engage in discussions, Q&A sessions, and hands-on exercises to reinforce your understanding and apply your knowledge in real-world scenarios.
+The program is organized into sessions with tasks, goals, and resources to guide you through the learning process. You'll also have the opportunity to engage in discussions, Q&A sessions, and hands-on exercises to reinforce your understanding and apply your knowledge in real-world scenarios.
 
 ## Table of Contents
 
@@ -32,3 +32,9 @@ This chapter covers foundational storage concepts, moving from general file syst
 ## Contribution :raised_hands:
 
 If you have any suggestions or ideas to enhance the onboarding for future members, feel free to contribute. Fork, create a feature branch, commit changes, and create a pull request.
+
+> *Note: “Overlap 1”, “Overlap 2”, etc. are just placeholders showing that multiple sessions may run concurrently in a week.*
+
+## Timeline
+
+A detailed timeline is forthcoming; the original Excel schedule will be added here or linked once it is finalized.

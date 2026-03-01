@@ -20,11 +20,15 @@ Today’s session dives deeper into column‑oriented databases with a focus on 
 
 Answer these five questions to cover HBase’s major areas:
 
-1. **Architecture & Data Model:**  Describe HBase’s overall architecture, including tables, rows keyed by row key, column families, and the storage format (HFile). How do these elements differ from a traditional relational database?
-2. **Components & Storage Flow:**  Explain the roles of RegionServers, regions, MemStore, HFiles, and the Write‑Ahead Log (WAL). How does data flow from a client write to durable storage?
-3. **Performance & Maintenance:**  What are compactions (minor vs. major), MOBs, and the block cache? How do they affect read/write latency and storage efficiency?
-4. **Fault Tolerance & Coordination:**  How does HBase use ZooKeeper, WAL replay, and region re‑assignment to handle failures and maintain availability? What happens when a RegionServer crashes?
-5. **Scalability & Operations:**  Discuss how HBase scales horizontally, how regions split and are balanced, and what administrative actions (e.g., snapshot, backup, recovery) users might perform.
+1. **Architecture & Data Model:**  Describe the overall architecture of Apache HBase, including tables, rows keyed by row key, column families, regions, and the storage format (HFile). How do these elements differ from a traditional relational database, and why is schema design driven by access patterns?
+
+2. **Components & Storage Flow:**  Explain the roles of RegionServers, MemStore, HFiles, block cache, and the Write-Ahead Log (WAL). How does data flow from a client write to durable storage, and how are reads served from memory and disk structures?
+
+3. **Performance & Maintenance:**  What are minor and major compactions, MOB storage, Bloom filters, and caching? How do they affect read/write latency, storage efficiency, and amplification? Discuss the importance of row-key design and hotspot avoidance.
+
+4. **Fault Tolerance & Coordination:**  How does HBase use WAL replay, region reassignment, and coordination via Apache ZooKeeper to handle failures and maintain availability? What happens when a RegionServer crashes?
+
+5. **Scalability & Operations:**  Discuss how HBase scales horizontally through region splitting and balancing, how it relies on HDFS for durability, and what administrative actions (snapshots, backups, schema changes, recovery) operators perform in production environments.
 
 ## Wrapping Up :trophy:
 Go over your answers with your mentor and clarify any uncertainties. Relate HBase concepts back to the broader data platform.

@@ -18,23 +18,33 @@ Today’s session zeroes in on two foundational pieces of Hive: the metastore th
 
 ## Hive Metastore
 
-Answer the following five questions to explore the metastore:
+Answer the following questions to explore the metastore:
 
-1. **Purpose & Function:**  What is the Hive Metastore and what types of metadata does it store? Why is it necessary in a data platform?
-2. **Architecture & Backend:**  Describe how the metastore is implemented (standalone service backed by a relational database). What are the common backend databases used?
+1. **Purpose & Function:**  What is the Hive Metastore and what types of metadata does it store (databases, tables, columns, partitions, locations, statistics)? Why is a centralized metadata service necessary in a distributed data platform?
+
+2. **Architecture & Backend:**  Describe how the metastore is implemented as a standalone service backed by a relational database. What are common backend databases, and how does the service scale and handle concurrent clients?
+
 3. **Schema & Tables:**  What are the key tables in the metastore schema (e.g. DBS, TBLS, SDS, PARTITIONS)? How do they relate to Hive objects?
-4. **Extensibility & Clients:**  How do external tools (Spark, Presto, etc.) interact with the metastore? What APIs are available?
-5. **Administration:**  What are typical operational tasks around the metastore (backup, repair, migration)? What happens if the metastore is unavailable?
+
+4. **Extensibility & Clients:**  How do external engines such as Apache Spark, Trino, and other tools interact with the metastore? What APIs and protocols are used?
+
+5. **Administration:**  What are common administrative tasks (backup, schema upgrades, migration, repair)? What happens if the metastore becomes unavailable, and why is it considered a critical dependency in data platforms?
 
 ## Hive Table Formats
 
 Answer these five questions to understand table formats:
 
-1. **Definition & Role:**  What does a “table format” mean in Hive? How does it differ from table metadata stored in the metastore?
-2. **Common Formats:**  Describe popular formats such as Text/CSV, Parquet, ORC, Avro. How do they impact storage layout and performance?
-3. **Schema Evolution:**  How do formats handle schema changes? What features make formats like Avro or Parquet attractive for evolving data?
-4. **Serialization/Deserialization (SerDe):**  What is a SerDe and how does it connect format and data? Give examples of built‑in SerDes.
-5. **Integration with Storage:**  How do table formats map to physical storage (directories, files)? What conventions does Hive use for partitions, buckets, and file naming?
+1. **Definition & Role:**  What does a “table format” mean in Hive? How does it differ from table metadata stored in the metastore? Explain the relationship between logical schema and physical file layout.
+
+2. **Common Formats:**  Describe popular formats such as Text/CSV, Parquet, ORC, Avro. How do they differ in encoding, compression, columnar storage, and query performance?
+
+3. **Schema & Tables:**  Explain the difference between managed and external tables, including ownership, lifecycle, and storage location semantics. How does the metastore map logical tables to physical data in storage systems like HDFS or object storage?
+
+4. **Extensibility & Clients:**  **(Moved from metastore earlier)** How do external engines such as Apache Spark, Trino, and other tools interact with the metastore? What APIs and protocols are used?
+
+5. **Administration:**  What are common administrative tasks (backup, schema upgrades, migration, repair)? What happens if the metastore becomes unavailable, and why is it considered a critical dependency in data platforms?
+
+6. **Integration with Storage:**  How do table formats map to physical storage (directories, files)? What conventions does Hive use for partitions, buckets, and file naming?
 
 ## Wrapping Up :trophy:
 Review your answers with your mentor and make sure you can articulate how the metastore and formats enable interoperability across Hadoop tools.
