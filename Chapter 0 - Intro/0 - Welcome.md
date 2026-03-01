@@ -3,8 +3,6 @@
 ## **Overview:**
 Welcome to the 883 Group! We're thrilled to have you join our group. Your journey with us begins today, and we're excited to guide you through the onboarding process and help you get acquainted with the group's vision, mission, and strategic objectives.
 
-> ⚠️ **No AI assistance:**  In addition to avoiding GPT-generated content in the documents, please do not consult or copy from any AI chatbots (GPT, Claude, etc.) while completing the onboarding. All answers and notes should reflect your own research and understanding.
-
 To get started, make sure you **clone this repository** to your local machine; we'll use it to track your progress, store answers to questions, and maintain onboarding materials. You can clone it with:
 
 ```bash
