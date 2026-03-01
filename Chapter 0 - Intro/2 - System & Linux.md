@@ -18,6 +18,3 @@ All consepts and task will be give be yoour mentor ask them.
 
 ## Wrapping Up :trophy:
 Review your answers with your mentor. Make sure you can explain each concept in your own words and relate them to the broader platform..
-
-
-

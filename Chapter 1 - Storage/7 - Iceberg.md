@@ -41,4 +41,5 @@ catalog and partitioning chapters.
 
 ## Recommended Resources
 - [Apache Iceberg Documentation](https://iceberg.apache.org/) – official site with spec and guides.
+- [Apache Iceberg Definitive Guide](https://www.dremio.com/wp-content/uploads/2023/02/apache-iceberg-TDG_ER1.pdf) - an official book by dream.ioguides.
 
