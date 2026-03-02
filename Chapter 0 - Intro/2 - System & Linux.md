@@ -1,30 +1,18 @@
-# Introduction to System & Linux :computer:
+# System, Linux & Security Fundamentals :computer:
 
-## **Goals**
-- Understand Linux core concepts.
-- Explore the basics of `Bash`.
-- Gain a comprehensive overview of different operating systems.
+## **Topics Covered**
+- Linux directory hierarchy (`/`, `/etc`, `/var`, `/proc`, etc.)
+- Process model and scheduling
+- Kernel I/O path and page cache
+- Authentication vs. authorization; Kerberos, LDAP, SSSD
+- Basic shell usage and GNU utilities
+- User/group management and service control (`systemd`)
 
+> ⚠️ **Note:**
+> This chapter is a roadmap, not a lesson.  You’ll enter the mock course we’ve prepared with your mentor’s help and work through it together.  Ask your mentor for guidance before diving into any of the material.
 
-> ⚠️ **Note:** 
-> Today will not be part of this Git; ask your mentors how to enter the mock course about Linux & System.
+## Overview
+These are the high‑level areas you should be familiar with when starting on our platform.  The actual content will be explored during the mock training session with your mentor; use the list above as a checklist.
 
-## Wrapping Up
-
-### Reflection
-Take a few minutes to reflect on what you have learned:
-- jot down key takeaways
-- note any questions or uncertainties
-
-### Mentor Discussion
-Talk through the following with your mentor:
-- clarify concepts that remain unclear
-- share your findings and insights
-- discuss real‑world use cases and implications for your work
-
-## Q&A Session :raising_hand:
-Participate in an open Q&A session with your mentor to address any questions about specific tools, technologies, or practices.
-
-## Action Items
-- Identify areas you want to explore more deeply.
-- Ask for recommended resources for further learning.
+## Wrapping Up :trophy:
+Discuss the topics with your mentor and make sure you can describe each one at a basic level.  Don’t worry about memorizing commands—focus on understanding what the topics are and why they matter.

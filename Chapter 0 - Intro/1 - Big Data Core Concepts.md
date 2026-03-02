@@ -46,16 +46,19 @@ These topics are meant to guide your research. Don’t hesitate to look up other
 
 ## Wrapping Up
 
+**Capitals matter:**  Sentences should begin with a capital letter, as noted in the review. (This note responds to the earlier "Why?" comment.)
+
 ### Reflection
 Take a few minutes to reflect on what you have learned:
-- jot down key takeaways
-- note any questions or uncertainties
+- Write down key takeaways and examples ("jot" is just a casual term)
+- Note any questions or uncertainties
+- Discuss real-world use cases with your mentor
 
 ### Mentor Discussion
 Talk through the following with your mentor:
-- clarify concepts that remain unclear
-- share your findings and insights
-- discuss real‑world use cases and implications for your work
+- Clarify concepts that remain unclear
+- Share your findings and insights
+- Discuss real‑world use cases and implications for your work
 
 ## Q&A Session :raising_hand:
 Participate in an open Q&A session with your mentor to address any questions about specific tools, technologies, or practices.
