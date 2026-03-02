@@ -1,20 +1,18 @@
 # System, Linux & Security Fundamentals :computer:
 
-## **Goals**
-- Understand Linux core concepts and the kernel I/O path.
-- Explore authentication and authorization (Kerberos, LDAP) used in our environment.
-- Learn about Apache ZooKeeper and its role in coordination.
-- Gain familiarity with basic shell usage (`bash`) and system administration.
+## **Topics Covered**
+- Linux directory hierarchy (`/`, `/etc`, `/var`, `/proc`, etc.)
+- Process model and scheduling
+- Kernel I/O path and page cache
+- Authentication vs. authorization; Kerberos, LDAP, SSSD
+- Basic shell usage and GNU utilities
+- User/group management and service control (`systemd`)
 
-> ⚠️ **Note:** 
-> This material will be in the moock ask your mentor to guide you throw it.
+> ⚠️ **Note:**
+> This chapter is a roadmap, not a lesson.  You’ll enter the mock course we’ve prepared with your mentor’s help and work through it together.  Ask your mentor for guidance before diving into any of the material.
+
 ## Overview
-This session covers foundational system topics that are critical for working with our data platform. You will review Linux concepts, security mechanisms, and coordination services used across the cluster.
-
-**Emphasis is on understanding the "why" behind the tools rather than memorizing commands.**
-
-### Core Concepts
-All consepts and task will be give be yoour mentor ask them.
+These are the high‑level areas you should be familiar with when starting on our platform.  The actual content will be explored during the mock training session with your mentor; use the list above as a checklist.
 
 ## Wrapping Up :trophy:
-Review your answers with your mentor. Make sure you can explain each concept in your own words and relate them to the broader platform..
+Discuss the topics with your mentor and make sure you can describe each one at a basic level.  Don’t worry about memorizing commands—focus on understanding what the topics are and why they matter.

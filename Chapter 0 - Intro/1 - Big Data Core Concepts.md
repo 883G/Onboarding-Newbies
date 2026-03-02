@@ -15,9 +15,6 @@ Today’s session lays the foundation for your journey into data operations. You
 
 Research the following topics and look for real‑world examples. Discuss your findings with your mentor to deepen your understanding and clarify any questions. Keep a high‑level perspective, and consider the drawbacks of each concept as well as alternatives.
 
-> **Security, Kerberos & LDAP:**  
-> A full page on security is provided in the separate “System & Linux” chapter (see the Zookeeper & LDAP session). Make sure you review authentication, authorization, and directory services as part of your core concepts.
-
 1. **The five V’s of Big Data**
 2. **Structured, unstructured, and semi‑structured data**
 3. **ETL vs. ELT**
@@ -49,11 +46,11 @@ These topics are meant to guide your research. Don’t hesitate to look up other
 
 ## Wrapping Up
 
-**Capitals matter:**  Sentences should begin with a capital letter, as noted in the review.
+**Capitals matter:**  Sentences should begin with a capital letter, as noted in the review. (This note responds to the earlier "Why?" comment.)
 
 ### Reflection
 Take a few minutes to reflect on what you have learned:
-- Jot down key takeaways and examples
+- Write down key takeaways and examples ("jot" is just a casual term)
 - Note any questions or uncertainties
 - Discuss real-world use cases with your mentor
 
