@@ -33,7 +33,7 @@ Iceberg.**
 
 :warning: **Note:**
 - Self-study requires planning; review the [Exercise](#exercise) before starting.
-- Keep the focus on metadata and format, not on query engines or execution.
+- Keep the focus on metadata and format, optimizations derived from those and not on query engines or execution.
 - Ask your mentor if you're unsure about scope.
 
 ## Core Concepts
