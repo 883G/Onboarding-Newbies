@@ -2,12 +2,22 @@
 
 ## Overview
 Apache Iceberg is an open table format for huge analytic datasets. This day focuses
-on Iceberg’s design and how it improves upon traditional Hive/ Hive format tables.
+on Iceberg’s design and how it improves upon traditional Hive/Hive‑format tables.
 (In Hive the table metadata and data files are often mixed, whereas Iceberg
 separates them cleanly.)
-You’ll answer five questions chosen by the user that dive deeply into its
-architecture and behavior.  You should also be aware of the format’s trade‑offs
-and where other systems such as Ducklake or Delta Lake might be chosen instead.
+
+Iceberg offers rich features – schema evolution, hidden partitioning, time
+travel, snapshot isolation – but those capabilities come at the cost of a larger
+metadata footprint and a more complex transaction log.  For very small tables
+or write‑heavy workloads the overhead may outweigh the benefits, which is why
+lighter formats such as Ducklake (aimed at simplicity) or plain Hive/Parquet
+still make sense in some environments.  Be prepared to discuss both the
+advantages and the drawbacks of adopting Iceberg compared to simpler
+approaches or newer competitors.
+
+You’ll answer six questions chosen by the user that dive deeply into its
+architecture and behavior.  Some of the items explicitly compare Iceberg with
+other table formats or catalogs.
 
 **Keep the discussion about the format; don’t cover specific engines or query
 runtimes.**
@@ -26,25 +36,41 @@ runtimes.**
 
 ## Core Questions
 
-1. **What is Apache Iceberg?**  Explain the problems it solves compared to Hive tables (schema evolution, partitioning, consistency, performance).
-   As part of your answer, note that Iceberg adds complexity in the form of
-   additional metadata and a transaction log; discuss scenarios where this
-   overhead is acceptable and others where a lighter format may be preferable.
+1. **Performance and trade‑offs:**  In which scenarios does Iceberg improve
+   query performance, and when might its metadata overhead degrade performance?
+   Compare Iceberg’s speed/cost characteristics to Hive tables, Ducklake, or
+   other lightweight formats.  Why would a team choose a simpler layout even if
+   it means giving up features such as time travel?
 
-2. **Describe the Apache Iceberg table architecture.**  Explain metadata files, manifest files, data files, and snapshots and how they relate to each other.
+2. **What is Apache Iceberg?**  Explain the problems it solves compared to
+   Hive tables (schema evolution, partitioning, consistency, performance),
+   and outline the drawbacks or additional complexity it introduces.  Where
+   does the extra metadata and transaction log become acceptable versus
+   excessive?
 
-3. **What is an Iceberg catalog, and what is its role?**  Explain what a catalog manages (table namespace, metadata pointers, commits), why it’s required, and how it differs from a metastore. Mention common implementations: Hive, Hadoop, REST, Polaris, and cloud‑vendor catalogs such as AWS Glue or Databricks Unity Catalog.  Clarify that the catalog is also responsible for coordinating concurrent
-   writes and readers by handing out snapshot information;
-   the Iceberg format itself is agnostic to concurrency but relies on the catalog
-   to implement optimistic locking and conflict detection.
+3. **Describe the Apache Iceberg table architecture.**  Explain metadata
+   files, manifest files, data files, and snapshots and how they relate to
+   each other.
 
-4. **How does Iceberg handle concurrent reads and writes?**  Explain snapshot isolation, atomic commits, optimistic concurrency control, and conflict detection.  Note that these guarantees are achieved by the catalog layering and by
-   appending new metadata files; from the format’s perspective multiple writers
-   simply create new snapshots that the catalog must reconcile.  Also mention
-   that catalogs vary (NESSIE vs. Hive vs. Delta) so concurrency behavior can
-   differ between implementations.
+4. **What is an Iceberg catalog, and what is its role?**  Explain what a
+   catalog manages (table namespace, metadata pointers, commits), why it’s
+   required, and how it differs from a metastore.  Clarify that the catalog –
+   not the format – mediates concurrency.  List Iceberg catalog
+   implementations (Hive Metastore, Nessie, HadoopCatalog, REST/Polaris, AWS
+   Glue, Databricks Unity Catalog, Delta Lake’s proprietary catalog, etc.)
+   and note that catalogs from other systems (e.g. Delta, Hive) can be used
+   with Iceberg tables as well; performance and locking behavior will vary.
 
-5. **What maintenance operations does Iceberg require, and why?**  Discuss compaction, snapshot expiration, orphan file cleanup, and metadata cleanup.  In your answer you may also comment on how these maintenance tasks can
+5. **How does Iceberg handle concurrent reads and writes?**  Explain snapshot
+   isolation, atomic commits, optimistic concurrency control, and conflict
+   detection.  Emphasize again that these guarantees come from the catalog
+   layer; the Iceberg format itself simply appends metadata files and leaves
+   coordination to whatever catalog is in use.  Mention that different catalogs
+   (Nessie/Delta/Hive) may provide slightly different semantics.
+
+6. **What maintenance operations does Iceberg require, and why?**  Discuss
+   compaction, snapshot expiration, orphan file cleanup, and metadata cleanup.
+   In your answer you may also comment on how these maintenance tasks can
    impact performance (e.g., coordination overhead during compaction, delays
    while expiring old snapshots) and where trade‑offs exist.
 
