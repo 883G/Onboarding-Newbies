@@ -31,9 +31,3 @@ This chapter covers foundational storage concepts, moving from general file syst
 ## Contribution :raised_hands:
 
 If you have any suggestions or ideas to enhance the onboarding for future members, feel free to contribute. Fork, create a feature branch, commit changes, and create a pull request.
-
-> *Note: “Overlap 1”, “Overlap 2”, etc. are just placeholders showing that multiple sessions may run concurrently in a week.*
-
-## Timeline
-
-A detailed timeline is forthcoming; the original Excel schedule will be added here or linked once it is finalized.
