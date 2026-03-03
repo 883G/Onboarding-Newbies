@@ -16,6 +16,11 @@ Today’s session zeroes in on two foundational pieces of Hive: the metastore th
 - Review the [Exercise](#exercise) before diving into research.
 - Ask your mentor for clarification on scope if needed.
 
+### ⏳ Timeline
+Estimated Duration: 1 Day
+- Day 1: Learn the concepts of Hive both metastore and table format; spend the day.
+    - Have a Q&A session the same day
+
 ## Hive Metastore
 
 Answer the following questions to explore the metastore:

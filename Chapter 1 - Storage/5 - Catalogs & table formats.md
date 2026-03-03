@@ -33,15 +33,19 @@ Iceberg.**
 
 :warning: **Note:**
 - Self-study requires planning; review the [Exercise](#exercise) before starting.
-- Keep the focus on metadata and format, optimizations derived from those and not on query engines or execution.
+- Keep the focus on metadata and format, and on optimizations derived from those rather than on query engines or execution.
 - Ask your mentor if you're unsure about scope.
+
+### ⏳ Timeline
+Estimated Duration: 1 Day
+- Day 1: Learn the concepts of catalogs and table formats; spend the day.
+    - Have a Q&A session the same day
 
 ## Core Concepts
 
 1. **Data warehouse / lake / lakehouse:**  What are the defining
    characteristics of each?  Why do architects care about a separate metadata
-   layer in a lakehouse versus a traditional warehouse?  (Put this question
-   first since it sets the context for everything that follows.)
+   layer in a lakehouse versus a traditional warehouse?
 
 2. **What is a Catalog?**  Describe the purpose of a metadata catalog.  How
    does it compare to Hive Metastore (hint: the metastore *is* a catalog)
@@ -77,4 +81,7 @@ Review your answers with your mentor, focusing on how catalogs and formats enabl
 - Identify catalogs or formats you’d like to try in practice.
 - Prepare questions for the mentor Q&A session.
 - Link these ideas back to the [intro chapter](../Chapter%200%20-%20Intro/1%20-%20Big%20Data%20Core%20Concepts.md).
+### 📚 Resources
+Use the resources listed below and practice searching the internet for questions not answered by the provided documentation.
+- [Apache Iceberg Definitive Guide](http://103.203.175.90:81/fdScript/RootOfEBooks/E%20Book%20collection%20-%202024%20-%20F/CSE%20%20IT%20AIDS%20ML/Apache%20Iceberg%20(2024).pdf) Use this resource only for warehouse vs lake vs lakehouse (Iceberg will be learned on a different day)
 

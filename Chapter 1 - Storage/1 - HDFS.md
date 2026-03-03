@@ -15,6 +15,11 @@ This session focuses on the core concepts of HDFS, the distributed storage layer
 - Focus on grasping the full picture of each concept; if you can’t explain it, you haven’t learned it.
 - When in doubt, consult your mentor about what to study.
 
+### ⏳ Timeline
+Estimated Duration: 3 Day
+- Day 1-3: Learn the concepts of HDFS; spent time on what is it? on fault tolernce, on failover process and on how reads and writes are being done?
+    - Have a Q&A session at the third day and in between sessions each day
+
 ## Core Concepts
 
 Consider the following five questions to cover the major HDFS topics:
@@ -22,7 +27,7 @@ Consider the following five questions to cover the major HDFS topics:
 1. **Architecture & Roles:**  Describe HDFS’s overall architecture, including NameNode(s), DataNodes, blocks, and how the namespace and metadata are managed. Don’t forget the role of ZooKeeper in coordinating HA and keeping track of leases.
 2. **Storage & Fault Tolerance:**  Explain how HDFS divides files into blocks, uses replication (default factor three), and how it detects and recovers from node failures.
 3. **Topology Awareness & Performance:**  What is rack awareness and why does HDFS replicate across racks? Discuss how block placement, snapshots, and checksums contribute to performance and data integrity.
-4. **High Availability & Federation:**  Outline HDFS High Availability (Active/Standby NameNode, JournalNodes) and Federation (multiple namespaces). How do these features improve scalability and uptime?
+4. **High Availability :**  Outline HDFS High Availability (Active/Standby NameNode, JournalNodes). How do these features improve scalability and uptime?
 5. **Protocol & Operations:**  Describe how clients read and write data to HDFS via RPC, how they locate NameNodes and DataNodes, how DataNodes send block reports, and why these mechanisms matter for everyday operations. Cover the runtime behaviour of leases and pipeline formation.
 
 ## Wrapping Up :trophy:

@@ -1,94 +1,54 @@
-# Apache Iceberg :
+# Apache Iceberg
 
-## Overview
-Apache Iceberg is an open table format for huge analytic datasets. This day focuses
-on Iceberg’s design and how it improves upon traditional Hive/Hive‑format tables.
-(In Hive the table metadata and data files are often mixed, whereas Iceberg
-separates them cleanly.)
+Now that you are familiar with the concepts of catalogs and the metastore,
+and understand the critical separation between how data is stored versus how it is logically organized,
+it is time to move from theory to the practice of the modern data world.
 
-Iceberg offers rich features – schema evolution, hidden partitioning, time
-travel, snapshot isolation – but those capabilities come at the cost of a larger
-metadata footprint and a more complex transaction log.  For very small tables
-or write‑heavy workloads the overhead may outweigh the benefits, which is why
-lighter formats such as Ducklake (aimed at simplicity) or plain Hive/Parquet
-still make sense in some environments.  Be prepared to discuss both the
-advantages and the drawbacks of adopting Iceberg compared to simpler
-approaches or newer competitors.
+Meet Apache Iceberg - our primary implementation for the Lakehouse architecture,
+designed to solve the consistency and performance "pains" of legacy directory-based systems.
 
-You’ll answer six questions chosen by the user that dive deeply into its
-architecture and behavior.  Some of the items explicitly compare Iceberg with
-other table formats or catalogs.
+###⏳ Timeline
+Estimated Duration: 2 Days
+- Day 1: Independent research and deep dive into the foundations of Iceberg.
+- Day 2:
+  - (Morning): First Q&A.
+  - (End of Day): Question Answering & Final Q&A.
 
-**Keep the discussion about the format; don’t cover specific engines or query
-runtimes.**
+### 📚 Resources
+Use the resources listed below and practice searching the internet for questions not answered by the provided documentation.
+- [Apache Iceberg Official Docs](https://iceberg.apache.org/docs/latest/#documentation)
+- [Apache Iceberg Definitive Guide](http://103.203.175.90:81/fdScript/RootOfEBooks/E%20Book%20collection%20-%202024%20-%20F/CSE%20%20IT%20AIDS%20ML/Apache%20Iceberg%20(2024).pdf)
 
-## Goals
-- Understand Iceberg’s purpose and the problems it solves, as well as its
-  limitations and trade‑offs compared with simpler formats.
-- Learn how tables, catalogs, and transactions work in Iceberg.
-- Familiarize yourself with operational tasks for maintaining Iceberg tables.
-- Recognize that the catalog layer—not the format itself—mediates concurrency
-  and namespace management.
+###❓ Guide Questions
+Please use these questions as a guide for your research, dive in, and deepen your understanding of all concepts.
+1. What is Apache Iceberg? 
+   Explain the problems it solves compared to Hive tables (schema evolution, partitioning, consistency, performance).
 
-:warning: **Note:**
-- This is self-study; plan your time and focus on the specified questions.
-- If anything is unclear, consult the official docs or ask your mentor.
 
-## Core Questions
+2. Describe the Apache Iceberg table architecture. 
+   Explain metadata files, manifest files, data files, and snapshots and how they relate to each other.
 
-1. **Performance and trade‑offs:**  In which scenarios does Iceberg improve
-   query performance, and when might its metadata overhead degrade performance?
-   Compare Iceberg’s speed/cost characteristics to Hive tables, Ducklake, or
-   other lightweight formats.  Why would a team choose a simpler layout even if
-   it means giving up features such as time travel?
 
-2. **What is Apache Iceberg?**  Explain the problems it solves compared to
-   Hive tables (schema evolution, partitioning, consistency, performance),
-   and outline the drawbacks or additional complexity it introduces.  Where
-   does the extra metadata and transaction log become acceptable versus
-   excessive?
+3. What is an Iceberg catalog, and what is its role? 
+   Explain what a catalog manages (table namespace, metadata pointers, commits), why it’s required, and how it differs from a metastore. 
+   Mention common catalog implementations.
 
-3. **Describe the Apache Iceberg table architecture.**  Explain metadata
-   files, manifest files, data files, and snapshots and how they relate to
-   each other.
 
-4. **What is an Iceberg catalog, and what is its role?**  Explain what a
-   catalog manages (table namespace, metadata pointers, commits), why it’s
-   required, and how it differs from a metastore.  Clarify that the catalog –
-   not the format – mediates concurrency.  List Iceberg catalog
-   implementations (Hive Metastore, Nessie, HadoopCatalog, REST/Polaris, AWS
-   Glue, Databricks Unity Catalog, Delta Lake’s proprietary catalog, etc.)
-   and note that catalogs from other systems (e.g. Delta, Hive) can be used
-   with Iceberg tables as well; performance and locking behavior will vary.
+4. How does Iceberg handle concurrent reads and writes? 
+  Explain snapshot isolation, atomic commits, optimistic concurrency control, and conflict detection.
 
-5. **How does Iceberg handle concurrent reads and writes?**  Explain snapshot
-   isolation, atomic commits, optimistic concurrency control, and conflict
-   detection.  Emphasize again that these guarantees come from the catalog
-   layer; the Iceberg format itself simply appends metadata files and leaves
-   coordination to whatever catalog is in use.  Mention that different catalogs
-   (Nessie/Delta/Hive) may provide slightly different semantics.
 
-6. **What maintenance operations does Iceberg require, and why?**  Discuss
-   compaction, snapshot expiration, orphan file cleanup, and metadata cleanup.
-   In your answer you may also comment on how these maintenance tasks can
-   impact performance (e.g., coordination overhead during compaction, delays
-   while expiring old snapshots) and where trade‑offs exist.
+5. What maintenance operations does Iceberg require, and why? 
+   Discuss compaction, snapshot expiration, orphan file cleanup, and metadata cleanup.
 
-## Wrapping Up :trophy:
-Go over your answers with your mentor and relate Iceberg features to the earlier
-catalog and partitioning chapters.
+### 🔄 Alternatives
+Assignment: You are required to research and write a comparative analysis between Iceberg and an industry alternative.
+- Deliverable: A written summary (minimum half a page).
+- Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
+- Goal: You must be able to justify why the department uses this tool for our specific environment.
 
-## Action Items
-- Note areas of Iceberg you’d like to explore hands-on.
-- Prepare questions for the mentor Q&A session.
-- Continue mapping these topics into the Day 01 challenge.
-
-## Recommended Resources
-- [Apache Iceberg Documentation](https://iceberg.apache.org/) – official site with spec and guides.
-- [Apache Iceberg Definitive Guide](https://www.dremio.com/wp-content/uploads/2023/02/apache-iceberg-TDG_ER1.pdf) – an official book by Dremio.
-- [Ducklake website](https://ducklake.select/) – a newer format that trades
-  some of Iceberg’s features for simplicity and performance (see the comparison
-  question above).
-- [Apache Iceberg GitHub repo](https://github.com/apache/iceberg) for source
-  and issue tracking.
-
+### 🎯 User Story & Scenario
+Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
+- Deliverable: A written summary example/story (minimum half a page).
+- Requirement: Describe a real-world scenario (e.g., a specific client requirement) where this technology is the optimal solution.
+- Data Flow: Map out the data flow and explain how this tool integrates with other components in the Data Pipeline.

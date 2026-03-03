@@ -15,12 +15,17 @@ This session isolates the concept of data partitioning. Rather than bundle it wi
 - Review the [Exercise](#exercise) early to guide your research.
 - Discuss unclear points with your mentor.
 
+### ⏳ Timeline
+Estimated Duration: 0.5 Days
+- Day 1: Learn what partitioning is and the core concepts; spend half a day.
+    - Have a Q&A session the same day
+
 ## Core Questions
 
 1. **Motivation & Definitions:**  What problems does partitioning solve? Distinguish between horizontal and vertical partitioning, and between logical and physical partitions.
 2. **Strategies:**  Describe common partitioning techniques (range, list, hash, composite) and when each is appropriate. Include considerations for time‑series data.
 3. **Pruning & Optimization:**  Explain how partition pruning works and why it’s critical for performance. How do query planners determine which partitions to scan?
-4. **Maintenance & Evolution:**  What challenges arise when partitions grow, become skewed, or need to be re‑balanced? Discuss operations like adding, dropping, or merging partitions.
+4. **Maintenance & Evolution:**  What challenges arise when partitions grow, have in consistant metadata? Discuss operations like adding, dropping, or merging partitions.
 5. **Interaction with Formats & Catalogs:**  How do partitioning schemes interact with table formats (e.g., Hive, Iceberg) and metadata catalogs? Why is consistency between data layout and catalog metadata important?
 
 ## Wrapping Up :trophy:

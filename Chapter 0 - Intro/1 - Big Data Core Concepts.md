@@ -11,6 +11,11 @@ Today’s session lays the foundation for your journey into data operations. You
 > ⚠️ **Note:**  
 > This is your first day in the world of data operations. Don’t worry about diving deeply into every topic; focus on understanding the big picture and the major concepts.
 
+### ⏳ Timeline
+Estimated Duration: 1 Day
+- Day 1: Spend this day getting acquainted with the world of big data.
+    - Hold a Q&A session immediately afterward
+
 ## 1. Understanding the Data Landscape
 
 Research the following topics and look for real‑world examples. Discuss your findings with your mentor to deepen your understanding and clarify any questions. Keep a high‑level perspective, and consider the drawbacks of each concept as well as alternatives.

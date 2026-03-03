@@ -9,7 +9,7 @@ The program is organized into sessions with tasks, goals, and resources to guide
 
 - **[Intro](./Chapter%200%20-%20Intro/0%20-%20Welcome.md):** Welcome & Introduction - Understand the onboarding process and the 883 Group's vision and mission :dart:
 - **[Big Data Concepts](./Chapter%200%20-%20Intro/1%20-%20Big%20Data%20Core%20Concepts.md):** Introduction to Big Data - Core Concepts
-- **[System](./Chapter%200%20-%20Intro/2%20-%20System%20&%20Linux%20.md):** Get familiar with system and Linux.
+- **[System](./Chapter%200%20-%20Intro/2%20-%20System%20&%20Linux%20.md):** Get familiar with system fundamentals and Linux.
 :bow_and_arrow:
 
 ## Chapter 01: Introduction to storage

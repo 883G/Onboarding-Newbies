@@ -17,6 +17,11 @@ This session focuses on the components that provide coordination and authenticat
 - Focus on grasping the full picture of each concept – if you can’t explain it, you haven’t learned it.
 - When in doubt, ask your mentor which topics deserve deeper attention.
 
+### ⏳ Timeline
+Estimated Duration: 1 Day
+- Day 1: Spent no more than third a day on each of the following: LDAP, ZOOKEEPER,Kerberos, Hint read a bit about Active Directory As well;
+    - Have a Q&A session right after
+
 ## Core Concepts
 
 ### Zookeeper – five guiding questions

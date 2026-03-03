@@ -58,7 +58,7 @@ These entries are *the plan* for each week; "Day 1/2/3…" refers to the numbere
       <td style="background-color: #ffffcc;">Hive table format & HMS</td>
       <td style="background-color: #ffffcc;">Catalogs & table formats</td>
       <td style="background-color: #ffffcc;">Partitioning</td>
-      <td style="background-color: #ffffcc;">Metadata Layer - Skila</td>
+      <td style="background-color: #ffffcc;">Metadata Layer - Q&A</td>
       <td style="background-color: #ffffcc;">Iceberg</td>
     </tr>
     <tr>
