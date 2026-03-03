@@ -1,7 +1,7 @@
 # Welcome & Introduction :dart:
 
 ## **Overview:**
-Welcome to the 883 Group! We're thrilled to have you join – this document will guide you through the onboarding process and help you get acquainted with the group's vision, mission, and strategic objectives.  (The two opening sentences were intentionally similar to reinforce the point.)
+Welcome to the 883 Group! We're thrilled to have you join – this document will guide you through the onboarding process and help you get acquainted with the group's vision, mission, and strategic objectives.
 
 To get started, make sure you **clone this repository** to your local machine; we'll use it to track your progress, store answers to questions, and maintain onboarding materials. You can clone it with:
 

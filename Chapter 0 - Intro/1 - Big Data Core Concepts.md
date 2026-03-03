@@ -51,11 +51,10 @@ These topics are meant to guide your research. Don’t hesitate to look up other
 
 ## Wrapping Up
 
-**Capitals matter:**  Sentences should begin with a capital letter, as noted in the review. (This note responds to the earlier "Why?" comment.)
 
 ### Reflection
 Take a few minutes to reflect on what you have learned:
-- Write down key takeaways and examples ("jot" is just a casual term)
+- Write down key takeaways and examples
 - Note any questions or uncertainties
 - Discuss real-world use cases with your mentor
 
