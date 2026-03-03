@@ -59,8 +59,7 @@ Estimated Duration: 1 Day
 
 4. **Table Formats Overview:**  Define what a table format is in the context of
    a data lake.  How do formats like Iceberg, Delta, and Hudi differ from
-   simple Hive/Parquet tables?  What features do they add (ACID, snapshots,
-   partition evolution, optimizations such as pruning and predicate pushdown)?
+   simple Hive/Parquet tables?  What features do they add ?
 
 5. **Metadata & Transaction Log:**  How do modern formats store their own
    metadata?  Discuss the concept of a transaction log or manifest file, and
