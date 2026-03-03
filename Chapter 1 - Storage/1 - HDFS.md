@@ -32,7 +32,7 @@ Consider the following five questions to cover the major HDFS topics:
 
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between Iceberg and an industry alternative.
-- Deliverable: A written summary (minimum half a page).
+- Deliverable: A written summary (minimum 1 or 2 sentences).
 - Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
 - Goal: You must be able to justify why the department uses this tool for our specific environment.
 
