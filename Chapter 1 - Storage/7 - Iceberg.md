@@ -4,7 +4,7 @@ Now that you are familiar with the concepts of catalogs and the metastore,
 and understand the critical separation between how data is stored versus how it is logically organized,
 it is time to move from theory to the practice of the modern data world.
 
-Meet Apache Iceberg - our primary implementation for the Lakehouse architecture,
+Meet Apache Iceberg – the table format we use as the storage layer in our lakehouse.
 designed to solve the consistency and performance "pains" of legacy directory-based systems.
 
 ###⏳ Timeline
