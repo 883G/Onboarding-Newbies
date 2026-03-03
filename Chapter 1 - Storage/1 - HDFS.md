@@ -16,7 +16,7 @@ This session focuses on the core concepts of HDFS, the distributed storage layer
 - When in doubt, consult your mentor about what to study.
 
 ### ⏳ Timeline
-Estimated Duration: 3 Day
+Estimated Duration: 3 Days
 - Day 1-3: Learn the concepts of HDFS; spent time on what is it? on fault tolernce, on failover process and on how reads and writes are being done?
     - Have a Q&A session at the third day and in between sessions each day
 
@@ -29,6 +29,12 @@ Consider the following five questions to cover the major HDFS topics:
 3. **Topology Awareness & Performance:**  What is rack awareness and why does HDFS replicate across racks? Discuss how block placement, snapshots, and checksums contribute to performance and data integrity.
 4. **High Availability :**  Outline HDFS High Availability (Active/Standby NameNode, JournalNodes). How do these features improve scalability and uptime?
 5. **Protocol & Operations:**  Describe how clients read and write data to HDFS via RPC, how they locate NameNodes and DataNodes, how DataNodes send block reports, and why these mechanisms matter for everyday operations. Cover the runtime behaviour of leases and pipeline formation.
+
+### 🔄 Alternatives
+Assignment: You are required to research and write a comparative analysis between Iceberg and an industry alternative.
+- Deliverable: A written summary (minimum half a page).
+- Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
+- Goal: You must be able to justify why the department uses this tool for our specific environment.
 
 ## Wrapping Up :trophy:
 Review your answers with your mentor and discuss any unclear points. Relate these concepts back to real-world usage scenarios you might encounter.

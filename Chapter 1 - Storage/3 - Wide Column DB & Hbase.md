@@ -19,7 +19,7 @@ Today’s session dives deeper into column‑oriented databases with a focus on 
 - Ask your mentor if you’re unsure what to research.
 
 ### ⏳ Timeline
-Estimated Duration: 3 Day
+Estimated Duration: 3 Days
 - Day 1: Learn the concepts of wide column DB and HBASE spesficly; spend the day.
 - Day 2-3: Get deep into HBASE spesficly
     - Have a Q&A session at the third day and in between sessions each day
@@ -37,6 +37,12 @@ Answer these five questions to cover HBase’s major areas:
 4. **Fault Tolerance & Coordination:**  How does HBase use WAL replay, region reassignment, and coordination via Apache ZooKeeper to handle failures and maintain availability? What happens when a RegionServer crashes?
 
 5. **Scalability & Operations:**  Discuss how HBase scales horizontally through region splitting and balancing, how it relies on HDFS for durability, and what administrative actions (snapshots, backups, schema changes, recovery) operators perform in production environments.
+
+### 🔄 Alternatives
+Assignment: You are required to research and write a comparative analysis between Iceberg and an industry alternative.
+- Deliverable: A written summary (minimum half a page).
+- Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
+- Goal: You must be able to justify why the department uses this tool for our specific environment.
 
 ## Wrapping Up :trophy:
 Go over your answers with your mentor and clarify any uncertainties. Relate HBase concepts back to the broader data platform.

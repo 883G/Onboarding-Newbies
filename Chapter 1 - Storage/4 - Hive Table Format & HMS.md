@@ -47,6 +47,12 @@ Answer the following questions to understand table formats:
 
 4. **Integration with Storage:**  How do table formats map to physical storage (directories, files)? What conventions does Hive use for partitions, buckets, and file naming?
 
+### 🔄 Alternatives
+Assignment: You are required to research and write a comparative analysis between Iceberg and an industry alternative.
+- Deliverable: A written summary (minimum half a page).
+- Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
+- Goal: You must be able to justify why the department uses this tool for our specific environment.
+
 ## Wrapping Up :trophy:
 Review your answers with your mentor and make sure you can articulate how the metastore and formats enable interoperability across Hadoop tools.
 
