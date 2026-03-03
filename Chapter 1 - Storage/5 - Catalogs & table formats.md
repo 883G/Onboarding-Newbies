@@ -60,14 +60,13 @@ Estimated Duration: 1 Day
 4. **Table Formats Overview:**  Define what a table format is in the context of
    a data lake.  How do formats like Iceberg, Delta, and Hudi differ from
    simple Hive/Parquet tables?  What features do they add (ACID, snapshots,
-   partition evolution, optimizations such as pruning and predicate push‑down)?
+   partition evolution, optimizations such as pruning and predicate pushdown)?
 
 5. **Metadata & Transaction Log:**  How do modern formats store their own
    metadata?  Discuss the concept of a transaction log or manifest file, and
-   the distinction between file‑level metadata (e.g. Iceberg data file footers)
+   the distinction between file level metadata (e.g. Iceberg data file footers)
    and catalog entries.  When would you even need to think about files if the
-   catalog abstracts them away?  (Answer: when debugging, cleaning up
-   orphan files, or understanding performance.)
+   catalog abstracts them away?  
 
 6. **Interoperability & Ecosystem:**  Describe how catalogs and formats enable
    multiple compute engines to work on the same data (Spark, Trino, Flink).
