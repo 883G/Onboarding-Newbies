@@ -18,6 +18,7 @@ Estimated Duration: 2 Days
 Use the resources listed below and practice searching the internet for questions not answered by the provided documentation.
 - [Apache Iceberg Official Docs](https://iceberg.apache.org/docs/latest/#documentation)
 - [Apache Iceberg Definitive Guide](http://103.203.175.90:81/fdScript/RootOfEBooks/E%20Book%20collection%20-%202024%20-%20F/CSE%20%20IT%20AIDS%20ML/Apache%20Iceberg%20(2024).pdf)
+- [Meap Book - Apache Iceberg](./asstes/Architecting_an_Apache_Iceberg_Lakehouse_v3_MEAP.pdf)
 
 ###❓ Guide Questions
 Please use these questions as a guide for your research, dive in, and deepen your understanding of all concepts.
@@ -44,6 +45,7 @@ Please use these questions as a guide for your research, dive in, and deepen you
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between Iceberg and an industry alternative.
 - Deliverable: A written summary (minimum 1 or 2 sentences).
+- Add real life usecase 
 - Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
 - Goal: You must be able to justify why the department uses this tool for our specific environment.
 

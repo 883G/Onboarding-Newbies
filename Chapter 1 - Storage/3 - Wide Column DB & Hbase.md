@@ -14,7 +14,7 @@ Today’s session dives deeper into column‑oriented databases with a focus on 
 
 :warning: **Note:**
 - This is a self‑study day; independence and time management are crucial.
-- If you can’t explain a concept clearly, you probably need to revisit it.
+- If you can’t explain a concept clearly, you probably need to revaisit it.
 - Read the [Exercise](#exercise) before starting so you know what to emphasize.
 - Ask your mentor if you’re unsure what to research.
 
@@ -26,21 +26,43 @@ Estimated Duration: 3 Days
 
 ## Core Concepts
 
+## Part 1: Wide Column Databases (General Concepts)
+
+Answer these questions to understand the fundamentals of wide-column databases before focusing on HBase:
+
+1. **Data Model & Structure:**  
+   What is a wide-column database, and how does its data model work? Explain the concepts of rows, column families, and flexible schemas. How does this model differ from traditional relational databases and key-value stores?
+
+2. **Use Cases & Motivation:**  
+   Why do wide-column databases exist? In what scenarios are they most useful (for example: large-scale datasets, time-series data, sparse data, or systems requiring high write throughput)?
+
+3. **Distributed Design:**  
+   How do wide-column databases distribute data across clusters? Explain concepts such as partitioning, replication, and horizontal scalability.
+
+---
+
+### Part 2: Apache HBase (Implementation & Operations)
+
 Answer these five questions to cover HBase’s major areas:
 
-1. **Architecture & Data Model:**  Describe the overall architecture of Apache HBase, including tables, rows keyed by row key, column families, regions, and the storage format (HFile). How do these elements differ from a traditional relational database, and why is schema design driven by access patterns?
+1. **Architecture & Data Model:**  
+   Describe the overall architecture of Apache HBase, including tables, rows keyed by row key, column families, regions, and the storage format (HFile). How do these elements differ from a traditional relational database, and why is schema design driven by access patterns?
 
-2. **Components & Storage Flow:**  Explain the roles of RegionServers, MemStore, HFiles, block cache, and the Write-Ahead Log (WAL). How does data flow from a client write to durable storage, and how are reads served from memory and disk structures?
+2. **Components & Storage Flow:**  
+   Explain the roles of RegionServers, MemStore, HFiles, block cache, and the Write-Ahead Log (WAL). How does data flow from a client write to durable storage, and how are reads served from memory and disk structures?
 
-3. **Performance & Maintenance:**  What are minor and major compactions, MOB storage, Bloom filters, and caching? How do they affect read/write latency, storage efficiency, and amplification? Discuss the importance of row-key design and hotspot avoidance.
+3. **Performance & Maintenance:**  
+   What are minor and major compactions, MOB storage, Bloom filters, and caching? How do they affect read/write latency, storage efficiency, and amplification? Discuss the importance of row-key design and hotspot avoidance.
 
-4. **Fault Tolerance & Coordination:**  How does HBase use WAL replay, region reassignment, and coordination via Apache ZooKeeper to handle failures and maintain availability? What happens when a RegionServer crashes?
+4. **Fault Tolerance & Coordination:**  
+   How does HBase use WAL replay, region reassignment, and coordination via ZooKeeper to handle failures and maintain availability? What happens when a RegionServer crashes?
 
-5. **Scalability & Operations:**  Discuss how HBase scales horizontally through region splitting and balancing, how it relies on HDFS for durability, and what administrative actions (snapshots, backups, schema changes, recovery) operators perform in production environments.
-
+5. **Scalability & Operations:**  
+   Discuss how HBase scales horizontally through region splitting and balancing, how it relies on HDFS for durability, and what administrative actions (snapshots, backups, schema changes, recovery) operators perform in production environments.
 ### 🔄 Alternatives
-Assignment: You are required to research and write a comparative analysis between Iceberg and an industry alternative.
+Assignment: You are required to research and write a comparative analysis between Hbase and an industry alternative.
 - Deliverable: A written summary (minimum 1 or 2 sentences).
+- Add real life usecase 
 - Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
 - Goal: You must be able to justify why the department uses this tool for our specific environment.
 

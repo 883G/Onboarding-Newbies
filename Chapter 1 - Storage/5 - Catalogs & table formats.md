@@ -17,8 +17,7 @@ anything here.
 (which is itself just one implementation of a catalog), and the design goals of
 modern table formats such as Iceberg, Delta Lake, and Hudi.  Examples of
 catalog implementations include Hive Metastore, AWS Glue, Databricks Unity
-Catalog, and even simple relational databases; not all of them are tied to
-Iceberg.**
+Catalog, and even simple relational databases;
 
 ## Goals
 - Clarify what catalogs and table formats actually manage and why teams put
@@ -32,7 +31,6 @@ Iceberg.**
   management rather than specific execution engines.
 
 :warning: **Note:**
-- Self-study requires planning; review the [Exercise](#exercise) before starting.
 - Keep the focus on metadata and format, and on optimizations derived from those rather than on query engines or execution.
 - Ask your mentor if you're unsure about scope.
 
