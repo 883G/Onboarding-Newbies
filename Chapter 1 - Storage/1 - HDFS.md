@@ -36,6 +36,13 @@ Assignment: You are required to research and write a comparative analysis betwee
 - Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
 - Goal: You must be able to justify why the department uses this tool for our specific environment.
 
+### 🎯 User Story & Scenario
+Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
+- Deliverable: A written summary example/story (two paragraphs approx.).
+- Requirement: Describe a real-world scenario (e.g., a specific client requirement) where this technology is the optimal solution.
+- Data Flow: Map out the data flow and explain how this tool integrates with other components in the Data Pipeline.
+
+
 ## Wrapping Up :trophy:
 Review your answers with your mentor and discuss any unclear points. Relate these concepts back to real-world usage scenarios you might encounter.
 
