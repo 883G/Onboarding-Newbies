@@ -49,6 +49,6 @@ Assignment: You are required to research and write a comparative analysis betwee
 
 ### 🎯 User Story & Scenario
 Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
-- Deliverable: A written summary example/story (two sentences approx.).
+- Deliverable: A written summary example/story (two paragraphs approx.).
 - Requirement: Describe a real-world scenario (e.g., a specific client requirement) where this technology is the optimal solution.
 - Data Flow: Map out the data flow and explain how this tool integrates with other components in the Data Pipeline.
