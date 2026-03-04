@@ -7,8 +7,8 @@ about the big picture: what is a *data warehouse* versus a *data lake* versus a
 *lakehouse*, and why do teams care about catalogs and table formats in each
 case?  (Hint: consistency, governance, and performance are the common threads.)
 
-We’re not going to install or run Spark/Trino/etc.; the material stays at the
-metadata level.  That said, good formats enable optimizations such as
+We’re not going to install or run Spark/Trino/etc. (If you don’t know what those are, no worries you will soon.);
+the material stays at themetadata level.  That said, good formats enable optimizations such as
 partition pruning, predicate push‑down, and efficient file compaction, all of
 which have a dramatic impact on execution even though we won’t be executing
 anything here.
