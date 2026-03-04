@@ -65,5 +65,3 @@ Discuss your answers and any areas of confusion with your mentor. Reflect on how
 
 ## Recommemded Resources
 - [Apache Spark Documentation](https://spark.apache.org/documentation.html)
-- [Databricks Tungsten Deep Dive](https://www.databricks.com/glossary/tungsten)
-- [Databricks Catalyst Deep Dive](https://www.databricks.com/glossary/catalyst-optimizer)

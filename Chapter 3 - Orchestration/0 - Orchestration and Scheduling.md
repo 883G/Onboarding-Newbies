@@ -48,8 +48,5 @@ Discuss your answers and any areas of confusion with your mentor. Reflect on how
 - Prepare questions for the upcoming mentor Q&A session.
 
 ## Recommemded Resources
-- [Starvation and Aging GFG](https://www.geeksforgeeks.org/operating-systems/starvation-and-aging-in-operating-systems/)
-- [Hadoop Capacity Scheduler](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
-- [AWS Exponential Backoff and Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/)
 - [Priority Scheduling Slurm](https://slurm.schedmd.com/priority_multifactor.html)
 - [Operating Systems Scheduling Stanford University](https://web.stanford.edu/~ouster/cgi-bin/cs140-spring14/lecture.php?topic=scheduling)

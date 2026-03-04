@@ -21,68 +21,19 @@ This section will go over the fundamentals of _Apache Airflow_, consisting of th
 
 Think through the following questions; by answering them you’ll touch every major topic listed above:
 
-Question 1: The User’s Blueprint & Dynamic Logic
 
-In Airflow, we write "Workflows as Code," but that code needs to adapt to different execution dates.
+1. **Airflow User API & Concepts:** Explain the difference between a DAG and a DagRun? How do tasks share small metadata versus global configuration? What is Jinja Templating, and why would you use {{ ds }} instead of Python's datetime.now()? Contrast the TaskFlow SDK with Classic Operators. How does the TaskFlow SDK handle XComs differently than the old xcom_pull method? What are Assets? What types of Operators exist? Why is it not recommended to run any time consuming code in top level dag code? How does this affect the DAG Processor's performance? What is a Hook? what is the connection between Hooks, Connections and Operators?
 
-    Definitions: Explain the difference between a DAG and a DagRun. Why is this distinction important when backfilling data?
+2. **Airflow Backend & Architecture:** What are the different components in the airflow architecture? Define the roles of each component. Why is the Executor considered a mechanism/logic rather than a standalone service? Explain the Deferrable Operator. Which component makes these possible, and how do they save money/resources in a Big Data stack? What are Airflow Providers?
 
-    Communication: How do tasks share small metadata (like a file path) versus global configuration (like an API key)? (XComs vs. Variables).
+3. **Airflow Workflow Synchronization:** How were DAGs typically synchronized to the Scheduler and Workers in Airflow 2? What where the risks with the approach? How was this solved in Airfloe 3? How did it solve the main issue with the Airflow 2 approach? What are the other advantages DagBundles give us?
 
-    The Magic of Jinja: What is Jinja Templating, and why would you use {{ ds }} instead of Python's datetime.now() inside an operator's parameters?
+4. **Airflow Task Lifecycle:** What is the full flow of a dag from being written to being run? What happens when the DAG Processor encounters your file? How is Jinja parsing different in dag processing than execution time? At which state does the Scheduler stop managing the task and hand it over to the Executor? What is the flow when a task gets to a worker? when does it become running?
 
-    Modern vs. Classic: Contrast the TaskFlow SDK (decorators) with Classic Operators. How does the TaskFlow SDK handle XComs differently than the old xcom_pull method?
-
-    The New Guard: What are Assets (Datasets), and how do they shift Airflow from "time-based" scheduling to "event-driven"?
-
-Question 2: The Anatomy of the Engine (System Components)
-
-Airflow is a distributed system where responsibilities are strictly separated.
-
-    The Services: Define the roles of the Scheduler, API Server, Triggerer, and DAG Processor.
-
-    The "Not-a-Service": Why is the Executor considered a mechanism/logic rather than a standalone service?
-
-    Efficiency: Explain the Deferrable Operator. Which component makes these possible, and how do they save money/resources in a Big Data stack?
-
-Question 3: Code Delivery & Evolution (Syncing & Bundles)
-
-Getting your code from your IDE to the production cluster has evolved significantly.
-
-    The Airflow 2 Way: How were DAGs typically synchronized to the Scheduler and Workers in Airflow 2 (e.g., Git-Sync)? What was the main risk of this approach?
-
-    The Airflow 3 Innovation: What is a DAG Bundle, and how does it solve the "version mismatch" problem between the Scheduler and the Worker?
-
-    Independence: How do Bundles allow different teams to manage their own code dependencies without affecting the core Airflow installation?
-
-Question 4: The Lifecycle of a Task (The "Green Box" Journey)
-
-Trace the path of a task from a git push to a successful run.
-
-    Deployment: What happens when the DAG Processor encounters your file? How does it handle Jinja templates during the parsing phase versus the execution phase?
-
-    The State Machine: Walk through the transitions: None → Scheduled → Queued → Running → Success.
-
-    The Hand-off: At which exact state does the Scheduler stop managing the task and hand it over to the Executor?
-
-Question 5: The "Critical Section" & Performance
-
-The Scheduler is a high-performance loop. If it stalls, your data pipeline stalls.
-
-    The Heartbeat: What is the "Critical Section" of the Scheduler?
-
-    Internal Loops: Describe the three primary "loops" or critical sections:
-
-        DagRun Creation: (Checking start dates and schedules).
-
-        Task Instance Creation: (Evaluating dependencies/upstreams).
-
-        Task Prioritization: (Moving tasks from scheduled to queued).
-
-    The Golden Rule: Why is it dangerous to perform a heavy Big Data operation (like a df.read()) at the top level of a DAG file? How does this affect the DAG Processor's performance?
+5. **Airflow Critical Sections:** What is the "Critical Section" of the Scheduler? Describe the three primary "loops" or critical sections (DagRun Creation, Task Instance Creation, Task Scheduling).
 
 ### Real-World Context
-Rather than focusing on one technology, think about how these ideas show up in schedulers, such as the linux scheduler or k8s scheduler.
+Rather than focusing on one technology, think about how data workflows are shceduled, and think about when running and ocrhestrating data workflows.
 
 🔄 Alternatives
 
@@ -105,8 +56,8 @@ Assignment: Based on your research and understanding of the department's pipelin
 Discuss your answers and any areas of confusion with your mentor. Reflect on how these general concepts will help when you later when using scheduled jobs.
 
 ## Additional Topics from Review
-- A deep dive into spark internals: what are other optimizations that are implemented in spark? what is java off-heap memory? how does spark's memory allocation work?
-- What are the different obsolescence algorithms widely used? where could they also be implemented?
+- A deep dive into the Airlfow database and the inner workings of Airflow.
+- A deep dive into bugs solved and unsolved inside Airflow.
 
 ## Action Items
 - Review your notes and identify topics you want to explore deeper.
@@ -114,8 +65,4 @@ Discuss your answers and any areas of confusion with your mentor. Reflect on how
 - Prepare questions for the upcoming mentor Q&A session.
 
 ## Recommemded Resources
-- [Starvation and Aging GFG](https://www.geeksforgeeks.org/operating-systems/starvation-and-aging-in-operating-systems/)
-- [Hadoop Capacity Scheduler](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
-- [AWS Exponential Backoff and Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/)
-- [Priority Scheduling Slurm](https://slurm.schedmd.com/priority_multifactor.html)
-- [Operating Systems Scheduling Stanford University](https://web.stanford.edu/~ouster/cgi-bin/cs140-spring14/lecture.php?topic=scheduling)
+- [Airflow Docs](https://airflow.apache.org/docs/)
