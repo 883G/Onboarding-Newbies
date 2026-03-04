@@ -47,7 +47,7 @@ Estimated Duration: 1 Day
    characteristics of each?  Why do architects care about a separate metadata
    layer in a lakehouse versus a traditional warehouse?
 
-2. **What is a Catalog?**  Describe the purpose of a metadata catalog.  How
+2. **The Concept Of Catalog**  Describe the purpose of a metadata catalog.  How
    does it compare to Hive Metastore (hint: the metastore *is* a catalog)
    and why might systems introduce separate catalog layers (e.g. AWS Glue,
    Databricks Unity Catalog, in‑house catalog backed by PostgreSQL)?
