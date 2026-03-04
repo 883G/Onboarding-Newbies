@@ -21,7 +21,7 @@ This section will go over the fundamentals of _apache spark_.
 
 Think through the following questions; by answering them you’ll touch every major topic listed above:
 
-1. **Spark Architecture & Execution:** what are the main components of spark? why do we have each? what are their roles? what is the difference between a transformation and an action? how does spark achieve fault tolerance? what is lazy execution in spark? go over [this](../assets/where_do_i_run.py) and for each line, comment where it runs.
+1. **Spark Architecture & Execution:** what are the main components of spark? why do we have each? what are their roles? what is the difference between a transformation and an action? how does spark achieve fault tolerance? what is lazy execution in spark? go over [this](assets/where_do_i_run.py) and for each line, comment where it runs.
 
 2. **Spark Planning & Optimization:** Logical vs Physical Planning: Walk through the transition from Logical Plan to Physical Plan; What is the fundamental difference between Rule-Based (RBO) and Cost-Based Optimization (CBO), what are the common kinds of optimizations used? What is the AQE? Why is running ANALYZE TABLE recommended for performant CBO? and what is whole-stage code generation?
 
@@ -34,6 +34,22 @@ Think through the following questions; by answering them you’ll touch every ma
 
 ### Real-World Context
 Rather than focusing on one technology, think about how these ideas show up in distributed processing frameworks, how they are used by other procerssing frameworks and what are the core concepts of processing.
+
+🔄 Alternatives
+
+Assignment: You are required to research and write a comparative analysis between Spark and an industry alternative.
+
+    Deliverable: A written summary (minimum 1 or 2 sentences).
+    Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
+    Goal: You must be able to justify why the department uses this tool for our specific environment.
+
+🎯 User Story & Scenario
+
+Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
+
+    Deliverable: A written summary example/story (two sentences approx.).
+    Requirement: Describe a real-world scenario (e.g., a specific client requirement) where this technology is the optimal solution.
+    Data Flow: Map out the data flow and explain how this tool integrates with other components in the Data Pipeline.
 
 ## Wrapping Up :trophy:
 Discuss your answers and any areas of confusion with your mentor. Reflect on how these general concepts will help when you later write code and help clients.
