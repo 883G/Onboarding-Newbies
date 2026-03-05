@@ -33,11 +33,30 @@ Answer these questions to understand the fundamentals of wide-column databases b
 1. **Data Model & Structure:**  
    What is a wide-column database, and how does its data model work? Explain the concepts of rows, column families, and flexible schemas. How does this model differ from traditional relational databases and key-value stores?
 
-2. **Use Cases & Motivation:**  
+   הwide column database זה ממסדר נתונים לא רלציוני (noSQL) שמאחסן מידע בצורה של עמודות ושורות אבל ניתן ליצור מקבצי עמודות והעמודות בכל שורה יכולים להיות שדונים ומפורמט אחר.
+   בניגוד לדאטה בייס רלציוני כמו SQL, הנתונים בwide column נשמרים בעזרת key-value-timestamp ולא רק key-value, ניתן לחשוב על זה כטבלה דו מימדית.
+   כל קבוצת column מתחברת לcolumn family לפי qualifier מסויים.
+ השורות בדרך כלל מהוות כמפתח מסויים .
+ הסכמות האלה נחשבות מאוד "גמישות" משום שהנתונים בכל תא לא חייבים להיות באותו פורמט, יכולים להיות תאים ריקים ותאים שהפורמט שלהם שונה לחלוטיןף ולכן קל להוסיף/לעדכן נתונים הרבה יותר מאשר בסכמה רלציונית בה יש לכל הנתונים תצורה אחת אחידה וקבועה.
+השימוש בtimestamp בניגוד לדאטה בייסים אחרים נותן לשמור כמה גרסאות של אותו נתון ולא רק גרסה אחת שמתעדכנת , כלומר יכול להיות אותו נתון , עם אותו מפתח וערך אבל חותמת זמן שונה שמעידה על הגרסה שלו.
+
+3. **Use Cases & Motivation:**  
    Why do wide-column databases exist? In what scenarios are they most useful (for example: large-scale datasets, time-series data, sparse data, or systems requiring high write throughput)?
 
-3. **Distributed Design:**  
+   הwide column database קיימים בשביל:
+   - להתמודד עם כמות גדולה מאוד של נותנים, הדאטה בייס מהסוג הזה נפרס על גבי כמה שרתים ומאפשר scaling out שנותן להתמודד עם כמויות עצומות של מידע.
+   - שמירות של גרסאות ולא גרסה אחת - השימוש בחותמת זמן נותנת לנו לשמור כל עדכון של נתון ולא רק לעדכן אותו בלייב ולשכוח מכל הגרסאות הקודמות
+   - נותן לאחסן נתונים גם כשחלק חסרים (מה שהוזכר על כך שלא כל התאים צריכים להיות מלאים) , לא חייב שכל שורה תהיה מלאה בצורה מסויימת
+   - רוחב פס גבוה - בגלל שהדאטה בייס מהסוג הזה מפוזר על כמה שרתים, ניתן לקבל הרבה בקשות במקביל ולעבד במקביל ויש ניצול גבוה של רוחב פס
+   - גישה מהירה לנתונים - הדאטה בייס מהסוג הזה נותן איזהשהו איזון בין כמות עצומה של נתונים מסוגים שונים שאינם בהכרח רלציונים לעומת העובדה שהם מסודרים במה שמזכיר סכמה, זה הופך אותם להרבה יותר קלים לקריאה , כתיבה ושימושיים לניתוח הנתונים ואנליזה.
+
+5. **Distributed Design:**  
    How do wide-column databases distribute data across clusters? Explain concepts such as partitioning, replication, and horizontal scalability.
+
+   הwide column database מחלק את הנתונים בין שרתים שונים, כידוע יש column families ויש שורות.
+   במערכות כמו HBASE כל טווח שורות יהיו פרוסות על שרתים שונים, מה שעושה scaling out ומוריד עומס משרתים בודדים ומחלק אחראיות.
+    עקרון horizontal scalability - כמו שאמרנו כל פעם שהנתונים גדלים מאוד בקלאסטר תמיד אפשר להרחיב את העבודה לשרתים נוספים (כל עוד יש אופציה) ובכך לחלק את העומס.
+   שכפול של המידע לכמה איזורים יגביר את השרידות והגישה המהירה אליו , ימנע מצב של איבוד מידע במקרה של נפילת שרת אחד.
 
 ---
 
@@ -47,9 +66,6 @@ Answer these five questions to cover HBase’s major areas:
 
 1. **Architecture & Data Model:**  
    Describe the overall architecture of Apache HBase, including tables, rows keyed by row key, column families, regions, and the storage format (HFile). How do these elements differ from a traditional relational database, and why is schema design driven by access patterns?
-
-2. **Components & Storage Flow:**  
-   Explain the roles of RegionServers, MemStore, HFiles, block cache, and the Write-Ahead Log (WAL). How does data flow from a client write to durable storage, and how are reads served from memory and disk structures?
 
 
 המערכת של HBASE היא בעצם דאטה בייס מבוסס עמודות ומבוזר, הכוונה במבוסס עמודות הוא שכל הנתונים מקובצים לפי תכונות מסויימת בקבוצות של עמודות.
