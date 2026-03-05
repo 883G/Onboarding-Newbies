@@ -14,15 +14,43 @@ Today’s session dives deeper into column‑oriented databases with a focus on 
 
 :warning: **Note:**
 - This is a self‑study day; independence and time management are crucial.
-- If you can’t explain a concept clearly, you probably need to revisit it.
+- If you can’t explain a concept clearly, you probably need to revaisit it.
 - Read the [Exercise](#exercise) before starting so you know what to emphasize.
 - Ask your mentor if you’re unsure what to research.
 
+### ⏳ Timeline
+Estimated Duration: 3 Days
+- Day 1: Learn the concepts of wide column DB and HBASE spesficly; spend the day.
+- Day 2-3: Get deep into HBASE spesficly
+    - Have a Q&A session at the third day and in between sessions each day
+
 ## Core Concepts
+
+## Part 1: Wide Column Databases (General Concepts)
+
+Answer these questions to understand the fundamentals of wide-column databases before focusing on HBase:
+
+1. **Data Model & Structure:**  
+   What is a wide-column database, and how does its data model work? Explain the concepts of rows, column families, and flexible schemas. How does this model differ from traditional relational databases and key-value stores?
+
+2. **Use Cases & Motivation:**  
+   Why do wide-column databases exist? In what scenarios are they most useful (for example: large-scale datasets, time-series data, sparse data, or systems requiring high write throughput)?
+
+3. **Distributed Design:**  
+   How do wide-column databases distribute data across clusters? Explain concepts such as partitioning, replication, and horizontal scalability.
+
+---
+
+### Part 2: Apache HBase (Implementation & Operations)
 
 Answer these five questions to cover HBase’s major areas:
 
-1. **Architecture & Data Model:**  Describe the overall architecture of Apache HBase, including tables, rows keyed by row key, column families, regions, and the storage format (HFile). How do these elements differ from a traditional relational database, and why is schema design driven by access patterns?
+1. **Architecture & Data Model:**  
+   Describe the overall architecture of Apache HBase, including tables, rows keyed by row key, column families, regions, and the storage format (HFile). How do these elements differ from a traditional relational database, and why is schema design driven by access patterns?
+
+2. **Components & Storage Flow:**  
+   Explain the roles of RegionServers, MemStore, HFiles, block cache, and the Write-Ahead Log (WAL). How does data flow from a client write to durable storage, and how are reads served from memory and disk structures?
+
 
 המערכת של HBASE היא בעצם דאטה בייס מבוסס עמודות ומבוזר, הכוונה במבוסס עמודות הוא שכל הנתונים מקובצים לפי תכונות מסויימת בקבוצות של עמודות.
 זאת מערכת שבנויה על HDFS, כלומר משתמשת בHDFS לאחסון הנתונים וHBASE מסדרת אותם בטבלאות לפי עמודות ודואגת לread/write random access.
@@ -38,10 +66,6 @@ Answer these five questions to cover HBase’s major areas:
 הHBASE הוא לא רלציוני ואי אפשר לעשות עליו פעולות SQL רלציוניות בשונה מMYSQL וכו... הוא נותן לנו גישה מהירה לכמויות עצומות של מידע שנפרשות על איזורים שונים.
 המבנה שלו עם הrow keys מאפשר random access לנתונים (מה שאין בHDFS נגיד) כדי לאפשר גישה מהירה יותר ועבודה מהירה עם כמויות של נתונים שמתעסקים איתם בHDFS.
 כל המטא-דאטה של הregions נשמר בטבלה של hbase:meta (מוצפן בMD5) שנשמר בקלאסטר של zookeeper.
-
-
-
-
 
 
 2. **Components & Storage Flow:**  Explain the roles of RegionServers, MemStore, HFiles, block cache, and the Write-Ahead Log (WAL). How does data flow from a client write to durable storage, and how are reads served from memory and disk structures?
@@ -103,6 +127,7 @@ Answer these five questions to cover HBase’s major areas:
 
 5. **Scalability & Operations:**  Discuss how HBase scales horizontally through region splitting and balancing, how it relies on HDFS for durability, and what administrative actions (snapshots, backups, schema changes, recovery) operators perform in production environments.
 
+
 הHBASE עושה scale-out בכך שברגע שיש עומס מדיי על region מסויים היא מפצלת אותו ל2.
 הregionserver יבקש מהHMASTER לעשות זאת והוא יחלק את הrow keys בין 2 regions כדי להפחית בעומס.
 או שאפשר פשוט להזיז region שלם לregion server אחר.
@@ -111,7 +136,17 @@ Answer these five questions to cover HBase’s major areas:
 זה אחד מהדברים שנחשב backup ומאפשר שחזור של הטבלה , ביחד עם כך שאפשר לשמור את כל המטא דאטה על שרת חיצוני.
 מבחינת schema changes, אפשר "לשנות" נתונים (חוץ מrow key) רק שזה לא באמת שינוי, יוצר cell חדש כי החותמת זמן שונה.
 
+### 🔄 Alternatives
+Assignment: You are required to research and write a comparative analysis between Hbase and an industry alternative.
+- Deliverable: A written summary (minimum 1 or 2 sentences).
+- Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
+- Goal: You must be able to justify why the department uses this tool for our specific environment.
 
+### 🎯 User Story & Scenario
+Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
+- Deliverable: A written summary example/story (two paragraphs approx.).
+- Requirement: Describe a real-world scenario (e.g., a specific client requirement) where this technology is the optimal solution.
+- Data Flow: Map out the data flow and explain how this tool integrates with other components in the Data Pipeline
 
 ## Wrapping Up :trophy:
 Go over your answers with your mentor and clarify any uncertainties. Relate HBase concepts back to the broader data platform.

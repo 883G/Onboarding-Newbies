@@ -17,6 +17,12 @@ This session introduces the basic ideas that apply to most file systems, whether
 - Review the [Exercise](#exercise) before diving in so you know what to focus on.
 - When in doubt about what you need to learn, ask your mentor.
 
+### ⏳ Timeline
+Estimated Duration: 0.5 Day
+- Day 1: Spent no more than hlaf a day on file systems;
+    - Have a Q&A session right after
+
+
 ### Core Concepts
 
 Think through the following questions; by answering them you’ll touch every major topic listed above:
