@@ -33,9 +33,9 @@ Answer these questions to understand the fundamentals of wide-column databases b
 1. **Data Model & Structure:**  
    What is a wide-column database, and how does its data model work? Explain the concepts of rows, column families, and flexible schemas. How does this model differ from traditional relational databases and key-value stores?
 
-   הwide column database זה ממסדר נתונים לא רלציוני (noSQL) שמאחסן מידע בצורה של עמודות ושורות אבל ניתן ליצור מקבצי עמודות והעמודות בכל שורה יכולים להיות שדונים ומפורמט אחר.
+   הwide column database זה ממסד נתונים לא רלציוני (noSQL) שמאחסן מידע בצורה של עמודות ושורות אבל ניתן ליצור מקבצי עמודות והעמודות בכל שורה יכולים להיות שונים ומפורמט אחר.
    בניגוד לדאטה בייס רלציוני כמו SQL, הנתונים בwide column נשמרים בעזרת key-value-timestamp ולא רק key-value, ניתן לחשוב על זה כטבלה דו מימדית.
-   כל קבוצת column מתחברת לcolumn family לפי qualifier מסויים.
+   הcolumn family מורכבת מקבוצה של columns.
  השורות בדרך כלל מהוות כמפתח מסויים .
  הסכמות האלה נחשבות מאוד "גמישות" משום שהנתונים בכל תא לא חייבים להיות באותו פורמט, יכולים להיות תאים ריקים ותאים שהפורמט שלהם שונה לחלוטיןף ולכן קל להוסיף/לעדכן נתונים הרבה יותר מאשר בסכמה רלציונית בה יש לכל הנתונים תצורה אחת אחידה וקבועה.
 השימוש בtimestamp בניגוד לדאטה בייסים אחרים נותן לשמור כמה גרסאות של אותו נתון ולא רק גרסה אחת שמתעדכנת , כלומר יכול להיות אותו נתון , עם אותו מפתח וערך אבל חותמת זמן שונה שמעידה על הגרסה שלו.
@@ -48,15 +48,18 @@ Answer these questions to understand the fundamentals of wide-column databases b
    - שמירות של גרסאות ולא גרסה אחת - השימוש בחותמת זמן נותנת לנו לשמור כל עדכון של נתון ולא רק לעדכן אותו בלייב ולשכוח מכל הגרסאות הקודמות
    - נותן לאחסן נתונים גם כשחלק חסרים (מה שהוזכר על כך שלא כל התאים צריכים להיות מלאים) , לא חייב שכל שורה תהיה מלאה בצורה מסויימת
    - רוחב פס גבוה - בגלל שהדאטה בייס מהסוג הזה מפוזר על כמה שרתים, ניתן לקבל הרבה בקשות במקביל ולעבד במקביל ויש ניצול גבוה של רוחב פס
-   - גישה מהירה לנתונים - הדאטה בייס מהסוג הזה נותן איזהשהו איזון בין כמות עצומה של נתונים מסוגים שונים שאינם בהכרח רלציונים לעומת העובדה שהם מסודרים במה שמזכיר סכמה, זה הופך אותם להרבה יותר קלים לקריאה , כתיבה ושימושיים לניתוח הנתונים ואנליזה.
+   - גישה מהירה לנתונים - הדאטה בייס מהסוג הזה נותן איזהשהו איזון בין כמות עצומה של נתונים מסוגים שונים שאינם בהכרח רלציונים לעומת העובדה שהם מסודרים במה שמזכיר סכמה, זה הופך אותם להרבה יותר קלים לקריאה וכתיבה.
 
 5. **Distributed Design:**  
    How do wide-column databases distribute data across clusters? Explain concepts such as partitioning, replication, and horizontal scalability.
 
-   הwide column database מחלק את הנתונים בין שרתים שונים, כידוע יש column families ויש שורות.
-   במערכות כמו HBASE כל טווח שורות יהיו פרוסות על שרתים שונים, מה שעושה scaling out ומוריד עומס משרתים בודדים ומחלק אחראיות.
+   הwide column database מחלק את הנתונים בין regions שונים שיכולים להתפרס על כמה שרתים, כידוע יש column families ויש שורות.
+   במערכות כמו HBASE כל טווח שורות יהיו פרוסות על region שונv, מה שעושה scaling out ומוריד עומס משרתים בודדים ומחלק אחראיות בין הregions השונים ככה שהעבודה מתאזנת ביניהם.
     עקרון horizontal scalability - כמו שאמרנו כל פעם שהנתונים גדלים מאוד בקלאסטר תמיד אפשר להרחיב את העבודה לשרתים נוספים (כל עוד יש אופציה) ובכך לחלק את העומס.
    שכפול של המידע לכמה איזורים יגביר את השרידות והגישה המהירה אליו , ימנע מצב של איבוד מידע במקרה של נפילת שרת אחד.
+   לHBASE יש פיצ'ר שמאפשר להעתיק מידע מטבלה מסויימת לקלאסטר אחר, כדי שזה יהיה אפשרי צריך להגדיר את הREPLICATION_SCOPE של הטבלה ולוודא יצירה של טבלה זהה בקלאסטר אחר, ואז על כל פעולה על אותה טבלה או הטבלה בקלאסטר אחר יהיה סנכרון בין השתיים. זה פיצ'ר נוסף ולא הגרות הדיפולט של HBASE. הדבר משמש בדרך כלל להעתקה של כל הדאטה בייס למקרה של קריסה מערכתית גדולה (מעתיקים לקלאסטר אחר לחלוטין).
+   הregionserver של הקלאסטר השני מתעדכן בכך שהוא עוקב אחריי הכתיבות של הregionserver מהקלאסטר מקור לWAL ומשנה את הנתונים שלו בהתאם.
+   נוסף על כך בדרך כלל HBASE בנויה על HDFS שכן דואג להעתקה של נתונים. 
 
 ---
 
@@ -75,13 +78,13 @@ Answer these five questions to cover HBase’s major areas:
 כל התכנים ממויינים לcolumn families לפי תכונה משותפת, לדוגמה במשפחת info, יהיה לנו info:geo, info:format
 איו שמירה של המטא-דאטה של העמודות אז ידיעת שמות העמודות וכו זה באחראיות הלקוח.
 הטבלה מחולקת לאיזורים לפי שורות, וכל איזור הוא יחידה שפרוסה על cluster של שרתים. ככל שהנתונים גדלים אפשר ליצור יותר איזורים.
-כל הנתונים בcolumn family שבאותו איזור מאוחסנים ביחד על קובץ Hfile משותף, Hfile זה הפורמט כתיבה בו כל התוכן ממויין לפי הprimary key.
+הHfile זה הפורמט כתיבה בו כל התוכן ממויין לפי הprimary key.
 יש לנו את הHBASE master שהוא אחראי על כל הregionservers, כל regionservers אחראי על regions אחרים.
 הHBase master node מחלק את האיזורים לregionservers ואחראי לטפל בהם במקרה של נפילה.
 כל regionserver אחראי לטפל בבקשות קריאה\כתיבה.
 הHBASE הוא לא רלציוני ואי אפשר לעשות עליו פעולות SQL רלציוניות בשונה מMYSQL וכו... הוא נותן לנו גישה מהירה לכמויות עצומות של מידע שנפרשות על איזורים שונים.
 המבנה שלו עם הrow keys מאפשר random access לנתונים (מה שאין בHDFS נגיד) כדי לאפשר גישה מהירה יותר ועבודה מהירה עם כמויות של נתונים שמתעסקים איתם בHDFS.
-כל המטא-דאטה של הregions נשמר בטבלה של hbase:meta (מוצפן בMD5) שנשמר בקלאסטר של zookeeper.
+כל המטא-דאטה של הregions נשמר בטבלה של hbase:meta (מוצפן בMD5) שהמיקום שלו נשמר בnode של zookeeper.
 
 
 2. **Components & Storage Flow:**  Explain the roles of RegionServers, MemStore, HFiles, block cache, and the Write-Ahead Log (WAL). How does data flow from a client write to durable storage, and how are reads served from memory and disk structures?
@@ -89,7 +92,7 @@ Answer these five questions to cover HBase’s major areas:
 תפקיד הregionServers הוא לנהל את הregions שיש, הוא רץ על dataNode ואחראי על:
 אחראי לעשות flush לmemstore , אחראיים על פעולות כתיבה וקריאה לregions שלהם, ניהול הWAL והblock cache שמשותפים לכל האיזורים שלהם.
 הregions שהregion server מנהל מורכבים מmemStore, שכל אחד אחראי על column family אחד, ומהstoreFiles, הstoreFiles אחראיים לכל הנתונים שעל הדיסק, והם שומרים אותם בפורמט HFILE, הmemStore אחראי לכל השינויים שנעשים שנשמרים עליו, ואז הregion server עושה לו flush לדיסק ויוצר HFILE חדשים.
-במקביל לכל שהכתיבה נעשית בmemStore היא גם נעשית לWAL , שנמצא על הHDFS שמאפשר לשחזר את כל המידע במקרה והשרת נפל.
+לפניי שהכתיבה נעשית בmemStore היא גם נעשית לWAL , שנמצא על הHDFS שמאפשר לשחזר את כל המידע במקרה והשרת נפל.
 הם מנהלים את כל התקשורת מול הHDFS, צריכים גישה אליו ולאחסן בו מידע.
 הWAL שומר עדכונים כsequenceFile כלומר שומר הכל כkey-value כשהם הrow, column timestamp ועל כל שינוי מעלה את המספר הסידורי.
 הregionserver מנהל את הblock cache - שבו מאחסנים נתונים שעושים להם קריאה דיי הרבה נמצא בheap ביחד עם הmemStore.
@@ -174,7 +177,7 @@ Answer these five questions to cover HBase’s major areas:
 מבנה:
 HMASTER -> אחראי על הרבה REGION SERVER -> כל אחד אחראי על הרבה REGIONS -> בכל אחד יש כמה COLUMN FAMILIES -> כל אחת מורכבת מ FILESTORE, MEMSTORE , BLOCK CACHE אישי -> FILESTORE= HFILES
 
-לכל הREGION SERVERS חולקים את אותו WAL.
+לכל הREGION SERVERS יש WAL משלהם אבל כל הregion חולקים את אותו WAL של הREGION SERVER.
 לוקליות:
 חשוב שמידע יהיה לוקלי כדי שיהיה פשוט לבצע קריאה וכתיבה (שזה אחת ממטרות הHBASE) והשימוש בHDFS באמת מאפשר לשמור את הנתונים לוקלית בregion אבל אם הregion זז (קורה פיצול או משהו דומה) אז הנתונים לא יהיו לוקלים עד שנעשה דחיסה, כי בדחיסה אנחנו כותבים הכל מחדש ומכניסים לHDFS מחדש, הפעם לdataNode הלוקלי.
 
