@@ -1,4 +1,4 @@
-# Hive on MapReduce and Tez :honey_pot:
+# Hive on MapReduce and Tez 🐝
 
 ## Overview
 Today’s session introduces how Hive queries are executed using distributed compute engines. While Hive defines the table format, schema, and metadata through the Hive Metastore (HMS), the actual query execution is performed by an underlying processing engine.
