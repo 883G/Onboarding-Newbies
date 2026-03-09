@@ -1,9 +1,21 @@
 ## Onboarding Final Exercise 🚀
 
-This exercise focuses on **designing and presenting a complete data pipeline architecture** using the department’s stack: **Airflow, Spark, Trino, S3/HDFS, SQL**.  
+This exercise focuses on **designing and presenting a complete data pipeline architecture** using the department’s stack: **Airflow, Spark, Trino, S3/HDFS, SQL DB**.  
 The **pipeline and technologies are the core** of this exercise.  
 The scenario/story exists **only to justify the usage of these technologies**, not the other way around.  
 
+---
+### 🏗 Core Exercise Requirements
+1. **Pipeline must be the core part** – show all steps !
+2. **Technologies must be justified**:  
+   - **Airflow**: orchestrate dependencies, retries, scheduling.  
+   - **Spark**: distributed processing, transformations, aggregations.  
+   - **Trino**: query analytics, joins, aggregations, partition pruning.  
+   - **S3/HDFS**: scalable storage, partitioning, cost-performance balance.  
+   - **SQL**: schema definition, querying, and integration with Trino.  
+3. **Scenario/story** exists **only to justify pipeline design**.  
+4. **Trade-offs & decisions** must be clearly documented: scaling, performance, operational complexity.  
+5. **Operational considerations** must be included: monitoring, alerting, retries, failure handling.
 ---
 
 ### ⏳ Timeline
@@ -13,16 +25,15 @@ Total Duration: 2 Weeks + 1 Day Presentation
   - Identify minimal business context that justifies each technology in the stack.  
   - Define data types, volume, arrival frequency, and latency requirements.  
   - Sketch **end-to-end pipeline** including ingestion, storage, processing, orchestration, and query layers.  
-  - Decide **S3/HDFS layout, partitioning, file formats**, and lifecycle policies.  
+  - Decide **Storage layout, partitioning, file formats**, and lifecycle policies.  
   - Define **Spark job structure**, transformations, dependencies, and failure handling.  
   - Draft Airflow DAGs: scheduling, dependencies, retries, and monitoring.  
 
 #### **Week 2: Execution & Refinement**
   - Finalize pipeline architecture diagrams.  
   - Model **Trino tables and queries** with optimizations for partitioning, joins, and aggregations.  
-  - Validate pipeline: simulate workflow orchestration, scaling, and failure scenarios.  
+  - Implement the core of the pipeline: simulate workflow orchestration, scaling, and failure scenarios.  
   - Document pros/cons of each design decision within the stack.  
-  - Refine architecture and operational strategies.  
   - Prepare **team-focused discussion points** emphasizing design choices and trade-offs.  
 
 #### ** Last Day: Presentation**
@@ -46,23 +57,7 @@ Utilize the resources listed below and master the skill of searching the interne
 - [HDFS Design Docs](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) – data lake storage, partitioning, lifecycle  
 
 > **Tip:** Focus on **design, trade-offs, and pipeline operation**
-
 ---
-
-### 🏗 Core Exercise Requirements
-1. **Pipeline must be central** – show all steps !
-2. **Technologies must be justified**:  
-   - **Airflow**: orchestrate dependencies, retries, scheduling.  
-   - **Spark**: distributed processing, transformations, aggregations.  
-   - **Trino**: query analytics, joins, aggregations, partition pruning.  
-   - **S3/HDFS**: scalable storage, partitioning, cost-performance balance.  
-   - **SQL**: schema definition, querying, and integration with Trino.  
-3. **Scenario/story** exists **only to justify pipeline design**.  
-4. **Trade-offs & decisions** must be clearly documented: scaling, performance, operational complexity.  
-5. **Operational considerations** must be included: monitoring, alerting, retries, failure handling.
-
----
-
 ### 🎯 User Story & Minimal Scenario
 - Scenario must **justify pipeline design**, e.g., event analytics, daily ETL for reporting, operational monitoring.  
 - Show **data flow** clearly: ingestion → S3/HDFS → Spark → Trino → SQL queries.  
@@ -100,3 +95,4 @@ Utilize the resources listed below and master the skill of searching the interne
   - S3/HDFS partitioning, cost, and performance  
   - SQL integration with Trino  
   - Pipeline scaling and operational complexity
+[Template for Presentation](./asstes/Presentation%20Template.pptx)
