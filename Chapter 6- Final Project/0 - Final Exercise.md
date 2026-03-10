@@ -60,19 +60,122 @@ Utilize the resources listed below and master the skill of searching the interne
 ---
 ### 🎯 User Story & Minimal Scenario
 - Scenario must **justify pipeline design**, e.g., event analytics, daily ETL for reporting, operational monitoring.  
-- Show **data flow** clearly: ingestion → S3/HDFS → Spark → Trino → SQL queries.  
+- Show **data flow** clearly: for example ingestion → S3/HDFS → Spark → Trino → SQL queries.  
 - Emphasize **technology choices**, not storytelling.  
 ---
 
-### 📝 Architecture Deliverables
-- **Pipeline Diagram**: end-to-end data flow and interactions between components  
-- **Storage Design**: partitioning, file formats, lifecycle  
-- **Processing Design**: Spark job structure, transformations, retries, backfills  
-- **Orchestration Design**: Airflow DAG structure, scheduling, monitoring  
-- **Query Layer Design**: Trino tables, optimizations, partition pruning  
-- **Operational Design**: monitoring, alerting, automated recovery  
-- **Trade-offs & Limitations**: pros/cons of design decisions  
-- **Future Improvements**: scaling, performance, operational automation  
+## 🧩 Required Deliverables & Action Items
+
+The final submission must include **clear artifacts demonstrating the full pipeline implementation and design**.  
+All deliverables should follow the structure described in the **Project Template**.
+
+---
+
+### 1️⃣ Pipeline Architecture
+
+Provide a **Pipeline Diagram** that clearly illustrates:
+
+- **End-to-end data flow**
+- Interactions between the main components in the stack:
+  - Airflow
+  - Spark
+  - Storage layer (S3 / HDFS)
+  - Trino
+  - SQL layer / analytics consumers
+
+The diagram must include the following stages:
+
+- Data ingestion
+- Storage layer
+- Processing layer
+- Orchestration layer
+- Query / analytics layer
+
+Clearly differentiate between **data flow** and **control flow** where applicable.
+
+---
+
+### 2️⃣ Airflow Orchestration
+
+Provide an **Airflow DAG design** that includes:
+
+- DAG structure and task dependencies
+- Scheduling configuration
+- Retry policies
+- Failure handling strategy
+- Backfill strategy
+- Monitoring / alerting considerations
+
+The DAG must orchestrate **at least one Spark application** within the pipeline.
+
+---
+
+### 3️⃣ Spark Processing Layer
+
+Implement or design a **Spark application** that demonstrates:
+
+- Data ingestion from the storage layer
+- Transformations and aggregations
+- Writing processed data back to S3/HDFS
+- Handling failures and retries
+- Justification for distributed processing
+
+Explain the **logic of the transformations** and how the Spark job fits into the overall pipeline.
+
+---
+
+### 4️⃣ Storage Layer Design
+
+Define how data is stored within **S3 or HDFS**:
+
+- File formats (e.g., Parquet, ORC, etc.)
+- Partitioning strategy
+- Data layout within the data lake
+- Retention or lifecycle policies
+
+Explain how these choices impact **performance, scalability, and cost**.
+
+---
+
+### 5️⃣ Query Layer (Trino)
+
+Design the **analytics/query layer** using Trino:
+
+- Trino table definitions
+- Example analytical queries
+- Query optimization strategies such as:
+  - Partition pruning
+  - Join strategies
+  - Aggregation design
+
+Explain how Trino interacts with the underlying storage layer.
+
+---
+
+### 6️⃣ Operational Considerations
+
+Describe how the pipeline would be **operated in a production environment**:
+
+- Monitoring
+- Alerting
+- Logging
+- Failure recovery
+
+---
+
+### 7️⃣ Trade-offs & Design Decisions
+
+Document the key architectural decisions made during the design process:
+
+- Why each technology in the stack is used
+- Alternative approaches that were considered
+- Trade-offs between:
+  - Performance
+  - Maintainability
+  - Operational complexity
+  - Scalability
+
+Explain the **reasoning behind the final design choices**.
 
 ---
 
