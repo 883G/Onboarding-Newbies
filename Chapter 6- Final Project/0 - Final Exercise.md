@@ -12,7 +12,7 @@ The scenario/story exists **only to justify the usage of these technologies**, n
    - **Spark**: distributed processing, transformations, aggregations.  
    - **Trino**: query analytics, joins, aggregations, partition pruning.  
    - **S3/HDFS**: scalable storage, partitioning, cost-performance balance.  
-   - **SQL**: schema definition, querying, and integration with Trino.  
+   - **SQL DB**: schema definition, querying, and integration with Trino.  
 3. **Scenario/story** exists **only to justify pipeline design**.  
 4. **Trade-offs & decisions** must be clearly documented: scaling, performance, operational complexity.  
 5. **Operational considerations** must be included: monitoring, alerting, retries, failure handling.
@@ -64,8 +64,8 @@ Utilize the resources listed below and master the skill of searching the interne
 - Emphasize **technology choices**, not storytelling.  
 ---
 
-## 🧩 Required Deliverables & Action Items
-
+## 🧩 Required ``Deliverables & Action Items
+``
 The final submission must include **clear artifacts demonstrating the full pipeline implementation and design**.  
 All deliverables should follow the structure described in the **Project Template**.
 
@@ -81,7 +81,7 @@ Provide a **Pipeline Diagram** that clearly illustrates:
   - Spark
   - Storage layer (S3 / HDFS)
   - Trino
-  - SQL layer / analytics consumers
+  - SQL DB layer / analytics consumers
 
 The diagram must include the following stages:
 
@@ -196,6 +196,5 @@ Explain the **reasoning behind the final design choices**.
   - Airflow DAG orchestration and failure handling  
   - Trino query optimizations and partition pruning  
   - S3/HDFS partitioning, cost, and performance  
-  - SQL integration with Trino  
   - Pipeline scaling and operational complexity
 [Template for Presentation](./asstes/Presentation%20Template.pptx)
