@@ -69,7 +69,7 @@ Answer these questions to cover Trino’s major architectural and operational co
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between Trino and an industry alternative.
 
-- Deliverable: A written summary (minimum 1–2 sentences).
+- Deliverable: A written summary (minimum 1–2 paragraphs).
 - Add a real-life use case.
 - Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competing technologies.
 - Goal: You must be able to justify why the department uses this tool for our specific environment.
