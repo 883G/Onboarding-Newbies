@@ -50,7 +50,7 @@ Answer these questions to cover Trino’s major architectural and operational co
    What is Trino, and where does it sit in the data architecture? Explain its role as a distributed MPP SQL engine, how it differs from storage systems, and when it should be used instead of other query engines.
 
 2. **Architecture & Query Execution:**  
-   How is Trino architected, and how does it execute queries in a distributed environment? Discuss the roles of the Coordinator and Workers, stages and tasks, data exchanges, and the shared-nothing execution model.
+   How is Trino architected, and how does it execute queries in a distributed environment? Discuss the roles of the Coordinator and Workers, stages and tasks, data exchanges, and the execution model.
 
 3. **Connectors & Catalogs:**  
    How does Trino integrate with external systems through connectors and catalogs? Explain what connectors are responsible for, how catalogs are configured, and how Trino can federate queries across multiple data sources.
@@ -70,11 +70,17 @@ Answer these questions to cover Trino’s major architectural and operational co
 Assignment: You are required to research and write a comparative analysis between Trino and an industry alternative.
 
 - Deliverable: A written summary (minimum 1–2 sentences).
-- Add a real-life use case.
 - Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competing technologies.
 - Goal: You must be able to justify why the department uses this tool for our specific environment.
 
 ---
+### 🎯 User Story & Scenario
+Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
+- Deliverable: A written summary example/story (two paragraphs approx.).
+- Requirement: Describe a real-world scenario (e.g., a specific client requirement) where this technology is the optimal solution.
+- Data Flow: Map out the data flow and explain how this tool integrates with other components in the Data Pipeline.
+---
+
 
 ## Wrapping Up :trophy:
 Go over your answers with your mentor and clarify any uncertainties. Relate Trino concepts back to the broader data platform and how distributed query engines interact with storage systems and processing frameworks.
@@ -83,7 +89,8 @@ Go over your answers with your mentor and clarify any uncertainties. Relate Trin
 
 ## Action Items
 - Identify Trino topics you want to explore further.
-- Collect examples of real-world Trino deployments.
+- Search examples of industray usage of Trino.
+- **Bonus** - what is the rabbit's name?
 - Prepare questions for the next mentor Q&A session.
 
 ---
