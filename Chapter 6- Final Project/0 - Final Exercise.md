@@ -2,7 +2,8 @@
 
 This exercise focuses on **designing and presenting a complete data pipeline architecture** using the department’s stack: **Airflow, Spark, Trino, S3/HDFS, SQL DB**.  
 The **pipeline and technologies are the core** of this exercise.  
-The scenario/story exists **only to justify the usage of these technologies**, not the other way around.  
+The scenario/story exists **only to justify the usage of these technologies**, not the other way around. 
+**Pay atention** , using ai tools or viewing past members project doucuments as example are forbidden. 
 
 ---
 ### 🏗 Core Exercise Requirements
@@ -17,7 +18,11 @@ The scenario/story exists **only to justify the usage of these technologies**, n
 4. **Trade-offs & decisions** must be clearly documented: scaling, performance, operational complexity.  
 5. **Operational considerations** must be included: monitoring, alerting, retries, failure handling.
 ---
-
+### 🎯 User Story & Minimal Scenario
+- Scenario must **justify pipeline design**, e.g., event analytics, daily ETL for reporting, operational monitoring.  
+- Show **data flow** clearly: for example ingestion → S3/HDFS → Spark → Trino → SQL queries.  
+- Emphasize **technology choices**, not storytelling. 
+---
 ### ⏳ Timeline
 Total Duration: 2 Weeks + 1 Day Presentation
 
@@ -56,16 +61,10 @@ Utilize the resources listed below and master the skill of searching the interne
 - [AWS S3 Docs](https://docs.aws.amazon.com/s3/index.html) 
 - [HDFS Design Docs](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) – data lake storage, partitioning, lifecycle  
 
-> **Tip:** Focus on **design, trade-offs, and pipeline operation**
----
-### 🎯 User Story & Minimal Scenario
-- Scenario must **justify pipeline design**, e.g., event analytics, daily ETL for reporting, operational monitoring.  
-- Show **data flow** clearly: for example ingestion → S3/HDFS → Spark → Trino → SQL queries.  
-- Emphasize **technology choices**, not storytelling.  
+> **Tip:** Focus on **design, trade-offs, and pipeline operation** 
 ---
 
-## 🧩 Required ``Deliverables & Action Items
-``
+## 🧩 Required Deliverables & Action Items
 The final submission must include **clear artifacts demonstrating the full pipeline implementation and design**.  
 All deliverables should follow the structure described in the **Project Template**.
 
