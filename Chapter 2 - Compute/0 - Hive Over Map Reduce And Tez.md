@@ -30,10 +30,6 @@ Estimated Duration: 1 Day
 
 Answer these five questions to understand how Hive queries are executed using MapReduce and Tez.
 
-### Guide Questions❓
-
-Answer these five questions to understand how Hive queries are executed using MapReduce and Tez.
-
 1. **Hive as a Query Platform:**  
    Hive provides tables, schemas, and SQL querying on top of distributed storage systems such as HDFS. Explain Hive’s role as a platform layer that sits above storage and relies on external compute engines to execute queries.
 
