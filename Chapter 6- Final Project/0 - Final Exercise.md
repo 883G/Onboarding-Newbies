@@ -19,9 +19,27 @@ The scenario/story exists **only to justify the usage of these technologies**, n
 5. **Operational considerations** must be included: monitoring, alerting, retries, failure handling.
 ---
 ### 🎯 User Story & Minimal Scenario
-- Scenario must **justify pipeline design**, e.g., event analytics, daily ETL for reporting, operational monitoring.  
-- Show **data flow** clearly: for example ingestion → S3/HDFS → Spark → Trino → SQL queries.  
-- Emphasize **technology choices**, not storytelling. 
+
+The scenario should provide **just enough business context** to justify the pipeline and the technologies used.
+
+To define the scenario, you may:
+- Identify a **fictional organization or business domain** where data plays a crucial role.
+- Define a **problem or challenge** that requires a data pipeline solution.
+- Describe **what data is generated**, how often it arrives, and why it needs to be processed or analyzed.
+
+The goal is **not storytelling**, but rather providing a **clear motivation for the pipeline design**.
+
+The scenario must still **remain minimal**, as the focus of the exercise is the **pipeline architecture and technology usage**, not the business narrative.
+
+Example scenarios may include:
+- Event analytics for a digital platform
+- Daily ETL pipelines for reporting
+- Operational monitoring or log analytics systems
+
+Show the **data flow clearly**:  
+**ingestion → S3/HDFS → Spark → Trino → SQL queries**
+
+Emphasize **technology choices and architectural reasoning**, not the story itself.
 ---
 ### ⏳ Timeline
 Total Duration: 2 Weeks + 1 Day Presentation
