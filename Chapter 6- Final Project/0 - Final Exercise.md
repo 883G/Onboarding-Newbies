@@ -7,13 +7,13 @@ The scenario/story exists **only to justify the usage of these technologies**, n
 
 ---
 ### 🏗 Core Exercise Requirements
-1. **Pipeline must be the core part** – show all steps !
+1. **The pipeline must be the central component** – all stages of the process must be clearly shown.
 2. **Technologies must be justified**:  
    - **Airflow**: orchestrate dependencies, retries, scheduling.  
    - **Spark**: distributed processing, transformations, aggregations.  
    - **Trino**: query analytics, joins, aggregations, partition pruning.  
    - **S3/HDFS**: scalable storage, partitioning, cost-performance balance.  
-   - **SQL DB**: schema definition, querying, and integration with Trino.  
+   - **SQL DB**: schema definition, querying.  
 3. **Scenario/story** exists **only to justify pipeline design**.  
 4. **Trade-offs & decisions** must be clearly documented: scaling, performance, operational complexity.  
 5. **Operational considerations** must be included: monitoring, alerting, retries, failure handling.
@@ -37,7 +37,7 @@ Example scenarios may include:
 - Operational monitoring or log analytics systems
 
 Show the **data flow clearly**:  
-**ingestion → S3/HDFS → Spark → Trino → SQL queries**
+**Ingestion → S3/HDFS → Spark → Trino → SQL queries**
 
 Emphasize **technology choices and architectural reasoning**, not the story itself.
 ---
@@ -60,7 +60,7 @@ Total Duration: 2 Weeks + 1 Day Presentation
   - Prepare **team-focused discussion points** emphasizing design choices and trade-offs.  
 
 #### ** Last Day: Presentation**
-- Create **full pipeline architecture** to the team.  
+- Create a presentation that includes the **complete pipeline architecture** to present to the team. 
 - Lead **technical discussion**:
   - Explain why each technology is used and how it integrates.  
   - Show **data flow**, orchestration, and query execution.  
