@@ -80,6 +80,8 @@ Utilize the resources listed below and master the skill of searching the interne
 - [HDFS Design Docs](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) – data lake storage, partitioning, lifecycle  
 
 > **Tip:** Focus on **design, trade-offs, and pipeline operation** 
+
+> **Note⚠️**: Another resource **you must use** is `Trino-Compose`, ask your mentor about it.
 ---
 
 ## 🧩 Required Deliverables & Action Items
