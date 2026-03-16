@@ -33,8 +33,9 @@ Answer these five questions to understand how Hive queries are executed using Ma
 1. **Hive as a Query Platform:**  
    Hive provides tables, schemas, and SQL querying on top of distributed storage systems such as HDFS. Explain Hive’s role as a platform layer that sits above storage and relies on external compute engines to execute queries.
 
-2. **Hive Topics and the Pub/Sub Model:**  
-   What are *topics* in the context of Hive query execution? Explain how Hive components communicate using a publish/subscribe (Pub/Sub) model, and how execution events (such as stage completion) are published and consumed to coordinate the query workflow.
+2. **Hive Query Stages and Task Execution:**  
+When Hive translates a SQL query into a distributed job, how is the work divided into stages and tasks?  
+Explain how Hive breaks a query into execution stages, how tasks are distributed across the cluster, and how intermediate results are passed between stages.
 
 3. **Hive Query Execution Pipeline:**  
    What happens when a user runs a query in Hive? Describe the main stages of execution: SQL parsing, logical planning, physical planning, and submitting jobs to an execution engine such as MapReduce or Tez.
