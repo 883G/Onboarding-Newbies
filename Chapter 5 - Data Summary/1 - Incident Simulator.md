@@ -31,17 +31,8 @@ Estimated Duration: **4 Days + 1 Team Incident Day**
 
   > If the solution **does not meet the mentor's standard**, the mentor may **recreate the incident**, and you will be required to solve it again.
 
-- **Team Incident Day (Scheduled Separately)**
-  - At a later stage, **all new team members will work together** on a larger simulated incident.
-  - This incident will involve **multiple technologies across the stack** and will simulate a **real production-style failure scenario**.
-  - The exercise will focus on:
-    - Team coordination
-    - Incident ownership and communication
-    - Real-world troubleshooting workflow
-    - Handling complex, multi-system failures
-
-  > This team exercise **may not occur immediately after the first four days**, as it requires multiple trainees to reach this stage.  
-  > You may need to **wait for other trainees** before participating.
+- **Summary Day (Scheduled Separately)**
+  - At a later stage, Your mentor will intrdouce you the summary day.
 
 ## Overview
 The goal of the Incident Simulator is to develop the ability to **diagnose and resolve real-world production issues** across the technologies you previously learned.
