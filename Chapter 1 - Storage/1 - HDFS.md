@@ -53,5 +53,4 @@ Review your answers with your mentor and discuss any unclear points. Relate thes
 
 ## Recommended Resources
 - [Official HDFS User Guide](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html)
-- *Hadoop: The Definitive Guide* (O'Reilly) – chapters covering HDFS architecture and administration.
-
+- [Hadoop: The Definitive Guide (O'Reilly)](https://piazza-resources.s3.amazonaws.com/ist3pwd6k8p5t/iu5gqbsh8re6mj/OReilly.Hadoop.The.Definitive.Guide.4th.Edition.2015.pdf)

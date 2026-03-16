@@ -20,7 +20,7 @@ Use the resources listed below and practice searching the internet for questions
 - [Apache Iceberg Definitive Guide](http://103.203.175.90:81/fdScript/RootOfEBooks/E%20Book%20collection%20-%202024%20-%20F/CSE%20%20IT%20AIDS%20ML/Apache%20Iceberg%20(2024).pdf)
 - [Meap Book - Apache Iceberg](./asstes/Architecting_an_Apache_Iceberg_Lakehouse_v3_MEAP.pdf)
 
-###❓ Guide Questions
+### Guide Questions❓
 Please use these questions as a guide for your research, dive in, and deepen your understanding of all concepts.
 1. What is Apache Iceberg? 
    Explain the problems it solves compared to Hive tables (schema evolution, partitioning, consistency, performance).
