@@ -81,7 +81,7 @@ Utilize the resources listed below and master the skill of searching the interne
 
 > **Tip:** Focus on **design, trade-offs, and pipeline operation** 
 
-> **Note⚠️**: Another resource **you must use** is `Trino-Compose`, ask your mentor about it.
+> **Note⚠️**: Another resource **you must use** is `Trino-Compose` and `AIRFLOW-COMPOSE`, ask your mentor about it.
 ---
 
 ## 🧩 Required Deliverables & Action Items
