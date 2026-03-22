@@ -59,7 +59,7 @@ Please use these questions as a guide for your research, dive in, and deepen you
 קטלוג נוסף שנפוץ הוא AWS glue, hadoop catalog  וJDBC.
 קטלוג hadoop - מחפש לפי גרסה אחרונה בעזרת timestamps , קל לשימוש (צריך רק FS) , אבל מגביל מבחינת כלים לאחסון.
 מטאסטור - אינטגרציה טובה עם כלים אחרים, אטומיות ומקביליות מוגבלת.
-קטלוג AWS - אינטגרציה טובה עם כלים של AWS, לא תומך בטרנזקציות בין טבלאות.
+קטלוג AWS - אינטגרציה טובה עם כלים של AWS, לא תומך בטרנזקציות בין טבלאות. סוג של iceberg שמנוהל ע"י amazon.
 אלה קטלוגים קלאסים, אבל יש איתם עדיין בעיות כמו קונפיגורציות מסובכות בצד לקוח ותלות בשפה מסויימת, בשביל זה ceberg עובד גם עם קטלוג מסוג REST.
 קטלוגים מסוג REST משתמשים בREST API בו בקשות נשלחות בHTTP ויכולות להיות בשפות שונות, פייתון , JSON ועוד..
 סוגים של קטלוגי REST הם tabular, polaris ועוד.
@@ -94,6 +94,7 @@ Assignment: You are required to research and write a comparative analysis betwee
 הiceberg שם דגש על ארגון וסידור המידע, ואחסון יעיל (דחיסות, פרטישנים מתקדמים) בעוד שdelta lake שם דגש על ביצועים מהירים.
 נשתמש בiceberg במקום בו יש מודל נתונים מסובך שצריך לו סכמה גמישה שאפשר לשנות , ושצריך אינטגרציה עם כלים כמו ספארק וטרינו.
 נשתמש בdelta lake כשהדגש הוא על ACID ושלמות הנתונים או כשמדובר בסטרימינג (עבודה עם ספארק).
+** בCOW על כל שינוי קטן יוצרים קובץ וסנאפשוט חדש - זה יעיל לread heavy כי לא צריך לעבור על קבצים מחוקים וכו השינוי מתבצע מיד. אבל המחיקות וכתיבות יהיו איטיים יותר. בMOR בעת מחיקת נתון הנתון יצור delete file ובעת עדכון נתון הנתון הישן יצור delete file וניצור קובץ חדש רק עם השורה המעודכנת וכשלקוח יעשה קריאה הוא יתעלם מהשורה הישנה כי היא בdelete file ויגש לחדשה. זה עדיף לwrite heavy אבל מכביד על תהליכי הקריאה
 
 ### 🎯 User Story & Scenario
 Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
