@@ -1,6 +1,6 @@
 import pydantic
 from pyspark.sql import SparkSession
-import pyspark.sql.functions as F
+from pyspark.sql.functions import avg, col, udf
 
 # --- PHASE A ---
 spark = SparkSession.builder.appName("ComplexLogic").getOrCreate()
@@ -12,7 +12,7 @@ meta_df = spark.createDataFrame([("A", "Premium"), ("B", "Standard")], ["code", 
 
 
 # --- PHASE C ---
-@F.udf("double")
+udf("double")
 def calculate_markup(price, code):
     multiplier = lookup_table.get(code, 1.0)
     return price * multiplier
@@ -24,10 +24,10 @@ joined_df = raw_df.join(meta_df, raw_df.event_code == meta_df.code)
 # --- PHASE E ---
 final_df = joined_df.withColumn(
     "final_price", calculate_markup("price", "code")
-).filter(F.col("type") == "Premium")
+).filter(col("type") == "Premium")
 
 # --- PHASE F ---
-report = final_df.groupBy("type").agg(F.avg("final_price")).collect()
+report = final_df.groupBy("type").agg(avg("final_price")).collect()
 
 # --- PHASE G ---
 for row in report:
