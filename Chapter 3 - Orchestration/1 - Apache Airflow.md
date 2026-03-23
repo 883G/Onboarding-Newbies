@@ -14,7 +14,6 @@ This section will go over the fundamentals of _Apache Airflow_, consisting of th
 - Many newcomers struggle with self-study; take a moment to plan your day and stick to it.
 - Understand the **big picture** of each concept. If you can't explain it, you probably haven't learned it.
 - Be prepared to describe how concepts relate to one another and to real-world scenarios.
-- Review the [Exercise](#exercise) before diving in so you know what to focus on.
 - When in doubt about what you need to learn, ask your mentor.
 
 ### Core Concepts
