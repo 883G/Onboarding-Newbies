@@ -35,7 +35,7 @@ Think through the following questions; by answering them you’ll touch every ma
 ### Real-World Context
 Rather than focusing on one technology, think about how these ideas show up in distributed processing frameworks, how they are used by other procerssing frameworks and what are the core concepts of processing.
 
-🔄 Alternatives
+## 🔄 Alternatives
 
 Assignment: You are required to research and write a comparative analysis between Spark and an industry alternative.
 
@@ -43,7 +43,7 @@ Assignment: You are required to research and write a comparative analysis betwee
     Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
     Goal: You must be able to justify why the department uses this tool for our specific environment.
 
-🎯 User Story & Scenario
+## 🎯 User Story & Scenario
 
 Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
 
