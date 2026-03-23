@@ -49,7 +49,6 @@ Assignment: Based on your research and understanding of the department's pipelin
 
     Deliverable: A written summary example/story (two sentences approx.).
     Requirement: Describe a real-world scenario (e.g., a specific client requirement) where this technology is the optimal solution.
-    Data Flow: Map out the data flow and explain how this tool integrates with other components in the Data Pipeline.
 
 ## Wrapping Up :trophy:
 Discuss your answers and any areas of confusion with your mentor. Reflect on how these general concepts will help when you later write code and help clients.
