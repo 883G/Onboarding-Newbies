@@ -32,14 +32,14 @@ Think through the following questions; by answering them you’ll touch every ma
 
 
 ### Real-World Context
-Rather than focusing on one technology, think about how these ideas show up in schedulers, such as the linux scheduler or k8s scheduler.
+Rather than focusing on one technology, think about how these ideas show up in schedulers, such as the linux scheduler or the trino task scheduler.
 
 ## Wrapping Up :trophy:
 Discuss your answers and any areas of confusion with your mentor. Reflect on how these general concepts will help when you later when using scheduled jobs.
 
 ## Additional Topics from Review
-- A deep dive into spark internals: what are other optimizations that are implemented in spark? what is java off-heap memory? how does spark's memory allocation work?
-- What are the different obsolescence algorithms widely used? where could they also be implemented?
+- A deep dive into sheduling algorithms.
+- What are the different obsolescence algorithms widely used? where could they also be implemented? what are some scheduling algorithms without preemption and aging that solve starvation?
 
 ## Action Items
 - Review your notes and identify topics you want to explore deeper.
