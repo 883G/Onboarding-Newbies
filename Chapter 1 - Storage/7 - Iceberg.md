@@ -90,7 +90,7 @@ Assignment: You are required to research and write a comparative analysis betwee
 - Goal: You must be able to justify why the department uses this tool for our specific environment.
 
 האלטרנטיבה הכי ידועה לapache iceberg היא delta lake, בדומה לiceberg היא גם שומרת על עקרון ACID, עובדת עם ספארק ומאפשרת time travel, אבל הגישה שלה לזה שונה לחלוטין.
-אם iceberg נוהגת בשיטת MOR ובעיקרון בו מטפלים בבעיה רק כשמנסים לעשות לה execute (כמו הדוגמה על הcommits) אז delta lake נוטה בגישה שונה לגמרי, בגישת MOW, ברגע שיכתב שינוי לא תקין היא תעצור אותו והיא משתמשת בtransaction log בשביל זה שפעם בכמה זמן היא "מרוקנת" לקבצי פרקט, ובהתאם לכך היא מתמקדת רק בקבצי פרקט ולא גמישה כמו iceberg.
+אם iceberg נוהגת בשיטת MOR ובעיקרון בו מטפלים בבעיה רק כשמנסים לעשות לה execute (כמו הדוגמה על הcommits) אז delta lake נוטה בגישה שונה לגמרי, בגישת MOR, ברגע שיכתב שינוי לא תקין היא תעצור אותו והיא משתמשת בtransaction log בשביל זה שפעם בכמה זמן היא "מרוקנת" לקבצי פרקט, ובהתאם לכך היא מתמקדת רק בקבצי פרקט ולא גמישה כמו iceberg.
 הiceberg שם דגש על ארגון וסידור המידע, ואחסון יעיל (דחיסות, פרטישנים מתקדמים) בעוד שdelta lake שם דגש על ביצועים מהירים.
 נשתמש בiceberg במקום בו יש מודל נתונים מסובך שצריך לו סכמה גמישה שאפשר לשנות , ושצריך אינטגרציה עם כלים כמו ספארק וטרינו.
 נשתמש בdelta lake כשהדגש הוא על ACID ושלמות הנתונים או כשמדובר בסטרימינג (עבודה עם ספארק).
