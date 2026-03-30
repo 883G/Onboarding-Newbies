@@ -59,7 +59,7 @@ The five V's of big data is 5 characteristics which help us define the big data 
 - Variety - variety of data types and structures. the challenge in variety concerns the standardization of all data being collected.
 - Veracity - refers to the quality, reliability and accuracy of the data. The level of trust there is in the collected data.
 
-2. **Structured, unstructured, and semi‑structured data**\
+2. **Structured, unstructured, and semi‑structured data**
 - Structured Data - Based on relational database table with rows and columns. Structured schema which is less flexible for changes and all the rows must follow it. (sql, csv)
 - Unstructured Data - Data without a predefine data model. It is more flexible and there is absence of schema or a constant format. (images, videos, word)
 - Semi-structured Data - Sits between structured and unstructured data. It has a fixed format but doesn't have a fixed schema. This gives it greater flexibility compared to structured data while retaining more organization and validations than unstractured data.(json, xml)
@@ -69,11 +69,22 @@ Two approaches which commonly used to move data.
 - ETL (extract, transform, load) - extract raw data, immediately transformed as required, then load it into the data warehouse where the users can access it.
 - ELT (extract load transform) - extract raw data, load it into the data warehouse, then performs data transformations directly within the data warehouse itself. Unlike ETL, where data is transformed before loading, and raw data may not be retain. In addition its, eliminating the need for staging processes.
 
-4. **NoSQL vs. SQL databases**\
+4. **NoSQL vs. SQL databases**
 - SQL databases are relational and stands for structured query language. NoSQL databases are non-relational and stands for not only SQL.
 - SQL databases are table-based, while NoSQL databases are document, key-value, graph, or wide-column stores.
 - SQL databases use structured query language and have a predefined schema. NoSQL databases have dynamic schemas for unstructured data.
 - NoSQL databases are scalable horizontally, meaning you can scale out by adding nodes. SQL databases in most situations are vertically, meaning you can scale up by adding more resources.
+
+5. **OLAP vs. OLTP**\
+Two primary data processing systems or accsess patterns.
+- OLTP (online transactional processing) - access pattern which optimized to day-to-day transactions methods with low latency. Supports ACID properties. Focuses on smooth interations and many seamless transactions for the users experience.\
+read - mostly with indices\
+write - one or several rows.
+- OLAP (Online analytical processing) - access pattern which optimized to querying data for wide analysis, statistics, conclusions, and desicion making processes with high latency.\
+update - will be very expensive operation.
+Focuses on small amount of read operations happening concurrently.
+
+
 
 
 ## Wrapping Up
