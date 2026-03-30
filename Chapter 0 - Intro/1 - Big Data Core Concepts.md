@@ -113,10 +113,33 @@ Like a restaurant who wants to serve food with high quality ingredients, a data 
 Data quality measures how well a dataset meets criteria for accuracy (current vs reality), completeness (no missing values), validity, consistency (uniformed data from different sources), uniqueness (duplications), and it is critical to all data governance initiatives. 
 
 14. **CDC (Change Data Capture)**\
-Change Data Capture (CDC) is a technique used to detect and record changes such as inserts, updates, and deletes in a database. CDC improves data efficiency by capturing only changed records. CDC looks for shifts in a database, and when it finds one, it records it. This record is later stored either in the same database or in external applications. In practice, CDC is often used to replicate data between databases in real-time. CDC instantly and automatically syncs databases as soon as the source data changes.
+Change Data Capture (CDC) is a technique used to detect and record changes such as inserts, updates, and deletes in a database. CDC improves data efficiency by capturing only changed records. CDC looks for shifts in a database, and when it finds one, it records it. This record is later stored either in the same database or in external applications. In practice, CDC is often used to replicate data between databases in real-time. CDC instantly and automatically syncs databases as soon as the source data changes. (concept in many databases, mongo, cassandra postgress)
 
-15. **Data catalog**
+15. **Data catalog**\
+A centralized inventory that stores metadata related to the data assets which can be datasets, tables, databases and files. It provides data discovery and search functionalities based on keywords, tags, filters and more. Data lineage, data governance support and collaboration features. Data catalog collects and indexes the metadata from a variety sources.
 
+16. **Data lifecycle management**
+
+17. **Data lineage**
+Data lineage is the process of recording, tracking and visualizing data over time. Uncovers the life cycle of data, it aims to show the complete data flow, from start to finish. Validate data accuracy and consistency to ensure data quality and discover anomalies. Data lineage techniques can be by tagging by pattern and more.
+
+18. **Store‑first approach**
+The approach of "throwing" the raw data to a storage service (for example s3), without any transformations (ELT). It provides a single source of truth for the raw data which can re-extracted / reprocess in case of pipline failure or data corruption. In addition it enables immediate access to the data.
+
+19. **Data serialization**
+20. **Data compression**
+
+21. **Scale‑out vs. scale‑up**/
+Both are approaches of handling data volume and growth in the amount of data / utilization. scale up represents vertical growth by adding resources to the existing node (cpu, ram, storage). In contrast to scale out which represents a horizontal increasing of components like nodes or workloads.
+
+22. **High availability**
+One of the three properties that are crucial in distributed data systems according to the CAP theorem. Means the system always responds to requests, even if it's not the latest data.
+
+23. **Master‑slave vs. masterless architectures**
+
+24. **Apache data stack**
+The Apache Software Foundation (ASF) manages over 350 open-source projects under the apache license, ensuring they remain free, scalable, and enterprise ready. Known for its community driven, collaborative approach.
+Some tools from the Apache data stack: Hadoop, Hbase, Hive, Zookeeper, kafka, impala, airflow, iceberg.
 
 ## Wrapping Up
 
