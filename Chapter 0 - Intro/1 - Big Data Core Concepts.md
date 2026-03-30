@@ -49,6 +49,16 @@ These topics are meant to guide your research. Don’t hesitate to look up other
 </br>
 > Note✅: Reinforce your understanding by relating the concepts to real‑world scenarios.
 
+## Answers
+
+1. **The five V's of Big Data**
+The five V's of big data is 5 characteristics which help us define the big data concept and how to manage it.
+Velocity - the speed of how data is creating and moving.
+Volume - Refers to the enormous amount of data that exists and keeps growing.
+Value - the benefits that big data can provide. Having a bulk of data is nothing, unless you turn it into something useful, with value. 
+Variety - variety of data types and structures. the challenge in variety concerns the standardization of all data being collected.
+Veracity - refers to the quality, reliability and accuracy of the data. The level of trust there is in the collected data.
+
 ## Wrapping Up
 
 
