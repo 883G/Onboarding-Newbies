@@ -67,7 +67,7 @@ The five V's of big data is 5 characteristics which help us define the big data 
 3. **ETL vs. ELT**\
 Two approaches which commonly used to move data.
 - ETL (extract, transform, load) - extract raw data, immediately transformed as required, then load it into the data warehouse where the users can access it.
-- ELT (extract load transform) - extract raw data, load it into the data warehouse, then performs data transformations directly within the data warehouse itself. Unlike ETL, where data is transformed before loading, and raw data may not be retain. In addition its, eliminating the need for staging processes.
+- ELT (extract load transform) - extract raw data, load it into the data warehouse, then performs data transformations directly within the data warehouse itself. Unlike ETL, where data is transformed before loading, and raw data may not be retain. In addition its eliminating the need for staging processes.
 
 4. **NoSQL vs. SQL databases**
 - SQL databases are relational and stands for structured query language. NoSQL databases are non-relational and stands for not only SQL.
@@ -81,9 +81,25 @@ Two primary data processing systems or accsess patterns.
 read - mostly with indices\
 write - one or several rows.
 - OLAP (Online analytical processing) - access pattern which optimized to querying data for wide analysis, statistics, conclusions, and desicion making processes with high latency.\
-update - will be very expensive operation.
+update - will be very expensive operation.\
 Focuses on small amount of read operations happening concurrently.
 
+6. **Batch processing vs. stream processing**\
+Two methods used for processing large volumes of data.
+- Batch processing - refers to processing data in blocks (batches) at scheduled intervals or after accumulating a certain amount of data. Data is collected over a period and processed all at once with high throughput where immediate action is not necessary. Resource efficient.
+- Stream Processing - continuously processing data in real-time as it arrives. Used when immediate action is required based on the incoming data. Resource intensive.
+
+7. **Data warehouse vs. data lake**
+- Data warehouse - stores structured or semi structured data which already processed, optimized to query and analyze effciently. Schema on write, high performance for complex queries with indexing and partitioning strategies. data integration, combined from multiple sources to a cohensive dataset for analysis.
+- Data lake - designed to store vast amount of raw data in its native format. This approach allows to load data from different sources without the need for immediate transformation. Store data as-is, apply schema on read, designed to handle large volumes of data in expensively. Store first.
+
+8. **Distributed file systems**\
+DFS is a networked architecture that allows manage files accross various machines. Instead of storing data on a single sever, DFS spreads files across multiple locations.DFS provides data redundancy (replicates data across multiple servers), scalability, consistency (ensures to syncronize data across the replicas), data partitioning (splitting files to smaller pieces for efficient storage) and load balancing.
+
+9. **Data governance**\
+Data governance is a subset of data management that focuses on controlling data assets for having quality, security, efficiency and availibility of the data. helps ensure data integrity and data security by defining policies and access (RBAC).
+
+10. **Data visualization**\
 
 
 
