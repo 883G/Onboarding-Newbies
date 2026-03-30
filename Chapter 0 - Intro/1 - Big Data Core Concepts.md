@@ -97,10 +97,25 @@ Two methods used for processing large volumes of data.
 DFS is a networked architecture that allows manage files accross various machines. Instead of storing data on a single sever, DFS spreads files across multiple locations.DFS provides data redundancy (replicates data across multiple servers), scalability, consistency (ensures to syncronize data across the replicas), data partitioning (splitting files to smaller pieces for efficient storage) and load balancing.
 
 9. **Data governance**\
-Data governance is a subset of data management that focuses on controlling data assets for having quality, security, efficiency and availibility of the data. helps ensure data integrity and data security by defining policies and access (RBAC).
+Data governance is a subset of data management that focuses on controlling data assets for having quality, security, efficiency and availibility of the data. helps ensure data integrity and data security by defining policies and access (RBAC) and monitoring. 
 
 10. **Data visualization**\
+Data visualization is the representation of data through the use of graphics, charts, plots.It can help you communicate ideas quickly and draw new insights from data. Data visualization tools fot example are grafana or kibana.
 
+11. **Data analytics**\
+Data analytics is the process of collecting, transforming, and organizing data in order to draw conclusions, make predictions, and drive informed decision-making.
+
+12. **Data ownership**\
+Data Ownership refers to the responsibility associated with managing, controlling, and ensuring the security of data within an organization. Defines the legal rights and control over the data.
+
+13. **Data quality**\
+Like a restaurant who wants to serve food with high quality ingredients, a data management team want to provide data with high quality.\
+Data quality measures how well a dataset meets criteria for accuracy (current vs reality), completeness (no missing values), validity, consistency (uniformed data from different sources), uniqueness (duplications), and it is critical to all data governance initiatives. 
+
+14. **CDC (Change Data Capture)**\
+Change Data Capture (CDC) is a technique used to detect and record changes such as inserts, updates, and deletes in a database. CDC improves data efficiency by capturing only changed records. CDC looks for shifts in a database, and when it finds one, it records it. This record is later stored either in the same database or in external applications. In practice, CDC is often used to replicate data between databases in real-time. CDC instantly and automatically syncs databases as soon as the source data changes.
+
+15. **Data catalog**
 
 
 ## Wrapping Up
