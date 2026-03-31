@@ -119,6 +119,9 @@ Change Data Capture (CDC) is a technique used to detect and record changes such 
 A centralized inventory that stores metadata related to the data assets which can be datasets, tables, databases and files. It provides data discovery and search functionalities based on keywords, tags, filters and more. Data lineage, data governance support and collaboration features. Data catalog collects and indexes the metadata from a variety sources.
 
 16. **Data lifecycle management**
+A data as a lifecycle, with several phases:\
+collection, storage, share, use, archive, deletion.\
+With DLM you achive availability, integrity and security. 
 
 17. **Data lineage**
 Data lineage is the process of recording, tracking and visualizing data over time. Uncovers the life cycle of data, it aims to show the complete data flow, from start to finish. Validate data accuracy and consistency to ensure data quality and discover anomalies. Data lineage techniques can be by tagging by pattern and more.
@@ -126,18 +129,25 @@ Data lineage is the process of recording, tracking and visualizing data over tim
 18. **Store‑first approach**
 The approach of "throwing" the raw data to a storage service (for example s3), without any transformations (ELT). It provides a single source of truth for the raw data which can re-extracted / reprocess in case of pipline failure or data corruption. In addition it enables immediate access to the data.
 
-19. **Data serialization**
-20. **Data compression**
+19. **Data serialization**\
+Data serialization is the concept od converting data objects into a fitted and valid format as the requirments of the database / api. The reverse process is called desserialization.
 
-21. **Scale‑out vs. scale‑up**/
+20. **Data compression**\
+The idea of reducing the size of the data and stores it in a compact form. It also increases the speed of algorithms and transmissions methods. Compression is achieved by removing redundancy, that is repetition of unnecessary data with multiple techniques.
+
+21. **Scale‑out vs. scale‑up**\
 Both are approaches of handling data volume and growth in the amount of data / utilization. scale up represents vertical growth by adding resources to the existing node (cpu, ram, storage). In contrast to scale out which represents a horizontal increasing of components like nodes or workloads.
 
-22. **High availability**
+22. **High availability**\
 One of the three properties that are crucial in distributed data systems according to the CAP theorem. Means the system always responds to requests, even if it's not the latest data.
 
-23. **Master‑slave vs. masterless architectures**
+23. **Master‑slave vs. masterless architectures**\
+- Master-slave architecture has a master node that guides and coordinates the activities of several slave nodes. The master gets the commands from the user and the slaves executes them. It has to main problems:\
+Consistency - It has to have a data copying stratgy to ensure that the slave servers are up-to-date, can cause problems of replication lags. Optional solution is  write through cache and use an asynchronous replication methods with alerting systems.\
+master fails - In case a master fails it depends of the architecture. Optinal solutions is a replication manager which automatically switch a slave node to be the master. (hadoop)\
+- Masterless architecture - every node in the database can provide the exact same fuctionality as any other node. These nodes communicate with one another through a protocol called gossip, which is a process of computer peer-to-peer communication. (cassandra)
 
-24. **Apache data stack**
+24. **Apache data stack**\
 The Apache Software Foundation (ASF) manages over 350 open-source projects under the apache license, ensuring they remain free, scalable, and enterprise ready. Known for its community driven, collaborative approach.
 Some tools from the Apache data stack: Hadoop, Hbase, Hive, Zookeeper, kafka, impala, airflow, iceberg.
 
