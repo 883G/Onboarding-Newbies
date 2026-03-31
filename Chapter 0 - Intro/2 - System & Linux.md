@@ -45,10 +45,10 @@ ext4 - the default file system for many linux distributions.\
 Btrfs (B-Tree file system) - modern, advanced designed filesystem, with features of snapshoting, data deduplication, RAID.\
 XFS - high performance, journaling file system that excels in handling large files and massive storage volumes.
 
-5. מה זה fstab?
+5. מה זה fstab?\
 File system table. /etc/fstab is a static file system information. When I mount a disk by the mount command, and then reboot the server, the mount will be gone and I'll have to do it again in order to access the disk. To prevent from mounting over and over again I want to make a persistent mounted disk by adding the disk details as a row to the fstab file.
 
-6. אילו סוגי mount קיימים?
+6. אילו סוגי mount קיימים?\
 mount types:
 - local disk - a disk which was added to the machine and we want to use it.
 - NFS - a network file sytem that allows remote hosts to mount file systems over the network nd interact with those file systems as though they are mounted locally.
