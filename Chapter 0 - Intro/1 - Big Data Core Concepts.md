@@ -141,10 +141,10 @@ Both are approaches of handling data volume and growth in the amount of data / u
 22. **High availability**\
 One of the three properties that are crucial in distributed data systems according to the CAP theorem. Means the system always responds to requests, even if it's not the latest data.
 
-23. **Master‑slave vs. masterless architectures**\
+23. **Master‑slave vs. masterless architectures**
 - Master-slave architecture has a master node that guides and coordinates the activities of several slave nodes. The master gets the commands from the user and the slaves executes them. It has to main problems:\
 Consistency - It has to have a data copying stratgy to ensure that the slave servers are up-to-date, can cause problems of replication lags. Optional solution is  write through cache and use an asynchronous replication methods with alerting systems.\
-master fails - In case a master fails it depends of the architecture. Optinal solutions is a replication manager which automatically switch a slave node to be the master. (hadoop)\
+master fails - In case a master fails it depends of the architecture. Optinal solutions is a replication manager which automatically switch a slave node to be the master. (hadoop).
 - Masterless architecture - every node in the database can provide the exact same fuctionality as any other node. These nodes communicate with one another through a protocol called gossip, which is a process of computer peer-to-peer communication. (cassandra)
 
 24. **Apache data stack**\
