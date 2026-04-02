@@ -41,7 +41,7 @@ Apache zookeeper is a distributed cootdination service for managing configuratio
 - Zookeeper data model - The Zookeeper stores the data in the memory but it follows a file system like hierarchichal namespace starting from the "/". In the namespace there are nodes called znodes which can store data or has a child znode (because its a tree, each level is a zookeeper node in the tree).
 - Znode structure - znode has a stat structure contains data (optional) and meta data. Data - string. max 1Mb recommended to be much small. Metadata - included version number (how many time the data has changed),acl (access control list which limits who can read/write data), timestamps (ctime, creation time & mtime, last modified time).
 
-2. **Consistency & Watches:**\
+2. **Consistency & Watches:**
 - Zookeeper guarantee sequential consistency - sequential consistency means that updates from a client will be applied in the order that they were sent. ZooKeeper uses a special atomic messaging protocol called ZAB. ZAB protocol is atomic, so the protocol guarantees that updates either succeed or fail. In Zookeeper every write goes through the leader and leader generates a transaction id (called zxid) and assigns it to this write request. The zxid represents the order in which the writes are applied on all replicas. A write is considered successful if the leader receives the ack from the majority.
 - Watches - simple mechanism for the clients (registered by the client when there is a session) to get notifications about the changes in a ZooKeeper ensemble. Any client can set a watch on data and will be notified once it detects the changes (not the information of the change only there is a change). Examples of changes can be configuration changes, leader changes, new znode child, etc.
 - one-time triggers - the watches of the zookeeper are one-time triggers. If I get a watch event and I want to get notified of future changes, I must set another watch. Changes to that znode trigger the watch and then clear the watch. For example, if a client does a getData("/znode1", true) and later the data for /znode1 is changed or deleted, the client will get a watch event for /znode1. If /znode1 changes again, no watch event will be sent unless the client has done another read that sets a new watch. Zookeeper creates one-time trigger watches and not permanent watches because its more simple for distributed systems and prevents many problems and unreliability if the client has disconnected for examle.
@@ -73,19 +73,19 @@ The session remains active by sending a heartbeat signal to the ZooKeeper servic
 
 ### Kerberos - Answers
 
-1. **Protocol Flow:**/
-KDC - key distribution server/
-TGS - ticket granting server/
-SS - service server/
-AS - authentication server/
+1. **Protocol Flow:**\
+KDC - key distribution server\
+TGS - ticket granting server\
+SS - service server\
+AS - authentication server\
 TGT - ticket granting ticket
-1. Client Authentication Request: The client sends an authentication request to the AS, encrypted with the user’s password hash.
-2. Ticket Granting Ticket (TGT): If the client is authenticated successfully, the AS issues a Ticket Granting Ticket (TGT) and a session key. The TGT is encrypted with the KDC’s secret key.
-3. TGT Request: The client sends the TGT to the TGS to request access to a specific service.
-4. Service Ticket: If the TGT is valid, the TGS issues a service ticket and a session key for the requested service. The service ticket is encrypted with the service’s secret key.
-5. Service Request: The client sends the service ticket to the application server along with an authenticator (encrypted with the session key) to prove its identity.
-6. Service Access: If the service ticket and authenticator are valid, the application server grants access to the requested service.
-A Kerberos ticket cache is a secure, local storage area on a client machine where a user’s Kerberos tickets and session keys are temporarily stored.
+    1. Client Authentication Request: The client sends an authentication request to the AS, encrypted with the user’s password hash.
+    2. Ticket Granting Ticket (TGT): If the client is authenticated successfully, the AS issues a Ticket Granting Ticket (TGT) and a session key. The TGT is encrypted with the KDC’s secret key.
+    3. TGT Request: The client sends the TGT to the TGS to request access to a specific service.
+    4. Service Ticket: If the TGT is valid, the TGS issues a service ticket and a session key for the requested service. The service ticket is encrypted with the service’s secret key.
+    5. Service Request: The client sends the service ticket to the application server along with an authenticator (encrypted with the session key) to prove its identity.
+    6. Service Access: If the service ticket and authenticator are valid, the application server grants access to the requested service.
+    A Kerberos ticket cache is a secure, local storage area on a client machine where a user’s Kerberos tickets and session keys are temporarily stored.
 
 2. **Key Concepts:**
 - principle - a unique identity. either a user or a service, an application.
