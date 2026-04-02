@@ -31,6 +31,22 @@ Estimated Duration: 1 Day
 4. **Common Patterns:**  Explain how leader election, distributed locks, and configuration storage are implemented on top of Zookeeper primitives.
 5. **Operational Concerns:**  Outline how to deploy an ensemble, handle scaling, manage snapshots and transaction logs, and troubleshoot typical issues (e.g., split‑brain, latency).
 
+### Zookeeper - Answers
+1. **Architecture & Data Model:**\
+Apache zookeeper is a distributed cootdination service for managing configuration, synchronization and leader election across distributed systems. Its an external tool that distributed systems can use to recover from partial failures in the cluster.
+- Zookeeper ensamble - The group of servers (at least three) is called an ensemble. All servers in the ensemble keep a copy of the data. The data contains transaction logs and snapshots which are used for synchronization purposes and data watches.
+- Leader role - A Leader is a server node that is elected at startup and performs automatic recovery if a node fails.
+- Followers role - All the server nodes except the leader, are referred to as followers. The followers share their status with each other for ZooKeeper replication.
+- Zookeeper data model - The Zookeeper stores the data in the memory but it follows a file system like hierarchichal namespace starting from the "/". In the namespace there are nodes called znodes which can store data or has a child znode (because its a tree, each level is a zookeeper node in the tree).
+- Znode structure - znode has a stat structure contains data (optional) and meta data. Data - string. max 1Mb recommended to be much small. Metadata - included version number (how many time the data has changed),acl (access control list which limits who can read/write data), timestamps (ctime, creation time & mtime, last modified time).
+
+2. **Consistency & Watches:**\
+- Zookeeper guarantee sequential consistency - sequential consistency means that updates from a client will be applied in the order that they were sent. ZooKeeper uses a special atomic messaging protocol called ZAB. ZAB protocol is atomic, so the protocol guarantees that updates either succeed or fail. In Zookeeper every write goes through the leader and leader generates a transaction id (called zxid) and assigns it to this write request. The zxid represents the order in which the writes are applied on all replicas. A write is considered successful if the leader receives the ack from the majority.
+- Watches - simple mechanism for the clients (registered by the client when there is a session) to get notifications about the changes in a ZooKeeper ensemble. Any client can set a watch on data and will be notified once it detects the changes (not the information of the change only there is a change). Examples of changes can be configuration changes, leader changes, new znode child, etc.
+- one-time triggers - the watches of the zookeeper are one-time triggers. If I get a watch event and I want to get notified of future changes, I must set another watch. Changes to that znode trigger the watch and then clear the watch. For example, if a client does a getData("/znode1", true) and later the data for /znode1 is changed or deleted, the client will get a watch event for /znode1. If /znode1 changes again, no watch event will be sent unless the client has done another read that sets a new watch. Zookeeper creates one-time trigger watches and not permanent watches because its more simple for distributed systems and prevents many problems and unreliability if the client has disconnected for examle.
+- Prevent cache invalidations - Clients pull information from the zookeeper and cache it locally. Without the mechanism of watches they can keep using a stale data or polling for the zookeeper constantly over and over again which is inefficient. The solution is using watches and after the client is notified by a change, pull the data and update the cache.
+
+
 ### Kerberos – five guiding questions
 1. **Protocol Flow:**  Walk through the Kerberos authentication flow from initial login (kinit) to obtaining service tickets.  Include AS, TGS, and ticket caches.
 2. **Key Concepts:**  Define principals, realms, KDC components, tickets (TGT vs service ticket), and how encryption keys are derived and used.
