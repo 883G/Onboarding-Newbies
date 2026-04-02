@@ -44,7 +44,23 @@ Apache zookeeper is a distributed cootdination service for managing configuratio
 - Zookeeper guarantee sequential consistency - sequential consistency means that updates from a client will be applied in the order that they were sent. ZooKeeper uses a special atomic messaging protocol called ZAB. ZAB protocol is atomic, so the protocol guarantees that updates either succeed or fail. In Zookeeper every write goes through the leader and leader generates a transaction id (called zxid) and assigns it to this write request. The zxid represents the order in which the writes are applied on all replicas. A write is considered successful if the leader receives the ack from the majority.
 - Watches - simple mechanism for the clients (registered by the client when there is a session) to get notifications about the changes in a ZooKeeper ensemble. Any client can set a watch on data and will be notified once it detects the changes (not the information of the change only there is a change). Examples of changes can be configuration changes, leader changes, new znode child, etc.
 - one-time triggers - the watches of the zookeeper are one-time triggers. If I get a watch event and I want to get notified of future changes, I must set another watch. Changes to that znode trigger the watch and then clear the watch. For example, if a client does a getData("/znode1", true) and later the data for /znode1 is changed or deleted, the client will get a watch event for /znode1. If /znode1 changes again, no watch event will be sent unless the client has done another read that sets a new watch. Zookeeper creates one-time trigger watches and not permanent watches because its more simple for distributed systems and prevents many problems and unreliability if the client has disconnected for examle.
-- Prevent cache invalidations - Clients pull information from the zookeeper and cache it locally. Without the mechanism of watches they can keep using a stale data or polling for the zookeeper constantly over and over again which is inefficient. The solution is using watches and after the client is notified by a change, pull the data and update the cache.
+- Prevent cache invalidations - Clients pull information from the zookeeper and cache it locally. Without the mechanism of watches they can keep using a stale data or polling from the zookeeper constantly over and over again which is inefficient. The solution is using watches and after the client is notified by a change, pull the data and update the cache.
+
+3. **Sessions & Failure Handling:**
+- Zookeeper session - The session is then created between a client and server by assigning a unique id to the client. The lifetime of an ephemeral znode is as long as the session is active, when the session has closed or expired the ephemeral znode automatically will be deleted. (Thats why ephemeral znodes cant have a child znodes)
+- Heartbeats - There is a timeout period for a session which is specified by the application. The timeout depends on the nature of the application and cluster environment. The session gets expired automatically when the connection remains idle for more than the specified timeout period.
+The session remains active by sending a heartbeat signal to the ZooKeeper service. 
+- In case a session expires, the authentication fails, or a connection gracefully closes.
+
+4. **Common Patterns:**
+- Leader election - All servers in an ensemble participate in the leader election algorithm with the LOOKING state.  The idea is to have a znode, say "/election", such that each znode creates a child znode "/election/guid-n_" with both flags SEQUENCE|EPHEMERAL. With the sequence flag, ZooKeeper automatically appends a sequence number that is greater than anyone previously appended to a child of "/election". The process that created the znode with the smallest appended sequence number is the leader.
+- Distributed locks - distributed systems in typical scenarios needs to ensure that only one node of the cluster is allowed to carry out an operation in a time. for example, write to a shared database or a file. In this case, a session is created and then clients create an ephemeral + sequential znode with increasing counter and when they are the smallest number in the counter (gets a notification by the watch) thay proceeding their operations.
+- Configuration storage
+
+5. **Operational Concerns:**
+- deploy an ensemble - 
+- handle scaling - 
+- manage snapshots & transaction logs - 
 
 
 ### Kerberos – five guiding questions
