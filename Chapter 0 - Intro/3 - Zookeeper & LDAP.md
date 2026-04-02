@@ -142,7 +142,18 @@ Basic Ldap operations -
 - delete - Remove an entry from the directory.\
 simple vs SASL bind - In simple authentication, the account to authenticate is identified by the DN of the entry for that account, and the proof identity comes in the form of a password. The password is transmitted without any form of obfuscation, so it is strongly recommended that simple authentication be used only over an encrypted connection. SASL authentication uses the Simple Authentication and Security Layer, SASL is an extensible framework that makes it possible to plug almost any kind of authentication into LDAP (for example, kerberos).
 
-3. **Schema & Extensibility:**
+3. **Schema & Extensibility:**\
+A schema defines how information of etries needs to look with as least the following:
+- Attribute Syntaxes define the types of data that can be represented in a directory server. 
+- Matching Rules define the kinds of comparisons that can be performed against LDAP data. 
+- Attribute Types define named units of information that may be stored in entries. 
+- Object Classes define named collections of attribute types which may be used in entries containing that class, and which of those attribute types will be required rather than optional. 
+Ldap schema can also be extended with additional elements. For example, name forms used to restrict the kinds of attributes which may be used as the naming attributes for entries of a particular type.
+
+4. **Authentication & Authorization:**
+- Authentication - ldap authentication accomplished through bind operation in a client-server model. The client sends a bind request to the ldap server with the user's username and password, which the client obtains when the user inputs their credentials. f the user’s submitted credentials match the credentials associated with their core user identity that is stored within the LDAP database, the user is authenticated. If the credentials sent don’t match, the bind fails and access is denied. 
+- Authorization - 
+
 
     
 ### 🔄 Alternatives
