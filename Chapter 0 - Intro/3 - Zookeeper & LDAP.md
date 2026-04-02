@@ -99,7 +99,7 @@ Session key - key that is used to encrypt all communications between the client 
 3. **Security Properties:**\
 Multiple secret keys, third-party authorization, and cryptography make Kerberos a secure verification protocol. Passwords are not sent over the networks, and secret keys are encrypted, making it difficult for attackers to impersonate users or services. You also configure a ticket lifetime, after the end of it the ticket can no longer be used. replay attack prevention - the timestamp mechanism effectively prevents attackers from reusing captured authentication data. Even if an attacker intercepts an Authenticator, it becomes useless after the time window expires.
 
-4. **Administration & Tools:**\
+4. **Administration & Tools:**
  - `kinit` - kinit obtains and caches an initial ticket-granting ticket for principal.
  - `kadmin` - maintenance of Kerberos principals, password policies, and service key tables (keytabs). For example to add priciple of LDAP -> kadmin: addprinc ldap/<hostname> or adding user name bublick -> kadmin: ank -policy users bublick and give hime administrator permissions -> kadmin: ank -policy admin bublick/admin.
  - `klist` - klist lists the Kerberos principal and Kerberos tickets held in a credentials cache, or the keys held in a keytab file.
@@ -117,6 +117,34 @@ Multiple secret keys, third-party authorization, and cryptography make Kerberos 
 
 ### LDAP – Answers
 
+1. LDAP Structure - An LDAP directory has a hierarchical tree-like structure (DIT) and consists of one or more entries. The entries generally represent real world entities such as organizations, users and so on. For an enterprise, for example, the top or root of the tree could represent the organization itself.\ 
+entry - a node in the tree
+DN - the distinguished name, which contains a path through the directory information tree (DIT) for LDAP to navigate through (For example, cn=Susan, ou=users, o=Company).\
+RDN - Relative Distinguished Name, each component in the path within the DN (For example, cn=Susan)
+LDAP components -\
+dc - domain access component, dns.\
+o - organization name.\
+ou - organizational unit (ou=users or ou=group).\
+cn - common name (cn=developers, cn=some-name).\
+attributes - key value rows which are schema defined that belongs to an entry.\
+Object classes - are used to indicate what type of object is represented by an entry, and to specify the types of attributes that may be included in the entry.
+- Abstract classes: are those that may specify a set of required and optional attribute types. Needs to be extended.
+- Structural classes are those that specify the main type of object that an entry represents (e.g., a user, a group, a device, etc.). Structural classes may inherit from abstract or structural object classes, but not from auxiliary classes. 
+- Auxiliary classes - may be used to provide information about additional characteristics for an entry. For example, the strongAuthenticationUser object class.\
+examples of user attributes - cn, mail, uid.\
+examples of service attributes - host, authorizedService, description.
+
+2. **Protocols & Operations:**\
+Basic Ldap operations - 
+- bind - Authenticate a user and change the identity of the client connection. 
+- search - Retrieve entries that match a given set of criteria.
+- Create a new entry in the directory. 
+- delete - Remove an entry from the directory.\
+simple vs SASL bind - In simple authentication, the account to authenticate is identified by the DN of the entry for that account, and the proof identity comes in the form of a password. The password is transmitted without any form of obfuscation, so it is strongly recommended that simple authentication be used only over an encrypted connection. SASL authentication uses the Simple Authentication and Security Layer, SASL is an extensible framework that makes it possible to plug almost any kind of authentication into LDAP (for example, kerberos).
+
+3. **Schema & Extensibility:**
+
+    
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between Zookeeper, Kerberos & LDAP and an industry alternative.
 - Deliverable: A written summary (minimum 1 or 2 sentences).
