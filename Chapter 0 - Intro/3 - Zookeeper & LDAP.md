@@ -32,6 +32,7 @@ Estimated Duration: 1 Day
 5. **Operational Concerns:**  Outline how to deploy an ensemble, handle scaling, manage snapshots and transaction logs, and troubleshoot typical issues (e.g., split‑brain, latency).
 
 ### Zookeeper - Answers
+
 1. **Architecture & Data Model:**\
 Apache zookeeper is a distributed cootdination service for managing configuration, synchronization and leader election across distributed systems. Its an external tool that distributed systems can use to recover from partial failures in the cluster.
 - Zookeeper ensamble - The group of servers (at least three) is called an ensemble. All servers in the ensemble keep a copy of the data. The data contains transaction logs and snapshots which are used for synchronization purposes and data watches.
@@ -70,12 +71,51 @@ The session remains active by sending a heartbeat signal to the ZooKeeper servic
 4. **Administration & Tools:**  What are common Kerberos administration tasks?  Describe commands like `kadmin`, `kinit`, `klist`, `kdestroy`, and how to add principals or change passwords.
 5. **Integration & Troubleshooting:**  How do services (Hadoop, HTTP, SSH) integrate with Kerberos?  What are typical issues (clock skew, wrong realm, keytab problems) and how do you diagnose them?
 
+### Kerberos - Answers
+
+1. **Protocol Flow:**/
+KDC - key distribution server/
+TGS - ticket granting server/
+SS - service server/
+AS - authentication server/
+TGT - ticket granting ticket
+1. Client Authentication Request: The client sends an authentication request to the AS, encrypted with the user’s password hash.
+2. Ticket Granting Ticket (TGT): If the client is authenticated successfully, the AS issues a Ticket Granting Ticket (TGT) and a session key. The TGT is encrypted with the KDC’s secret key.
+3. TGT Request: The client sends the TGT to the TGS to request access to a specific service.
+4. Service Ticket: If the TGT is valid, the TGS issues a service ticket and a session key for the requested service. The service ticket is encrypted with the service’s secret key.
+5. Service Request: The client sends the service ticket to the application server along with an authenticator (encrypted with the session key) to prove its identity.
+6. Service Access: If the service ticket and authenticator are valid, the application server grants access to the requested service.
+A Kerberos ticket cache is a secure, local storage area on a client machine where a user’s Kerberos tickets and session keys are temporarily stored.
+
+2. **Key Concepts:**
+- principle - a unique identity. either a user or a service, an application.
+- realms - A keberos realm is the domain, the group of systems which kerberos has the authority to authenticate a user to a service. You can have multiple realms and you can interconnect them. within a realm you have principles.
+- KDC components - The heart of kerberos. There are two servers in the KDC. The authentication server (AS, confirms a known user is making an access request) and the ticket granting server (TGS, confirms that the user is making an access request to a known service)
+- tickets (TGT vs service ticket) -\
+TGT - Once the KDC verifies the user’s identity, it sends back a TGT, which is a ticket granting ticket. This ticket is encrypted with the KDC’s master key and contains a session key that can be used to request access to other services on the network.\
+Session key - key that is used to encrypt all communications between the client and server. The session key is encrypted using the KDC’s master key and sent with the TGT to the client. The client then decrypts the session key using its own password, allowing it to use the key to encrypt messages sent to the server.
+- reusable authentication - Kerberos authentication is durable and reusable. Each user will only have to be verified by the system once. Then throughout the lifetime of the ticket, the user can authenticate without the need to reenter personal information.
+
+3. **Security Properties:**\
+Multiple secret keys, third-party authorization, and cryptography make Kerberos a secure verification protocol. Passwords are not sent over the networks, and secret keys are encrypted, making it difficult for attackers to impersonate users or services. You also configure a ticket lifetime, after the end of it the ticket can no longer be used. replay attack prevention - the timestamp mechanism effectively prevents attackers from reusing captured authentication data. Even if an attacker intercepts an Authenticator, it becomes useless after the time window expires.
+
+4. **Administration & Tools:**\
+ - `kinit` - kinit obtains and caches an initial ticket-granting ticket for principal.
+ - `kadmin` - maintenance of Kerberos principals, password policies, and service key tables (keytabs). For example to add priciple of LDAP -> kadmin: addprinc ldap/<hostname> or adding user name bublick -> kadmin: ank -policy users bublick and give hime administrator permissions -> kadmin: ank -policy admin bublick/admin.
+ - `klist` - klist lists the Kerberos principal and Kerberos tickets held in a credentials cache, or the keys held in a keytab file.
+- `kdestroy` - The kdestroy utility destroys the user’s active Kerberos authorization tickets by overwriting and deleting the credentials cache that contains them. If the credentials cache is not specified, the default credentials cache is destroyed.
+
+5. **Integration & Troubleshooting:**
+
+
 ### LDAP – five guiding questions
 1. **Directory Structure:**  Explain how LDAP organizes information in a hierarchical tree (DN, RDN), common object classes, and attributes for users and services.
 2. **Protocols & Operations:**  Describe basic LDAP operations – bind, search, modify, add, delete – and the difference between simple and SASL binds.
 3. **Schema & Extensibility:**  What is an LDAP schema?  How do object classes, attribute types, and syntax rules define what data can be stored?  Mention extending schemas.
 4. **Authentication & Authorization:**  How is LDAP used for authentication and authorization?  Cover binding with credentials, password policies, and group lookups.
 5. **Deployment & Security:**  Outline how to install/configure an LDAP server (e.g., OpenLDAP), secure it with TLS, replicate data, and troubleshoot common errors (referral loops, access controls).
+
+### LDAP – Answers
 
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between Zookeeper, Kerberos & LDAP and an industry alternative.
