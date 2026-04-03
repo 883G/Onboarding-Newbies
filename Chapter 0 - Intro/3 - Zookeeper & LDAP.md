@@ -42,8 +42,8 @@ Apache zookeeper is a distributed cootdination service for managing configuratio
 - Znode structure - znode has a stat structure contains data (optional) and meta data. Data - string. max 1Mb recommended to be much small. Metadata - included version number (how many time the data has changed),acl (access control list which limits who can read/write data), timestamps (ctime, creation time & mtime, last modified time).
 
 2. **Consistency & Watches:**
-- Zookeeper guarantee sequential consistency - sequential consistency means that updates from a client will be applied in the order that they were sent. ZooKeeper uses a special atomic messaging protocol called ZAB. ZAB protocol is atomic, so the protocol guarantees that updates either succeed or fail. In Zookeeper every write goes through the leader and leader generates a transaction id (called zxid) and assigns it to this write request. The zxid represents the order in which the writes are applied on all replicas. A write is considered successful if the leader receives the ack from the majority.
-- Watches - simple mechanism for the clients (registered by the client when there is a session) to get notifications about the changes in a ZooKeeper ensemble. Any client can set a watch on data and will be notified once it detects the changes (not the information of the change only there is a change). Examples of changes can be configuration changes, leader changes, new znode child, etc.
+- Zookeeper guarantee sequential consistency - sequential consistency means that updates from a client will be applied in the order that they were sent. ZooKeeper uses a special atomic messaging protocol called ZAB, so the protocol guarantees that updates either succeed or fail. In Zookeeper every write goes through the leader and leader generates a transaction id (called zxid) and assigns it to this write request. The zxid represents the order in which the writes are applied on all replicas. A write is considered successful if the leader receives the ack from the majority.
+- Watches - simple mechanism for the clients (registered by the client when there is a session) to get notifications about the changes in a ZooKeeper ensemble. Any client can set a watch on data and will be notified once it detects the changes (not the information of the change only there is a change and it's type). Examples of changes can be configuration changes, leader changes, new znode child, etc.
 - one-time triggers - the watches of the zookeeper are one-time triggers. If I get a watch event and I want to get notified of future changes, I must set another watch. Changes to that znode trigger the watch and then clear the watch. For example, if a client does a getData("/znode1", true) and later the data for /znode1 is changed or deleted, the client will get a watch event for /znode1. If /znode1 changes again, no watch event will be sent unless the client has done another read that sets a new watch. Zookeeper creates one-time trigger watches and not permanent watches because its more simple for distributed systems and prevents many problems and unreliability if the client has disconnected for examle.
 - Prevent cache invalidations - Clients pull information from the zookeeper and cache it locally. Without the mechanism of watches they can keep using a stale data or polling from the zookeeper constantly over and over again which is inefficient. The solution is using watches and after the client is notified by a change, pull the data and update the cache.
 
@@ -59,9 +59,11 @@ The session remains active by sending a heartbeat signal to the ZooKeeper servic
 - Configuration storage
 
 5. **Operational Concerns:**
-- deploy an ensemble - 
-- handle scaling - 
-- manage snapshots & transaction logs - 
+- deploy an ensemble - high level steps of installing zookeeper ensemble on vms. jdk is required. Download and unpack zookeeper-<release>.tar.gz.  Create zookeeper configuration file (/usr/local/zookeeper/conf/zoo.cfg) with port 2181, dataDir and server identity. Create a mid file called /usr/local/zookeeper/data/myid with the data of the identity server (if I set the mater will be server 1, and I'm on server 1, the value of the file will be 1). To start a client use command zkCli.sh -server  Slave1:2181.
+- handle scaling - You need to reconfigure the dynamic configuration (depends if you in version 3.5.0 and above). Before a reconfiguration is invoked, the administrator must make sure that a quorum (majority) of participants from the new configuration are already connected and synced with the current leader. To achieve this we need to connect a new joining server to the leader before it is officially part of the ensemble. This is done by starting the joining server using an initial list of servers which is technically not a legal configuration of the system but (a) contains the joiner, and (b) gives sufficient information to the joiner in order for it to find and connect to the current leader. 
+- manage snapshots & transaction logs - The ZooKeeper Data Directory contains snapshot and transactional log files which are persistent copy of the znodes stored by an ensemble. Any changes to znodes are appended to transaction log and when the log file size increases, a snapshot of the current state of znodes is written to the filesystem. This could cause a full disk problem. A manually solution is to run the cleanup script. `./zkCleanup.sh -n 10` where 10 is the number of snaps/logs you want to keep. Of course you can do it in a scheduled or triggers way (using cronjob, airflow, etc).
+- split-brain - example of split brain. zookeeper enseble n=5, quorum=2. partition A (leader, f1, f2). partition B (f3, f4). Keep accepting writes as Q=2 is satisfied. In case of partition A can't communicate with partition B, data written to partition A won't be seen by partition B, causing to split brain. The solution is That the Q=3 and then patition cannot achieve a quorum.
+- latency - can cause by slow disk I/O (because of transaction logs). Java Garbage Collection and to many connection of reads or writes, limit the number of connections. 
 
 
 ### Kerberos – five guiding questions
@@ -106,6 +108,10 @@ Multiple secret keys, third-party authorization, and cryptography make Kerberos 
 - `kdestroy` - The kdestroy utility destroys the user’s active Kerberos authorization tickets by overwriting and deleting the credentials cache that contains them. If the credentials cache is not specified, the default credentials cache is destroyed.
 
 5. **Integration & Troubleshooting:**
+- Integration with kerberos - Each distributed system service instance must be configured with its Kerberos principal and keytab file location for integrating with kerberos.
+- clock skew - Because Kerberos is very time sensitive you should configure your client machines to use one of your domain controllers as an NTP (network time protocole) server. Sync the time with ntp package.
+- wrong realms - If the client is trying to authenticate against a different realm then expected, check the current client realm using klist and then if is really wrong correct it in the /etc/krb5.conf
+- keytab problems - authentication error with keytab - check that the Domain name in the krb5.conf is in uppercase.
 
 
 ### LDAP – five guiding questions
@@ -152,8 +158,19 @@ Ldap schema can also be extended with additional elements. For example, name for
 
 4. **Authentication & Authorization:**
 - Authentication - ldap authentication accomplished through bind operation in a client-server model. The client sends a bind request to the ldap server with the user's username and password, which the client obtains when the user inputs their credentials. f the user’s submitted credentials match the credentials associated with their core user identity that is stored within the LDAP database, the user is authenticated. If the credentials sent don’t match, the bind fails and access is denied. 
-- Authorization - 
+- Authorization - mannaged with the system that uses LDAP authentication.
 
+5. **Deployment & Security:**
+- install/configure an LDAP server - install sldap & ldap-utils packages. open ports, create certificates. Create sysconfig file (for example if kerberos integrates with ldap it will be set in there), start the service `systemctl start slapd`
+- secure it with TLS - enforce TLS by setting the ldap_id_use_start_tls option to true in the /etc/sssd/sssd.conf file and specify the TLS authentication requirement by modifying the ldap_tls_cacert and ldap_tls_reqcert values in the [domain] section. Restart the sssd service.
+- replicate data -\
+There are two ways to use this replication:
+    - Standard replication: Changed entries are sent to the consumer in their entirety. For example, if the userPassword attribute of the uid=john,ou=people,dc=example,dc=com entry changed, then the whole entry is sent to the consumer.
+    - Delta replication: Only the actual change is sent, instead of the whole entry.
+The delta replication sends less data over the network, but is more complex to set up.
+- referral loops troubleshouting - This error generally occurs when the client chases a referral which refers itself back to a server it already contacted. The server responds as it did before and the client loops. This loop is detected when the hop limit is exceeded. This is most often caused through misconfiguration of the server's default referral. The default referral should not be itself.
+- access controls errors - binding to a DN with insufficient privileges. An attribute may not be visible due to access controls.
+(Writing to myself: https://www.openldap.org/doc/admin26/appendix-common-errors.html good article for common errors).
 
     
 ### 🔄 Alternatives
