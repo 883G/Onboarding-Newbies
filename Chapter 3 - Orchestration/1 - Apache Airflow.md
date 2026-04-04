@@ -31,7 +31,11 @@ Think through the following questions; by answering them you’ll touch every ma
 בairflow יש אופרטורים שהם פשוט טמפלט למשימה שמוגדרת מראש שאפשר להגדיר בDAG לדוגמה bashOperator מבצע פקודת bash או pythonOperator יקרא לפונקציית פייתון. זה שונה ממשימה, זה לוגיקה שכבר נכתבה ורק צריכה ארגומנטים. jinja הוא מנוע template שנועד ליצור קוד דינאמי שאפשר למלא בו place holders בעזרת ארגומנטים בהמשך, יכול לשמש לHTML, XML וכו..
 הפעולה של {{ ds }} היא jinja templating ומשתמשים בה ולא בdatetime.now() כי זה ביטוי של תאריך לוגי כלומר מה ה"תחום פעולה" מבחינת זמנים של המשימה, לדוגמה אם המשימה נעשית כל יום הdata interval יתחיל ב00:00 והתאריך הלוגי יתחיל כשהאינטרבל יתחיל.
 הtaskFlow הוא API שעוזר לשמור על הDAGS קלים ונקיים במקום שימוש באוםרטורים בעזרת דקורטור @task , הוא משתמש בXCOMS שהזכרנו מקודם וככה כשיש taskFlow בDAG , אנחנו לא נבצע פונקציה אלא נקבל את התוצאה כXCOM ונוכל להזרים את זה כאינפוט לחלק הבא. בניגוד למתודה רגילה עם הפוש ופול של XCOMS, פה הXCOM לא נשמר בDB ולא צריך לדחוף או למשוך, התוצאה פשוט מועברת ישירות למשימה הבאה. 
-
+הassets הם קבוצות לוגיות של דאטה שהמערכת שומרת כדי להזרים לDAGים הנשמרות לפי URI. הassets נשמרים במטא-דאטה של איירפלאו והם לא מוצפנים. בהצהרת @asset אנחנו יוצרים את הנכס עם שם לשם פונקציה, DAG שהמזהה שלו הוא שם הפונרציה ומשימה בDAG שהמזהה שלה הוא שם הפונקציה. הDAG שהוא מקבל את הנכס כאינפוט מסויים בעצם מצהיר שהוא משתמש בדאטה הזה, וכך גם המשימות תלויות בהם. כלומר DAG או משימה אחת יכולים לעדכן את הasset וDAG אחר יתוזמן כל פעם שהasset הזה מעודכן באופן קבוע. הassets רצים בtop-level-DAG code כלומר לא רק כשDAG רץ, הם נטענים כל פעם שאיירפלאו מסתכלת על הקובת DAG הנוכחי.
+חשוב שרק הגדרות כמו assets ירוצו שם ולא קוד או פעולות ארוכות , כי איירפלאו מסתכלת בקובת DAG כל כמה שניות ותטען אותם כל כמה שניות מה שיצור עומס ויאט את המערכת.
+בנוסף לDAG יש dag processor שאחראי על לעשות parsing לקובץ DAG כל כמה שניות וזה יאט אותו משמעותית אם יהיו פעולות שלוקחות זמן רב. 
+איירפלאו מתחזק connections, שזה מה שמאפשר לו לייבא ולדחוף נתונים ממערכות חיצוניות שמתחברים אליהם, זה בעיקרון סט של פרמטים כמו סיסמה ושם משתמש עם מזהה לקונקשן וסוג המערכת אליה הוא מתחבר. הקונקשנים יכולים להיות מוגדרים במשתנים הגלובלים בעזרת המשתנה  AIRFLOW_CONN_{CONN_ID} שמגדיר קונקשן חדש, או בקוד JSON או בפורט URI. הקונקשנים מרוזלבים רק בזמן ריצה ולא נשמרים בטבלת מטא-דאטה. הקונקשנים לא דומים לאופרטורים, הם בשביל איחסון של נתונים על חיבור למערכת חיצונית בעוד שאופרטורים נועדו להיות טמפלט למשימות.
+הhooks הוא interface שמאפשר לדבר עם מערכות חיצוניות בלי לכתוב קוד או להשתמש בספריות. הם משתמשים בקונקשנים כדי לגשת לcredentials ששמורים אצלם והם מהווים סוג של "אבן בנייה" לאופרטורים.
 
 2. **Airflow Backend & Architecture:** What are the different components in the airflow architecture? Define the roles of each component. Why is the Executor considered a mechanism/logic rather than a standalone service? Explain the Deferrable Operator. Which component makes these possible, and how do they save money/resources in a Big Data stack? What are Airflow Providers?
 
@@ -52,10 +56,16 @@ Think through the following questions; by answering them you’ll touch every ma
 
 3. **Airflow Workflow Synchronization:** How were DAGs typically synchronized to the Scheduler and Workers in Airflow 2? What where the risks with the approach? How was this solved in Airfloe 3? How did it solve the main issue with the Airflow 2 approach? What are the other advantages DagBundles give us?
 
+הDAGים מסונכרנים לscheduler ולworkers בעזרת הקבצי DAG שלכל הקומפננטים יש גישה אליהם. הקבצי DAG יכולים להישמר בdocker image או בעזרת git-sync שבו הpod של הdag-proccessor יעשה sync לקובץ DAG מהריפוסיטורי בגיט לPVC כל כמה שניות והפודים האחרים יקראו את זה. הבעיה היא שזה יצר בעיות , לא תמיד הפודים היו מסונכרנים לפעמים היו להם גרסאות שונות של DAGים וגם זה יוצר עומס על השרתים בגיט, כל פעם כל פוד עשה pull וparsing לDAG. בairflow 3 פתרו את זה בשיטה אחרת, הDAG processor שומר את הDAG בDB , הscheduler עובד מולו והworkers מקבלים רק את מה שהם צריכים להריץ. כלומר, הם לא טוענים את כל הקובץ DAG כל פעם מחדש (משפר ביצועים) וגם יש גרסה אחת בלבד של הקובץ ולכן יש עקביות בניגוד לאיירפלאו 2. נןסף על כך במקום להשתמש בdag folder כמו שהיה באיירפלאו 2, משתמשים בdag bundle שהוא יכול למפות את הDAGים בכל מקום (ריפוסיטורי בגיט, מערכות חיצוניות ועוד) וגם את הקבצים הקשורים (קונפיגורציה וכו) והוא מתנהל עם version control כדי שבזמן עבודה עליו גם אם הDAG שונה באמצע עדיין נעבוד על אותה גרסה. הDAGים כבר לא צריכים להיות באותו מקום בדיסק ולכן אפשר לעשות scaling הרבה יותר בקלות.
+
 4. **Airflow Task Lifecycle:** What is the full flow of a dag from being written to being run? What happens when the DAG Processor encounters your file? How is Jinja parsing different in dag processing than execution time? At which state does the Scheduler stop managing the task and hand it over to the Executor? What is the flow when a task gets to a worker? when does it become running?
+
+הDAG נכתב בפייתון, כולל dependenciesת אופרטורים וכו.. והDAG הזה נשמר כקובץ פייתון בDAG bundle.
+
 
 5. **Airflow Critical Sections:** What is the "Critical Section" of the Scheduler? Describe the three primary "loops" or critical sections (DagRun Creation, Task Instance Creation, Task Scheduling).
 
+הcritical section הוא סקשן בו הtaskInstances עוברים ממצב של scheduled לתור לexecutor ושם מתנהל השליטה בחיבורים מקביליים ובגבולות הpool, שם יש lock על רשומה כל פעם בpool table כדי למנוע התנגשויות.
 ### Real-World Context
 Rather than focusing on one technology, think about how data workflows are shceduled, and think about when running and ocrhestrating data workflows.
 
