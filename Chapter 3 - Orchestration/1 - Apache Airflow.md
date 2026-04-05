@@ -61,11 +61,20 @@ Think through the following questions; by answering them you’ll touch every ma
 4. **Airflow Task Lifecycle:** What is the full flow of a dag from being written to being run? What happens when the DAG Processor encounters your file? How is Jinja parsing different in dag processing than execution time? At which state does the Scheduler stop managing the task and hand it over to the Executor? What is the flow when a task gets to a worker? when does it become running?
 
 הDAG נכתב בפייתון, כולל dependenciesת אופרטורים וכו.. והDAG הזה נשמר כקובץ פייתון בDAG bundle.
-
+הDAG proccessor סרק את הbundles כל חמש דקות וקורא את הקובץ DAG ויוצר אובייקטי DAG, עושה להם serialization וparsing ושומר בטבלת מטא-דאטה.
+הscheduler עושה re-parsing כל הזמן כדי למצוא שינויים וסורק את הדאטה-בייס כדי לבדוק אם יש DAG שהגיע זמנו לביצוע, אם כן הוא יוצר DagRun במצב running בדאטה בייס.
+הscheduler מוצא משימות שמוגנות לביצוע (אין תלויות לדוגמה) ושם אותם במצב queued (אצל הbroker נגיד redis) ושולח לexecutor שהוא נגיד קוברנטיס\סלרי וכו והוא קובע איך ואיפה המשימה מתבצעת.
+הtaskים המוכנים לוקחים משימות מהתור , שמים אותם במצב running ומבצעים אותם. ברגע שהטאסק סיים הוא מעדכן את המצב לsuccess/failed.
+בשימוש בjinja templeting, הtempleting לא באמת מבוצע עד הזמן ריצה, כלומר בdag processing אין לנו מידע כמו התאריך לוגי או הXCOMS וכו.. זה מפחית בקשות לDB כי הparsing קורה כל 30 שניות בדיפולט.
 
 5. **Airflow Critical Sections:** What is the "Critical Section" of the Scheduler? Describe the three primary "loops" or critical sections (DagRun Creation, Task Instance Creation, Task Scheduling).
 
-הcritical section הוא סקשן בו הtaskInstances עוברים ממצב של scheduled לתור לexecutor ושם מתנהל השליטה בחיבורים מקביליים ובגבולות הpool, שם יש lock על רשומה כל פעם בpool table כדי למנוע התנגשויות.
+לכל scheduler יש critical section שהוא איפה שהוא מבצע חישובים בזיכרון ומעדכן את הDB להעביר משימה מscheduled לqueued.
+הcritical sections הוא חלק מהscheduling loop והוא משתמש בrow-level lock על הpool table כדי לוודא שרק scheduling process אחד יכול להיות עליו בכל זמן.
+זה רק אחד משלושת הלופים העיקריים, יש גם את לופ יצירת הdagrun, שבו הscheduler בודק אם יש DAGים חדשים להריץ, לפי האינטרבל והstart_date, ואם כן הוא יוצר DAGRUN חדש בDB של המטא דאטה ושם אותם במצב running. יש הגבלה על מספק הDAGים שאפשר ליצור בלופ כדי שיהיה זמן גם לתזמון המשימות.
+הלופ השני הוא יצירת task instance שבו הscheduler מזהה משימות שהתלויות שלהן הושלמו או אין תלויות ויוצר אינסטנסים שלהן ושורות מתאימות בדאטה בייס ומעדכן אותם לSCHEDULED.
+הלופ השלישי הוא הcritical section שבו נועלים סלוט כדי לחשב משאבים ולודא שהם מספקים את המשימה, אם כן שולחים לאקסקיוטור.
+
 ### Real-World Context
 Rather than focusing on one technology, think about how data workflows are shceduled, and think about when running and ocrhestrating data workflows.
 
