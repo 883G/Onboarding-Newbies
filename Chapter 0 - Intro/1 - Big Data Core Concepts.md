@@ -118,15 +118,15 @@ Change Data Capture (CDC) is a technique used to detect and record changes such 
 15. **Data catalog**\
 A centralized inventory that stores metadata related to the data assets which can be datasets, tables, databases and files. It provides data discovery and search functionalities based on keywords, tags, filters and more. Data lineage, data governance support and collaboration features. Data catalog collects and indexes the metadata from a variety sources.
 
-16. **Data lifecycle management**
+16. **Data lifecycle management**\
 A data as a lifecycle, with several phases:\
 collection, storage, share, use, archive, deletion.\
 With DLM you achive availability, integrity and security. 
 
-17. **Data lineage**
+17. **Data lineage**\
 Data lineage is the process of recording, tracking and visualizing data over time. Uncovers the life cycle of data, it aims to show the complete data flow, from start to finish. Validate data accuracy and consistency to ensure data quality and discover anomalies. Data lineage techniques can be by tagging by pattern and more.
 
-18. **Store‑first approach**
+18. **Store‑first approach**\
 The approach of "throwing" the raw data to a storage service (for example s3), without any transformations (ELT). It provides a single source of truth for the raw data which can re-extracted / reprocess in case of pipline failure or data corruption. In addition it enables immediate access to the data.
 
 19. **Data serialization**\
@@ -168,6 +168,31 @@ Talk through the following with your mentor:
 
 ## Q&A Session :raising_hand:
 Participate in an open Q&A session with your mentor to address any questions about specific tools, technologies, or practices.
+
+1. Stream processing usecases:
+- Fraud Detection - process of identifying fraudulent activities or attempts. Stream processing allows financial institutions to monitor transactions in real time. This helps identify and flag suspicious activities immediately, which helps in preventing fraud effectively. Pros of real time insights, but increase complexity.
+- Network Monitoring - Network monitoring tools use stream processing to analyze network traffic and performance, ensuring optimal operation and identifying potential issues. By providing real-time insights into network performance, stream processing allows for more efficient troubleshooting and quicker resolution of network issues. Pros of event-driven operations, but limited historical context.
+- Healthcare Monitoring Systems - use stream processing to analyze patient data in real-time, By providing real-time alerts and notifications, stream processing can increase patient safety, improve patient outcomes, and reduce costs.\
+
+2. Batch processing usecases:
+- End of day processing - Financial institutions rely on batch processing to compile and process transactions accumulated throughout the day. This enables the generation of comprehensive reports used for compliance, auditing, and performance analysis.
+Cons of delayed outcomes, but very cost effective resource usage once in a day.
+- Payroll processing - Organizations handle payroll in batches by collecting employee hours, calculating compensation, and issuing payments in one streamlined process. Streamlined workflows.
+- Data warehousing - Organizations use batch processing to update data warehouses periodically. Large volumes of data are collected and processed in batches, ensuring that the data warehouse is up-to-date with the latest information for analytical purposes.
+
+3. Data warehousing is the process of collecting, integrating, storing and managing data from multiple sources in a central repository. It enables organizations to organize large volumes of current and historical data for efficient querying, analysis and reporting. Data warehouse technologies: azure microsoft, snowflake, postgresql.
+
+4. A data lakehouse is a modern data architecture that combines the scalability of a data lake with the structure and performance of a data warehouse. It allows organizations to store raw and structured data in one system while enabling fast analytics, governance, and machine learning on large datasets.\
+At its core, the data lakehouse is not a single product but an architectural pattern. It blends the scalability and openness of data lakes with the transactional reliability and governance of data warehouses. You can combine iceberg with trino to achieve  data lakehouse same as spark with snowflake but there is no one technology which can provide the full capabilities of data lakehouse.
+
+5. Linux File Hierarchy structure is the name that defines the directory structure and directory contents in linux and the data.\
+Inode - index node is the data structure which stores metadata on file or directory (permissions, timestamps, file size and types, access control settings, etc).
+
+6. Additional File Systems:
+- NTFS stands for New Technology File System, the default file system for modern Windows versions.
+- FAT32 is the 32-bit version of the file allocation table (FAT) file system. A file system specifies the protocol for storing and organizing data on a hard drive with file names and certain permissions. Before the advent of the new technology file system (NTFS). FAT32 is still a necessary file system for USB drives and computers with operating systems not compatible with exFAT or NTFS.
+
+7. The information about file permissions exists in the inode.
 
 ## Action Items
 - Identify areas you want to explore more deeply.

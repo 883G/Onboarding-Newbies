@@ -179,6 +179,8 @@ Assignment: You are required to research and write a comparative analysis betwee
 - Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
 - Goal: You must be able to justify why the department uses this tool for our specific environment.
 
+### 🔄 Alternatives
+
 ### 🎯 User Story & Scenario
 Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
 - Deliverable: A written summary example/story (two paragraphs approx.).

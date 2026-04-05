@@ -17,6 +17,8 @@ Estimated Duration: 1 Day
 - Day 1: Spent this day as your mentor instructs you;
     - Have a Q&A session right after
 
+    
+
 ## Overview
 These are the high‑level areas you should be familiar with when starting on our platform.  The actual content will be explored during the mock training session with your mentor; use the list above as a checklist.
 
@@ -68,14 +70,18 @@ ACLs (acsses control lists) provide an extended permission mechanism that allows
 Checking a specific connection to server and port:\
 telnet <hostname | ip > <port>\
 Checking open ports:
-- netstat -lntu (linux networking subsystem command)
+- netstat -tuln (linux networking subsystem command) where:
+The -t flag is used to show TCP ports.
+The -u flag is used to show UDP ports.
+The -l flag is used to only show open ports.
+The -n flag is used to show IP addresses and port numbers.
 - ss -lntu (socket tool command)
 - sudo lsof -i -P -n | grep LISTEN
 
 10. מה זה RAID?\
 RAID is a technique that combines multiple hard drives or SSDs into a single system to improve performance, data safety or both. If one drive fails, data can still be recovered from the others.
 I'll explain the most popular levels:
-- RAID 0 - striping. splitting data into smaller "blocks" and spreading them across multiple disks. Enables parallel read/write operations but provides no redundancy or fault tolerance.
+- RAID 0 - stripping. splitting data into smaller "blocks" and spreading them across multiple disks. Enables parallel read/write operations but provides no redundancy or fault tolerance.
 - RAID 1 - mirroring. Creating an identical copy of each data block on seperate disks.
 - RAID 10 - first mirrors the data (RAID-1) and then stripes across mirrored pairs (RAID-0).
 - RAID 5 - block level stripping with distributed parity (a calculated value is stored to allow data recovery in case of failure)
