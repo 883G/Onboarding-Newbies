@@ -59,8 +59,7 @@ Tasks:
    - port (e.g. 8000)  
    - replicas  
 4. Define service:
-   - ClusterIP type  
-   - expose API port  
+   - expose ingress 
 5. Move configuration into values.yaml:
    - image repository and tag  
    - replica count  

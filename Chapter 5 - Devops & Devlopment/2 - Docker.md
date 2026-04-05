@@ -1,10 +1,10 @@
 # Docker Foundations
 
-Docker הוא כלי שמאפשר להריץ אפליקציות בתוך סביבות מבודדות שנקראות containers.  
-המטרה היא לאפשר הרצה עקבית של קוד בין סביבות שונות (פיתוח, בדיקות, פרודקשן).
+Docker is a platform for running applications in isolated environments called containers.
 
-במקום להתקין תלויות ישירות על מערכת ההפעלה, אורזים הכל בתוך image  
-שניתן להריץ אותו בכל מקום שיש בו Docker.
+It introduces a standardized way to package and execute software across different environments, without depending on the underlying system configuration.
+
+Instead of installing dependencies directly on a machine, applications are bundled into portable units that can run consistently wherever Docker is available.
 
 ---
 
@@ -52,10 +52,9 @@ Day 1 – Docker Core Concepts
    - Volumes vs bind mounts  
    - When to use persistent storage
 
-4. **What are the security and isolation considerations in Docker?**  
+4. **What are the security and isolation risks in Docker?**  
    Discuss:
    - Namespaces and cgroups (high-level)  
-   - Container isolation vs VM isolation  
    - Running containers as root vs non-root  
    - Image vulnerabilities and best practices
 

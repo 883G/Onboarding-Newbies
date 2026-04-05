@@ -45,7 +45,7 @@ To complete this assignment, you must adhere strictly to our team's development 
 1. **Clean Commits:** Work with clean, descriptive commits. 
 2. **Branching:** Work systematically with Git branches. Create a new branch for your feature (e.g., `feature/post-order-endpoint`).
 3. **Pull Requests:** Open a PR per feature. Do not push directly to `main`.
-4. **Code Review:** You must request a Code Review (CR) on your PR before merging. Address all comments before completing the merge.
+4. **Code Review:** You must request a Code Review (CR) on your PR before merging. Address all comments and wait for approval before the merge.
 
 ### 📝 Commit Message Standard
 Your commit messages must follow this exact convention:

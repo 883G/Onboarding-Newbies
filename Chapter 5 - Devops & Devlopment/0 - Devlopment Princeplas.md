@@ -29,7 +29,7 @@ Day 2 – Python and API Foundations
 ### 📚 Resources
 Use the resources below and practice researching additional information online.
 
-- [Clean Code – Robert C. Martin](https://ptgmedia.pearsoncmg.com/images/9780132350884/samplepages/9780132350884.pdf)
+- [Clean Python - Sunil Kapil](hhttps://edu.anarcho-copy.org/Programming%20Languages/Python/Clean%20Python.pdf)
 - [SOLID Principles Overview](https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
 - [Python Official Documentation](https://docs.python.org/3/)
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
@@ -53,8 +53,7 @@ Use the resources below and practice researching additional information online.
 3. Explain the **KISS principle** and its importance in software design.  
    Why do overly complex systems tend to fail over time?
 
-4. What are the differences between **procedural programming** and **object-oriented programming (OOP)**?  
-   When might each paradigm be useful?
+4. What are the most common **paradigms / programming** (ex. Object Orianted) styles, what are the differences and when should each be used
 
 5. What is **Test Driven Development (TDD)**?  
    Explain the development cycle and how it improves code reliability.
@@ -84,7 +83,7 @@ Use the resources below and practice researching additional information online.
 
 ---
 
-# MPython & API Foundations
+# Python & API Foundations
 
 ### ❓ Guide Questions
 
@@ -95,10 +94,13 @@ Use the resources below and practice researching additional information online.
 2. What is a **REST API**?  
    Explain the core concepts such as resources, HTTP methods, and stateless communication.
 
-3. Compare **FastAPI** and **Flask**.  
+3. Compare **Python 2** and **Python 3**.
+   Explain the key differences in syntax, behavior, and long-term support, and why modern systems standardize on Python 3.
+
+   **Bonus:** Compare **FastAPI** and **Flask**.
    What are the architectural differences and when would you use each framework?
 
-4. What are **tests** in software development, and why are they important?  
+4. What are e2e testings? What are **tests** in software development, and why are they important?  
    Explain unit tests, integration tests, and the role of automated testing.
 
 5. What are **mocks**, and why are they used in testing?  
@@ -129,8 +131,5 @@ Deliverable:
 Two short paragraphs describing:
 
 - A realistic scenario where a Python service is required.
-- How the service exposes a **REST API** or **CLI interface**.
 - How testing (pytest), mocking, and clean code practices would be applied.
 
-Also describe briefly the **development workflow**:
-PR → Code Review → Merge → Deployment.
