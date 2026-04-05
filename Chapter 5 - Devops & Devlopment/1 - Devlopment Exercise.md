@@ -32,8 +32,6 @@ To start, you must **clone the entire repository** to your local machine. Do not
    
 2. **Write Tests with Mocks:**
    Some basic tests are already written in `tests/test_main.py`. However, most are missing. You need to write comprehensive tests for your new `POST` endpoint. 
-   *Important:* You must use **Mocks** to simulate the database/payment saving process so that the tests run in isolation without needing a real database.
-
 ---
 
 # Module 2 – Development Workflow & Git Standards
