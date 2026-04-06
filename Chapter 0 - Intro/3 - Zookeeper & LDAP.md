@@ -200,3 +200,16 @@ Review your answers with your mentor and discuss any unclear points.  Relate eac
 - [Kerberos: The Network Authentication Protocol](https://web.mit.edu/kerberos/)
 - [LDAP: RFC 4511 Overview](https://datatracker.ietf.org/doc/html/rfc4511)
 - *Hadoop Security* chapter in any modern Hadoop book for integration examples.
+
+## Q&A Answers
+1. Group membership is a term used to describe the group to which a user belongs. Descibed by the attribute `memberOf`.
+2. jwt vs ldap - a JSON Web Token is a way to securely transfer information over the internet. It provides a secure method for authenticating users without storing session information on the server. Used in applications to verify a user's identity.\
+In contrast to LDAP which helps find and manage user information by organizing it in directories. It allows centralized management of users, making it easier to scale large systems.\
+We need LDAP and not only JWT because ldap is for large scale organized like the hierarchy of an organization. LDAP used to verify user identity while JWT maintain the verified session securely, together they cover both.
+3. keytab - A keytab (short for “key table”) stores long-term keys for one or more principals. The keytab file contains pairs of Kerberos principals (identifiers for users or services) and encrypted keys. A keytab can be displayed using the klist command with the -k option. Keytab files are commonly used in system administration tasks where automated processes need to authenticate to services without user interaction. Keytab files are typically stored on the file system of the machine that needs to perform the authentication. krb5.keytab is the standart keytab file for linux.
+krb5.conf file contains Kerberos configuration information, including the locations of KDCs and admin servers.
+4. What happened when the KDC is down?\
+kerberos is stateless, because all the required authentication data is carried inside the tickets themselves. So when the KDC is down you cant get new tickets (rather a TGT or a service ticket of course) but you can use the ticket you already have. But it's important to remember that tickets have expiration time so you can use them until the expiration time and hopefully to manage the KDC.
+5. ZXID - The zxid represents the order in which the writes are applied on all replicas, the zookeeper transaction id. In leader election, the server with the highest ZXID wins.
+6. What does happen when the master server failed in a middle of writing operation? According to the ZAB protocol if the leader failes before quorum the write will be deleted, otherwise the write will be commited.
+7. When a leader doesn't have a quorum, it becomes disconnected and a new leader election will be performed.
