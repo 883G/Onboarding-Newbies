@@ -169,6 +169,8 @@ Talk through the following with your mentor:
 ## Q&A Session :raising_hand:
 Participate in an open Q&A session with your mentor to address any questions about specific tools, technologies, or practices.
 
+## Q&A Answers
+
 1. Stream processing usecases:
 - Fraud Detection - process of identifying fraudulent activities or attempts. Stream processing allows financial institutions to monitor transactions in real time. This helps identify and flag suspicious activities immediately, which helps in preventing fraud effectively. Pros of real time insights, but increase complexity.
 - Network Monitoring - Network monitoring tools use stream processing to analyze network traffic and performance, ensuring optimal operation and identifying potential issues. By providing real-time insights into network performance, stream processing allows for more efficient troubleshooting and quicker resolution of network issues. Pros of event-driven operations, but limited historical context.
