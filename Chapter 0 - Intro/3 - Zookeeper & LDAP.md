@@ -31,12 +31,95 @@ Estimated Duration: 1 Day
 4. **Common Patterns:**  Explain how leader election, distributed locks, and configuration storage are implemented on top of Zookeeper primitives.
 5. **Operational Concerns:**  Outline how to deploy an ensemble, handle scaling, manage snapshots and transaction logs, and troubleshoot typical issues (e.g., split‑brain, latency).
 
+### Zookeeper - Answers
+
+1. **Architecture & Data Model:**\
+Apache zookeeper is a distributed cootdination service for managing configuration, synchronization and leader election across distributed systems. Its an external tool that distributed systems can use to recover from partial failures in the cluster.
+- Zookeeper ensamble - The group of servers (at least three) is called an ensemble. All servers in the ensemble keep a copy of the data. The data contains transaction logs and snapshots which are used for synchronization purposes and data watches.
+- Leader role - A Leader is a server node that is elected at startup and performs automatic recovery if a node fails.
+- Followers role - All the server nodes except the leader, are referred to as followers. The followers share their status with each other for ZooKeeper replication.
+- Zookeeper data model - The Zookeeper stores the data in the memory but it follows a file system like hierarchichal namespace starting from the "/". In the namespace there are nodes called znodes which can store data or has a child znode (because its a tree, each level is a zookeeper node in the tree).
+- Znode structure - znode has a stat structure contains data (optional) and meta data. Data - string. max 1Mb recommended to be much small. Metadata - included version number (how many time the data has changed),acl (access control list which limits who can read/write data), timestamps (ctime, creation time & mtime, last modified time).
+
+2. **Consistency & Watches:**
+- Zookeeper guarantee sequential consistency - sequential consistency means that updates from a client will be applied in the order that they were sent. ZooKeeper uses a special atomic messaging protocol called ZAB, so the protocol guarantees that updates either succeed or fail. In Zookeeper every write goes through the leader and leader generates a transaction id (called zxid) and assigns it to this write request. The zxid represents the order in which the writes are applied on all replicas. A write is considered successful if the leader receives the ack from the majority.
+- Watches - simple mechanism for the clients (registered by the client when there is a session) to get notifications about the changes in a ZooKeeper ensemble. Any client can set a watch on data and will be notified once it detects the changes (not the information of the change only there is a change and it's type). Examples of changes can be configuration changes, leader changes, new znode child, etc.
+- one-time triggers - the watches of the zookeeper are one-time triggers. If I get a watch event and I want to get notified of future changes, I must set another watch. Changes to that znode trigger the watch and then clear the watch. For example, if a client does a getData("/znode1", true) and later the data for /znode1 is changed or deleted, the client will get a watch event for /znode1. If /znode1 changes again, no watch event will be sent unless the client has done another read that sets a new watch. Zookeeper creates one-time trigger watches and not permanent watches because its more simple for distributed systems and prevents many problems and unreliability if the client has disconnected for examle.
+- Prevent cache invalidations - Clients pull information from the zookeeper and cache it locally. Without the mechanism of watches they can keep using a stale data or polling from the zookeeper constantly over and over again which is inefficient. The solution is using watches and after the client is notified by a change, pull the data and update the cache.
+
+3. **Sessions & Failure Handling:**
+- Zookeeper session - The session is then created between a client and server by assigning a unique id to the client. The lifetime of an ephemeral znode is as long as the session is active, when the session has closed or expired the ephemeral znode automatically will be deleted. (Thats why ephemeral znodes cant have a child znodes)
+- Heartbeats - There is a timeout period for a session which is specified by the application. The timeout depends on the nature of the application and cluster environment. The session gets expired automatically when the connection remains idle for more than the specified timeout period.
+The session remains active by sending a heartbeat signal to the ZooKeeper service. 
+- In case a session expires, the authentication fails, or a connection gracefully closes.
+
+4. **Common Patterns:**
+- Leader election - All servers in an ensemble participate in the leader election algorithm with the LOOKING state.  The idea is to have a znode, say "/election", such that each znode creates a child znode "/election/guid-n_" with both flags SEQUENCE|EPHEMERAL. With the sequence flag, ZooKeeper automatically appends a sequence number that is greater than anyone previously appended to a child of "/election". The process that created the znode with the smallest appended sequence number is the leader.
+- Distributed locks - distributed systems in typical scenarios needs to ensure that only one node of the cluster is allowed to carry out an operation in a time. for example, write to a shared database or a file. In this case, a session is created and then clients create an ephemeral + sequential znode with increasing counter and when they are the smallest number in the counter (gets a notification by the watch) thay proceeding their operations.
+- Configuration storage
+
+5. **Operational Concerns:**
+- deploy an ensemble - high level steps of installing zookeeper ensemble on vms. jdk is required. Download and unpack zookeeper-<release>.tar.gz.  Create zookeeper configuration file (/usr/local/zookeeper/conf/zoo.cfg) with port 2181, dataDir and server identity. Create a mid file called /usr/local/zookeeper/data/myid with the data of the identity server (if I set the mater will be server 1, and I'm on server 1, the value of the file will be 1). To start a client use command zkCli.sh -server  Slave1:2181.
+- handle scaling - You need to reconfigure the dynamic configuration (depends if you in version 3.5.0 and above). Before a reconfiguration is invoked, the administrator must make sure that a quorum (majority) of participants from the new configuration are already connected and synced with the current leader. To achieve this we need to connect a new joining server to the leader before it is officially part of the ensemble. This is done by starting the joining server using an initial list of servers which is technically not a legal configuration of the system but (a) contains the joiner, and (b) gives sufficient information to the joiner in order for it to find and connect to the current leader. 
+- manage snapshots & transaction logs - The ZooKeeper Data Directory contains snapshot and transactional log files which are persistent copy of the znodes stored by an ensemble. Any changes to znodes are appended to transaction log and when the log file size increases, a snapshot of the current state of znodes is written to the filesystem. This could cause a full disk problem. A manually solution is to run the cleanup script. `./zkCleanup.sh -n 10` where 10 is the number of snaps/logs you want to keep. Of course you can do it in a scheduled or triggers way (using cronjob, airflow, etc).
+- split-brain - example of split brain. zookeeper enseble n=5, quorum=2. partition A (leader, f1, f2). partition B (f3, f4). Keep accepting writes as Q=2 is satisfied. In case of partition A can't communicate with partition B, data written to partition A won't be seen by partition B, causing to split brain. The solution is That the Q=3 and then patition cannot achieve a quorum.\
+To prevent split brain:\
+ensamble n=3 q=2\
+ensamble n=4 q=3\
+ensamble n=5 q=3\
+ensamble n=6 q=4\
+ensamble n=7 q=4\
+Conclusion - to prevent split brain the quorum is the same for two consecutive numbers which are even and then odd but with even number the difference between the ensamble N and the Q will be smaller which will charge more ack servers on each operation, causing slower performance.
+- latency - can cause by slow disk I/O (because of transaction logs). Java Garbage Collection and to many connection of reads or writes, limit the number of connections. 
+
+
 ### Kerberos – five guiding questions
 1. **Protocol Flow:**  Walk through the Kerberos authentication flow from initial login (kinit) to obtaining service tickets.  Include AS, TGS, and ticket caches.
 2. **Key Concepts:**  Define principals, realms, KDC components, tickets (TGT vs service ticket), and how encryption keys are derived and used.
 3. **Security Properties:**  Why is Kerberos considered secure?  Discuss mutual authentication, replay protection, time sensitivity, and the role of the ticket lifetime.
 4. **Administration & Tools:**  What are common Kerberos administration tasks?  Describe commands like `kadmin`, `kinit`, `klist`, `kdestroy`, and how to add principals or change passwords.
 5. **Integration & Troubleshooting:**  How do services (Hadoop, HTTP, SSH) integrate with Kerberos?  What are typical issues (clock skew, wrong realm, keytab problems) and how do you diagnose them?
+
+### Kerberos - Answers
+
+1. **Protocol Flow:**\
+KDC - key distribution server\
+TGS - ticket granting server\
+SS - service server\
+AS - authentication server\
+TGT - ticket granting ticket
+    1. Client Authentication Request: The client sends an authentication request to the AS, encrypted with the user’s password hash.
+    2. Ticket Granting Ticket (TGT): If the client is authenticated successfully, the AS issues a Ticket Granting Ticket (TGT) and a session key. The TGT is encrypted with the KDC’s secret key.
+    3. TGT Request: The client sends the TGT to the TGS to request access to a specific service.
+    4. Service Ticket: If the TGT is valid, the TGS issues a service ticket and a session key for the requested service. The service ticket is encrypted with the service’s secret key.
+    5. Service Request: The client sends the service ticket to the application server along with an authenticator (encrypted with the session key) to prove its identity.
+    6. Service Access: If the service ticket and authenticator are valid, the application server grants access to the requested service.
+    A Kerberos ticket cache is a secure, local storage area on a client machine where a user’s Kerberos tickets and session keys are temporarily stored.
+
+2. **Key Concepts:**
+- principle - a unique identity. either a user or a service, an application.
+- realms - A keberos realm is the domain, the group of systems which kerberos has the authority to authenticate a user to a service. You can have multiple realms and you can interconnect them. within a realm you have principles.
+- KDC components - The heart of kerberos. There are two servers in the KDC. The authentication server (AS, confirms a known user is making an access request) and the ticket granting server (TGS, confirms that the user is making an access request to a known service)
+- tickets (TGT vs service ticket) -\
+TGT - Once the KDC verifies the user’s identity, it sends back a TGT, which is a ticket granting ticket. This ticket is encrypted with the KDC’s master key and contains a session key that can be used to request access to other services on the network.\
+Session key - key that is used to encrypt all communications between the client and server. The session key is encrypted using the KDC’s master key and sent with the TGT to the client. The client then decrypts the session key using its own password, allowing it to use the key to encrypt messages sent to the server.
+- reusable authentication - Kerberos authentication is durable and reusable. Each user will only have to be verified by the system once. Then throughout the lifetime of the ticket, the user can authenticate without the need to reenter personal information.
+
+3. **Security Properties:**\
+Multiple secret keys, third-party authorization, and cryptography make Kerberos a secure verification protocol. Passwords are not sent over the networks, and secret keys are encrypted, making it difficult for attackers to impersonate users or services. You also configure a ticket lifetime, after the end of it the ticket can no longer be used. replay attack prevention - the timestamp mechanism effectively prevents attackers from reusing captured authentication data. Even if an attacker intercepts an Authenticator, it becomes useless after the time window expires.
+
+4. **Administration & Tools:**
+ - `kinit` - kinit obtains and caches an initial ticket-granting ticket for principal.
+ - `kadmin` - maintenance of Kerberos principals, password policies, and service key tables (keytabs). For example to add priciple of LDAP -> kadmin: addprinc ldap/<hostname> or adding user name bublick -> kadmin: ank -policy users bublick and give hime administrator permissions -> kadmin: ank -policy admin bublick/admin.
+ - `klist` - klist lists the Kerberos principal and Kerberos tickets held in a credentials cache, or the keys held in a keytab file.
+- `kdestroy` - The kdestroy utility destroys the user’s active Kerberos authorization tickets by overwriting and deleting the credentials cache that contains them. If the credentials cache is not specified, the default credentials cache is destroyed.
+
+5. **Integration & Troubleshooting:**
+- Integration with kerberos - Each distributed system service instance must be configured with its Kerberos principal and keytab file location for integrating with kerberos.
+- clock skew - Because Kerberos is very time sensitive you should configure your client machines to use one of your domain controllers as an NTP (network time protocole) server. Sync the time with ntp package.
+- wrong realms - If the client is trying to authenticate against a different realm then expected, check the current client realm using klist and then if is really wrong correct it in the /etc/krb5.conf
+- keytab problems - authentication error with keytab - check that the Domain name in the krb5.conf is in uppercase.
+
 
 ### LDAP – five guiding questions
 1. **Directory Structure:**  Explain how LDAP organizes information in a hierarchical tree (DN, RDN), common object classes, and attributes for users and services.
@@ -45,11 +128,65 @@ Estimated Duration: 1 Day
 4. **Authentication & Authorization:**  How is LDAP used for authentication and authorization?  Cover binding with credentials, password policies, and group lookups.
 5. **Deployment & Security:**  Outline how to install/configure an LDAP server (e.g., OpenLDAP), secure it with TLS, replicate data, and troubleshoot common errors (referral loops, access controls).
 
+### LDAP – Answers
+
+1. LDAP Structure - An LDAP directory has a hierarchical tree-like structure (DIT) and consists of one or more entries. The entries generally represent real world entities such as organizations, users and so on. For an enterprise, for example, the top or root of the tree could represent the organization itself.\ 
+entry - a node in the tree
+DN - the distinguished name, which contains a path through the directory information tree (DIT) for LDAP to navigate through (For example, cn=Susan, ou=users, o=Company).\
+RDN - Relative Distinguished Name, each component in the path within the DN (For example, cn=Susan)
+LDAP components -\
+dc - domain access component, dns.\
+o - organization name.\
+ou - organizational unit (ou=users or ou=group).\
+cn - common name (cn=developers, cn=some-name).\
+attributes - key value rows which are schema defined that belongs to an entry.\
+Object classes - are used to indicate what type of object is represented by an entry, and to specify the types of attributes that may be included in the entry.
+- Abstract classes: are those that may specify a set of required and optional attribute types. Needs to be extended.
+- Structural classes are those that specify the main type of object that an entry represents (e.g., a user, a group, a device, etc.). Structural classes may inherit from abstract or structural object classes, but not from auxiliary classes. 
+- Auxiliary classes - may be used to provide information about additional characteristics for an entry. For example, the strongAuthenticationUser object class.\
+examples of user attributes - cn, mail, uid.\
+examples of service attributes - host, authorizedService, description.
+
+2. **Protocols & Operations:**\
+Basic Ldap operations - 
+- bind - Authenticate a user and change the identity of the client connection. 
+- search - Retrieve entries that match a given set of criteria.
+- Create a new entry in the directory. 
+- delete - Remove an entry from the directory.\
+simple vs SASL bind - In simple authentication, the account to authenticate is identified by the DN of the entry for that account, and the proof identity comes in the form of a password. The password is transmitted without any form of obfuscation, so it is strongly recommended that simple authentication be used only over an encrypted connection. SASL authentication uses the Simple Authentication and Security Layer, SASL is an extensible framework that makes it possible to plug almost any kind of authentication into LDAP (for example, kerberos).
+
+3. **Schema & Extensibility:**\
+A schema defines how information of etries needs to look with as least the following:
+- Attribute Syntaxes define the types of data that can be represented in a directory server. 
+- Matching Rules define the kinds of comparisons that can be performed against LDAP data. 
+- Attribute Types define named units of information that may be stored in entries. 
+- Object Classes define named collections of attribute types which may be used in entries containing that class, and which of those attribute types will be required rather than optional. 
+Ldap schema can also be extended with additional elements. For example, name forms used to restrict the kinds of attributes which may be used as the naming attributes for entries of a particular type.
+
+4. **Authentication & Authorization:**
+- Authentication - ldap authentication accomplished through bind operation in a client-server model. The client sends a bind request to the ldap server with the user's username and password, which the client obtains when the user inputs their credentials. f the user’s submitted credentials match the credentials associated with their core user identity that is stored within the LDAP database, the user is authenticated. If the credentials sent don’t match, the bind fails and access is denied. 
+- Authorization - mannaged with the system that uses LDAP authentication.
+
+5. **Deployment & Security:**
+- install/configure an LDAP server - install sldap & ldap-utils packages. open ports, create certificates. Create sysconfig file (for example if kerberos integrates with ldap it will be set in there), start the service `systemctl start slapd`
+- secure it with TLS - enforce TLS by setting the ldap_id_use_start_tls option to true in the /etc/sssd/sssd.conf file and specify the TLS authentication requirement by modifying the ldap_tls_cacert and ldap_tls_reqcert values in the [domain] section. Restart the sssd service.
+- replicate data -\
+There are two ways to use this replication:
+    - Standard replication: Changed entries are sent to the consumer in their entirety. For example, if the userPassword attribute of the uid=john,ou=people,dc=example,dc=com entry changed, then the whole entry is sent to the consumer.
+    - Delta replication: Only the actual change is sent, instead of the whole entry.
+The delta replication sends less data over the network, but is more complex to set up.
+- referral loops troubleshouting - This error generally occurs when the client chases a referral which refers itself back to a server it already contacted. The server responds as it did before and the client loops. This loop is detected when the hop limit is exceeded. This is most often caused through misconfiguration of the server's default referral. The default referral should not be itself.
+- access controls errors - binding to a DN with insufficient privileges. An attribute may not be visible due to access controls.
+(Writing to myself: https://www.openldap.org/doc/admin26/appendix-common-errors.html good article for common errors).
+
+    
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between Zookeeper, Kerberos & LDAP and an industry alternative.
 - Deliverable: A written summary (minimum 1 or 2 sentences).
 - Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
 - Goal: You must be able to justify why the department uses this tool for our specific environment.
+
+### 🔄 Alternatives
 
 ### 🎯 User Story & Scenario
 Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
@@ -70,3 +207,16 @@ Review your answers with your mentor and discuss any unclear points.  Relate eac
 - [Kerberos: The Network Authentication Protocol](https://web.mit.edu/kerberos/)
 - [LDAP: RFC 4511 Overview](https://datatracker.ietf.org/doc/html/rfc4511)
 - *Hadoop Security* chapter in any modern Hadoop book for integration examples.
+
+## Q&A Answers
+1. Group membership is a term used to describe the group to which a user belongs. Descibed by the attribute `memberOf`.
+2. jwt vs ldap - a JSON Web Token is a way to securely transfer information over the internet. It provides a secure method for authenticating users without storing session information on the server. Used in applications to verify a user's identity.\
+In contrast to LDAP which helps find and manage user information by organizing it in directories. It allows centralized management of users, making it easier to scale large systems.\
+We need LDAP and not only JWT because ldap is for large scale organized like the hierarchy of an organization. LDAP used to verify user identity while JWT maintain the verified session securely, together they cover both.
+3. keytab - A keytab (short for “key table”) stores long-term keys for one or more principals. The keytab file contains pairs of Kerberos principals (identifiers for users or services) and encrypted keys. A keytab can be displayed using the klist command with the -k option. Keytab files are commonly used in system administration tasks where automated processes need to authenticate to services without user interaction. Keytab files are typically stored on the file system of the machine that needs to perform the authentication. krb5.keytab is the standart keytab file for linux.
+krb5.conf file contains Kerberos configuration information, including the locations of KDCs and admin servers.
+4. What happened when the KDC is down?\
+When the KDC is down, all the required authentication data is carried inside the tickets themselves. So when the KDC is down you cant get new tickets (rather a TGT or a service ticket of course) but you can use the ticket you already have. But it's important to remember that tickets have expiration time so you can use them until the expiration time and hopefully to manage the KDC.
+5. ZXID - The zxid represents the order in which the writes are applied on all replicas, the zookeeper transaction id. In leader election, the server with the highest ZXID wins.
+6. What does happen when the master server failed in a middle of writing operation? According to the ZAB protocol if the leader failes before quorum the write will be deleted, otherwise the write will be commited.
+7. When a leader doesn't have a quorum, it becomes disconnected and a new leader election will be performed.
