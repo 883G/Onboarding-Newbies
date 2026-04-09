@@ -50,7 +50,8 @@ Use the resources below and practice researching additional information online.
    Describe each principle and explain how they help create maintainable
    object-oriented systems.
 
-3. Explain the **KISS principle** and its importance in software design.  
+3. Explain the **KISS principle** and its importance in software design.
+Why does simple and intuitive software scale well?  
    Why do overly complex systems tend to fail over time?
 
 4. What are the most common **paradigms / programming** (ex. Object Orianted) styles, what are the differences and when should each be used
@@ -68,8 +69,10 @@ Use the resources below and practice researching additional information online.
    and **Design Review (DR)**.  
    Why are these processes important in team development?
 
-2. What is a **Merge Request**, and how does it differ from a pull request
-   conceptually or across different platforms?
+2. Define the role of a **Pull Request (PR) / Merge Request**.
+What is **squshing**? Why is it common practice to squash commits before the final merge?
+Find how can you **apply specific fixes** from one branch to another without merging the entire history?
+What is the process for **safely undoing** a merged PR using git revert?
 
 3. Explain the difference between **CLI (Command Line Interface)** and
    **UI (User Interface)** applications.  
@@ -78,7 +81,7 @@ Use the resources below and practice researching additional information online.
 4. What is the difference between a **compiler** and an **interpreter**?  
    Provide examples of languages that use each approach.
 
-5. What is **event-driven development**?  
+5. What is **event-driven programming**?  
    Explain how it differs from procedural execution and where it is commonly used.
 
 ---

@@ -36,7 +36,7 @@ Use the resources below as your primary reference:
 
 ### ❓ Guide Questions
 
-1. What is Kubernetes, and what problems does it solve compared to running containers manually?  
+1. What is Kubernetes, and what problems does it solve compared to running containers manually on vm?  
    Explain orchestration, scheduling, scaling, and self-healing.
 
 2. Describe the main Kubernetes components and architecture.  
