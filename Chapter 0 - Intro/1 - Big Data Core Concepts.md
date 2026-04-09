@@ -81,7 +81,7 @@ read - mostly with indices\
 write - one or several rows.
 - OLAP (Online analytical processing) - access pattern which optimized to querying data for wide analysis, statistics, conclusions, and desicion making processes with high latency.\
 update - will be very expensive operation.\
-Focuses on small amount of read operations happening concurrently.
+Focuses on wide and heavy operations on a volume of data (to discover conclusions and get the bigger picture). Less operations at a time.
 
 6. **Batch processing vs. stream processing**\
 Two methods used for processing large volumes of data.
