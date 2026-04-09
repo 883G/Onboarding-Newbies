@@ -70,10 +70,9 @@ Two approaches which commonly used to move data.
 - ELT (extract load transform) - extract raw data, load it into the data warehouse, then performs data transformations directly within the data warehouse itself. Unlike ETL, where data is transformed before loading, and raw data may not be retain. In addition its eliminating the need for staging processes.
 
 4. **NoSQL vs. SQL databases**
-- SQL databases are relational and stands for structured query language. NoSQL databases are non-relational and stands for not only SQL.
+- SQL databases, also known as RDBMs, use structured data with predifed schema. NoSQL databases are non-relational designed to handle unstructured or semi-structured data and stands for not only SQL.
 - SQL databases are table-based, while NoSQL databases are document, key-value, graph, or wide-column stores.
-- SQL databases use structured query language and have a predefined schema. NoSQL databases have dynamic schemas for unstructured data.
-- NoSQL databases are scalable horizontally, meaning you can scale out by adding nodes. SQL databases in most situations are vertically, meaning you can scale up by adding more resources.
+- NoSQL databases are scalable horizontally, meaning you can scale out by adding nodes, excel in scenarios that demand high performance and scalability. SQL databases in most situations are vertically, meaning you can scale up by adding more resources. They perform will for complex queries but may struggle with scalability.
 
 5. **OLAP vs. OLTP**\
 Two primary data processing systems or accsess patterns.
