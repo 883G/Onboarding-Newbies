@@ -81,7 +81,7 @@ read - mostly with indices\
 write - one or several rows.
 - OLAP (Online analytical processing) - access pattern which optimized to querying data for wide analysis, statistics, conclusions, and desicion making processes with high latency.\
 update - will be very expensive operation.\
-Focuses on wide and heavy operations on a volume of data (to discover conclusions and get the bigger picture). Less operations at a time.
+Focuses on wide and heavy operations on a volume of data (to discover conclusions and get the bigger picture). Less operations and users at a time.
 
 6. **Batch processing vs. stream processing**\
 Two methods used for processing large volumes of data.
@@ -184,7 +184,7 @@ Cons of delayed outcomes, but very cost effective resource usage once in a day.
 3. Data warehousing is the process of collecting, integrating, storing and managing data from multiple sources in a central repository. It enables organizations to organize large volumes of current and historical data for efficient querying, analysis and reporting. Data warehouse technologies: azure microsoft, snowflake, postgresql.
 
 4. A data lakehouse is a modern data architecture that combines the scalability of a data lake with the structure and performance of a data warehouse. It allows organizations to store raw and structured data in one system while enabling fast analytics, governance, and machine learning on large datasets.\
-At its core, the data lakehouse is not a single product but an architectural pattern. It blends the scalability and openness of data lakes with the transactional reliability and governance of data warehouses. You can combine iceberg with trino to achieve  data lakehouse same as spark with snowflake but there is no one technology which can provide the full capabilities of data lakehouse.
+At its core, the data lakehouse is not a single product but an architectural pattern. It blends the scalability and openness of data lakes with the transactional reliability and governance of data warehouses. You can combine iceberg with trino to achieve data lakehouse same as spark with snowflake but there is no one technology which can provide the full capabilities of data lakehouse.
 
 5. Linux File Hierarchy structure is the name that defines the directory structure and directory contents in linux and the data.\
 Inode - index node is the data structure which stores metadata on file or directory (permissions, timestamps, file size and types, access control settings, etc).
