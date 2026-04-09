@@ -21,8 +21,21 @@ Estimated Duration: 1 Day
 Research the following topics and look for real‑world examples. Discuss your findings with your mentor to deepen your understanding and clarify any questions. Keep a high‑level perspective, and consider the drawbacks of each concept as well as alternatives.
 
 1. **The five V’s of Big Data**
+ נפח- סך הנתונים שמתקבלים.
+ מהירות -קצב המהירות שבו נוצרים, מוזרמים ומעובדים הנתונים.
+  מגוון - מתייחס למגוון סוגי הנתונים השונים שעלולים להתקבל
+  מהימנות - מידת העיקביות והאמינות של הנתונים שהתקבלו
+  ערך- הסקת מסקנות על סמך ניתוח הנתונים
 2. **Structured, unstructured, and semi‑structured data**
+נתונים מובנים- נתונים בעלי סכמה קבועה ופורמט זהה אשר מוגדרים מראש
+נתונים לא מובנים- נתונים שבהם אין סכמה או פורמט המוגדרים מראש
+נתונים חצי מובנים- נתונים בעלי פורמט מוגדר מראש (הסכמה לא מוגדרת מראש) 
 3. **ETL vs. ELT**
+ההבדל בין 2 הגישות הללו לניהול וניתוח הנתונים הוא סדר העיבוד בפעולות.
+בETL-  קודם כל מחלצים את המידע הגולמי, משנים אותו בהתאם לצורך ולאחר מכן מאחסנים אותו
+בELT- קודם כל מחלצים את המידע הגולמי, מאחסנים אותו ורק לאחר מכן מבצעים טרנספורמציה על המידע בהתאם לצורך
+בגישה זו ניתן לגשת בכל רגע למידע הגולמי בשונה מETL
+
 4. **NoSQL vs. SQL databases**
 5. **OLAP vs. OLTP**
 6. **Batch processing vs. stream processing**
