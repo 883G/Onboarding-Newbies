@@ -111,6 +111,8 @@ Scale out- הוספת משאבדים נוספים על מנת לשפר את בי
 זוהי היכולת של המערכת להיות נגישה כמעט כל הזמן.
 
 23. **Master‑slave vs. masterless architectures**
+ברפליקה מסוג מסטר סלב יש שרת מסטר אחד ואילו בארכיטקטורה השנייה יש כמה שרתי מסטר  .
+בשל כך ניתן לומר שבמסטר סלב מהירות הכתיבה הינה קטנה יותר מאשר במסטרלס, ושבמסטרלס המידע יכול להיות זמין גם כאשר שרת מסתר אחד יפול בשונה ממסטר סלב.
 24. **Apache data stack**
 
 These topics are meant to guide your research. Don’t hesitate to look up other relevant concepts.
