@@ -16,6 +16,11 @@ Today’s session zeroes in on two foundational pieces of Hive: the metastore th
 - Review the [Exercise](#exercise) before diving into research.
 - Ask your mentor for clarification on scope if needed.
 
+### ⏳ Timeline
+Estimated Duration: 1 Day
+- Day 1: Learn the concepts of Hive both metastore and table format; spend the day.
+    - Have a Q&A session the same day
+
 ## Hive Metastore
 
 Answer the following questions to explore the metastore:
@@ -41,6 +46,19 @@ Answer the following questions to understand table formats:
 3. **Schema & Tables:**  Explain the difference between managed and external tables, including ownership, lifecycle, and storage location semantics. How does the metastore map logical tables to physical data in storage systems like HDFS or object storage?
 
 4. **Integration with Storage:**  How do table formats map to physical storage (directories, files)? What conventions does Hive use for partitions, buckets, and file naming?
+
+### 🔄 Alternatives
+Assignment: You are required to research and write a comparative analysis between Hive table format and HMS and an industry alternative.
+- Deliverable: A written summary (minimum 1 or 2 sentences).
+- Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
+- Goal: You must be able to justify why the department uses this tool for our specific environment.
+
+### 🎯 User Story & Scenario
+Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
+- Deliverable: A written summary example/story (two paragraphs approx.).
+- Requirement: Describe a real-world scenario (e.g., a specific client requirement) where this technology is the optimal solution.
+- Data Flow: Map out the data flow and explain how this tool integrates with other components in the Data Pipeline.
+
 
 ## Wrapping Up :trophy:
 Review your answers with your mentor and make sure you can articulate how the metastore and formats enable interoperability across Hadoop tools.

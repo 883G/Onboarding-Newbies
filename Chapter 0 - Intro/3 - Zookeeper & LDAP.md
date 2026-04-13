@@ -17,6 +17,11 @@ This session focuses on the components that provide coordination and authenticat
 - Focus on grasping the full picture of each concept – if you can’t explain it, you haven’t learned it.
 - When in doubt, ask your mentor which topics deserve deeper attention.
 
+### ⏳ Timeline
+Estimated Duration: 1 Day
+- Day 1: Spent no more than third a day on each of the following: LDAP, ZOOKEEPER,Kerberos, Hint read a bit about Active Directory As well;
+    - Have a Q&A session right after
+
 ## Core Concepts
 
 ### Zookeeper – five guiding questions
@@ -39,6 +44,18 @@ This session focuses on the components that provide coordination and authenticat
 3. **Schema & Extensibility:**  What is an LDAP schema?  How do object classes, attribute types, and syntax rules define what data can be stored?  Mention extending schemas.
 4. **Authentication & Authorization:**  How is LDAP used for authentication and authorization?  Cover binding with credentials, password policies, and group lookups.
 5. **Deployment & Security:**  Outline how to install/configure an LDAP server (e.g., OpenLDAP), secure it with TLS, replicate data, and troubleshoot common errors (referral loops, access controls).
+
+### 🔄 Alternatives
+Assignment: You are required to research and write a comparative analysis between Zookeeper, Kerberos & LDAP and an industry alternative.
+- Deliverable: A written summary (minimum 1 or 2 sentences).
+- Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
+- Goal: You must be able to justify why the department uses this tool for our specific environment.
+
+### 🎯 User Story & Scenario
+Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
+- Deliverable: A written summary example/story (two paragraphs approx.).
+- Requirement: Describe a real-world scenario (e.g., a specific client requirement) where this technology is the optimal solution.
+- Data Flow: Map out the data flow and explain how this tool integrates with other components in the Data Pipeline.
 
 ## Wrapping Up :trophy:
 Review your answers with your mentor and discuss any unclear points.  Relate each concept back to actual deployments you might encounter.
