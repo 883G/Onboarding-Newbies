@@ -60,10 +60,7 @@ Tasks:
    - replicas  
 4. Define service:
    - expose ingress 
-5. Move configuration into values.yaml:
-   - image repository and tag  
-   - replica count  
-   - service port  
+5. Move configuration into values.yaml 
 
 ---
 
@@ -79,9 +76,7 @@ Tasks:
    - kubectl get svc  
    - kubectl describe pod  
 
-3. Expose application:
-   Option A: port-forward service to local port 8000  
-   Option B: NodePort
+3. Expose application
 4. Test API
 
 ---
@@ -121,7 +116,7 @@ Explore:
 - How Services load balance traffic  
 - What happens when a pod fails  
 - Add readiness/liveness probes  
-- Add resource limits (CPU/memory)  
+- Add resource limits (CPU/memory)  (Why did it work without this?)
 - Switch Service to NodePort and access externally  
 - Add Ingress
 

@@ -37,16 +37,15 @@ Use the resources below as your primary reference:
 ### ❓ Guide Questions
 
 1. What is Kubernetes, and what problems does it solve compared to running containers manually on vm?  
-   Explain orchestration, scheduling, scaling, and self-healing.
 
 2. Describe the main Kubernetes components and architecture.  
    Include: cluster, nodes, control plane, kubelet, API server, etcd.
 
 3. What are the core Kubernetes resources?  
-   Explain Pods, Deployments, Services, ConfigMaps, and Secrets, and how they interact.
+   Explain Pods, Stateful sets, daemon sets , limit ranges, pv and PVC, namespaces, cronjobs, jobs, roles, rolebindings  Deployments, Services, ConfigMaps, and Secrets, and how they interact.
 
 4. How does networking work in Kubernetes?  
-   Explain Service types (ClusterIP, NodePort, LoadBalancer) and basic communication between pods.
+   Explain Service types (ClusterIP, NodePort,Ingress,Internal or external network) and basic communication between pods.
 
 5. What is Helm, and why is it used?  
    Explain charts, values.yaml, templating, and how Helm simplifies deployments.

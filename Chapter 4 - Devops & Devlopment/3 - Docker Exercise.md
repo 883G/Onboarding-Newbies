@@ -49,11 +49,6 @@ A partial `Dockerfile` already exists in the project.
    - Run the container locally  
    - Map ports correctly  
    - Verify the API is accessible (`/docs`)  
-
-4. **Debug if needed:**  
-   - Check logs  
-   - Fix runtime / dependency / path issues  
-
 ---
 
 # Module 2 – Development Workflow
