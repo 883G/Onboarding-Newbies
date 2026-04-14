@@ -37,13 +37,7 @@ Day 1 – Docker Core Concepts
    Explain what a container is, how it differs from a virtual machine, and why containers are useful in modern systems (portability, consistency, isolation).
 
 2. **What are the core Docker components and how do they interact?**  
-   Describe the roles of:
-   - Docker Engine  
-   - Images  
-   - Containers  
-   - Dockerfile  
-   - Registries (Docker Hub)  
-   Explain the lifecycle: build → push → pull → run.
+
 
 3. **How do networking and storage work in Docker?**  
    Explain:

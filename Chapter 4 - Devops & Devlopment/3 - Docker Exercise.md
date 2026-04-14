@@ -34,14 +34,6 @@ A partial `Dockerfile` already exists in the project.
 1. **Complete the Dockerfile:**  
    Fill in the missing instructions so the API can run inside a container.
 
-   Your Dockerfile should:
-   - Use a Python base image  
-   - Set a working directory  
-   - Copy the project files  
-   - Install dependencies from `requirements.txt`  
-   - Expose the correct port  
-   - Run the FastAPI application  
-
 2. **Build the image:**  
    Build the Docker image and tag it (e.g., `pizza-api`)
 
