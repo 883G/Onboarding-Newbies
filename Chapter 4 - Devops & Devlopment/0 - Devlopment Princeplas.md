@@ -29,7 +29,7 @@ Day 2 – Python and API Foundations
 ### 📚 Resources
 Use the resources below and practice researching additional information online.
 
-- [Clean Python - Sunil Kapil](hhttps://edu.anarcho-copy.org/Programming%20Languages/Python/Clean%20Python.pdf)
+- [Clean Python - Sunil Kapil](https://edu.anarcho-copy.org/Programming%20Languages/Python/Clean%20Python.pdf)
 - [SOLID Principles Overview](https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
 - [Python Official Documentation](https://docs.python.org/3/)
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)

@@ -28,7 +28,7 @@ To start, you must **clone the entire repository** to your local machine. Do not
 
 ### ❓ Your Tasks
 
-1. **Complete the API:** The application currently has a working `GET` endpoint for fetching the menu, but the `POST /orders` endpoint is missing its implementation. Your task is to implement the logic to create a new order.
+1. **Complete the API:** The application currently has a working `GET` endpoint for fetching the menu, but the `POST /orders` endpoint is missing its implementation. Your task is to implement the logic to create a new order. Add to the moudle verificton of positve prices and names without any special charchters.
    
 2. **Write Tests with Mocks:**
    Some basic tests are already written in `tests/test_main.py`. However, most are missing. You need to write comprehensive tests for your new `POST` endpoint. 

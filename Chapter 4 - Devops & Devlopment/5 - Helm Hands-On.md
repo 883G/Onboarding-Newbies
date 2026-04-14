@@ -71,10 +71,7 @@ Tasks:
 1. Install chart:
    helm install pizza-release ./pizza-api  
 
-2. Verify deployment:
-   - kubectl get pods  
-   - kubectl get svc  
-   - kubectl describe pod  
+2. Verify deployment 
 
 3. Expose application
 4. Test API
@@ -86,8 +83,9 @@ Tasks:
 Tasks:
 
 1. Scale application:
-   - update replicaCount in values.yaml  
-   - run helm upgrade pizza-release ./pizza-api  
+Hints
+   - replicaCount
+   - helm upgrade
    - verify multiple pods  
 
 2. Rolling update:
