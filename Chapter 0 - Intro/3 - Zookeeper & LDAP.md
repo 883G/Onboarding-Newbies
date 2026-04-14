@@ -65,6 +65,41 @@ Review your answers with your mentor and discuss any unclear points.  Relate eac
 - Prepare questions for the mentor Q&A session.
 - Document any commands or configuration steps you used during research.
 
+Zookeeper, Kerberos & LDAP 
+
+Zookeeper – five guiding questions
+Architecture & Data Model: Describe a Zookeeper ensemble, the role of the leader and followers, the znode hierarchy, and how znodes store data and metadata.
+1-ארכיטקטורת הזוקיפר מורכבת מהירכיה של צמתים הנקראים "znodes" והיא מאורגנת בצורת עץ.
+כל znode מאחסן בתוכו נתונים ורשימת Access Control List (רשימה שמגבילה את הגישה לביצוע פעולות מסוימות).
+קיימים 2 סוגי znodes, סוג אחד הוא ephemeral שהוא נעלם כאשר הסשן שיצר אותו הסתיים והשני הוא persistent, שהוא נשאר עד שמוחקים אותו.
+בראש הירכיית ה-ensemble ממוקם הleader znode שהוא znode הבסיס.
+ כל שאר הצמתים האחרים הם למעשה צאצאיו והם קרויים followers ועוקבים אחר הוראות הleader znode .
+תפקיד הleader הוא לשמור על עקביות הנתונים בנודים שבקלסטר וגם לבצע בו את פעולות הכתיבה המתקבלות באופן תקין (שהנודים יהיו מסונכרנים, מדויקים, ועקביים כמה שיותר).
+כל פעולות הכתיבה שמתבצעות לznodes השונים עוברות דרך הleader znode, והוא דואג לעדכן בכך את הfollowers, ולאחר שמרבית הצמתים אישרו את פעולות הכתיבה, הוא מבצע אותן.
+תפקיד הfollowers הוא להיות משוכפלים בהתאם לleader ולבצע בקשות קריאה.
+הznode מסוגל לאחסן מידע במערך בתים .
+לכל znode  יש מבנה נתונים ששמו stat ובו מאוכסן metadata (רשימת ACL, צמתי הצאצאים של אותו הznode וכו…) של אותו הznode.
+
+Consistency & Watches: How does Zookeeper guarantee sequential consistency? Explain watches, one‑time triggers, and how clients use them for cache invalidation.
+הzookeeper מבטיח עקביות בשל כך שכל פעולות הכתיבה שמתבצעות עוברות דרך הleader znode והוא מעדכן בכך את שאר הfollowers ורק לאחר שרב הfoloowers אישרו את ביצוע פעולות הכתיבה הן מתבצעות.
+בzookeeper יש פיטר שנקרא Watches שהוא שהוא מנגנון שמתריאה על שינויים שהתרחשו בznode.  המשתמש יכול להגיד מעקב אחר znode  וכל פעם שיוחל בו שינוי הוא יקבל עדכון על כך ישר, דבר המאפשר לצרכן להגיב באופן מיידי לשינויים שבוצעו . 
+
+
+
+
+Sessions & Failure Handling: What is a Zookeeper session, how are heartbeats maintained, and what happens when the session expires? Discuss how ephemeral and sequential nodes relate to this.
+סשן זה מהלך התקשורת בין הלקוח ל-ensemble.
+הסשן מתחיל מהרגע בו הלקוח מתחבר לשרת מסוים בensemble ומסתיים לאחר שהלקוח מתנתק ממנו או לאחר שהלקוח לא תקשר עם השרת פרק זמן מסוים שמוגדר אשר נקרא session timeout.
+כאשר הסשן מסתיים ה-ephemeral nodes נמחקים וה-sequential nodes נמחקים אם הם זמניים וישארו אם הם קבועים.  
+
+
+Common Patterns: Explain how leader election, distributed locks, and configuration storage are implemented on top of Zookeeper primitives.
+תהליך בחירת הleader נעשה על ידי אלגוריתם ששמו ZAB, האלגוריתם בוחר בznode העדכני ביותר כleader.
+ה- distributed locks מיושמים בצורה כזאת שהם מבטיחים שרק לקוח אחד יכול לפעול במשאב מסוים בכל פעם ובכך מונעים מצב שבו כמה לקוחות יעדכנו או יקראו את אותם הנתונים במקביל ויהיה סכנה לפגיעת שלמות, דיוק ועקביות הנתונים.
+
+
+
+
 ## Recommended Resources
 - [Apache Zookeeper Documentation](https://zookeeper.apache.org/)
 - [Kerberos: The Network Authentication Protocol](https://web.mit.edu/kerberos/)
