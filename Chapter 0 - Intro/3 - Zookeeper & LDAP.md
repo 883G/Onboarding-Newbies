@@ -97,6 +97,15 @@ Common Patterns: Explain how leader election, distributed locks, and configurati
 תהליך בחירת הleader נעשה על ידי אלגוריתם ששמו ZAB, האלגוריתם בוחר בznode העדכני ביותר כleader.
 ה- distributed locks מיושמים בצורה כזאת שהם מבטיחים שרק לקוח אחד יכול לפעול במשאב מסוים בכל פעם ובכך מונעים מצב שבו כמה לקוחות יעדכנו או יקראו את אותם הנתונים במקביל ויהיה סכנה לפגיעת שלמות, דיוק ועקביות הנתונים.
 
+על מנת לבצע נעילה ראשית יש על הלקוח ליצור ephemeral sequential node תחת ניתוב מסוים בקלסטר, עם יצירת הnode מתקבל עבורו sequence number היחודי לו.
+הnode בעל הsequence number הנמוך ביותר  הוא זה שננעל בבטחה.
+לאחר מכן 
+
+
+
+
+Operational Concerns: Outline how to deploy an ensemble, handle scaling, manage snapshots and transaction logs, and troubleshoot typical issues (e.g., split‑brain, latency).
+
 
 
 
