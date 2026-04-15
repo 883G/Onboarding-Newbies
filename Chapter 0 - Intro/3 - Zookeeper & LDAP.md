@@ -109,7 +109,6 @@ Common Patterns: Explain how leader election, distributed locks, and configurati
 
 אפשר בזוקיפר להוסיף נפח לאחסון הנתונים באמצעות הוספת Persistent Volumes לקלסטר.
 
-
 Operational Concerns: Outline how to deploy an ensemble, handle scaling, manage snapshots and transaction logs, and troubleshoot typical issues (e.g., split‑brain, latency).
 
 כדי לפרוס אסמבל יש לבצע את השלבים הבאים:
@@ -130,7 +129,70 @@ split brain-
 
 latency-
 בזוקיפר הנתונים מאוחסנים בmemory, מה שהופך אותם לזמינים במהירות .
+
+
+
+
+
+
+1. **Protocol Flow:**  Walk through the Kerberos authentication flow from initial login (kinit) to obtaining service tickets.  Include AS, TGS, and ticket caches.
+1-הkerberos מקצה כרטיס לשרת או לקוח מסוים (הכרטיס למעשה נותן את האפשרות לקיים תקשורת מאובטחת על ידי הkeberos),
+שרת ה-Authentication  מאשר את הלקוח או השרת שברצונם לתקשר, מעניק לו את כרטיס ה-ticket caches ומחבר אותו לשרת Ticket-granting .
+שרת הTicket-granting server הוא מספק את הכרטיסים בסופו של דבר.
+ה-Kerberos  עושה שימוש בשרת Key distribution center שתפקידו לספק את הכרטיס הראשוני ללקוח ולטפל בבקשות לקבלת הכרטיסים.
+
+2. **Key Concepts:**  Define principals, realms, KDC components, tickets (TGT vs service ticket), and how encryption keys are derived and used.
+
+principal-   ישות מסוימת (שרת או לקוח) שאליה ניתן להקצות כרטיסים
+realm-Key Distribution Center אשר תחת שרת ה principals  גבול רשת לוגית שמקבץ בתוכו
+KDC-
+שרת שמאמת את ה-principels ודואג לכך שיסופקו להם כרטיסים.
+לכל reakm יש שרת KDC משלו.
+הוא מורכב מ- השרתים: AS, TGS
+ומ-DB המכיל את כל הprincipals שב-realm שלו.
+
+הTGT זהו הכרטיס שהעניק הKDC ללקוח ובו נעשה שימוש כדי לקבל כרטיס מהשרת TGS .
+
+
+
+כאשר הKDC מנפיק ללקוח כרטיס ועונה על בקשתם הוא משתמש בשלושה מפתחות שונים שהם:
+1-המפתח long-term: שבו משתמש שרת הKDC בשביל להצפין את הכרטיס שהתקבל מהשרת TGS.
+2-המפתח session: הKDC בוחר את המפתח באופן רנדומלי וממקם העתק שלו בתוך כרטיס ובתוך חלק מוצפן של התשובה לבקשה.
+3-המפתח reply-encrypting-הKDC משתמש בו כדי להצפין את התשובות שהוא שולח ללקוחות.
+
+3. **Security Properties:**  Why is Kerberos considered secure?  Discuss mutual authentication, replay protection, time sensitivity, and the role of the ticket lifetime.
+   הקרבורס נחשב למאובטח בשל כמה סיבות.
+   1- יש בו פיטר הדורש מכל לקוח לאמת את זהותו לשרת, והשרת צריך לאמת את זהותו ללקוח לפני שמתקיימץ
+4. **Administration & Tools:**  What are common Kerberos administration tasks?  Describe commands like `kadmin`, `kinit`, `klist`, `kdestroy`, and how to add principals or change passwords.
+5. **Integration & Troubleshooting:**  How do services (Hadoop, HTTP, SSH) integrate with Kerberos?  What are typical issues (clock skew, wrong realm, keytab problems) and how do you diagnose them?
+
+
+1. **Directory Structure:**  Explain how LDAP organizes information in a hierarchical tree (DN, RDN), common object classes, and attributes for users and services.
+
+הפרוטוקול בנוי מספריות במבנה עץ הירכי שנקרא דירקטורי אינפורמאשיון טרי.
+כל צומת בעץ מיוצגת כערך או כרשומה במסד נתונים של LDAP.
+כל ערך של LDAP בעל מזהה יחודי שנקרא DN ומורכב מצמדים של תכונות וערכים.
+לכל צומת בעץ יש גם שם יחודי שנקרא RDN והוא מורכב מצמד אחד לפחות של תכונה וערך.
+מחלקות של אובייקטים הם מגדירות את המבנה והתכונות של הספריות.
+
+
+התיקיות משתמשות בסכמות כדי להגדיר מחלקות ליצירת אובייקטים ותכונות
+
+   
+2. **Protocols & Operations:**  Describe basic LDAP operations – bind, search, modify, add, delete – and the difference between simple and SASL binds.
+   בינד-אימות המשתמש ושינוי פרטי ההתחברות שלו.
+   חיפוש- אחזור ערכים שמתאימים לקבוצת ערכים מוגדרת.
+   שינוי- שינוי התוכן של ערך מסוים בספריה
+   הוספה- הוספת ערך חדש לספריה.
+   מחיקה- הורדת עך מהספריה.
+   בהתחברות SASL ניתן להזדהות באמצעות מגוון דרכים שונים בשונה מהתחברות רגילה שבה תהליך ההזדהות מתבצעת רק על ידי הכנסת סיסמה ושם החשבון.
+   
+3. **Schema & Extensibility:**  What is an LDAP schema?  How do object classes, attribute types, and syntax rules define what data can be stored?  Mention extending schemas.
+4. **Authentication & Authorization:**  How is LDAP used for authentication and authorization?  Cover binding with credentials, password policies, and group lookups.
+5. **Deployment & Security:**  Outline how to install/configure an LDAP server (e.g., OpenLDAP), secure it with TLS, replicate data, and troubleshoot common errors (referral loops, access controls).
+
 ## Recommended Resources
+
 - [Apache Zookeeper Documentation](l)
 - [Kerberos: The Network Authentication Protocol](https://web.mit.edu/kerberos/)
 - [LDAP: RFC 4511 Overview](https://datatracker.ietf.org/doc/html/rfc4511)
