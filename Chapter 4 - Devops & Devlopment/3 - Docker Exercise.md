@@ -35,7 +35,7 @@ A partial `Dockerfile` already exists in the project.
    Fill in the missing instructions so the API can run inside a container.
 
 2. **Build the image:**  
-   Build the Docker image and tag it (e.g., `pizza-api`) **MAKE SURE TO USE LIGHTWEGIT BASE IMAGE**
+   Build the Docker image and tag it (e.g., `pizza-api`) **MAKE SURE TO MAKE IT A LIGHTWEGIT IMAGE**
 
 3. **Run the container:**  
    - Run the container locally  
