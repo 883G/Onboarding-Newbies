@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from models.pizza import OrderRequest 
-from db_handler.database import save_order_to_db
+from db_handler.database_orm import save_order_to_db
 
 router = APIRouter()
 
