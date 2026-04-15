@@ -127,6 +127,9 @@ Operational Concerns: Outline how to deploy an ensemble, handle scaling, manage 
 
 split brain-
 באמצעות השימוש ב-quorum ניתן להגדיר את כמות השרתים המינימלית באסמבל שצריכה לשלוח ack על מנת שיהיה אפשר לבצע פעולת כתיבה או בחירת leader znode חדש (לאחר שהוא נופל).
+
+latency-
+בזוקיפר הנתונים מאוחסנים בmemory, מה שהופך אותם לזמינים במהירות .
 ## Recommended Resources
 - [Apache Zookeeper Documentation](l)
 - [Kerberos: The Network Authentication Protocol](https://web.mit.edu/kerberos/)
