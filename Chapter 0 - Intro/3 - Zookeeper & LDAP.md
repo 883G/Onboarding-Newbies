@@ -79,6 +79,12 @@ Architecture & Data Model: Describe a Zookeeper ensemble, the role of the leader
 תפקיד הfollowers הוא להיות משוכפלים בהתאם לleader ולבצע בקשות קריאה.
 הznode מסוגל לאחסן מידע במערך בתים .
 לכל znode  יש מבנה נתונים ששמו stat ובו מאוכסן metadata (רשימת ACL, צמתי הצאצאים של אותו הznode וכו…) של אותו הznode.
+יש 4 סוגים שונים של znodes.
+Persistent nodes- נוד שקיים תמיד, עד לרגע בו הוא ימחק רשמית (הוא לא נמחק לאחר שהסשן נגמר)
+Persistent Sequential Node- נוד שהוא פרסיסטנט שזוקיפר מצוות לו מספר שעולה כל פעם שנוצרים עוד נודים מסוג זה בסיומת השם שלו לאחר יצירתו
+Temporary Node- נוד שקיים עד לרגע שבו הסשן מסתיים
+Temporary Temporary Node -שזוקיפר מצוות לו מספר שעולה כל פעם שנוצרים עוד נודים מסוג זה בסיומת השם שלו לאחר יצירתו Temporary נוד מסוג  
+
 
 Consistency & Watches: How does Zookeeper guarantee sequential consistency? Explain watches, one‑time triggers, and how clients use them for cache invalidation.
 הzookeeper מבטיח עקביות בשל כך שכל פעולות הכתיבה שמתבצעות עוברות דרך הleader znode והוא מעדכן בכך את שאר הfollowers ורק לאחר שרב הfoloowers אישרו את ביצוע פעולות הכתיבה הן מתבצעות.
@@ -96,21 +102,33 @@ Sessions & Failure Handling: What is a Zookeeper session, how are heartbeats mai
 Common Patterns: Explain how leader election, distributed locks, and configuration storage are implemented on top of Zookeeper primitives.
 תהליך בחירת הleader נעשה על ידי אלגוריתם ששמו ZAB, האלגוריתם בוחר בznode העדכני ביותר כleader.
 ה- distributed locks מיושמים בצורה כזאת שהם מבטיחים שרק לקוח אחד יכול לפעול במשאב מסוים בכל פעם ובכך מונעים מצב שבו כמה לקוחות יעדכנו או יקראו את אותם הנתונים במקביל ויהיה סכנה לפגיעת שלמות, דיוק ועקביות הנתונים.
+דיסטרביוטד לוק מבוסס על Temporary Sequential Node. 
+כאשר כמה לקוחות נעילה באותו הזמן, נוצרים כמה emporary Sequential Nodes ברצף תחת הlocks node.
+הנוד עם הsequence number הכי קטן הוא זה שיכול לבצע את הנעילה, והנודים האחרים יעקבו אחר השינויים המתבצעים על ידי הנוד שמבצע את הנעילה.
+לאחר שהנוד שביצע את הנעילה שחרר אותה הנוד ימחק והנוד הבא עם הסיקוונס נאמבר הקטן ביותר הוא זה שיבצע את הנעילה.
 
-על מנת לבצע נעילה ראשית יש על הלקוח ליצור ephemeral sequential node תחת ניתוב מסוים בקלסטר, עם יצירת הnode מתקבל עבורו sequence number היחודי לו.
-הnode בעל הsequence number הנמוך ביותר  הוא זה שננעל בבטחה.
-לאחר מכן 
-
-
+אפשר בזוקיפר להוסיף נפח לאחסון הנתונים באמצעות הוספת Persistent Volumes לקלסטר.
 
 
 Operational Concerns: Outline how to deploy an ensemble, handle scaling, manage snapshots and transaction logs, and troubleshoot typical issues (e.g., split‑brain, latency).
 
+כדי לפרוס אסמבל יש לבצע את השלבים הבאים:
+-להתקין JDK (ערכה לפיתוח תוכנה של java)
+-להגדיר את גודל הheap המוקצה לjava
+-להתקין את חבילת השרת של זוקיפר.
+-ליצור קובץ קונפיגורציה שבאמצעותו מקשרים לאסמבל את הznodes.
+כדי לפרוס אסמבל הוא חייב לכלול 3 znodes לפחות.
 
+על מנת לשפר ביצועי המערכת או להגדיל את הקצאת האחסון שלה ניתן או להוסיף עוד שרתים לאסמבל או להגדיל את גודל המשאבים הקיימים בו.
 
+זוקיפר שומר תיעודים של הטרנזקציות שהתבצעו בsnapshots ו בtransaction log 
+ב-transaction log נרשם מספר הטרנזקציות שהתבצעו לפני שהיה אפשר לבצע snapshots 
+הזוקיפר לא מוחק snapshots וlog files כברירת מחדל, על הלקוח לעשות זאת.
 
+split brain-
+באמצעות השימוש ב-quorum ניתן להגדיר את כמות השרתים המינימלית באסמבל שצריכה לשלוח ack על מנת שיהיה אפשר לבצע פעולת כתיבה או בחירת leader znode חדש (לאחר שהוא נופל).
 ## Recommended Resources
-- [Apache Zookeeper Documentation](https://zookeeper.apache.org/)
+- [Apache Zookeeper Documentation](l)
 - [Kerberos: The Network Authentication Protocol](https://web.mit.edu/kerberos/)
 - [LDAP: RFC 4511 Overview](https://datatracker.ietf.org/doc/html/rfc4511)
 - *Hadoop Security* chapter in any modern Hadoop book for integration examples.
