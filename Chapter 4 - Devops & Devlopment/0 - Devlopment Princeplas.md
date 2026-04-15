@@ -106,7 +106,7 @@ What is the process for **safely undoing** a merged PR using git revert?
 4. What are e2e testings? What are **tests** in software development, and why are they important?  
    Explain unit tests, integration tests, and the role of automated testing.
 
-5. What are **mocks**, and why are they used in testing?  
+5. What are **mocks**, how and why are they used in testing?  
    Compare **pytest** with other Python testing frameworks and explain its advantages.
 
 ---
