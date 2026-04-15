@@ -90,14 +90,19 @@ What is the process for **safely undoing** a merged PR using git revert?
 ### ❓ Guide Questions
 
 1. What is **Python**, and what are its main characteristics compared to other
-   programming languages?  
+   programming languages (for example c#)?  
    Discuss readability, ecosystem, and runtime behavior.
 
 2. What is a **REST API**?  
    Explain the core concepts such as resources, HTTP methods, and stateless communication.
 
-3. Compare **Python 2** and **Python 3**.
-   Explain the key differences in syntax, behavior, and long-term support, and why modern systems standardize on Python 3.
+3. **What is the Global Interpreter Lock (GIL) in Python?**  
+   Explain:
+   - What the GIL is and why it exists  
+   - How it affects multi-threading and CPU-bound vs I/O-bound tasks  
+   - Differences (if any) in how the GIL behaves across Python versions  
+   - What Python 3.14 introduces regarding optionally disabling the GIL and why this is significant  
+   - Common strategies to work around its limitations (e.g., multiprocessing)
 
    **Bonus:** Compare **FastAPI** and **Flask**.
    What are the architectural differences and when would you use each framework?
