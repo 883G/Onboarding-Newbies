@@ -191,6 +191,14 @@ KDC-
 4. **Authentication & Authorization:**  How is LDAP used for authentication and authorization?  Cover binding with credentials, password policies, and group lookups.
 5. **Deployment & Security:**  Outline how to install/configure an LDAP server (e.g., OpenLDAP), secure it with TLS, replicate data, and troubleshoot common errors (referral loops, access controls).
 
+
+
+-איך קרברוס מתקשר למונחים directory active וLDAP?
+כדי שלקוח יקבל גישה להתחבר לactive directory עליו לפנות לKDC על מנת להתחיל את תהליך ההתחברות.
+לאחר שהמשתמש אומת הוא מקבל icket-granting ticket אשר מאשר את אימותו.
+אחר כך הלקוח שולח בקשה לקבל tgs ticket מהשירות בו הוא רוצה להשתמש (active directory למשל) באמצעות השימוש בפרוטוקול ldap, במידה ויש למשתמש את הסמכות לעשות שימוש מסוים בשירות, הוא מקבל ממנו את הכרטיס.
+
+
 ## Recommended Resources
 
 - [Apache Zookeeper Documentation](l)
