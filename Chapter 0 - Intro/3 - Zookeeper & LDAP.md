@@ -105,10 +105,8 @@ Common Patterns: Explain how leader election, distributed locks, and configurati
 דיסטרביוטד לוק מבוסס על ephemeral Sequential Node. 
 כאשר לקוחות רוצים לבצע נעילה באותו הזמן, נוצרים כמה ephemeral Sequential Nodes ברצף (נוד עבור כל לקוח) תחת ניתוב הlocks node.
 הנוד עם הsequence number הכי קטן הוא זה שיכול לבצע את הנעילה, והנודים האחרים יעקבו אחר השינויים המתבצעים על ידי הנוד שמבצע את הנעילה.
-הנודים האחרים יודעים שהנעילה השתחררה לאחר שנשלחת התראה שאומרת שהנוד שביצע את הנעילה נמחק, זה קורה לאחר 
-
 לאחר שהנוד שביצע את הנעילה שחרר אותה הנוד ימחק והנוד הבא עם הסיקוונס נאמבר הקטן ביותר הוא זה שיבצע את הנעילה.
-
+כאשר נעילה מתבצעת מאותחל watchdog ובזכות כך, הנודים האחרים יודעים שהנעילה השתחררה לאחר שנשלחת התראה שאומרת שהנוד שביצע את הנעילה נמחק.
 אפשר בזוקיפר להוסיף נפח לאחסון הנתונים באמצעות הוספת Persistent Volumes לקלסטר.
 
 Operational Concerns: Outline how to deploy an ensemble, handle scaling, manage snapshots and transaction logs, and troubleshoot typical issues (e.g., split‑brain, latency).
