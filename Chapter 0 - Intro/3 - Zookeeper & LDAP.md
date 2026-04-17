@@ -71,7 +71,6 @@ Zookeeper – five guiding questions
 Architecture & Data Model: Describe a Zookeeper ensemble, the role of the leader and followers, the znode hierarchy, and how znodes store data and metadata.
 1-ארכיטקטורת הזוקיפר מורכבת מהירכיה של צמתים הנקראים "znodes" והיא מאורגנת בצורת עץ.
 כל znode מאחסן בתוכו נתונים ורשימת Access Control List (רשימה שמגבילה את הגישה לביצוע פעולות מסוימות).
-קיימים 2 סוגי znodes, סוג אחד הוא ephemeral שהוא נעלם כאשר הסשן שיצר אותו הסתיים והשני הוא persistent, שהוא נשאר עד שמוחקים אותו.
 בראש הירכיית ה-ensemble ממוקם הleader znode שהוא znode הבסיס.
  כל שאר הצמתים האחרים הם למעשה צאצאיו והם קרויים followers ועוקבים אחר הוראות הleader znode .
 תפקיד הleader הוא לשמור על עקביות הנתונים בנודים שבקלסטר וגם לבצע בו את פעולות הכתיבה המתקבלות באופן תקין (שהנודים יהיו מסונכרנים, מדויקים, ועקביים כמה שיותר).
@@ -82,13 +81,14 @@ Architecture & Data Model: Describe a Zookeeper ensemble, the role of the leader
 יש 4 סוגים שונים של znodes.
 Persistent nodes- נוד שקיים תמיד, עד לרגע בו הוא ימחק רשמית (הוא לא נמחק לאחר שהסשן נגמר)
 Persistent Sequential Node- נוד שהוא פרסיסטנט שזוקיפר מצוות לו מספר שעולה כל פעם שנוצרים עוד נודים מסוג זה בסיומת השם שלו לאחר יצירתו
-Temporary Node- נוד שקיים עד לרגע שבו הסשן מסתיים
-Temporary Temporary Node -שזוקיפר מצוות לו מספר שעולה כל פעם שנוצרים עוד נודים מסוג זה בסיומת השם שלו לאחר יצירתו Temporary נוד מסוג  
+ ephemeral Node- נוד שקיים עד לרגע שבו הסשן מסתיים
+ ephemeral Sequential Node -שזוקיפר מצוות לו מספר שעולה כל פעם שנוצרים עוד נודים מסוג זה בסיומת השם שלו לאחר יצירתו Temporary נוד מסוג  
+ הephemeral Node מסייעים לבדוק איזה לקוחות הם פעילים באנסמבל.
 
 
 Consistency & Watches: How does Zookeeper guarantee sequential consistency? Explain watches, one‑time triggers, and how clients use them for cache invalidation.
 הzookeeper מבטיח עקביות בשל כך שכל פעולות הכתיבה שמתבצעות עוברות דרך הleader znode והוא מעדכן בכך את שאר הfollowers ורק לאחר שרב הfoloowers אישרו את ביצוע פעולות הכתיבה הן מתבצעות.
-בzookeeper יש פיטר שנקרא Watches שהוא שהוא מנגנון שמתריאה על שינויים שהתרחשו בznode.  המשתמש יכול להגיד מעקב אחר znode  וכל פעם שיוחל בו שינוי הוא יקבל עדכון על כך ישר, דבר המאפשר לצרכן להגיב באופן מיידי לשינויים שבוצעו . 
+בzookeeper יש פיטר שנקרא Watches שהוא שהוא מנגנון שמתריאה על שינויים שהתרחשו בznode.  המשתמש יכול להגדיר מעקב אחר znode  וכל פעם שיוחל בו שינוי הוא יקבל עדכון על כך ישר, דבר המאפשר לצרכן להגיב באופן מיידי לשינויים שבוצעו . 
 
 
 
@@ -102,9 +102,11 @@ Sessions & Failure Handling: What is a Zookeeper session, how are heartbeats mai
 Common Patterns: Explain how leader election, distributed locks, and configuration storage are implemented on top of Zookeeper primitives.
 תהליך בחירת הleader נעשה על ידי אלגוריתם ששמו ZAB, האלגוריתם בוחר בznode העדכני ביותר כleader.
 ה- distributed locks מיושמים בצורה כזאת שהם מבטיחים שרק לקוח אחד יכול לפעול במשאב מסוים בכל פעם ובכך מונעים מצב שבו כמה לקוחות יעדכנו או יקראו את אותם הנתונים במקביל ויהיה סכנה לפגיעת שלמות, דיוק ועקביות הנתונים.
-דיסטרביוטד לוק מבוסס על Temporary Sequential Node. 
-כאשר כמה לקוחות נעילה באותו הזמן, נוצרים כמה emporary Sequential Nodes ברצף תחת הlocks node.
+דיסטרביוטד לוק מבוסס על ephemeral Sequential Node. 
+כאשר לקוחות רוצים לבצע נעילה באותו הזמן, נוצרים כמה ephemeral Sequential Nodes ברצף (נוד עבור כל לקוח) תחת ניתוב הlocks node.
 הנוד עם הsequence number הכי קטן הוא זה שיכול לבצע את הנעילה, והנודים האחרים יעקבו אחר השינויים המתבצעים על ידי הנוד שמבצע את הנעילה.
+הנודים האחרים יודעים שהנעילה השתחררה לאחר שנשלחת התראה שאומרת שהנוד שביצע את הנעילה נמחק, זה קורה לאחר 
+
 לאחר שהנוד שביצע את הנעילה שחרר אותה הנוד ימחק והנוד הבא עם הסיקוונס נאמבר הקטן ביותר הוא זה שיבצע את הנעילה.
 
 אפשר בזוקיפר להוסיף נפח לאחסון הנתונים באמצעות הוספת Persistent Volumes לקלסטר.
