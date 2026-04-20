@@ -1,7 +1,7 @@
 
 ## 1. Project Overview
-**Project Name:**  
-**Date:**  
+**Project Name:Stocks Analysis and forecast**  
+**Date:20/04/2026**  
 
 **Scenario / Story:**  
 > Minimal description to justify using the stack (Airflow, Spark, Trino, S3/HDFS, SQL).  
