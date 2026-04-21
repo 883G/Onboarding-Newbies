@@ -50,8 +50,8 @@ about 88B.
   ],
   "type": "trade"
 }
-if we say thats an average response, and there are about 9000-10000 us and canadian
-stocks, were talking about 792KB-880KB a second, which is 2.8GB-3.2GB an hour
+if we say thats an average response, and there are about 8400-16000 us and canadian
+stocks, were talking about 1.5GB a second, which is approx 5TB an hour.
 
 - **Arrival Frequency:** (e.g., batch, streaming, hourly)  
 we will need streaming as stocks update every second of the day.
