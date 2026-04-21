@@ -58,17 +58,14 @@ of an impact, its not a real-time output but a scheduled once-a-day one.
 **Components & Responsibilities:**
 
 - **Ingestion:
-    **
+    with flink we do stream processing, and get the stocks data in real time with
+    Finnhub API**
 
 - **Storage (S3/HDFS):
     we will use s3 as storage, since out files are considered small, and compaction
     is needed frequently, s3 is a better choice handling compactions and small files 
     better than hdfs. also, s3 use of tiers can help us with faster access for 
-    frequently accessed files.**  
-
-- **Processing (Flink):
-    with flink we do stream processing, and get the stocks data in real time with
-    Finnhub API**
+    frequently accessed files.**
 
 - **Processing (Spark):
     with spark we will do batch processing to create reports one a day of the stocks
@@ -85,7 +82,8 @@ of an impact, its not a real-time output but a scheduled once-a-day one.
 ---
 
 ## 4. Storage Design
-- **Partitioning Strategy:**  
+- **Partitioning Strategy:**
+
 - **File Formats:** (Parquet/ORC/etc.)  
 Files that were processed by flink in the stream processing will be stored as JSON 
 files since thats the response format the Finnhub API returns them as.
@@ -95,7 +93,13 @@ latency (which we don't want), but after displaying the data at the current mome
 we don't need it in real time anymore so the compaction process won't hurt us.
 
 
-- **Lifecycle Policies / Retention:**  
+- **Lifecycle Policies / Retention:**
+A file will include it's stocks name, the stocks details like open/close/low/high
+and volume.
+since we are using s3 the version will be saved with the stock which will allow us
+to know the timestamp of the stock.
+since we talk about stocks the lifespan doesn't have to be that long, 
+
 - **Include ERD (SQL)**
 
 ---
