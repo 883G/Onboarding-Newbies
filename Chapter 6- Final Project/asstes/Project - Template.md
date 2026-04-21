@@ -39,6 +39,9 @@ we will have
 
 - **Arrival Frequency:** (e.g., batch, streaming, hourly)  
 we will need streaming as stocks update every second of the day.
+once a day (00:00) we will generate a report of the day before (batch)
+once a month (31/30.x.xxxx) we will generate a report of the previous month.
+once a year (1.1.xxxx,00:00) we will generate a report of the previous year.
 
 - **Latency Requirements:**  
 latency is a very important subject that we have to deal with, when we talk about 
