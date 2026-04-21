@@ -20,11 +20,13 @@ when all stocks and their data are stored in s3 or hdfs.
 
 **Core Requirements:**  
 The goals of the pipeline are:
-- Stream large amount of stocks data (kafka) and save it on storage (s3/hdfs). 
+- Stream large amount of stocks data (Flink). 
 - Provide updated data to the client. 
 - Ad-hoc : alert when an unusual event has happened.
 - Provide reports every determined amount of time (spark).
 - Consider a forecast of the stocks for the future.
+- Store the data on a distributed storage system (s3) that maintains high 
+  availability and fault tolerance.
   
 
 ---
@@ -66,6 +68,8 @@ streaming that is done non-stop with this type of data, we need to have as minim
 latency as possible. Both on the client side and the server side since it has direct
 affect on the client side (a latency in processing will cause a delay on the client
 side.)
+We can't use micro-batch since stocks change frequently and can drastically change
+in a matter of a few seconds - so streaming is necessary.
 The batch processing (reports) can "suffer" higher latency since it will have less
 of an impact, its not a real-time output but a scheduled once-a-day one.
 
@@ -90,9 +94,19 @@ of an impact, its not a real-time output but a scheduled once-a-day one.
 - **Processing (Spark):
     With spark we will do batch processing to create reports one a day of the stocks
     market status, that includes top stocks, biggest rises/falls etc...**
+    We don't use spark for streaming since it might struggle with performance 
+    degradation in larger data amounts, however flink is great for streaming, and it's
+    caching abilities provide very low latency compared to spark streaming.
+    The reason spark was chosen and not pandas is that pandas isn't distributed
+    but is entirely on one node, which does not satisfy the fault tolerance that is 
+    needed for our system.
 
 - **Orchestration (Airflow):
-    With airflow we'll orchestrate the reports.** 
+    With airflow we'll orchestrate the reports.
+    While we could have user other tools like argo, it uses Kubernetes CronJob to 
+    schedule workflows, and while cronjob could schedule the task, it won't orchestrate
+    it. Airflow manages the task from top to bottom and it manages to do so by writing 
+    python code.** 
 
 - **Query Layer (Trino + SQL):
     We'll use trino to query the current stocks by top stocks, biggest rise, certain
@@ -113,7 +127,9 @@ After compaction, they will be in parquet format.
 The compaction would happen after files are stored, that way there isn't such high 
 latency (which we don't want), but after displaying the data at the current moment
 we don't need it in real time anymore so the compaction process won't hurt us.
-
+We use elt instead of etl for streaming because the most important thing is real time
+which etl might damage if we take time to do transformations on the data before displaying
+it to the user.
 
 - **Lifecycle Policies / Retention:**
 A file will include the stocks name, the stocks details like open/close/low/high
