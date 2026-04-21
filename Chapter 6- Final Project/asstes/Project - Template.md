@@ -82,7 +82,9 @@ of an impact, its not a real-time output but a scheduled once-a-day one.
 ---
 
 ## 4. Storage Design
+
 - **Partitioning Strategy:**
+
 
 - **File Formats:** (Parquet/ORC/etc.)  
 Files that were processed by flink in the stream processing will be stored as JSON 
@@ -98,7 +100,9 @@ A file will include it's stocks name, the stocks details like open/close/low/hig
 and volume.
 since we are using s3 the version will be saved with the stock which will allow us
 to know the timestamp of the stock.
-since we talk about stocks the lifespan doesn't have to be that long, 
+since we talk about stocks an expiration of 5 years should be enough, that way the 
+client can see the stats of the stock from a satisfied amount of time before, but
+we don't overload the storage with data from 30 years back.
 
 - **Include ERD (SQL)**
 
