@@ -35,7 +35,23 @@ we'll store them as encoded JSON files, with an option to compact them
 to larger parquet files.
 
 - **Data Volume:** (e.g., GB/day, millions of rows)
-we will have 
+one HTTP response from the Finnhub API will include a message type, last stock's 
+price, it's symbol, volume and timestamp in JSON format.
+that is pretty small, a request like the one below from the Finnhub API is only
+about 88B.
+{
+  "data": [
+    {
+      "p": 7296.89,
+      "s": "BINANCE:BTCUSDT",
+      "t": 1575526691134,
+      "v": 0.011467
+    }
+  ],
+  "type": "trade"
+}
+if we say thats an average response, and there are about 9000-10000 us and canadian
+stocks, were talking about 792KB-880KB a second, which is 2.8GB-3.2GB an hour
 
 - **Arrival Frequency:** (e.g., batch, streaming, hourly)  
 we will need streaming as stocks update every second of the day.
