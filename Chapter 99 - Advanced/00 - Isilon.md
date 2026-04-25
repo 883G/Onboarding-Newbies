@@ -23,6 +23,7 @@ This onboarding contains a lot of material, not all of it is necessarily mandato
     - Symmetric Architecture vs. NameNode/DataNode.
         
     - The Back-end Network: **InfiniBand/Ethernet** and why it makes "Data Locality" obsolete.
+        - Do not dwelve into the back-end network - just understand the concept and the "magic" behind Isilons architectural choices.
         
     - Cluster Composition, **Quorum** ($\lfloor N/2 \rfloor + 1$), and Group State.
         
@@ -32,7 +33,7 @@ This onboarding contains a lot of material, not all of it is necessarily mandato
         
     - [Cluster Composition, Quorum, and Group State](https://www.delltechnologies.com/asset/en-us/products/storage/industry-market/h17364-wp-powerscale-onefs-group-state-quorum.pdf)
         
-    - [Hardware Fault Tolerance](https://infohub.delltechnologies.com/en-uk/p/onefs-hardware-fault-tolerance/)
+    - [Hardware Fault Tolerance](https://infohub.delltechnologies.com/en-uk/p/onefs-hardware-fault-tolerance/) (Bonus Read!)
         
 
 ---
@@ -160,7 +161,7 @@ Just a bunch of questions I rounded up, they are not mandatory but can helpful i
     
 2. In HDFS, we prioritize moving compute to data. Why does OneFS claim this is obsolete? Hint: read about the **back-end network latency** and the role of the **Initiator node**.
     
-3. If you add a single new node to a healthy cluster, which internal process is responsible for ensuring the data is physically redistributed, and does this happen at the block level or the file level?
+3. If you add a single new node to a healthy cluster, which internal process is responsible for ensuring the data is physically redistributed, and does this happen at the block level or the file level? (Bonus Question)
     
 4. In traditional HDFS, the NameNode tracks files by their full path. In OneFS, the **LIN (Logical Inode Number)** is the unique identifier. If you move a file from `/data/input` to `/data/archive`, does its LIN change? How does this impact the **B-Tree** lookups?
     
