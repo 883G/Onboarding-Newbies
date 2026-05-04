@@ -1,9 +1,9 @@
-from typing import Any
 
 from fastapi import FastAPI
 
 from pizza_api_project.models.pizza import PizzaItem, OrderRequest
 from pizza_api_project.routers import orders
+from pizza_api_project.routers.orders import create_order
 
 app = FastAPI(title="Pizza Delivery API")
 
@@ -24,7 +24,8 @@ def main():
     items.append(pizzaitem2)
     order_data = {"customer_name": "ofek", "pizzas": items}
     order_request: OrderRequest = OrderRequest(**order_data)
-    print(order_request)
+    create_order(order_request)
+
 
 if __name__ == "__main__":
     main()
