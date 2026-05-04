@@ -1,10 +1,7 @@
 from typing import List
 
 from fastapi import APIRouter, HTTPException
-from models.pizza import OrderRequest
-from db_handler.database_orm import save_order_to_db
-
-from pizza_api_project.models.pizza import PizzaItem
+from pizza_api_project.models.pizza import PizzaItem, OrderRequest
 
 router = APIRouter()
 
