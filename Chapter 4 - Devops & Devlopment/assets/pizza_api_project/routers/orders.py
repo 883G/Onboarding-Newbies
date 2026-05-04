@@ -16,7 +16,7 @@ def get_menu():
 @router.post("/orders")
 def create_order(order: OrderRequest):
     if len(order.pizzas).__eq__(0):
-        raise HTTPException(status_code=400, detail="Theres no items in the order")
+        raise HTTPException(status_code=400, detail="Items list id empty")
     else:
         return order
     """
@@ -26,7 +26,6 @@ def create_order(order: OrderRequest):
     3. Return a success message with the total price and an order ID.
     4. Handle cases where the pizza list is empty (raise 400 exception).
     """
-    pass
 
 def calc_total_price(pizzas: List[PizzaItem]) -> float:
     total_price: float = 0
