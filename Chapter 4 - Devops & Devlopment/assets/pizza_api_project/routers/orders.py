@@ -19,7 +19,7 @@ def get_menu():
 @router.post("/orders")
 def create_order(order: OrderRequest):
     if len(order.pizzas).__eq__(0):
-        raise HTTPException(status_code=404, detail="Theres no items in the order")
+        raise HTTPException(status_code=400, detail="Theres no items in the order")
     else:
         return order
     """

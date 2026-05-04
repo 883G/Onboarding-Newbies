@@ -1,9 +1,13 @@
+from typing import List
+
 from pizza_api_project.models.order import Order
+from pizza_api_project.models.pizza import PizzaItem
 
 
 class PizzaOrder(Order):
 
-
+    def __init__(self, customer_name: str, pizzas: List[PizzaItem]):
+        super().__init__(customer_name, pizzas)
 
     def save_order(self, order_data: dict):
         pass
