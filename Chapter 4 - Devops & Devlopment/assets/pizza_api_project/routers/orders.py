@@ -1,6 +1,10 @@
+from typing import List
+
 from fastapi import APIRouter, HTTPException
-from models.pizza import OrderRequest 
+from models.pizza import OrderRequest
 from db_handler.database_orm import save_order_to_db
+
+from pizza_api_project.models.pizza import PizzaItem
 
 router = APIRouter()
 
@@ -14,6 +18,7 @@ def get_menu():
 
 @router.post("/orders")
 def create_order(order: OrderRequest):
+    return order
     """
     TODO: INCOMPLETE ENDPOINT!
     1. Calculate total price.
@@ -22,3 +27,9 @@ def create_order(order: OrderRequest):
     4. Handle cases where the pizza list is empty (raise 400 exception).
     """
     pass
+
+def calc_total_price(pizzas: List[PizzaItem]) -> float:
+    total_price: float = 0
+    for pizza in pizzas:
+        total_price += pizza.price
+    return total_price
