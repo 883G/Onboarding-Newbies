@@ -10,15 +10,6 @@ app.include_router(orders.router)
 
 def main():
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
-    item = {"name": "cornpizza", "price": "4.5"}
-    items: PizzaItem = []
-    pizzaitem1 = PizzaItem(**item)
-    pizzaitem2 = PizzaItem(**item)
-    items.append(pizzaitem1)
-    items.append(pizzaitem2)
-    order_data = {"customer_name": "ofek", "pizzas": items}
-    order_request: OrderRequest = OrderRequest(**order_data)
-    create_order(order_request)
 
 
 if __name__ == "__main__":
