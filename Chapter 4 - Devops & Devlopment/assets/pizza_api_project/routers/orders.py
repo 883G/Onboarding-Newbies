@@ -1,5 +1,6 @@
 from typing import List
 
+import uvicorn
 from fastapi import APIRouter, HTTPException
 from pizza_api_project.models.pizza import PizzaItem, OrderRequest
 from pizza_api_project.models.pizza_order import PizzaOrder
@@ -23,16 +24,3 @@ def create_order(order: OrderRequest):
         pizza_order.save_order()
         print(pizza_order.return_success_msg())
         return order
-    """
-    TODO: INCOMPLETE ENDPOINT!
-    1. Calculate total price.
-    2. Call 'save_order_to_db(order_data)' to save it.
-    3. Return a success message with the total price and an order ID.
-    4. Handle cases where the pizza list is empty (raise 400 exception).
-    """
-
-def calc_total_price(pizzas: List[PizzaItem]) -> float:
-    total_price: float = 0
-    for pizza in pizzas:
-        total_price += pizza.price
-    return total_price
