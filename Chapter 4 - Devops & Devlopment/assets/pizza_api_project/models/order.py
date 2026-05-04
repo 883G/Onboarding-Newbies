@@ -2,8 +2,6 @@ from abc import ABC, abstractmethod
 import uuid
 from typing import List, Any
 
-from pizza_api_project.models.pizza import OrderRequest
-
 
 class CreateOrder(ABC):
     @abstractmethod
@@ -20,7 +18,11 @@ class CreateOrder(ABC):
 
 
 class Order(CreateOrder, ABC):
-    order_id: uuid
     customer_name: str
     items: List[Any]
+    order_id: uuid
 
+    def __int__(self, customer_name: str, items: List[Any]):
+        self.customer_name = customer_name
+        self.items = items
+        self.order_id = uuid.uuid4()
