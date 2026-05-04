@@ -13,12 +13,11 @@ class PizzaOrder(Order):
     def save_order(self):
         save_order_to_db(self.__dict__)
 
-    def print_success_msg(self):
-        pass
+    def return_success_msg(self) -> str:
+        return "the order: ", self.order_id, "is success, ", "the total price is: ", self.calc_total_price()
 
     def calc_total_price(self):
         total_price: float = 0
         for pizza in self.items:
             total_price += pizza.price
         return total_price
-

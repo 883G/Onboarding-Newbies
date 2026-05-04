@@ -13,7 +13,7 @@ class CreateOrder(ABC):
         pass
 
     @abstractmethod
-    def print_success_msg(self):
+    def return_success_msg(self):
         pass
 
 

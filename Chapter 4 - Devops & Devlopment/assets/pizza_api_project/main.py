@@ -23,8 +23,7 @@ def main():
     items.append(pizzaitem2)
     dictionery = {"items": items, "customer_name": "ofek"}
     pizza_order = PizzaOrder("ofek", items)
-    pizza_order.save_order()
-
+    print(pizza_order.return_success_msg())
 
 
 if __name__ == "__main__":
