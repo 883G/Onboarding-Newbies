@@ -8,15 +8,11 @@
 
 .idea/modules.xml
 
-.idea/Onboarding-Newbies.iml
-
 .idea/vcs.xml
 
 Chapter 4 - Devops & Devlopment/assets/.idea/inspectionProfiles/profiles_settings.xml
 
 Chapter 4 - Devops & Devlopment/assets/.idea/inspectionProfiles/Project_Default.xml
-
-Chapter 4 - Devops & Devlopment/assets/.idea/assets.iml
 
 Chapter 4 - Devops & Devlopment/assets/.idea/misc.xml
 
@@ -24,22 +20,6 @@ Chapter 4 - Devops & Devlopment/assets/.idea/modules.xml
 
 Chapter 4 - Devops & Devlopment/assets/.idea/vcs.xml
 
-Chapter 4 - Devops & Devlopment/assets/pizza_api_project/__pycache__/__init__.cpython-311.pyc
+*.pyc
 
-Chapter 4 - Devops & Devlopment/assets/pizza_api_project/__pycache__/main.cpython-311.pyc
-
-Chapter 4 - Devops & Devlopment/assets/pizza_api_project/db_handler/__pycache__/__init__.cpython-311.pyc
-
-Chapter 4 - Devops & Devlopment/assets/pizza_api_project/db_handler/__pycache__/database_orm.cpython-311.pyc
-
-Chapter 4 - Devops & Devlopment/assets/pizza_api_project/models/__pycache__/__init__.cpython-311.pyc
-
-Chapter 4 - Devops & Devlopment/assets/pizza_api_project/models/__pycache__/order.cpython-311.pyc
-
-Chapter 4 - Devops & Devlopment/assets/pizza_api_project/models/__pycache__/pizza.cpython-311.pyc
-
-Chapter 4 - Devops & Devlopment/assets/pizza_api_project/models/__pycache__/pizza_order.cpython-311.pyc
-
-Chapter 4 - Devops & Devlopment/assets/pizza_api_project/routers/__pycache__/__init__.cpython-311.pyc
-
-Chapter 4 - Devops & Devlopment/assets/pizza_api_project/routers/__pycache__/orders.cpython-311.pyc
+*.iml
