@@ -15,9 +15,9 @@ class PizzaOrder(Order):
     def print_success_msg(self):
         pass
 
-    def calc_total_price(self, pizzas: List[PizzaItem]):
+    def calc_total_price(self):
         total_price: float = 0
-        for pizza in pizzas:
+        for pizza in self.items:
             total_price += pizza.price
         return total_price
 

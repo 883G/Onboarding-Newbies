@@ -22,7 +22,7 @@ def main():
     items.append(pizzaitem1)
     items.append(pizzaitem2)
     pizza_order = PizzaOrder("ofek", items)
-    print(str(pizza_order.order_id), pizza_order.items, pizza_order.customer_name)
+    print(pizza_order.calc_total_price())
 
 
 if __name__ == "__main__":

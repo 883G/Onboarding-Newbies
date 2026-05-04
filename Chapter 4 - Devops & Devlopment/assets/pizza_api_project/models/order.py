@@ -5,7 +5,7 @@ from typing import List, Any
 
 class CreateOrder(ABC):
     @abstractmethod
-    def calc_total_price(self, items: List[Any]):
+    def calc_total_price(self):
         pass
 
     @abstractmethod
