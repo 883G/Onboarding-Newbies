@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from pizza_api_project.models.pizza import PizzaItem
+from pizza_api_project.models.pizza import PizzaItem, OrderRequest
 from pizza_api_project.models.pizza_order import PizzaOrder
 from pizza_api_project.routers import orders
 
@@ -21,8 +21,10 @@ def main():
     pizzaitem2 = PizzaItem(**item)
     items.append(pizzaitem1)
     items.append(pizzaitem2)
+    dictionery = {"items": items, "customer_name": "ofek"}
     pizza_order = PizzaOrder("ofek", items)
-    print(pizza_order.calc_total_price())
+    pizza_order.save_order()
+
 
 
 if __name__ == "__main__":

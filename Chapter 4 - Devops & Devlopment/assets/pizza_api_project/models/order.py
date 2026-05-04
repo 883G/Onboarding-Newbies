@@ -9,7 +9,7 @@ class CreateOrder(ABC):
         pass
 
     @abstractmethod
-    def save_order(self, order_data: dict):
+    def save_order(self):
         pass
 
     @abstractmethod
