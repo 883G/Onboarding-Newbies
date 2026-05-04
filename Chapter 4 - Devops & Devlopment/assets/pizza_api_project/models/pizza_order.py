@@ -16,7 +16,5 @@ class PizzaOrder(Order):
         return "the order: ", self.order_id, "is success! ", "the total price is: ", self.calc_total_price()
 
     def calc_total_price(self):
-        total_price: float = 0
-        for pizza in self.items:
-            total_price += pizza.price
+        total_price: float = sum(pizza.price for pizza in self.items)
         return total_price
