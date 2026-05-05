@@ -9,7 +9,7 @@ app = FastAPI(title="Pizza Delivery API")
 app.include_router(orders.router)
 
 def main():
-    pizza: PizzaItem = PizzaItem(**{"name": "of", "price": 0.0})
+    pizza: PizzaItem = PizzaItem(**{"name": "of#", "price": 0.1})
     print(pizza.price)
     #uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
 
