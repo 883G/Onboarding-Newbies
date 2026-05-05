@@ -1,6 +1,4 @@
-from typing import List
 
-import uvicorn
 from fastapi import APIRouter, HTTPException
 from pizza_api_project.models.pizza import PizzaItem, OrderRequest
 from pizza_api_project.models.pizza_order import PizzaOrder
