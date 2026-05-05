@@ -19,6 +19,7 @@ def get_menu():
 def create_order(order: OrderRequest):
     if len(order.pizzas) == 0:
         raise HTTPException(status_code=400, detail="Items list id empty")
+
     else:
         pizza_order: PizzaOrder = PizzaOrder(order)
         pizza_order.save_order()
