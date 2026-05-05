@@ -1,25 +1,7 @@
-.idea/inspectionProfiles/profiles_settings.xml
-
-.idea/inspectionProfiles/Project_Default.xml
-
-.idea/.gitignore
-
-.idea/misc.xml
-
-.idea/modules.xml
-
-.idea/vcs.xml
-
-Chapter 4 - Devops & Devlopment/assets/.idea/inspectionProfiles/profiles_settings.xml
-
-Chapter 4 - Devops & Devlopment/assets/.idea/inspectionProfiles/Project_Default.xml
-
-Chapter 4 - Devops & Devlopment/assets/.idea/misc.xml
-
-Chapter 4 - Devops & Devlopment/assets/.idea/modules.xml
-
-Chapter 4 - Devops & Devlopment/assets/.idea/vcs.xml
+.idea/
 
 *.pyc
 
 *.iml
+
+*.xml
