@@ -11,6 +11,12 @@ class PizzaItem(BaseModel):
             raise ValueError("name cannot contain non alphabetic characters")
         return name.title()
 
+    @validator("price")
+    def name_cannot_contain_non_alphabetic_characters(cls, price: float):
+        if price <= 0.0:
+            raise ValueError("the price most be bigger than 0")
+        return price
+
 
 class OrderRequest(BaseModel):
     customer_name: str
