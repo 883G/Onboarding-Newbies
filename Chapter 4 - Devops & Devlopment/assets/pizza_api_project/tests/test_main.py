@@ -1,6 +1,7 @@
 from fastapi.testclient import TestClient
-from main import app
 from unittest.mock import patch
+
+from pizza_api_project.main import app
 
 client = TestClient(app)
 
