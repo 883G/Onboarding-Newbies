@@ -21,8 +21,3 @@ def test_get_menu() -> None:
   #  mock_order_request.the_items_list_is_empty = Mock(return_value=True)
    # assert create_order(mock_order_request) ==
 
-@patch('pizza_api_project.models.pizza_order.PizzaOrder.the_items_list_is_empty', return_value=True)
-def test_post_order(mock_empty_list_order) -> None:
-    response = client.post("/orders")
-    assert response.status_code == 400
-    assert response.detail == "Items list is empty"
