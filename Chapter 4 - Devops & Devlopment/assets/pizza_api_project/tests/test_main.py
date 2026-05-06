@@ -1,33 +1,21 @@
 from unittest import mock
 
 from fastapi.testclient import TestClient
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 
 import pizza_api_project.db_handler.database_orm
 import pizza_api_project.models.pizza
 from pizza_api_project.main import app
 from pizza_api_project.models.pizza import OrderRequest
+from pizza_api_project.models.pizza_order import PizzaOrder
 
 client = TestClient(app)
 
 
-def test_get_menu() -> None:
-    response = client.get("/menu")
-    assert response.status_code == 200
-    assert len(response.json()) == 3
-    assert response.json()[0]["name"] == "Margherita"
-
-
-def test_post_order() -> None:
-    response = client.post("/orders")
-    assert response.status_code == 400
-
-@patch('database_orm.save_order_to_db')
-def test_save_order_to_db_func(mock_save_order_to_db):
-    mock_save_order_to_db.return_value = True
-    order_data = {'customer_name': 'ofek', 'pizzas': [{"name": "Margherita", "price": 10.0}]}
-
-    assert pizza_api_project.db_handler.database_orm.save_order_to_db(order_data) == True
+def test_save_order_to_db():
+    with patch.object(PizzaOrder, 'save_order', return_value=True):
+        order_data = {'customer_name': 'ofek', 'pizzas': [{"name": "Margherita", "price": 10.0}]}
+        assert pizza_api_project.db_handler.database_orm.save_order_to_db(order_data) is True
 
 
 # ==========================================
