@@ -10,12 +10,14 @@ from pizza_api_project.models.pizza_order import PizzaOrder
 
 client = TestClient(app)
 
+
 @patch('pizza_api_project.db_handler.database_orm.save_order_to_db', return_value=True)
-def test_save_order_to_db():
+def test_save_order_to_db(mock_save_order_to_db_func):
     order_data = {'customer_name': 'ofek', 'pizzas': [{"name": "Margherita", "price": 10.0}]}
     order_request: OrderRequest = OrderRequest(**order_data)
     pizza_order: PizzaOrder = PizzaOrder(order_request)
-    assert pizza_order.save_order() is True
+    assert pizza_order.save_order() == True
+
 
 # ==========================================
 # TODO: WRITE TESTS FOR THE POST ENDPOINT
