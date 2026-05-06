@@ -4,19 +4,18 @@ from fastapi.testclient import TestClient
 from unittest.mock import patch, Mock
 
 import pizza_api_project.db_handler.database_orm
-import pizza_api_project.models.pizza
 from pizza_api_project.main import app
 from pizza_api_project.models.pizza import OrderRequest
 from pizza_api_project.models.pizza_order import PizzaOrder
 
 client = TestClient(app)
 
-
+@patch('pizza_api_project.db_handler.database_orm.save_order_to_db', return_value=True)
 def test_save_order_to_db():
-    with patch.object(PizzaOrder, 'save_order', return_value=True):
-        order_data = {'customer_name': 'ofek', 'pizzas': [{"name": "Margherita", "price": 10.0}]}
-        assert pizza_api_project.db_handler.database_orm.save_order_to_db(order_data) is True
-
+    order_data = {'customer_name': 'ofek', 'pizzas': [{"name": "Margherita", "price": 10.0}]}
+    order_request: OrderRequest = OrderRequest(**order_data)
+    pizza_order: PizzaOrder = PizzaOrder(order_request)
+    assert pizza_order.save_order() is True
 
 # ==========================================
 # TODO: WRITE TESTS FOR THE POST ENDPOINT

@@ -16,7 +16,7 @@ def test_get_menu() -> None:
     assert len(response.json()) == 3
     assert response.json()[0]["name"] == "Margherita"
 
-@patch('db_handler.database_orm.save_order_to_db')
+@patch('pizza_order.PizzaOrder')
 def test_save_order_to_db_func(mock_save_order_to_db):
     mock_save_order_to_db.return_value = True
     order_data = {'customer_name': 'ofek', 'pizzas': [{"name": "Margherita", "price": 10.0}]}
