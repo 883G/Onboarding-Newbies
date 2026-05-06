@@ -16,7 +16,7 @@ def test_save_order_to_db(mock_save_order_to_db_func):
     order_data = {'customer_name': 'ofek', 'pizzas': [{"name": "Margherita", "price": 10.0}]}
     order_request: OrderRequest = OrderRequest(**order_data)
     pizza_order: PizzaOrder = PizzaOrder(order_request)
-    assert pizza_order.save_order() == True
+    assert pizza_order.save_order() is True
 
 
 # ==========================================
