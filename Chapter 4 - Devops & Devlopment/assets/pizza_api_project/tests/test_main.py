@@ -23,8 +23,8 @@ def test_save_order_func(mock_save_order_to_db_func):
 
 @patch('pizza_api_project.models.pizza_order.PizzaOrder.the_items_list_is_empty', return_value=True)
 def test_fail_post_order_endpoint(mock_order) -> None:
-    response = client.post("/orders")
-    assert response.status_code == 422
+    response = client.post("/orders", json={'customer_name': 'ofek', 'pizzas': []})
+    assert response.status_code == 400
 
 @patch('pizza_api_project.models.pizza_order.PizzaOrder.the_items_list_is_empty', return_value=False)
 def test_success_post_order_endpoint(mock_order) -> None:
