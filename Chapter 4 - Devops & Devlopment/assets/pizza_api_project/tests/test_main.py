@@ -12,31 +12,29 @@ from fastapi import HTTPException
 
 client = TestClient(app)
 
-
 @patch('pizza_api_project.db_handler.database_orm.save_order_to_db', return_value=True)
-def test_save_order_func(mock_save_order_to_db_func):
+def test_success_save_order_func(mock_save_order_to_db_func):
     order_data = {'customer_name': 'ofek', 'pizzas': [{"name": "Margherita", "price": 10.0}]}
     order_request: OrderRequest = OrderRequest(**order_data)
     pizza_order: PizzaOrder = PizzaOrder(order_request)
     assert pizza_order.save_order() is True
-
 
 @patch('pizza_api_project.models.pizza_order.PizzaOrder.the_items_list_is_empty', return_value=True)
 def test_fail_post_order_endpoint(mock_order) -> None:
     response = client.post("/orders", json={'customer_name': 'ofek', 'pizzas': []})
     assert response.status_code == 400
 
+
 @patch('pizza_api_project.models.pizza_order.PizzaOrder.the_items_list_is_empty', return_value=False)
 def test_success_post_order_endpoint(mock_order) -> None:
     response = client.post("/orders", json={'customer_name': 'ofek', 'pizzas': [{"name": "Margherita", "price": 10.0}]})
     assert response.status_code == 200
 
-
-
-
-# ==========================================
-# TODO: WRITE TESTS FOR THE POST ENDPOINT
-# ==========================================
+def test_get_menu() -> None:
+    response = client.get("/menu")
+    assert response.status_code == 200
+    assert len(response.json()) == 3
+    assert response.json()[0]["name"] == "Margherita"
 
 # Example of what is needed:
 # @patch('main.save_order_to_db')
