@@ -1,4 +1,4 @@
-from unittest import mock
+﻿from unittest import mock
 
 from fastapi.testclient import TestClient
 from unittest.mock import patch, Mock
@@ -20,10 +20,16 @@ def test_save_order_func(mock_save_order_to_db_func):
     pizza_order: PizzaOrder = PizzaOrder(order_request)
     assert pizza_order.save_order() is True
 
+
 @patch('pizza_api_project.models.pizza_order.PizzaOrder.the_items_list_is_empty', return_value=True)
-def test_post_order_endpoint(mock_order) -> None:
+def test_fail_post_order_endpoint(mock_order) -> None:
     response = client.post("/orders")
     assert response.status_code == 422
+
+@patch('pizza_api_project.models.pizza_order.PizzaOrder.the_items_list_is_empty', return_value=False)
+def test_success_post_order_endpoint(mock_order) -> None:
+    response = client.post("/orders", json={'customer_name': 'ofek', 'pizzas': [{"name": "Margherita", "price": 10.0}]})
+    assert response.status_code == 200
 
 
 
@@ -39,12 +45,3 @@ def test_post_order_endpoint(mock_order) -> None:
 #     # 2. Act: send POST request to /orders
 #     # 3. Assert: check status code, response data, and that mock was called
 #     pass
-
-def test_create_order_empty_list(mocker):
-    # mock_send_order = mocker.Mock()
-    # mock_send_order.
-    # order_request: OrderRequest = OrderRequest(customer_name='ofek', pizzas=[])
-    # assert len(order_request.pizzas) == 0
-    # asser
-    """TODO: Test that sending an order with no pizzas returns a 400 error."""
-    pass
