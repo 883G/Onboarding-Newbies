@@ -4,7 +4,6 @@ from fastapi.testclient import TestClient
 from unittest.mock import patch, Mock
 
 import pizza_api_project.db_handler.database_orm
-from conf import order_request_test_data
 from pizza_api_project.main import app
 from pizza_api_project.models.pizza import OrderRequest
 from pizza_api_project.models.pizza_order import PizzaOrder
@@ -20,12 +19,11 @@ def test_save_order_func(mock_save_order_to_db_func):
     pizza_order: PizzaOrder = PizzaOrder(order_request)
     assert pizza_order.save_order() is True
 
-
-@patch('pizza_api_project.models.pizza.OrderRequest', return_value=OrderRequest(**order_request_test_data))
-def test_post_orders_endpoint(mock_order_request_without_items):
+def test_post_order(mock_order) -> None:
     response = client.post("/orders")
     assert response.status_code == 400
     assert response.detail == "Items list is empty"
+
 
 
 # ==========================================
