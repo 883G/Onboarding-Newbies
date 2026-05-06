@@ -1,1 +1,7 @@
-#TODO: Fill me!
+.idea/
+
+*.pyc
+
+*.iml
+
+*.xml

@@ -1,6 +1,7 @@
+
 from fastapi import APIRouter, HTTPException
-from models.pizza import OrderRequest 
-from db_handler.database_orm import save_order_to_db
+from pizza_api_project.models.pizza import PizzaItem, OrderRequest
+from pizza_api_project.models.pizza_order import PizzaOrder
 
 router = APIRouter()
 
@@ -14,11 +15,10 @@ def get_menu():
 
 @router.post("/orders")
 def create_order(order: OrderRequest):
-    """
-    TODO: INCOMPLETE ENDPOINT!
-    1. Calculate total price.
-    2. Call 'save_order_to_db(order_data)' to save it.
-    3. Return a success message with the total price and an order ID.
-    4. Handle cases where the pizza list is empty (raise 400 exception).
-    """
-    pass
+    if len(order.pizzas) == 0:
+        raise HTTPException(status_code=400, detail="Items list is empty")
+    else:
+        pizza_order: PizzaOrder = PizzaOrder(order)
+        pizza_order.save_order()
+        print(pizza_order.return_success_msg())
+        return order
