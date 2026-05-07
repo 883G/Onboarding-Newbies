@@ -1,3 +1,4 @@
+
 def save_order_to_db(order_data: dict) -> bool:
     """
     Fake database function. 
