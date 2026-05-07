@@ -1,3 +1,5 @@
+from fastapi import HTTPException
+
 from pizza_api_project.db_handler.database_orm import save_order_to_db
 from pizza_api_project.models.order import Order
 from pizza_api_project.models.pizza import PizzaItem, OrderRequest
@@ -17,3 +19,6 @@ class PizzaOrder(Order):
     def calc_total_price(self):
         total_price: float = sum(pizza.price for pizza in self.items)
         return total_price
+
+    def the_items_list_is_empty(self) -> bool:
+        return len(self.items) == 0

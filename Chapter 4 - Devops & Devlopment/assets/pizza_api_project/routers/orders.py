@@ -15,10 +15,10 @@ def get_menu():
 
 @router.post("/orders")
 def create_order(order: OrderRequest):
-    if len(order.pizzas) == 0:
+    pizza_order: PizzaOrder = PizzaOrder(order)
+    if pizza_order.the_items_list_is_empty():
         raise HTTPException(status_code=400, detail="Items list is empty")
     else:
-        pizza_order: PizzaOrder = PizzaOrder(order)
         pizza_order.save_order()
         print(pizza_order.return_success_msg())
         return order

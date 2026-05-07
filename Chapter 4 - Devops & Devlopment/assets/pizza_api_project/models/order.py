@@ -16,6 +16,9 @@ class CreateOrder(ABC):
     def return_success_msg(self):
         pass
 
+    @abstractmethod
+    def the_items_list_is_empty(self):
+        pass
 
 class Order(CreateOrder, ABC):
     customer_name: str
