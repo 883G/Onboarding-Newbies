@@ -28,15 +28,15 @@ Authentication & Directory Concepts:
 
 ### ❓ Guide Questions
 
-1. **What is Kerberos and what problem does it solve?**  
+1. **What is Kerberos, what problem does it solve, and what are its core components?**  
 
-2. **How does the Kerberos authentication flow work?**  
+2. **How is Kerberos configured and managed in production? Explain keytab files, service principals, ticket lifetimes, renewal policies and etc.**  
 
-3. **What are the core Kerberos components and concepts?**  
+3. **How does the Kerberos authentication flow work?**  
 
 4. **Why is Kerberos considered secure?**
 
-5. **What are the basic tools and commands used in Kerberos?**  
+5. **How can Kerberos be integrated with LDAP or other directory services in a real deployment?**  
 
 ---
 
@@ -45,15 +45,8 @@ Authentication & Directory Concepts:
 ### ❓ Guide Questions
 
 1. **What is LDAP and how is data structured within it?**  
-   Explain:
-   - Directory tree structure  
-   - Object classes and attributes  
 
 2. **What operations does LDAP support?**  
-   Describe:
-   - Bind (authentication)  
-   - Search  
-   - Add / Modify / Delete  
 
 3. **What is an LDAP schema and why is it important?**  
 
@@ -69,7 +62,7 @@ Assignment: Compare two identity approaches:
 - Kerberos vs JWT
 
 Deliverable:
-- 1–2 sentences comparison  
+- 2–4 sentences comparison  
 - Include a simple use case for each  
 
 ---
