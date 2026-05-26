@@ -1,4 +1,4 @@
-# Linux & Infrastructure Foundations
+# Linux & Infrastructure Foundations 💻💾
 
 Linux is the foundation of modern infrastructure, servers, cloud platforms, containers, and distributed systems.
 
