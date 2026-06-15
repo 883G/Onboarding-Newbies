@@ -44,15 +44,15 @@ Authentication & Directory Concepts:
 
 ### ❓ Guide Questions
 
-1. **What is LDAP and how is data structured within it?**  
+1. **How is LDAP used for authentication and authorization?** 
 
 2. **What operations does LDAP support?**  
 
 3. **What is an LDAP schema and why is it important?**  
 
-4. **How is LDAP used for authentication and authorization?**  
+4.  **What is LDAP and how is data structured within it?**
 
-5. **What are common use cases for LDAP?**  
+5. **What are the most important security and operational considerations when deploying LDAP in a production environment?**  
 
 ---
 
