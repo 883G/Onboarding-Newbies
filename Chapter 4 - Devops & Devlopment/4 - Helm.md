@@ -52,6 +52,109 @@ Use the resources below as your primary reference:
 
 ---
 
+## Q&A
+
+1. מתי צריך תלות בין containers
+
+למשל אם הם צריכים משאבים משותפים או פועלים בצורה מאוד צמודה אחד לשני,
+למשל כאשר container אחד דוחף קונפיגורציות לcontainer אחר או למשל לנהל איזשהו backup של מידע, בלי לפגוע בcontainer הראשי, או להוציא לוגים מהcontainer הראשי.
+
+2. מה זה init container
+
+הם containers שחייבים לרוץ ולהסתיים בהצלחה לפני שהapp הראשי יתחיל לרוץ.
+למשל לחכות לservice שיעלה.
+
+3. לחפש דוגמה לjob עם כמה pods
+
+
+
+4. למה צריך deployment
+
+נותן לנהל את הpods שהוא פורס בצורה הרבה יותר נוחה.
+למשל מאפשר scacling בקלות וupdates למיניהם בלי להתחיל לחפש pod pod.
+
+5. מתי נשתמש בnodeport
+
+היתרון היחיד (שמצאתי) הוא הפשטות שלו, בסך הכל פותחים עוד port על הnode,
+ואין צורך להרים עוד רכיב ביניים שיחשוף את הservice.
+ולכן מאוד מקל על סביבות פיתוח פשוטות.
+
+6. מה זה ingress controller
+
+הרכיב שמנתב בפועל לפי החוקים של הingress כלומר הresource.
+
+7. מה זה kubernetes gateway api
+
+זה מין סטנדרט שמגדיר ניתוב של בקשות בcluster kubernetes.
+הוא מורכב מ3 רכיבים 
+הgateway class הוא תבנית ליצירת gateways ומגדיר קבוצה של gateways שחולקים קונפיגורציה ומנוהל על ידי controller מתאים.
+הGateway, ששם הניהול קורה בפועל והוא בעצם הentry point לcluster.
+הhttp route, מנהל ניתוב של בקשות http.
+
+8. פתרון להצפנה של secret
+
+ניתן להשתמש באפשרויות מחוץ לkubernetes למשל ב HashiCorp Vault.
+שמאפשרים ניהול secrets ברמה יותר גרנוילרית.
+
+9. מה זה GC ?
+
+אוסף של רכיבים בkubernetes לביצוע GC
+למשל מחיקה של תמונות ללא שימוש, מחיקה של containers לא פעילים בpod (על ידי הkubelet).
+https://kubernetes.io/docs/concepts/architecture/garbage-collection/
+
+10. האם פוד בsuccess/failed עדיין קיים ?
+
+
+
+11. מה הphase של pod שמורידים אותו תשתיתית בכוח
+
+
+
+12. מה זה probe
+
+הגדרה של בדיקות כדי לקבוע תקינות של containers 
+למשל כדי לקבוע עם container עדיין רץ או להגדיר מתי הוא נחשב ready.
+קצת מזכיר health check וdepends on מdocker compose.
+
+13. איך מחלקים משאבים לnamespace - מה השם של האובייקט ?
+
+ResourceQuota.
+
+14. איזה משאבים ניתן להגביל לnamespace
+
+הרבה, בין היתר, cpu, memory, כמות storage, כמות pvc,
+כמות kubernetes' resources למיניהם כמו כמות פודים, קונפיג מאפס ועוד. 
+
+15. האם חייב להגדיר limit
+
+נראה שלא
+
+16. access mode in pvc
+
+ReadWriteOnce, ReadOnlyMany, ReadOnlyMany, ReadWriteOncePod
+די מסביר את עצמו, רק שאם לא מצויין Pod אז הכוונה היא לnode.
+
+17. מאיפה מוקצים המשאבים לdaemon set
+
+
+
+18. האם כל pod ב statefull set מקבל pvc משלו
+
+כן
+
+19. למה צריך שמות קבועים לpod בstatefull set
+
+בשביל סדר הרצה מסודר וכך לשמור למשל בdatabases על זה שprimary תרוץ לפני רפליקות.
+
+20. מה מופיע בChart
+
+מכיל את השם והגרסה של הchart, לפחות אלו החובה.
+למשל מאפשר לעשות rollback לכל הפריסה, לא בהכרח רק לפוד אחד או resource אחד.
+
+21. איך helm תורם להפחתת redundencies בValues
+
+
+
 # Day 2 – Hands-On Labs (Kubernetes & Helm)
 
 ### ⚠️ Important
