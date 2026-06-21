@@ -66,7 +66,8 @@ Use the resources below as your primary reference:
 
 3. לחפש דוגמה לjob עם כמה pods
 
-
+למשל עיבוד של מידע באופן מקבילי כאשר מחלקים לכמות batches.
+או למשל איזשהו queue של works שכל pod לוקח משם עבודה, ואז ניתן להריץ במקביל (בהנחה שהם בלתי-תלויים)
 
 4. למה צריך deployment
 
@@ -104,11 +105,11 @@ https://kubernetes.io/docs/concepts/architecture/garbage-collection/
 
 10. האם פוד בsuccess/failed עדיין קיים ?
 
-
+כן, kubernetes לא מוחק pods באופן אוטומטי.
 
 11. מה הphase של pod שמורידים אותו תשתיתית בכוח
 
-
+אני מניח שהכוונה היא לterminating למרות שזה לא phase אלא state.
 
 12. מה זה probe
 
@@ -136,7 +137,8 @@ ReadWriteOnce, ReadOnlyMany, ReadOnlyMany, ReadWriteOncePod
 
 17. מאיפה מוקצים המשאבים לdaemon set
 
-
+למיטב הבנתי, הם תחת הnamespace.
+כלומר לא שונים באופן הזה מפודים רגילים.
 
 18. האם כל pod ב statefull set מקבל pvc משלו
 
@@ -153,7 +155,8 @@ ReadWriteOnce, ReadOnlyMany, ReadOnlyMany, ReadWriteOncePod
 
 21. איך helm תורם להפחתת redundencies בValues
 
-
+ניתן לארגן את הValues בצורת overlays כך שלמשל יש איזשהו base.yaml וניתן לעשות לערכים override,
+מקבצים כמו dev.yaml או prod.yaml.
 
 # Day 2 – Hands-On Labs (Kubernetes & Helm)
 
