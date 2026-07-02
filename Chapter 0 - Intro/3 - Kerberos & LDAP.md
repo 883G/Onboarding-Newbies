@@ -36,8 +36,6 @@ Authentication & Directory Concepts:
 
 4. **Why is Kerberos considered secure?**
 
-5. **How can Kerberos be integrated with LDAP or other directory services in a real deployment?**  
-
 ---
 
 # LDAP Core Concepts
@@ -53,6 +51,8 @@ Authentication & Directory Concepts:
 4.  **What is LDAP and how is data structured within it?**
 
 5. **What are the most important security and operational considerations when deploying LDAP in a production environment?**  
+
+6. **How can Kerberos be integrated with LDAP or other directory services in a real deployment?**  
 
 ---
 
