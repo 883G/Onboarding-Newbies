@@ -30,6 +30,7 @@ Linux & Infrastructure Core Concepts:
 * [systemd Documentation](https://systemd.io/?utm_source=chatgpt.com)
 * [GNU Core Utilities Manual](https://www.gnu.org/software/coreutils/manual/coreutils.html?utm_source=chatgpt.com)
 * [Vim Documentation](https://www.vim.org/docs.php?utm_source=chatgpt.com)
+* [Intro to OS mini book](https://fantastic-couscous-vjv74gqjj9w2wq74.github.dev/)
 
 ---
 
@@ -37,83 +38,77 @@ Linux & Infrastructure Core Concepts:
 
 ### ❓ Guide Questions
 
-1. **What is the Linux kernel and how does Linux separate kernel space from user space?**
+1. **What are the layers of an operating system, and how do they interact with each other?**
 
    Explain:
-   * What the kernel is and how it forms the core of a Linux system
-   * Kernel responsibilities and how user-space programs differ from kernel-space code
-   * What makes the Linux kernel unique compared to other operating systems
-   * Open source aspect: how distributions build on a shared kernel with different userland stacks
-   * User space vs kernel space
-   * System calls and how programs request services from the kernel
-   * Why isolation matters
-   * Examples of common system calls (open, read, write, execve)
-   * Kernel modules and drivers
+   * The hardware, kernel, system services, and user-space layers
+   * How these layers work together to provide a complete operating system
+   * What the kernel does and why it is the core of the OS
+   * The difference between system services and applications
+   * The role of kernel modules and device drivers
 
-2. **How does the Linux filesystem work and how is data organized?**
+2. **Choose a Linux topic from this chapter that interests you most, research it deeply, and explain how an application request becomes a kernel action and translates back to an application response.**
 
-   Explain:
-   * File systems and directory hierarchy
-   * Inodes
-   * Root filesystem (`/`)
-   * Mount points
-   * `/etc/fstab`
-   * `mount` and `df` commands
-   * Filesystem types and use-cases (ext4, xfs, btrfs, tmpfs, vfat, ntfs)
-   * LVM and logical volume management concepts
-   * Permissions, ownership, and Linux permission model (user/group/others, rwx)
-   * Special permission modes (sticky bit, setuid/setgid)
-   * Inode structure vs directory entries
-   * Journaling, fsck, and safe recovery practices
-   * Basic commands: `lsattr`, `chown`, `chmod`, `stat`
+   Possible topics to explore:
+   * Filesystems and I/O operations
+   * Process management and scheduling
+   * Memory management and virtual memory
+   * Networking and network stacks
+   * Security and permission models
+   * cgroups and resource isolation
+   
+   For your chosen topic, explain:
+   * The layers involved from application to kernel and back
+   * How system calls bridge user-space and kernel-space
+   * The role of interrupts, context switches, and scheduling
+   * Real examples using tools like `strace`, `ltrace`, or `perf` to trace the flow
+   * Why this interaction pattern matters for system performance and reliability
 
-3. **How are processes and services managed in Linux?**
+3. **How do processes and daemons work in Linux, and how do threads fit into this model?**
 
    Explain:
    * Processes vs daemons
-   * Process lifecycle
-   * Privileges and root user
-   * systemd and init systems
-   * Service management basics
-   * Process primitives: PID, PPID, sessions, process groups
-   * Signals (SIGTERM, SIGKILL, SIGHUP) and how to send/handle them (`kill`, `trap`)
-   * Inspecting processes: `ps`, `top`, `htop`, `pstree`
-   * Journaling and logs: `journalctl`, `/var/log/*`
-   * Runlevels/targets and unit file basics for systemd (`.service`, `.socket`)
-   * Basic system services: ntpd (network time protocol), DHCP, DNS services
-   * Init.d and service initialization basics
-   * Starting, stopping, and managing services with `systemctl` and `/etc/init.d/`
+   * Process lifecycle and basic process attributes such as PID and PPID
+   * Privileges, the root user, and why permissions matter
+   * Threads and how they differ from processes
+   * Signals such as `SIGTERM`, `SIGKILL`, and `SIGHUP`
+   * How to inspect processes with `ps`, `top`, `htop`, and `pstree`
+   * How services are started and managed with `systemd` and `systemctl`
 
-4. **How does Linux isolate and control resources?**
+4. **How does Linux isolate workloads and control resources?**
 
    Explain:
-   * cgroups
-   * namespaces
-   * CPU/memory isolation
-   * Container foundations
-   * Why containers rely on these primitives
-   * Practical tools: `cgcreate`, `systemd-run --scope`, `unshare`, `nsenter`
-   * Network namespaces and virtual interfaces (veth)
-   * Resource monitoring: `cgroupfs`, `systemd-cgls`
+   * cgroups and namespaces
+   * CPU, memory, and I/O isolation
+   * Why containers rely on these mechanisms
+   * Practical examples such as `systemd-run --scope`, `unshare`, and `nsenter`
+   * Network namespaces and virtual interfaces
+   * Resource monitoring and troubleshooting basics
 
-5. **What are the essential GNU/Linux command-line tools and editing utilities?**
+5. **What are the different types of filesystems, and how do they differ? Then focus on Linux filesystems for a deeper understanding.**
+
+   Explain filesystem types across operating systems:
+   * Common filesystem types and their use cases
+   * How different operating systems organize files and directories
+   
+   Then dive deep into Linux filesystems:
+   * How Linux filesystems work in practice
+   * Inodes, directory entries, and why metadata matters
+   * Root filesystem (`/`), mount points, and `/etc/fstab`
+   * Linux filesystem examples such as `ext4`, `xfs`, `btrfs`, `tmpfs`, and `vfat`
+   * Permissions, ownership, and the Linux permission model (`rwx` for user/group/others)
+   * Special permissions such as the sticky bit, setuid, and setgid
+   * Basic commands such as `mount`, `df`, `stat`, `chmod`, and `chown`
+
+6. **What are the essential Linux commands for everyday system management and basic navigation?**
 
    Explain and demonstrate basic usage of:
-   * `ls`
-   * `cd`
-   * `cat`
-   * `cp`
-   * `rm`
-   * `touch`
-   * `head`
-   * `tail`
-   * `du`
-   * Vim basics
-   * Nano basics
-   * Searching and text processing: `grep`, `awk`, `sed`, `sort`, `uniq`
-   * File transfer and networking: `ssh`, `scp`, `rsync`, `curl`
-   * Package management basics (apt, yum, dnf) and checking versions
-   * Shell basics: environment variables, piping, redirection, and simple scripting
+   * Navigation and file handling: `ls`, `cd`, `pwd`, `mkdir`, `cp`, `mv`, `rm`, `touch`, `cat`
+   * Viewing and searching files: `head`, `tail`, `grep`, `sed`, `awk`, `sort`, `uniq`
+   * System administration basics: `systemctl`, `journalctl`, `ps`, `top`, `df`, `du`
+   * File transfer and remote access: `ssh`, `scp`, `rsync`, `curl`
+   * Package management basics with `apt`, `yum`, or `dnf`
+   * Basic shell concepts such as piping, redirection, environment variables, and simple scripting
 
 ---
 > ⚠️ The lab should be done after answering the Guide Questions
