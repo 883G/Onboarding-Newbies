@@ -50,7 +50,7 @@ Authentication & Directory Concepts:
 
 4.  **What is LDAP and how is data structured within it?**
 
-5. **What are the most important security and operational considerations when deploying LDAP in a production environment?**  
+5. **Why is LDAP important for security, and how is it used for authentication and identity management in real-world systems?**
 
 6. **How can Kerberos be integrated with LDAP or other directory services in a real deployment?**  
 
