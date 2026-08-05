@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: hive
+      POSTGRES_PASSWORD: hive
+      POSTGRES_DB: metastore
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hive"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  hive:
+    image: bde2020/hive:2.3.7-postgresql-metastore
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - '10000:10000'
+      - '9083:9083'
+    environment:
+      HIVE_METASTORE_DB_TYPE: postgres
+      HIVE_METASTORE_HOST: postgres
+      HIVE_METASTORE_PORT: 5432
+      HIVE_METASTORE_USERNAME: hive
+      HIVE_METASTORE_PASSWORD: hive
+      HIVE_METASTORE_DATABASE: metastore
+      HIVE_METASTORE_URI: thrift://hive:9083
+      HIVE_SERVER2_THRIFT_PORT: 10000
+    volumes:
+      - ./data:/data
+      - ./data/warehouse:/opt/hive/warehouse
+
+volumes:
+  postgres_data:

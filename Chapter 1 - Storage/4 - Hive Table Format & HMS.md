@@ -1,25 +1,28 @@
-# Hive Metastore & Table Format :
+# Hive: Metastore, Table Formats (storage layer) and Query Execution (compute)
 
 ## Overview
-Today’s session zeroes in on two foundational pieces of Hive: the metastore that holds metadata and the table formats that define how data is structured on disk. We will avoid any discussion of Hive’s execution engines (MapReduce, Tez, etc.) or query processing. The goal is to understand the storage and metadata layers that other tools in the ecosystem rely on.
+This chapter combines two important Hive topics:
+- Hive Metastore and table formats, which define metadata and physical storage layout.
+- Hive query execution, which explains how Hive uses distributed engines like MapReduce and Tez.
 
-**Focus only on metadata management and table/format semantics.**
+The goal is to give a unified view of Hive as a platform that manages metadata, maps logical tables to storage, and delegates query execution to scalable compute engines.
 
 ## Goals
-- Understand what the Hive Metastore is and why it exists.
-- Learn how Hive tables are defined and how formats describe their physical layout.
-- Practice self-directed study and time management.
+- Understand the Hive Metastore and why central metadata is required.
+- Learn how Hive table formats control physical layout and performance.
+- See how Hive queries are translated into distributed execution jobs.
+- Compare MapReduce and Tez as query execution engines.
+- Build a practical mental model for how storage, metadata, and execution fit together.
 
 :warning: **Note:**
-- Independence is essential; plan your study day accordingly.
-- If you can’t explain a concept clearly, revisit the documentation.
-- Review the [Exercise](#exercise) before diving into research.
-- Ask your mentor for clarification on scope if needed.
+- Independence and time management are essential.
+- Focus on concept clarity rather than rote memorization.
+- Ask your mentor for clarification if any part feels unclear.
 
 ### ⏳ Timeline
 Estimated Duration: 1 Day
-- Day 1: Learn the concepts of Hive both metastore and table format; spend the day.
-    - Have a Q&A session the same day
+- Day 1: Review Hive metadata, formats, and execution.
+- Have a Q&A session with your mentor after studying.
 
 ## Hive Metastore
 
@@ -47,11 +50,36 @@ Answer the following questions to understand table formats:
 
 4. **Integration with Storage:**  How do table formats map to physical storage (directories, files)? What conventions does Hive use for partitions, buckets, and file naming?
 
+## Hive Query Execution: MapReduce and Tez
+
+### Execution Overview
+Hive defines tables, schemas, and metadata through the Hive Metastore, but query execution is performed by an underlying processing engine. Historically Hive used MapReduce, and later Apache Tez improved performance by reducing disk I/O and allowing more flexible task graphs.
+
+### Guide Questions❓
+
+Answer these five questions to understand how Hive queries are executed using MapReduce and Tez.
+
+1. **Hive as a Query Platform:**  
+   Hive provides tables, schemas, and SQL querying on top of distributed storage systems such as HDFS. Explain Hive’s role as a platform layer that sits above storage and relies on external compute engines to execute queries.
+
+2. **Hive Query Stages and Task Execution:**  
+   When Hive translates a SQL query into a distributed job, how is the work divided into stages and tasks? Explain how Hive breaks a query into execution stages, how tasks are distributed across the cluster, and how intermediate results are passed between stages.
+
+3. **Hive Query Execution Pipeline:**  
+   What happens when a user runs a query in Hive? Describe the main stages of execution: SQL parsing, logical planning, physical planning, and submitting jobs to an execution engine such as MapReduce or Tez.
+
+4. **MapReduce Fundamentals:**  
+   What is the MapReduce programming model? Explain the roles of the `map phase`, `shuffle and sort`, and `reduce phase`. Why was MapReduce originally used as Hive’s execution engine?
+
+5. **Introduction to Apache Tez:**  
+   What is Apache Tez, and how does it improve Hive query execution? Explain how Tez replaces chains of MapReduce jobs with a Directed Acyclic Graph (DAG) of tasks, reducing unnecessary disk I/O and improving query performance.
+
 ### 🔄 Alternatives
-Assignment: You are required to research and write a comparative analysis between Hive table format and HMS and an industry alternative.
-- Deliverable: A written summary (minimum 1 or 2 sentences).
-- Focus: Compare performance, architecture, and specific "pain points" this tool solves compared to legacy systems or competitors.
-- Goal: You must be able to justify why the department uses this tool for our specific environment.
+Assignment: Briefly research another distributed processing framework used for large-scale data processing.
+
+- Deliverable: A written summary (1–2 sentences).
+- Add a simple real-life use case.
+- Focus: What problem does this framework solve compared to MapReduce or Tez?
 
 ### 🎯 User Story & Scenario
 Assignment: Based on your research and understanding of the department's pipeline, define a concrete Use Case for this technology.
@@ -59,16 +87,20 @@ Assignment: Based on your research and understanding of the department's pipelin
 - Requirement: Describe a real-world scenario (e.g., a specific client requirement) where this technology is the optimal solution.
 - Data Flow: Map out the data flow and explain how this tool integrates with other components in the Data Pipeline.
 
-
 ## Wrapping Up :trophy:
-Review your answers with your mentor and make sure you can articulate how the metastore and formats enable interoperability across Hadoop tools.
+Review your answers with your mentor and make sure you can clearly explain how Hive metadata, table formats, and query execution work together across the data platform.
 
 ## Action Items
-- Identify areas of metadata or format behavior you want to explore further.
-- Prepare questions for the mentor Q&A session.
-- Continue linking these ideas to other chapters as part of the Day 01 challenge.
+- Identify areas of Hive metadata, table formats, or execution you want to explore further.
+- Look at example Hive query plans to see how jobs are structured.
+- Prepare questions for the next mentor Q&A session.
+- Think about how metadata and execution choices affect performance and maintainability.
 
 ## Recommended Resources
 - [Hive Metastore Documentation](https://cwiki.apache.org/confluence/display/Hive/Metastore+Overview)
 - [Hive Language Manual – Table Formats](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL)
+- [Hive Documentation](https://hive.apache.org/docs/latest/)
+- [Hadoop: The Definitive Guide (O'Reilly)](https://piazza-resources.s3.amazonaws.com/ist3pwd6k8p5t/iu5gqbsh8re6mj/OReilly.Hadoop.The.Definitive.Guide.4th.Edition.2015.pdf)
+- [Apache Tez Documentation](https://tez.apache.org/)
+- [Apache MapReduce Docs](https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)
 
