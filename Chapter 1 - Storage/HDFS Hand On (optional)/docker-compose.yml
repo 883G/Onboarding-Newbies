@@ -1,35 +1,83 @@
-version: '3.8'
-
 services:
   namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
-    environment:
-      CLUSTER_NAME: hadoop
-      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
-      HDFS_CONF_dfs_namenode_name_dir: /hadoop/dfs/name
-    ports:
-      - '9870:9870'
-      - '9000:9000'
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    networks:
+      - hdfs
     volumes:
-      - ./data/namenode:/hadoop/dfs/name
+      - namenode:/hadoop/dfs/name
+      - ./data:/data
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+    restart: on-failure
+    labels:
+      traefik.docker.network: hdfs
+      traefik.port: 9870
 
   datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
-    depends_on:
-      - namenode
-    environment:
-      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
-      HDFS_CONF_dfs_datanode_data_dir: /hadoop/dfs/data
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    networks:
+      - hdfs
     volumes:
-      - ./data/datanode:/hadoop/dfs/data
-
-  client:
-    image: bde2020/hadoop-client:2.0.0-hadoop2.7.4-java8
-    depends_on:
-      - namenode
-      - datanode
-    environment:
-      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
-    volumes:
+      - datanode:/hadoop/dfs/data
       - ./data:/data
-    entrypoint: ["tail", "-f", "/dev/null"]
+    env_file:
+      - ./hadoop.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    restart: on-failure
+    labels:
+      traefik.docker.network: hdfs
+      traefik.port: 9864
+
+  resourcemanager:
+    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    networks:
+      - hdfs
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864"
+    env_file:
+      - ./hadoop.env
+    restart: on-failure
+    labels:
+      traefik.docker.network: hdfs
+      traefik.port: 8088
+    healthcheck:
+      disable: true
+
+  nodemanager:
+    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    networks:
+      - hdfs
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+    restart: on-failure
+    labels:
+      traefik.docker.network: hdfs
+      traefik.port: 8042
+
+  historyserver:
+    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
+    networks:
+      - hdfs
+    volumes:
+      - hadoop_historyserver:/hadoop/yarn/timeline
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+    labels:
+      traefik.docker.network: hdfs
+      traefik.port: 8188
+
+volumes:
+  datanode:
+  namenode:
+  hadoop_historyserver:
+
+networks:
+  hdfs:
+    driver: bridge

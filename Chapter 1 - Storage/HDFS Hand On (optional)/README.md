@@ -35,16 +35,7 @@ docker compose ps
 Use the client container to run HDFS commands:
 
 ```bash
-docker compose exec client bash
-```
-
-Then run commands such as:
-
-```bash
-hdfs dfs -ls /
-hdfs dfs -mkdir -p /user/onboarding
-hdfs dfs -put /data/sample_hdfs.txt /user/onboarding/
-hdfs dfs -cat /user/onboarding/sample_hdfs.txt
+docker compose exec datanode bash
 ```
 
 ## Exercise Tasks
