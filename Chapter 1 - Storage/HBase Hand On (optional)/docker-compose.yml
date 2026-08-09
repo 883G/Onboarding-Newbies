@@ -1,12 +1,12 @@
-version: '3.8'
+version: "3.8"
 
 services:
   hbase:
-    image: harisekhon/hbase:2.4.15
+    image: harisekhon/hbase:latest
     ports:
-      - '16010:16010'
-      - '2181:2181'
+      - "16010:16010"
+      - "2181:2181"
     volumes:
       - ./data:/data
     environment:
-      HBASE_MANAGES_ZK: 'true'
+      HBASE_MANAGES_ZK: "true"
