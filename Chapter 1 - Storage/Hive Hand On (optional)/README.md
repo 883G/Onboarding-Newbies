@@ -47,12 +47,6 @@ docker compose exec hive bash
 beeline -u jdbc:hive2://localhost:10000 -n hive -p hive
 ```
 
-If `beeline` is not available in the container, use the Hive shell command below instead:
-
-```bash
-hive
-```
-
 ## Exercise Tasks
 
 ### Task 1: Create a Hive database
@@ -63,28 +57,7 @@ CREATE DATABASE IF NOT EXISTS onboarding_hive;
 USE onboarding_hive;
 ```
 
-### Task 2: Create a managed table
-Create a managed Hive table for the sample orders data:
-
-```sql
-CREATE TABLE IF NOT EXISTS orders_managed (
-  order_id INT,
-  customer_name STRING,
-  total_amount DOUBLE,
-  order_date STRING
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-STORED AS TEXTFILE;
-```
-
-Load sample data into the managed table:
-
-```sql
-LOAD DATA LOCAL INPATH '/data/sample_orders.csv' INTO TABLE orders_managed;
-```
-
-### Task 3: Create an external table
+### Task 2: Create an external table
 Create an external table using the same CSV data path:
 
 ```sql
@@ -97,38 +70,23 @@ CREATE EXTERNAL TABLE IF NOT EXISTS orders_external (
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION '/data/external_orders';
+LOCATION '/data';
 ```
 
-Then copy or move the sample file into the external location if needed and refresh the table:
-
-```bash
-mkdir -p /data/external_orders
-cp /data/sample_orders.csv /data/external_orders/
-```
-
-### Task 4: Query the tables
+### Task 3: Query the 
 Run these queries and compare results:
 
 ```sql
-SELECT * FROM orders_managed LIMIT 10;
-SELECT COUNT(*) FROM orders_managed;
 SELECT * FROM orders_external LIMIT 10;
 DESCRIBE EXTENDED orders_external;
 ```
 
-### Task 5: Compare managed vs external
+### Task 4: Dive Deeper
 Answer the following:
-- Where is metadata stored for each table?
-- What happens if you drop `orders_managed`?
+- Where is metadata stored check how it looks in `postgress` container?
 - What happens if you drop `orders_external`?
 - How does Hive track the data location for the external table?
 
-## Deliverables
-- A running Hive environment from Docker Compose
-- A created Hive database and at least two tables
-- Query results showing sample data
-- A short written summary of the managed vs external table behavior
 
 ## Clean Up
 When finished, stop the environment:
