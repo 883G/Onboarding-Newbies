@@ -1,4 +1,4 @@
-# Orchestration Fundamentals:
+# Airflow & Orchestration Fundamentals:
 ## Overview
 This section will go over the fundamentals of _Apache Airflow_, consisting of the client side, and the backend.
 
@@ -16,10 +16,24 @@ This section will go over the fundamentals of _Apache Airflow_, consisting of th
 - Be prepared to describe how concepts relate to one another and to real-world scenarios.
 - When in doubt about what you need to learn, ask your mentor.
 
+
 ### Core Concepts
+## Orchestration Fundamentals
 
 Think through the following questions; by answering them you’ll touch every major topic listed above:
 
+1. **Scheduling Basics:** Why can’t we just use a simple sleep() command or a basic cron job to manage a modern data workflows? What is the difference between a Time-based trigger and an Event-based trigger? Give a real-world data example for each, In general scheduling, why do we use a DAG to represent a workflow instead of just a simple list of instructions?
+
+2. **Scheduling Algorithms & Types:** Compare First-In-First-Out (FIFO) and Shortest Job First (SJF), how do they handle varying workflows? Define Preemptive vs. Non-preemptive scheduling, If a "Critical" job enters the queue while a "Low" priority job is already running, what happens in both scenarios? What is "Starvation" in priority scheduling, and how does the concept of Aging fix it? what are other common algorithms to fix starvation?
+
+3. **Resource Allocation & Scheduling:**Explain Dominant Resource Fairness (DRF). Why is it more "fair" to look at CPU and RAM usage rather than just task count? What is Capacity Scheduling, and how does it provide "guaranteed lanes" for different departments? Compare Static Allocation to Dynamic Allocation. Which one is safer for the system, and which one is more efficient for the cluster?
+
+4. **Cluster Utilization:** What are idle resources in a cluster, and why are they considered a problem from a utilization perspective? What are the risks of over allocation and in which scenarios can over allocation improve overall cluster efficiency? How do opportunism and preemption balance the competing goals of cluster utilization and workload prioritization?
+
+5. **Users Perspective:** Why is Idempotency the most important concept for a developer to understand when writing scheduled jobs? what is an Exponential Backoff when jobs fail? What is Backfilling, and how does it relate to the "Optimistic" approach of keeping resources busy?
+
+## Airflow
+Think through the following questions; by answering them you’ll touch every major topic listed above:
 
 1. **Airflow User API & Concepts:** Explain the difference between a DAG and a DagRun? How do tasks share small metadata versus global configuration? What is Jinja Templating, and why would you use {{ ds }} instead of Python's datetime.now()? Contrast the TaskFlow SDK with Classic Operators. How does the TaskFlow SDK handle XComs differently than the old xcom_pull method? What are Assets? What types of Operators exist? Why is it not recommended to run any time consuming code in top level dag code? How does this affect the DAG Processor's performance? What is a Hook? what is the connection between Hooks, Connections and Operators?
 
