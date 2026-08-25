@@ -95,17 +95,6 @@ Complete the [Docker Compose lab](./Hive%20Hand%20On%20(optional)/README.md) to 
 - [ ] I can use `EXPLAIN` to identify a scan, filter, shuffle, and aggregation.
 - [ ] I completed the architecture scenario, cited resources, and recorded open questions.
 
-## Mentor Readiness Criteria
-
-A person may mentor this chapter when they can:
-
-- Review every checklist item and explain errors rather than only give expected answers.
-- Draw the catalog/query-engine/compute/storage boundary and give a real failure scenario for each layer.
-- Trace the MapReduce exercise through shuffle and intermediate data, then contrast it with Tez.
-- Demonstrate or explain the lab, including external-table metadata and data lifecycle.
-- Relate the model to at least two HMS clients and state exactly what they share.
-- Complete one supervised Q&A confirmed by an existing qualified mentor.
-
 ## Recommended Resources
 
 - [Apache Hive design overview](https://hive.apache.org/development/desingdocs/design/)
