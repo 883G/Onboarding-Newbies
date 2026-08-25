@@ -30,7 +30,7 @@ Use the resources below as your primary reference:
 - [Kubernetes Documentation](https://kubernetes.io/docs/)  
 - [Helm Documentation](https://helm.sh/docs/)  
 - [OpenShift Documentation](https://docs.openshift.com/)
-- [K8s & Openshift Concepts.md](https://github.com/netagolani/Onboarding-Newbies/blob/refactor/openshift/Chapter%204%20-%20Devops%20%26%20Devlopment/K8s%20%26%20Openshift%20Concepts.md) - helps prepare the Q&A.
+- [K8s & Openshift Concepts.md](https://github.com/netagolani/Onboarding-Newbies/blob/refactor/openshift/Chapter%204%20-%20Devops%20%26%20Devlopment/K8s%20%26%20Openshift%20Concepts.md) - helps prepare the Q&A
 
 ---
 
