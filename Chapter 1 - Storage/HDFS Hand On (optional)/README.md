@@ -88,7 +88,7 @@ hdfs dfs -setfacl -m group:developers:r-x /user/onboarding
 
 Validate the permissions you added by listing them.
 
-Add default permissions on /user/onboarding such that every user in the `clients` group will have read and write permissions on every file under `/user/onboarding`. Validate the defaults by creating a new file under the directory and listing its ACLs.
+Add default permissions on `/user/onboarding` such that every user in the `clients` group will have read and write permissions on every file under `/user/onboarding`. Validate the defaults by creating a new file under the directory and listing its ACLs.
 
 ### Task 6: Statistic computation
 
