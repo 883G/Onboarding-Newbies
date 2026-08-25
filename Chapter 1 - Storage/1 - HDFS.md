@@ -17,8 +17,8 @@ This session focuses on the core concepts of HDFS, the distributed storage layer
 
 ### ⏳ Timeline
 Estimated Duration: 3 Days
-- Day 1-3: Learn the concepts of HDFS; spent time on what is it? on fault tolernce, on failover process and on how reads and writes are being done?
-    - Have a Q&A session at the third day and in between sessions each day
+- Day 1-3: Learn the concepts of HDFS: purpose, historical context, architecture, fault tolerance and the client protocol: how reads and writes are performed.
+    - Have a Q&A session on the third day and in between sessions every day
 
 ## Core Concepts
 
