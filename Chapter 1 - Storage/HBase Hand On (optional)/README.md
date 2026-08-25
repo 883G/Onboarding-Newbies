@@ -103,6 +103,30 @@ scan 'hbase:meta'
 Explain in detail the output you see, make sure you understand its structure and values.
 How many column families do you see? How many parts does a row key have? How does a client make use of this table's row key?
 
+### Task 6: Explore REST Capabilities of HBase
+
+Exit the `hbase shell` and get back to the Linux shell inside the container.
+
+Run:
+
+```bash
+wget -qO- --header="Accept: application/json" http://localhost:8080/version/cluster
+```
+
+You should get a valid response from the REST server of HBase.
+
+
+Fetch a row you inserted previously:
+```bash
+wget -qO- --header="Accept: application/json" "http://localhost:8080/onboarding%3Aorders/order1"
+```
+
+How to query all rows from `order1` and forth?
+
+
+What is a scanner API? How is it different from the GET requests we've just run? When would we prefer to create a scanner?
+
+
 ## Deliverables
 
 - A running HBase environment from Docker Compose
