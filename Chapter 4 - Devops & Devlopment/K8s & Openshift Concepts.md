@@ -1,14 +1,14 @@
 ### K8s & Openshift Concepts
 
 ## Workloads
-**Pod**
-**Deployment**
-**StatefulSet**
-**Secret**
-**Configmap**
-**CronJob**
-**Job**
-**ReplicaSet**
+**Pod**\
+**Deployment**\
+**StatefulSet**\
+**Secret**\
+**Configmap**\
+**CronJob**\
+**Job**\
+**ReplicaSet**\
 
 ## Networking
 **Service**
