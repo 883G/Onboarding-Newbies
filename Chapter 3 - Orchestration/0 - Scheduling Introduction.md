@@ -27,7 +27,7 @@ Think through the following questions; by answering them you’ll touch every ma
 
 3. **Resource Allocation & Scheduling:** Explain Dominant Resource Fairness (DRF). Why is it more "fair" to look at CPU and RAM usage rather than just task count? Compare Static Allocation to Dynamic Allocation. Which one is safer for the system, and which one is more efficient for the cluster? What is Capacity Scheduling, and how does it provide "guaranteed lanes" for different departments?
 
-4. **Cluster Utilization:** What are idle resources in a cluster, and why are they considered a problem from a utilization perspective? What are the risks of over allocation and in which scenarios can over allocation improve overall cluster efficiency? How do opportunism and preemption balance the computing goals of cluster utilization and workload prioritization?
+4. **Cluster Utilization:** What are idle resources in a cluster, and why are they considered a problem from a utilization perspective? What are our options when we want to improve cluster resource usage on job based or non job based clusters (at least provide 3)? what are the advantages and disadvantages of each option (at least 2)?
 
 5. **Users Perspective:** Why is Idempotency the most important concept for a developer to understand when writing scheduled jobs? what is an Exponential Backoff when jobs fail? What is Backfilling, and how does it relate to the "Optimistic" approach of keeping resources busy?
 
