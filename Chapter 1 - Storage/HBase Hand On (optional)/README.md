@@ -86,7 +86,7 @@ Ensure you understand the structure of the output.
 
 List all the regions of the table, explain what information you have about them. Make sure you understand every output column and its value.
 
-### Task 4: Compare HBase storage behavior
+### Task 4: Understand HBase Storage Model
 Answer the following:
 - What are column families and why are they important?
 - How does HBase store rows differently from a relational table?
