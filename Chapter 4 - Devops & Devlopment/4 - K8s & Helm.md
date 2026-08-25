@@ -11,15 +11,16 @@ The goal is to understand *how systems are deployed, configured, and managed*, a
 ### ⏳ Timeline  
 Estimated Duration: 2 Days  
 
-**Day 1 – Theory & Concepts**  
-- Kubernetes core architecture  
-- Workloads and networking  
-- Helm fundamentals and packaging  
+**Day 0.5 – Theory & Concepts**  
+- Kubernetes core architecture    
+- Helm fundamentals and packaging
+- Introduction to GitOps
 
-**Day 2 – Hands-On Labs**  
+**Day 1.5 – Hands-On Labs**  
 - Kubernetes practical labs  
 - Helm chart deployment  
-- Debugging and inspection  
+- Debugging and inspection
+- K8s & Openshift Concepts  
 
 ---
 
@@ -28,7 +29,8 @@ Use the resources below as your primary reference:
 
 - [Kubernetes Documentation](https://kubernetes.io/docs/)  
 - [Helm Documentation](https://helm.sh/docs/)  
-- [OpenShift Documentation](https://docs.openshift.com/)  
+- [OpenShift Documentation](https://docs.openshift.com/)
+- [K8s and Openshift concepts](K8s & Openshift Concepts.md) - to help prepare the Q&A.
 
 ---
 
