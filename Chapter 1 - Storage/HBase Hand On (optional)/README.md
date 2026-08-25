@@ -96,7 +96,9 @@ Answer the following:
 
 Scan the `meta` table:
 
+```ruby
 scan 'hbase:meta'
+```
 
 Explain in detail the output you see, make sure you understand its structure and values.
 How many column families do you see? How many parts does a row key have? How does a client make use of this table's row key?
