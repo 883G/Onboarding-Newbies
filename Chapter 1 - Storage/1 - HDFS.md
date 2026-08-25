@@ -24,11 +24,12 @@ Estimated Duration: 3 Days
 
 Consider the following five questions to cover the major HDFS topics:
 
-1. **Architecture & Roles:**  Describe HDFS’s overall architecture, including NameNode(s), DataNodes, blocks, and how the namespace and metadata are managed. Don’t forget the role of ZooKeeper in coordinating HA and keeping track of leases. Explain how DataNodes send block reports, and why these mechanisms matter for everyday operations.
+1. **Architecture & Roles:**  Describe HDFS’s overall architecture, including NameNode(s), DataNodes, blocks, and how the namespace and metadata are managed. Explain how DataNodes send block reports, and why these mechanisms matter for everyday operations.
 2. **Storage & Fault Tolerance:**  Explain how HDFS divides files into blocks, uses replication (default factor three), and how it detects and recovers from node failures.
 3. **Topology Awareness & Performance:**  What is rack awareness and how does HDFS replicate across racks? Discuss how block placement, snapshots, and checksums contribute to performance and data integrity.
-4. **High Availability:**  Outline HDFS High Availability (Active/Standby NameNode, JournalNodes). How do these features improve scalability and uptime?
-5. **Protocol & Operations:**  Describe how clients read and write data to HDFS via RPC, how they locate NameNodes and DataNodes. Explain the read and write flow in detail: how the client initiates a connection to the cluster, which components it talks to and how ports of communication are decided.
+4. **High Availability:**  Outline HDFS High Availability (Active/Standby NameNode, JournalNodes). How do these features improve scalability and uptime? Don’t forget the role of ZooKeeper in coordinating HA and keeping track of leases.
+5. **Client Protocol:**  Describe how clients read and write data to HDFS via RPC, how they locate NameNodes and DataNodes. Explain the read and write flow in detail: how the client initiates a connection to the cluster, which components it talks to and how ports of communication become known to the client.
+
 
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between HDFS and an industry alternative.
