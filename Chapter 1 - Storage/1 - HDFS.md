@@ -33,7 +33,7 @@ Consider the following five questions to cover the major HDFS topics:
     - What is HDFS CLI and what protocol does it utilize?
     - Can you talk to HDFS using REST/HTTP?
 
-    What does a client need to connect to an HDFS cluster using of the alternatives?
+    What does a client need to connect to an HDFS cluster using each of the alternatives?
     
     What are the main two types of HDFS operations exist and what are the operational differences between them?
 
