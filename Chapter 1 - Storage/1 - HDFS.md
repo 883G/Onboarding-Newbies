@@ -28,7 +28,10 @@ Consider the following five questions to cover the major HDFS topics:
 2. **Storage & Fault Tolerance:**  Explain how HDFS divides files into blocks, uses replication (default factor three), and how it detects and recovers from node failures.
 3. **Topology Awareness & Performance:**  What is rack awareness and how does HDFS replicate across racks? Discuss how block placement, snapshots, and checksums contribute to performance and data integrity.
 4. **High Availability:**  Outline HDFS High Availability (Active/Standby NameNode, JournalNodes). How do these features improve scalability and uptime? Don’t forget the role of ZooKeeper in coordinating HA and keeping track of leases.
-5. **Client Protocol:**  Describe how clients read and write data to HDFS via RPC, how they locate NameNodes and DataNodes. Explain the read and write flow in detail: how the client initiates a connection to the cluster, which components it talks to and how ports of communication become known to the client.
+5. **Client Protocol:**  Describe how clients read and write data to HDFS, how they locate NameNodes and DataNodes. Explain the read and write flow in detail: how the client initiates a connection to the cluster, which components it talks to and how ports of communication become known to the client. Explain the protocol alternatives available to the client: 
+    - What is native API?
+    - What is HDFS CLI and what protocol does it utilize?
+    - Can you talk to HDFS using REST/HTTP?
 
 
 ### 🔄 Alternatives
