@@ -10,3 +10,7 @@ services:
       - ./data:/data
     environment:
       HBASE_MANAGES_ZK: "true"
+    ulimits:
+          nofile:
+            soft: 65536
+            hard: 65536
