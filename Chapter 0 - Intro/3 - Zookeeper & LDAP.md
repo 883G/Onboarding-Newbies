@@ -93,3 +93,8 @@ Use this checklist to verify you have absorbed the core concepts before scheduli
 - [ ] 13. What is an LDAP schema, and how do Object Classes and Attributes define what data can be stored?
 - [ ] 14. How are Group Memberships and Authorization handled in LDAP?
 - [ ] 15. How do you secure an LDAP server (TLS/LDAPS), and what are referral loops?
+
+**Architecture & Comparisons**
+- [ ] 16. What is the fundamental difference in roles between LDAP and Kerberos in our environment?
+- [ ] 17. How does the Kerberos security model compare to JWT or OAuth?
+- [ ] 18. Why do we use LDAP for directory services instead of a standard Relational Database?
