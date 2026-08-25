@@ -1,0 +1,44 @@
+services:
+  metastore:
+    image: apache/hive:4.0.0
+    environment:
+      SERVICE_NAME: metastore
+    ports:
+      - "9083:9083"
+    volumes:
+      - warehouse:/opt/hive/data/warehouse
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c '</dev/tcp/localhost/9083'"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  hiveserver2:
+    image: apache/hive:4.0.0
+    depends_on:
+      metastore:
+        condition: service_healthy
+    environment:
+      SERVICE_NAME: hiveserver2
+      SERVICE_OPTS: >-
+        -Dhive.metastore.uris=thrift://metastore:9083
+        -Dhive.server2.thrift.bind.host=0.0.0.0
+    ports:
+      - "10000:10000"
+    volumes:
+      - warehouse:/opt/hive/data/warehouse
+      - ./data:/data/orders:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "beeline -u 'jdbc:hive2://localhost:10000/default' -n hive -e 'SELECT 1' >/dev/null 2>&1",
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 18
+      start_period: 45s
+
+volumes:
+  warehouse:
