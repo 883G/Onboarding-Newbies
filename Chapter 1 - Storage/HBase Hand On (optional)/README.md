@@ -82,6 +82,8 @@ Run:
 scan 'onboarding:orders'
 ```
 
+Ensure you understand the structure of the output.
+
 List all the regions of the table, explain what information you have about them. Make sure you understand every output column and its value.
 
 ### Task 4: Examine Cluster Metadata
@@ -91,7 +93,7 @@ Scan the `meta` table:
 scan 'hbase:meta'
 
 Explain in detail the output you see, make sure you understand its structure and values.
-How many column families do you see? How many parts does a row key have?
+How many column families do you see? How many parts does a row key have? How does a client make use of this table's row key?
 
 ## Deliverables
 
