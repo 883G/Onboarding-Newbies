@@ -93,8 +93,6 @@ Add default permissions on /user/onboarding such that every user in the `clients
 ### Task 6: Statistic computation
 
 Compute statistics and content counts for your onboarding path:
-
-View the same statistics in human-readable format:
 ```bash
 hdfs dfs -count -v -h /user/onboarding
 ```
