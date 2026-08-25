@@ -126,6 +126,12 @@ How to query all rows from `order1` and forth?
 
 What is a scanner API? How is it different from the GET requests we've just run? When would we prefer to create a scanner? How does a work pattern look when using scanners via HBase REST?
 
+### Task 7 (bonus of the bonuses): Explore Ways of Getting Table Statistics
+
+Can HBase provide table statistics? Why might clients be interested in such information?
+Investigate how to retrieve this information.
+
+As a specific goal, find the most efficient way to determine the number of rows in an HBase table.
 
 ## Deliverables
 
