@@ -7,6 +7,7 @@ services:
       - "9083:9083"
     volumes:
       - warehouse:/opt/hive/data/warehouse
+      - ./data:/data/orders:ro
     healthcheck:
       test: ["CMD-SHELL", "bash -c '</dev/tcp/localhost/9083'"]
       interval: 10s
