@@ -37,4 +37,5 @@
 **Namespace**\
 **Project**\
 **CustomResourceDefinition**\
+**Operator**\
 **Security Context Constraint**
