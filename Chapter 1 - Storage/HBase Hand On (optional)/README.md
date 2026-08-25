@@ -124,7 +124,7 @@ wget -qO- --header="Accept: application/json" "http://localhost:8080/onboarding%
 How to query all rows from `order1` and forth?
 
 
-What is a scanner API? How is it different from the GET requests we've just run? When would we prefer to create a scanner?
+What is a scanner API? How is it different from the GET requests we've just run? When would we prefer to create a scanner? How does a work pattern look when using scanners via HBase REST?
 
 
 ## Deliverables
