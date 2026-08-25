@@ -38,17 +38,15 @@ Use the resources below as your primary reference:
 
 1. What is Kubernetes, and what problems does it solve compared to running containers manually on vm?  
 
-2. Describe the main Kubernetes components and architecture.  
-   Include: cluster, nodes, control plane, kubelet, API server, etcd.
+2. You apply a declarative manifest specifying replicas: 3 to your cluster, but a node crash reduces the running pods to 2. How does the Kubernetes Controller Manager detect and resolve this discrepancy between the manifest and the cluster? (include `declarative manifest`, `reconciliation` and `controller managers` in your answer)
 
-3. What are the core Kubernetes resources?  
-   Explain Pods, Stateful sets, daemon sets , limit ranges, pv and PVC, namespaces, cronjobs, jobs, roles, rolebindings  Deployments, Services, ConfigMaps, and Secrets, and how they interact.
+3. Describe the main Kubernetes components and architecture.  
+   Include: cluster, nodes, control plane, kubelet, API server, etcd, controllers.
 
-4. How does networking work in Kubernetes?  
-   Explain Service types (ClusterIP, NodePort,Ingress,Internal or external network) and basic communication between pods.
-
-5. What is Helm, and why is it used?  
+4. What is Helm, and why is it used?  
    Explain charts, values.yaml, templating, and how Helm simplifies deployments.
+
+5. What is GitOps? Compare GitOps to DevOps. Describe what is Iac and why do we need to use it? What is ArgoCD? Describe the basics operations in ArgoCD.
 
 ---
 
