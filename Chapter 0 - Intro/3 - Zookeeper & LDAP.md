@@ -44,6 +44,7 @@ Estimated Duration: 1 Day
 3. **Schema & Extensibility:**  What is an LDAP schema?  How do object classes, attribute types, and syntax rules define what data can be stored?  Mention extending schemas.
 4. **Authentication & Authorization:**  How is LDAP used for authentication and authorization?  Cover binding with credentials, password policies, and group lookups.
 5. **Deployment & Security:**  Outline how to install/configure an LDAP server (e.g., OpenLDAP), secure it with TLS, replicate data, and troubleshoot common errors (referral loops, access controls).
+6. When evaluating directory services, why would you choose LDAP over a standard relational database for identity management?
 
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between Zookeeper, Kerberos & LDAP and an industry alternative.
@@ -70,3 +71,26 @@ Review your answers with your mentor and discuss any unclear points.  Relate eac
 - [Kerberos: The Network Authentication Protocol](https://web.mit.edu/kerberos/)
 - [LDAP: RFC 4511 Overview](https://datatracker.ietf.org/doc/html/rfc4511)
 - *Hadoop Security* chapter in any modern Hadoop book for integration examples.
+
+
+### 📝 Trainee Self-Assessment Checklist
+Use this checklist to verify you have absorbed the core concepts before scheduling your chapter assessment with a mentor. If you can answer these clearly, you are ready!
+
+**Kerberos**
+- [ ] 1. How does the Kerberos authentication flow work from initial login (`kinit`) to obtaining service tickets? (Be sure to explain the roles of the AS and TGS).
+- [ ] 2. What is a Principal and what is a Realm?
+- [ ] 3. What is the exact difference between a Ticket Granting Ticket (TGT) and a Service Ticket?
+- [ ] 4. How are encryption keys derived and used in Kerberos?
+- [ ] 5. What makes Kerberos secure? (Explain mutual authentication, replay protection, and ticket lifetimes).
+- [ ] 6. What do the `kadmin`, `kinit`, `klist`, and `kdestroy` commands do? 
+- [ ] 7. How do services like Hadoop, HTTP (SPNEGO), and SSH integrate with Kerberos?
+- [ ] 8. What is a keytab, and what are the security risks associated with it?
+- [ ] 9. What are typical Kerberos issues (e.g., clock skew) and how do you diagnose them?
+
+**LDAP**
+- [ ] 10. How does LDAP organize information hierarchically? (Explain DN and RDN).
+- [ ] 11. What are the basic LDAP operations (bind, search, modify, add, delete)?
+- [ ] 12. What is the difference between a Simple Bind and a SASL Bind?
+- [ ] 13. What is an LDAP schema, and how do Object Classes and Attributes define what data can be stored?
+- [ ] 14. How are Group Memberships and Authorization handled in LDAP?
+- [ ] 15. How do you secure an LDAP server (TLS/LDAPS), and what are referral loops?
