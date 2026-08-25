@@ -49,13 +49,14 @@ Zookeeper Core Concepts:
    - Ephemeral sequential nodes
    - Failover
    - Leader elections
+   - ZXID
 
 
 5. **What are the basic operational concerns in Zookeeper?**  
    Describe at a high level:
    - Ensemble deployment  
    - Scaling considerations  
-   - Snapshots and transaction logs  
+   - Snapshots and transaction logs
    - Common issues 
 
 ---
