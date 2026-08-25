@@ -86,7 +86,13 @@ Ensure you understand the structure of the output.
 
 List all the regions of the table, explain what information you have about them. Make sure you understand every output column and its value.
 
-### Task 4: Examine Cluster Metadata
+### Task 4: Compare HBase storage behavior
+Answer the following:
+- What are column families and why are they important?
+- How does HBase store rows differently from a relational table?
+- Where does HBase metadata live in this container environment?
+
+### Task 5: Examine Cluster Metadata
 
 Scan the `meta` table:
 
