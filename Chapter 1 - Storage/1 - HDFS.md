@@ -8,6 +8,7 @@ This session focuses on the core concepts of HDFS, the distributed storage layer
 ## Goals
 - Learn the architecture and roles of HDFS components (NameNode, DataNode, etc.).
 - Understand how HDFS handles storage, replication, and availability.
+- Understand the disadvantages of HDFS, including potential bottlenecks, performance issues, and other possible challenges.
 - Practice planning a self-study day and managing your time.
 
 :warning: **Note:**
@@ -35,7 +36,7 @@ Consider the following five questions to cover the major HDFS topics:
 
     What does a client need to connect to an HDFS cluster using each of the alternatives?
     
-    What are the main two types of HDFS operations exist and what are the operational differences between them?
+    What are the two main types of HDFS operations, and how do they differ in terms of the components they interact with?
 
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between HDFS and an industry alternative.
