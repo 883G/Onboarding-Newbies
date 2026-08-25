@@ -8,33 +8,33 @@
 **Configmap**\
 **CronJob**\
 **Job**\
-**ReplicaSet**\
+**ReplicaSet**
 
 ## Networking
-**Service**
-**Route**
+**Service**\
+**Route**\
 **Ingress**
 
 ## Storage
-**Persistent Volume**
-**Persistent Volume Claim**
+**Persistent Volume**\
+**Persistent Volume Claim**\
 **Storage Class**
 
 ## Builds
-**BuildsConfig**
-**Build**
+**BuildsConfig**\
+**Build**\
 **ImageStream**
 
 ## User Management
-**ServiceAccount**
-**Role**
-**Cluster Role**
-**Role Binding**
+**ServiceAccount**\
+**Role**\
+**Cluster Role**\
+**Role Binding**\
 **Cluster Role Binding**
 
 ## Administration
-**Resource Quotas**
-**Namespace**
-**Project**
-**CustomResourceDefinition**
+**Resource Quotas**\
+**Namespace**\
+**Project**\
+**CustomResourceDefinition**\
 **Security Context Constraint**
