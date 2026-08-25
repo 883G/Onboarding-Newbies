@@ -103,6 +103,7 @@ Complete the [Docker Compose lab](./Hive%20Hand%20On%20(optional)/README.md) to 
 - [Hive `EXPLAIN` language manual](https://hive.apache.org/docs/latest/language/languagemanual-explain/)
 - [A Day in the Life of a Hive Query](https://community.cloudera.com/t5/Community-Articles/A-Day-In-the-Life-of-a-Hive-Query/ta-p/287905)
 - [Apache MapReduce tutorial](https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)
+- [MapReduce video](https://youtu.be/cvhKoniK5Uo?si=MGoozk3SU-uOCGEA) — **Recommended viewing while learning about MapReduce.** It provides a visual explanation to reinforce the map, shuffle and sort, and reduce stages.
 - [Hive on Tez design](https://hive.apache.org/development/desingdocs/hive-on-tez/)
 
 Review the checklist and scenario with your mentor. The chapter is complete when you can diagnose a problem by layer instead of only saying that “Hive is broken.”
