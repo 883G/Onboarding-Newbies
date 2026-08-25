@@ -38,7 +38,7 @@ Use the resources below as your primary reference:
 
 1. What is Kubernetes, and what problems does it solve compared to running containers manually on vm?  
 
-2. You apply a declarative manifest specifying replicas: 3 to your cluster, but a node crash reduces the running pods to 2. How does the Kubernetes Controller Manager detect and resolve this discrepancy between the manifest and the cluster? (include `declarative manifest`, `reconciliation` and `controller managers` in your answer)
+2. You deploy a deployment specifying replicas: 3 to your cluster, but a node crash reduces the running pods to 2. How does the Kubernetes Controller Manager detect and resolve this discrepancy between the manifest and the cluster? (include `declarative manifest`, `reconciliation` and `controller managers` in your answer)
 
 3. Describe the main Kubernetes components and architecture.  
    Include: cluster, nodes, control plane, kubelet, API server, etcd, controllers.
