@@ -48,7 +48,7 @@ Use the resources below as your primary reference:
 4. What is Helm, and why is it used?  
    Explain charts, values.yaml, templating, and how Helm simplifies deployments.
 
-5. What is GitOps? Compare GitOps to DevOps. Describe what is Iac and why do we need to use it? What is ArgoCD? Describe the basics operations in ArgoCD.
+5. What is GitOps? Compare GitOps to DevOps. What is ArgoCD? Describe the basics operations in ArgoCD. Describe what is Iac and why do we need to use it? 
 
 ---
 
