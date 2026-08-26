@@ -66,9 +66,6 @@ Complete the [Docker Compose lab](./Hive%20Hand%20On%20(optional)/README.md) to 
 
 ## Recommended Resources
 
-- [Apache Hive design overview](https://hive.apache.org/development/desingdocs/design/)
-- [Hive Metastore overview](https://cwiki.apache.org/confluence/display/Hive/Metastore+Overview)
 - [MapReduce video](https://youtu.be/cvhKoniK5Uo?si=MGoozk3SU-uOCGEA) — **Recommended viewing while learning about MapReduce.** It provides a visual explanation to reinforce the map, shuffle and sort, and reduce stages.
-- [Hive on Tez design](https://hive.apache.org/development/desingdocs/hive-on-tez/)
 
 Review your research and checklist with your mentor. The chapter is complete when you can explain the system in your own words and diagnose a problem by layer instead of only saying that “Hive is broken.”
