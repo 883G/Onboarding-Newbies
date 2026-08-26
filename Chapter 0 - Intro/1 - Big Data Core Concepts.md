@@ -52,27 +52,27 @@ These topics are meant to guide your research. Don’t hesitate to look up other
 ## Wrapping Up
 
 ### Practical Summary Conversation
-Use this scenario to design a practical data pipeline:
+Use this first-day scenario to design a basic data pipeline:
 
-> An e-commerce company receives orders from its transactional database, clickstream events in real time, and daily files from delivery partners. The business needs live operational alerts and a reliable dashboard for historical analysis.
+> An online store receives customer orders, website click events, product-review text and images, and a daily delivery file. The business needs live order alerts and a daily sales dashboard.
 
-Explain how you would build the data pipeline from ingestion to visualization. Use these questions to guide your design:
+Draw the pipeline using simple boxes and arrows, then explain each step in one or two sentences. Do not select specific technologies or write code. Use only the concepts from this chapter:
 
-- Which data is structured, semi-structured, or unstructured?
-- Where would you use CDC, streaming, batch processing, ETL, or ELT?
-- What belongs in the data lake and what belongs in the data warehouse?
-- How will serialization, compression, partitioning, and scale-out support the pipeline?
-- How will you handle data quality, ownership, governance, lineage, and cataloging?
-- Which CAP trade-off does each distributed component make, and why?
-- How will high availability and lifecycle management be handled?
+- Label each source as structured, semi-structured, or unstructured. Which of the five V's can you identify?
+- Decide what uses CDC, stream processing, or batch processing. How will the data be serialized and compressed?
+- Show what is stored first in a data lake on a distributed file system and what later belongs in a data warehouse.
+- Choose ETL or ELT and include one simple data-quality check.
+- Show where SQL or NoSQL and OLTP or OLAP fit, followed by analytics and visualization.
+- Name the data owner and explain governance, catalog, lineage, and lifecycle needs.
+- Briefly explain scale-up vs. scale-out, high availability, master-slave vs. masterless, and one CAP trade-off.
 
 ### Chapter Completion Checklist
 
-- [ ] I can define each core concept and give a real-world example.
-- [ ] I can explain the main trade-offs and alternatives.
-- [ ] I can connect the concepts in an end-to-end data pipeline.
-- [ ] I can justify my design choices and identify risks.
-- [ ] I recorded any remaining questions for my mentor.
+- [ ] I labeled the data sources and the five V's.
+- [ ] I showed how data is moved, stored, processed, and presented.
+- [ ] I included data quality, ownership, and governance.
+- [ ] I explained the basic scale, availability, architecture, and CAP choices.
+- [ ] I can describe the complete pipeline in my own words.
 
 
 ### Reflection
