@@ -2,21 +2,15 @@
 
 ## Overview
 
-Hive includes several cooperating responsibilities. As you research, distinguish catalog and metadata management, SQL planning, distributed compute, and storage. Identify which Hive or Hadoop component performs each responsibility and how external engines such as Trino and Spark interact with them.
+Hive includes several cooperating responsibilities. As you research, distinguish catalog and metadata management, SQL planning, distributed compute, and storage. Identify which Hive or Hadoop component performs each responsibility and how the components interact with one another.
 
 > **Mental model:** HMS answers *“What is the table and where is it?”* The query engine answers *“How will this query run?”* Storage answers *“Where are the bytes?”*
 
-## Goals and Timeline
+## Timeline
 
-In one study day, learn to:
+Estimated duration: one study day.
 
-- Explain the boundary between catalog, query engine, compute framework, and storage.
-- Relate logical Hive tables to physical files and directories.
-- Trace HiveQL from submission to distributed execution.
-- Explain MapReduce independently and compare it with Tez.
-- Apply the model in the optional local lab.
-
-Review the [completion checklist](#trainee-completion-checklist) before starting, then hold a mentor Q&A. Focus on cause and effect rather than memorized definitions.
+Complete the research assignments, record the sources you used and the questions that remain open, and review your findings with your mentor.
 
 ## Research Assignments
 
@@ -28,7 +22,7 @@ Research why Apache Hive was created and where it fits in the Hadoop ecosystem. 
 
 Draw the architecture of a production-style Hive environment. Include every component required for a client to submit a query, obtain metadata, execute distributed work, and access table data. Explain the responsibility of each component as well as every connection, protocol, deployment boundary, and important failure scenario.
 
-Your explanation should make clear which responsibilities belong to the catalog, query processing, distributed compute, and storage. Consider how other engines can interact with components from this architecture without using Hive to execute their queries.
+Your explanation should make clear which responsibilities belong to the catalog, query processing, distributed compute, and storage. Explain which component manages metadata, which components plan and coordinate queries, and which components perform the distributed computation.
 
 ### 3. Hive Tables and Storage
 
@@ -52,15 +46,13 @@ Complete the [Docker Compose lab](./Hive%20Hand%20On%20(optional)/README.md) to 
 
 ## Trainee Completion Checklist
 
-- [ ] I can explain why Hive exists and the kinds of workloads for which it is designed.
-- [ ] I can draw Hive's architecture and trace a query from a client to the data and back.
-- [ ] I can distinguish catalog, query processing, distributed compute, and storage responsibilities.
-- [ ] I can explain the lifecycle of a Hive table and relate its definition to physical storage.
-- [ ] I can use the HMS ERD to trace the metadata behind a table.
-- [ ] I can explain WordCount using concrete MapReduce key/value pairs.
-- [ ] I can explain why Tez can improve multi-stage Hive queries.
-- [ ] I can diagnose a mismatch between partition metadata and filesystem directories and compare repair approaches.
-- [ ] I cited the resources I used and recorded my remaining questions for the mentor.
+- [ ] I can explain why Hive exists and the workloads for which it is designed.
+- [ ] I can draw Hive's architecture and distinguish catalog, query processing, compute, and storage.
+- [ ] I can trace the lifecycle of a Hive table from its logical definition to its physical data.
+- [ ] I can use the HMS ERD to explain how a table and its related metadata are represented.
+- [ ] I can explain WordCount, especially shuffle and sort, and compare MapReduce with Tez.
+- [ ] I can explain how partition metadata becomes inconsistent with storage and compare repair approaches.
+- [ ] I recorded the sources I used and my remaining questions for the mentor.
 
 ## Recommended Resources
 
