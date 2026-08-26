@@ -3,10 +3,12 @@
 ## Overview
 Welcome to the Spark RDD Exercises with a Joker and Batman twist! In this exercise session, you will tackle various Spark RDD. These exercises will help you sharpen your skills in Spark's core data structure and processing model. RDDs are your trusted allies in the world of Spark, and mastering them is essential for conquering big data challenges.
 
-:warning: **How to setup Spark Cluster?**
-- For this exercise, you will need to setup a Spark Cluster. You can use the [Databricks Community Edition](https://community.cloud.databricks.com/login.html) for this exercise, use the free version for 14 days, it's enough for this exercise. (we hope so... :smile:)
-after the first page of sign up click on "Get started with community edition"
-<img width="200" alt="image" src="https://github.com/883G/Onboarding-Newbies/assets/60566128/fd517a13-d3d3-48fe-9295-fa7fd6308d0e">
+:warning: **How to run Spark in Databricks**
+- Sign up for [Databricks Free Edition](https://docs.databricks.com/aws/en/getting-started/free-edition).
+- After opening your Databricks workspace, click **New** and select **Notebook**.
+- Choose **Python** as the notebook language and start running the exercise code.
+
+You do not need to create or configure a separate Spark cluster. Databricks Free Edition provides serverless compute for the notebook, and a Spark session is available through the `spark` variable.
  
 ## Exercise 1: The Joker's Challenge - Calculate Factorial
 The Joker has a mathematical puzzle for you! Write a Spark program that receives a number `N` and returns its factorial. Can you solve the Joker's riddle?
