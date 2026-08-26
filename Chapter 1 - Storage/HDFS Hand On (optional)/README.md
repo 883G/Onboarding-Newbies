@@ -54,6 +54,8 @@ Copy the sample file into HDFS:
 hdfs dfs -put /data/sample_hdfs.txt /user/onboarding/
 ```
 
+Read the file from HDFS.
+
 ### Task 3: Inspect file metadata
 Check the uploaded file and its HDFS block details:
 
@@ -67,7 +69,35 @@ Answer the following:
 - Where is the original sample file stored inside the container?
 - Where does the HDFS path `/user/onboarding/sample_hdfs.txt` point?
 - What is the replication factor for the file?
-- How does HDFS make storage fault tolerant?
+
+### Task 5: Permission management (ACLs)
+View and modify extended access control lists for your directory:
+
+Check current ACLs:
+
+```bash
+hdfs dfs -getfacl /user/onboarding
+```
+
+Set specific user and group permissions:
+
+```bash
+hdfs dfs -setfacl -m user:hadoop:rwx /user/onboarding
+hdfs dfs -setfacl -m group:developers:r-x /user/onboarding
+```
+
+Validate the permissions you added by listing them.
+
+Add default permissions on `/user/onboarding` such that every user in the `clients` group will have read and write permissions on every file under `/user/onboarding`. Validate the defaults by creating a new file under the directory and listing its ACLs.
+
+### Task 6: Statistic computation
+
+Compute statistics and content counts for your onboarding path:
+```bash
+hdfs dfs -count -v -h /user/onboarding
+```
+
+Understand which statistics are computed about the directory and what the flags means.
 
 ## Deliverables
 - A running HDFS environment from Docker Compose
