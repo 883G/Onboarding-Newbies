@@ -46,8 +46,19 @@ Research fault tolerance in Hive. Consider failures in the services involved in 
 
 Complete the [Docker Compose lab](./Hive%20Hand%20On%20(optional)/README.md) to inspect catalog and query services separately, create an external table, run `EXPLAIN`, and observe metadata and data lifecycles.
 
+## Trainee Completion Checklist
+
+- [ ] I can explain why Hive exists and the workloads for which it is designed.
+- [ ] I can draw Hive's architecture and distinguish catalog, query processing, compute, and storage.
+- [ ] I can explain decoupling between metadata management and query execution.
+- [ ] I can trace the lifecycle of a Hive table from its logical definition to its physical data.
+- [ ] I can explain how Hive partitioning is represented in the table definition and filesystem.
+- [ ] I can explain WordCount, especially shuffle and sort, and compare MapReduce with Tez.
+- [ ] I can explain how Hive's components handle failures and where fault tolerance comes from.
+- [ ] I recorded the sources I used and my remaining questions for the mentor.
+
 ## Recommended Resources
 
 - [MapReduce video](https://youtu.be/cvhKoniK5Uo?si=MGoozk3SU-uOCGEA) — **Recommended viewing while learning about MapReduce.** It provides a visual explanation to reinforce the map, shuffle and sort, and reduce stages.
 
-Review your research with your mentor. The chapter is complete when you can explain the system in your own words and diagnose a problem by layer instead of only saying that “Hive is broken.”
+Review your research and checklist with your mentor. The chapter is complete when you can explain the system in your own words and diagnose a problem by layer instead of only saying that “Hive is broken.”
