@@ -1,15 +1,8 @@
 # Hive Hands-On (Optional)
 
-This lab runs Hive Metastore and HiveServer2 separately. The metastore is the catalog; HiveServer2 accepts and plans SQL and delegates execution.
+This lab runs Hive Metastore and HiveServer2 as separate services. Use the exercises to determine the responsibility of each service and distinguish metadata from table data and query execution.
 
-| Service or volume | Responsibility |
-| --- | --- |
-| `metastore` | Catalog API on port `9083`; stores table metadata |
-| `hiveserver2` | SQL endpoint on port `10000`; plans and runs lab queries |
-| `warehouse` | Persists managed-table data separately from services |
-| `./data` | Externally managed sample data |
-
-The lab uses the image's embedded metastore database to stay small. Production HMS normally uses a separate, redundant PostgreSQL, MySQL, or Oracle database.
+Before continuing, inspect `docker-compose.yml`. Identify the services, ports, mounted directories, and named volumes. Predict which component owns each responsibility, then validate your answer during the lab.
 
 ## Prerequisites and Startup
 
@@ -65,21 +58,23 @@ Find the scan, map-side work, shuffle/grouping boundary, and aggregation. Explai
 
 ## 3. Test Lifecycle Boundaries
 
+Before dropping the table, predict what will happen to its metadata and CSV files. Then run the statement:
+
 ```sql
 DROP TABLE orders_external;
 ```
 
-Confirm that `SELECT` now fails because the catalog entry is gone, then verify that the external data remains:
+Test the query again and inspect the data path:
 
 ```bash
 docker compose exec hiveserver2 ls -l /data/orders
 ```
 
-Recreate the table and confirm the data is queryable without reloading it.
+Explain the result, then recreate the table and determine whether the data must be loaded again.
 
 ## 4. Discover an Unregistered Partition
 
-This exercise demonstrates that a partition directory and a catalog partition are separate things.
+In this exercise, investigate the relationship between a partition directory and the information Hive uses when planning a query.
 
 First, create a partitioned external table whose data lives in the shared warehouse volume:
 
@@ -111,7 +106,7 @@ docker compose exec hiveserver2 \
   -maxdepth 2 -type f -o -type d
 ```
 
-Notice that the partition value is represented by a directory named `order_date=2024-02-10`. Hive created both the directory and its corresponding HMS partition entry.
+Compare the directory layout with the output of `SHOW PARTITIONS`. Record the naming convention you observe.
 
 Now bypass Hive and add another correctly structured partition directly to the filesystem:
 
@@ -128,24 +123,15 @@ SELECT * FROM orders_partitioned ORDER BY order_date, order_id;
 SHOW PARTITIONS orders_partitioned;
 ```
 
-The new file exists, but its row is absent from the query result. Explain why. Compare the filesystem directories with `SHOW PARTITIONS`, then research how Hive discovers partition directories that were added outside Hive.
+Investigate the result without reading a solution:
 
-<details>
-<summary>Hint and solution</summary>
-
-Hive scans only partitions registered in HMS. Adding a correctly named directory does not automatically add catalog metadata. Reconcile the filesystem with the catalog:
-
-```sql
-MSCK REPAIR TABLE orders_partitioned;
-SHOW PARTITIONS orders_partitioned;
-SELECT * FROM orders_partitioned ORDER BY order_date, order_id;
-```
-
-The `order_date=2024-02-15` partition and its row should now appear. `MSCK REPAIR` discovered the directory and registered the missing partition in HMS; it did not move or rewrite the CSV.
-
-</details>
-
-Discuss why continuously running `MSCK REPAIR` is not a substitute for adding partitions through the table-writing system, especially for tables with very large partition counts.
+1. Prove that the new directory and file exist.
+2. Compare the filesystem directories with `SHOW PARTITIONS`.
+3. Research why the new row is not visible.
+4. Find and run the appropriate Hive command to reconcile the table.
+5. Query the table and inspect its partitions again.
+6. Explain what changed in metadata and whether Hive moved or rewrote the CSV file.
+7. Find a more targeted command for adding one known partition and compare its cost with scanning the full table directory.
 
 ## 5. Failure Reasoning
 
@@ -158,7 +144,7 @@ Predict what happens when HiveServer2 stops but HMS is healthy; HMS stops but Hi
 - [ ] I created, queried, dropped, and recreated an external table.
 - [ ] I identified a shuffle/aggregation boundary with `EXPLAIN`.
 - [ ] I compared filesystem partition directories with HMS partition metadata.
-- [ ] I explained why directly added partition data was initially invisible and used `MSCK REPAIR` to reconcile it.
+- [ ] I explained why directly added partition data was initially invisible and found a command that reconciled it.
 - [ ] I can explain the results without treating HMS as the query engine.
 
 ## Clean Up

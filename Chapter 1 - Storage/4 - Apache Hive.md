@@ -1,17 +1,8 @@
-# Hive: Catalog, Storage, and Query Execution
+# Apache Hive
 
 ## Overview
 
-Hive is easiest to understand as cooperating responsibilities, not one black box:
-
-| Responsibility | Component | What it does | What it does **not** do |
-| --- | --- | --- | --- |
-| Catalog / metadata | Hive Metastore (HMS) | Stores table definitions, schemas, partitions, locations, and statistics and exposes them to clients | It does not scan data files or execute `SELECT` |
-| SQL planning | HiveServer2 and Hive's query processor | Accepts HiveQL, consults HMS, optimizes it, and creates an execution plan | The catalog is not the query engine |
-| Distributed compute | MapReduce or Tez | Reads, shuffles, joins, aggregates, and writes data | It does not own table definitions |
-| Storage | HDFS or object storage; ORC, Parquet, and other file formats | Persists table data | Files alone are not a catalog entry or query engine |
-
-This separation lets Trino or Spark use tables registered in HMS without sending queries through HiveServer2. They reuse catalog metadata, then plan and execute work with their own engines.
+Hive includes several cooperating responsibilities. As you research, distinguish catalog and metadata management, SQL planning, distributed compute, and storage. Identify which Hive or Hadoop component performs each responsibility and how external engines such as Trino and Spark interact with them.
 
 > **Mental model:** HMS answers *“What is the table and where is it?”* The query engine answers *“How will this query run?”* Storage answers *“Where are the bytes?”*
 
@@ -46,8 +37,6 @@ Review the [completion checklist](#trainee-completion-checklist) before starting
 
 ## 3. Query Planning and Execution
 
-HiveServer2 accepts HiveQL and coordinates a query. Hive's compiler consults HMS during semantic analysis, creates and optimizes a plan, and turns it into stages. MapReduce or Tez performs the distributed work. HMS is consulted by the planner; it is not where the query runs.
-
 1. Trace a query through submission, parsing, semantic analysis, metadata lookup, logical optimization, physical planning, execution, and result delivery. Name the responsible component at each step.
 2. How is a query divided into stages and tasks, and how do intermediate results move between stages?
 3. What does `EXPLAIN` reveal? Find table scans, filters, shuffles, joins, aggregations, and writes in an example.
@@ -56,7 +45,7 @@ HiveServer2 accepts HiveQL and coordinates a query. Hive's compiler consults HMS
 
 ## 4. Dedicated MapReduce Exercise
 
-First read [A Day in the Life of a Hive Query](https://community.cloudera.com/t5/Community-Articles/A-Day-In-the-Life-of-a-Hive-Query/ta-p/287905). It follows Hive queries end to end on MapReduce and Tez, so it is more relevant here than a general API manual. Use the [official MapReduce tutorial](https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) for framework details.
+Research MapReduce using [A Day in the Life of a Hive Query](https://community.cloudera.com/t5/Community-Articles/A-Day-In-the-Life-of-a-Hive-Query/ta-p/287905) and the [official MapReduce tutorial](https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html).
 
 Answer this independently of the broader Hive questions:
 
@@ -69,9 +58,7 @@ Answer this independently of the broader Hive questions:
 > GROUP BY customer_id;
 > ```
 >
-> Describe the input and output key/value pairs for the map phase, what crosses the network during shuffle and sort, and what each reducer computes. Identify what runs in parallel, where data is written between MapReduce jobs, and one likely bottleneck. Finally, explain what HMS contributes and why HMS is **not** part of map, shuffle, or reduce computation.
-
-A complete answer must connect **input split**, **mapper**, **intermediate key/value pair**, **partitioning**, **shuffle and sort**, and **reducer** to this query rather than only define them.
+> Explain how MapReduce executes this query. Describe the mapper input and output, what happens during shuffle and sort, and what each reducer computes. Explain what runs in parallel, identify one possible bottleneck, and clarify the role of HMS. Use concrete key/value pairs rather than only defining the stages.
 
 ## 5. Architecture Scenario
 
@@ -99,10 +86,6 @@ Complete the [Docker Compose lab](./Hive%20Hand%20On%20(optional)/README.md) to 
 
 - [Apache Hive design overview](https://hive.apache.org/development/desingdocs/design/)
 - [Hive Metastore overview](https://cwiki.apache.org/confluence/display/Hive/Metastore+Overview)
-- [Hive DDL language manual](https://hive.apache.org/docs/latest/language/languagemanual-ddl/)
-- [Hive `EXPLAIN` language manual](https://hive.apache.org/docs/latest/language/languagemanual-explain/)
-- [A Day in the Life of a Hive Query](https://community.cloudera.com/t5/Community-Articles/A-Day-In-the-Life-of-a-Hive-Query/ta-p/287905)
-- [Apache MapReduce tutorial](https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)
 - [MapReduce video](https://youtu.be/cvhKoniK5Uo?si=MGoozk3SU-uOCGEA) — **Recommended viewing while learning about MapReduce.** It provides a visual explanation to reinforce the map, shuffle and sort, and reduce stages.
 - [Hive on Tez design](https://hive.apache.org/development/desingdocs/hive-on-tez/)
 
