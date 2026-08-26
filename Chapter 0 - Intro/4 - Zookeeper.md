@@ -59,6 +59,8 @@ Zookeeper Core Concepts:
    - Snapshots and transaction logs
    - Common issues 
 
+6. **Which architectural patterns is ZooKeeper commonly used to implement?**
+
 ---
 
 ### 🔄 Alternatives
