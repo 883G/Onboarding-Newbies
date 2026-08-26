@@ -1,6 +1,6 @@
-# Orchestration Fundamentals:
+# Airflow Fundamentals:
 ## Overview
-This section will go over the fundamentals of `_Apache Airflow_`, consisting of the client side, and the backend.
+This section will go over the fundamentals of _`Apache Airflow`_, consisting of the client side, and the backend.
 
 **We will focus on general concepts of Airflow, the flow of the tasks and how does client code look like.**
 
