@@ -7,6 +7,7 @@ This section will go over the fundamentals of _orchestration_, consisting of _sc
 ## Goals
 - Develop a foundational understanding of how scheduling is done.
 - Learn the common terminology used by most schedulers.
+- Introducing the day-to-day challenges of an infrastructure administrator.
 - Practice planning a self-study day and estimating time for learning.
 
 :warning: **Note:**
@@ -22,11 +23,11 @@ Think through the following questions; by answering them you’ll touch every ma
 
 1. **Scheduling Basics:** Why can’t we just use a simple sleep() command or a basic cron job to manage a modern data workflows? What is the difference between a Time-based trigger and an Event-based trigger? Give a real-world data example for each, In general scheduling, why do we use a DAG to represent a workflow instead of just a simple list of instructions?
 
-2. **Scheduling Algorithms & Types:** Compare First-In-First-Out (FIFO) and Shortest Job First (SJF), how do they handle varying workflows? Define Preemptive vs. Non-preemptive scheduling, If a "Critical" job enters the queue while a "Low" priority job is already running, what happens in both scenarios? What is "Starvation" in priority scheduling, and how does the concept of Aging fix it? what are other common algorithms to fix starvation?
+2. **Scheduling Algorithms & Types:** Compare First-In-First-Out (FIFO), Shortest Job First (SJF) and Round Robin (RR), how do they handle varying workflows? Define Preemptive vs. Non-preemptive scheduling, If a "Critical" job enters the queue while a "Low" priority job is already running, what happens in both scenarios? What is "Starvation" in priority scheduling, and how does the concept of Aging fix it? what are other common algorithms to fix starvation?
 
-3. **Scheduling & Priorities:** Explain the difference between Pessimistic Scheduling (Priority Blocking) and Optimistic Scheduling (Resource Maximization), If a "High Priority" job needs 100 CPUs but only 80 are available, how does a Pessimistic scheduler treat the remaining 20 "Low Priority" jobs in the queue compared to an Optimistic one? How do Resource Pools (or Slots/Concurrency limits) help a scheduler "sandbox" different types of work?
+3. **Resource Allocation & Scheduling:** Explain Dominant Resource Fairness (DRF). Why is it more "fair" to look at CPU and RAM usage rather than just task count? Compare Static Allocation to Dynamic Allocation. Which one is safer for the system, and which one is more efficient for the cluster? What is Capacity Scheduling, and how does it provide "guaranteed lanes" for different departments?
 
-4. **Resource Allocation & Scheduling:**Explain Dominant Resource Fairness (DRF). Why is it more "fair" to look at CPU and RAM usage rather than just task count? What is Capacity Scheduling, and how does it provide "guaranteed lanes" for different departments? Compare Static Allocation to Dynamic Allocation. Which one is safer for the system, and which one is more efficient for the cluster?
+4. **Cluster Utilization:** What are idle resources in a cluster, and why are they considered a problem from a utilization perspective? What are our options when we want to improve cluster resource usage on job based or non job based clusters (at least provide 3)? what are the advantages and disadvantages of each option (at least 2)?
 
 5. **Users Perspective:** Why is Idempotency the most important concept for a developer to understand when writing scheduled jobs? what is an Exponential Backoff when jobs fail? What is Backfilling, and how does it relate to the "Optimistic" approach of keeping resources busy?
 
