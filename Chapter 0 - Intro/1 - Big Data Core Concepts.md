@@ -43,13 +43,36 @@ Research the following topics and look for real‑world examples. Discuss your f
 21. **Scale‑out vs. scale‑up**
 22. **High availability**
 23. **Master‑slave vs. masterless architectures**
-24. **Apache data stack**
+24. **CAP theorem (Consistency, Availability, and Partition Tolerance)**
 
 These topics are meant to guide your research. Don’t hesitate to look up other relevant concepts.
 </br>
 > Note✅: Reinforce your understanding by relating the concepts to real‑world scenarios.
 
 ## Wrapping Up
+
+### Practical Summary Conversation
+Use this scenario to design a practical data pipeline:
+
+> An e-commerce company receives orders from its transactional database, clickstream events in real time, and daily files from delivery partners. The business needs live operational alerts and a reliable dashboard for historical analysis.
+
+Explain how you would build the data pipeline from ingestion to visualization. Use these questions to guide your design:
+
+- Which data is structured, semi-structured, or unstructured?
+- Where would you use CDC, streaming, batch processing, ETL, or ELT?
+- What belongs in the data lake and what belongs in the data warehouse?
+- How will serialization, compression, partitioning, and scale-out support the pipeline?
+- How will you handle data quality, ownership, governance, lineage, and cataloging?
+- Which CAP trade-off does each distributed component make, and why?
+- How will high availability and lifecycle management be handled?
+
+### Chapter Completion Checklist
+
+- [ ] I can define each core concept and give a real-world example.
+- [ ] I can explain the main trade-offs and alternatives.
+- [ ] I can connect the concepts in an end-to-end data pipeline.
+- [ ] I can justify my design choices and identify risks.
+- [ ] I recorded any remaining questions for my mentor.
 
 
 ### Reflection
