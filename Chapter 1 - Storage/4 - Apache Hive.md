@@ -40,8 +40,6 @@ Examine the Hive Metastore ERD and trace how a database, table, storage descript
 
 ### 5. Dedicated MapReduce Exercise: WordCount
 
-Research MapReduce using [A Day in the Life of a Hive Query](https://community.cloudera.com/t5/Community-Articles/A-Day-In-the-Life-of-a-Hive-Query/ta-p/287905) and the [official MapReduce tutorial](https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html).
-
 Explain how the classic MapReduce WordCount program works from input to final output. Describe the mapper input and output, shuffle and sort, reducer input and output, and which operations run in parallel. Use concrete key/value pairs in your explanation. Then explain why executing a multi-stage Hive query with MapReduce can be expensive and how Tez differs.
 
 ### 6. Metadata Inconsistency
