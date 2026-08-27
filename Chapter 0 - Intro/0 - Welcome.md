@@ -11,6 +11,9 @@ git clone https://github.com/883G/Onboarding-Newbies.git
 
 Today is all about getting comfortable and understanding the big picture. You'll meet your mentors and colleagues, learn about the group you'll be working with, and get a sense of the exciting projects you'll be contributing to.
 
+### ⏳ Timeline
+Estimated Duration: 1 Day
+
 ## **Goals:**
 - Familiarize yourself with the onboarding process.
 - Understand the 883 Group's vision, mission, and strategic objectives.
@@ -39,7 +42,7 @@ These entries are *the plan* for each week; "Day 1/2/3…" refers to the numbere
   <tbody>
     <tr>
       <td>Week 1</td>
-      <td style="background-color: #ccccff;">Intro</td>
+      <td style="background-color: #ccccff;">Big Data Core Concepts</td>
       <td style="background-color: #ccccff;">Intro</td>
       <td style="background-color: #ccccff;">System</td>
       <td style="background-color: #ccccff;">Kerberos & LDAP + Zookeeper</td>
@@ -55,19 +58,19 @@ These entries are *the plan* for each week; "Day 1/2/3…" refers to the numbere
     </tr>
     <tr>
       <td>Week 3</td>
-      <td style="background-color: #ffffcc;">Hive table format & HMS</td>
+      <td style="background-color: #ffffcc;">Hive: HMS & table formats</td>
+      <td style="background-color: #ffffcc;">Hive: MapReduce & Tez</td>
       <td style="background-color: #ffffcc;">Catalogs & table formats</td>
       <td style="background-color: #ffffcc;">Partitioning</td>
-      <td style="background-color: #ffffcc;">Metadata Layer - Q&A</td>
       <td style="background-color: #ffffcc;">Iceberg</td>
     </tr>
     <tr>
       <td>Week 4</td>
       <td style="background-color: #ffffcc;">Iceberg</td>
-      <td style="background-color: #cce5ff;">Map & Reduce + Hive query engine</td>
       <td style="background-color: #cce5ff;">Trino</td>
       <td style="background-color: #cce5ff;">Trino</td>
       <td style="background-color: #cce5ff;">Trino</td>
+      <td style="background-color: #ffccbb;">Spark</td>
     </tr>
     <tr>
       <td>Week 5</td>
@@ -103,9 +106,10 @@ These entries are *the plan* for each week; "Day 1/2/3…" refers to the numbere
     </tr>
     <tr>
       <td>Week 9</td>
-      <td style="background-color: #ccffcc;">Orca Labs</td>
-      <td style="background-color: #ccbbff;">Openshift Practice</td>
-      <td style="background-color: #ccbbff;">Openshift Practice</td>
+      <td style="background-color: #ccffcc;">Helm</td>
+      <td style="background-color: #ccffcc;">Helm</td>
+      <td style="background-color: #ccffcc;">Helm Hands-On</td>
+      <td style="background-color: #ccffcc;">Helm Hands-On</td>
       <td style="background-color: #ffccff;">Final Project</td>
     </tr>
     <tr>
