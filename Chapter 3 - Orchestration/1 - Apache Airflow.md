@@ -23,22 +23,11 @@ This section will go over the fundamentals of _`Apache Airflow`_, consisting of 
 Think through the following questions; by answering them you’ll touch every major topic listed above:
 
 
-1. **Airflow User API & Concepts:**
-    1) `Dag` vs `Dag Run`
-    3) How do tasks share small metadata versus global configuration?
-    4) What is `Jinja Templating`?; Why would you use `{{ ds }}` instead of Python's `datetime.now()`?
-    5) Compare the `TaskFlow SDK` with Classic `Operators`. How does the `TaskFlow SDK` handle `XComs` differently than the old `xcom_pull` method?
-    6) what is event `driven scheduling` in Airflow?
-    7) What are `Assets`?
-    8) What types of `Operators` exist?
-    9) Why is it not recommended to run any time consuming code in top level Dag code?
-    10) How does this affect the `Dag Processor`'s performance?
-    11) What is a `Hook`?
-    12) what is the connection between `Hooks`, `Connections` and `Operators`?
+1. **Airflow User API & Concepts:** Explain the difference between a DAG and a DagRun? How do tasks share small metadata versus global configuration? What is Jinja Templating, and why would you use {{ ds }} instead of Python's datetime.now()? Contrast the TaskFlow SDK with Classic Operators. How does the TaskFlow SDK handle XComs differently than the old xcom_pull method? What are Assets? What types of Operators exist? Why is it not recommended to run any time consuming code in top level dag code? How does this affect the DAG Processor's performance? What is a Hook? what is the connection between Hooks, Connections and Operators?
 
-2. **Airflow Backend & Architecture:** What are the different components in the Airflow architecture? Define the roles of each component (and which were changed / renamed in Airflow 3). Why is the `Executor` considered a mechanism/logic rather than a standalone service? Explain the `Deferrable Operator`. Which component makes these possible, and how do they save money/resources in a Big Data stack? What are `Airflow Providers`? and what are the main changes between Airflow 3 and Airflow 2?
+2. **Airflow Backend & Architecture:** What are the different components in the Airflow architecture? Define the roles of each component. Why is the `Executor` considered a mechanism/logic rather than a standalone service? Explain the `Deferrable Operator`. Which component makes these possible, and how do they save money/resources in a Big Data stack? What are `Airflow Providers`? and what are the main changes between Airflow 3 and Airflow 2?
 
-3. **Airflow Workflow Synchronization:** How were Dags typically synchronized to the `Scheduler` and `Workers` in Airflow 2? What where the risks with the approach? How was this solved in Airflow 3? How did it solve the main issue with the Airflow 2 approach? What are the other advantages `DagBundles` give us?
+3. **Airflow Security:** How does the airflow security model look like? both arcihtecture-wise and client-wise? how cna I integrate airflow with different authentication backends and types? (as if ldap or sso), what are the available permissions that exist in airflow (find place in docs)?
 
 4. **Airflow Task Lifecycle:** What is the full flow of a Dag from being written to being run? What happens when the `Dag Processor` encounters your file? How is `Jinja` parsing different in Dag processing than execution time? At which state does the `Scheduler` stop managing the task, and hand it over to the `Executor`? What is the flow when a task gets to a `Worker`? When does it start running?
 
@@ -75,6 +64,10 @@ Discuss your answers and any areas of confusion with your mentor. Reflect on how
 - Review your notes and identify topics you want to explore deeper.
 - Collect a list of real-world schedulers and their algorithms.
 - Prepare questions for the upcoming mentor Q&A session.
+
+## Completion Checklist
+
+- 
 
 ## Recommemded Resources
 - [Airflow Docs](https://airflow.apache.org/docs/)
