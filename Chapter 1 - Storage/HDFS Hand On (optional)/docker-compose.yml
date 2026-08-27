@@ -1,0 +1,103 @@
+services:
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    networks:
+      - hdfs
+    volumes:
+      - namenode:/hadoop/dfs/name
+      - ./data:/data
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+    restart: on-failure
+    labels:
+      traefik.docker.network: hdfs
+      traefik.port: 9870
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    networks:
+      - hdfs
+    volumes:
+      - datanode:/hadoop/dfs/data
+      - ./data:/data
+    env_file:
+      - ./hadoop.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    restart: on-failure
+    labels:
+      traefik.docker.network: hdfs
+      traefik.port: 9864
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  resourcemanager:
+    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    networks:
+      - hdfs
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864"
+    env_file:
+      - ./hadoop.env
+    restart: on-failure
+    labels:
+      traefik.docker.network: hdfs
+      traefik.port: 8088
+    healthcheck:
+      disable: true
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  nodemanager:
+    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    networks:
+      - hdfs
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+    restart: on-failure
+    labels:
+      traefik.docker.network: hdfs
+      traefik.port: 8042
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  historyserver:
+    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
+    networks:
+      - hdfs
+    volumes:
+      - hadoop_historyserver:/hadoop/yarn/timeline
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+    labels:
+      traefik.docker.network: hdfs
+      traefik.port: 8188
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+volumes:
+  datanode:
+  namenode:
+  hadoop_historyserver:
+
+networks:
+  hdfs:
+    driver: bridge
