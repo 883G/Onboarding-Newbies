@@ -17,7 +17,7 @@
    - [Technical Notes](#technical-notes)
    - [Need Help?](#need-help)
 
-## Background
+## Goal
 
 This exercise has three goals:
 
