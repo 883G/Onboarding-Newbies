@@ -43,7 +43,7 @@ Research the following topics and look for real‑world examples. Discuss your f
 21. **Scale‑out vs. scale‑up**
 22. **High availability**
 23. **Master‑slave vs. masterless architectures**
-24. **CAP theorem (Consistency, Availability, and Partition Tolerance)**
+24. **CAP theorem
 
 These topics are meant to guide your research. Don’t hesitate to look up other relevant concepts.
 </br>
