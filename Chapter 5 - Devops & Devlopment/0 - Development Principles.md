@@ -14,12 +14,12 @@ and how they help create maintainable, scalable, and collaborative systems.
 ### ⏳ Timeline
 Estimated Duration: 2 Days
 
-Day 1 – Software Development Foundations  
+Day 1 – Software Development Principles 
 - Development principles and clean architecture
 - Development workflows and collaboration
 - Testing approaches and design paradigms
 
-Day 2 – Python and API Foundations  
+Day 2 – Python internals  
 - Python ecosystem and development patterns
 - REST APIs and Python frameworks
 - Testing, mocking, and service design
