@@ -51,29 +51,12 @@ These topics are meant to guide your research. Don’t hesitate to look up other
 
 ## Wrapping Up
 
-### Practical Summary Conversation
-Use this first-day scenario to design a basic data pipeline:
-
-> An online store receives customer orders, website click events, product-review text and images, and a daily delivery file. The business needs live order alerts and a daily sales dashboard.
-
-Draw the pipeline using simple boxes and arrows, then explain each step in one or two sentences. Do not select specific technologies or write code. Use only the concepts from this chapter:
-
-- Label each source as structured, semi-structured, or unstructured. Which of the five V's can you identify?
-- Decide what uses CDC, stream processing, or batch processing. How will the data be serialized and compressed?
-- Show what is stored first in a data lake on a distributed file system and what later belongs in a data warehouse.
-- Choose ETL or ELT and include one simple data-quality check.
-- Show where SQL or NoSQL and OLTP or OLAP fit, followed by analytics and visualization.
-- Name the data owner and explain governance, catalog, lineage, and lifecycle needs.
-- Briefly explain scale-up vs. scale-out, high availability, master-slave vs. masterless, and one CAP trade-off.
-
 ### Chapter Completion Checklist
 
 - [ ] I labeled the data sources and the five V's.
 - [ ] I showed how data is moved, stored, processed, and presented.
 - [ ] I included data quality, ownership, and governance.
 - [ ] I explained the basic scale, availability, architecture, and CAP choices.
-- [ ] I can describe the complete pipeline in my own words.
-
 
 ### Reflection
 Take a few minutes to reflect on what you have learned:
