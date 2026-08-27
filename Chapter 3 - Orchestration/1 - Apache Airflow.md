@@ -67,7 +67,11 @@ Discuss your answers and any areas of confusion with your mentor. Reflect on how
 
 ## Completion Checklist
 
-- 
+- You understand the airflow architecture and can explain in detail what each component does
+- You understand airflow on the applicative side, where you know how to author dags
+- You understand how airflow manages it's security
+- You understand what happens to the task from start to end
+- You understand at each tasks state what happens to it and can tell where it is stuck if it is
 
 ## Recommemded Resources
 - [Airflow Docs](https://airflow.apache.org/docs/)
