@@ -25,6 +25,8 @@ This exercise has three goals:
 2. Show what it means to expose a product through an API.
 3. Give hands-on experience with design and implementation.
 
+## Background
+
 You will build a Python application that exposes an API for managing HDFS directory
 configurations stored in a database. Each directory configuration is called a **deployment**.
 
