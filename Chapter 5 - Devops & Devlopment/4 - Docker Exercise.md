@@ -45,16 +45,31 @@ A partial `Dockerfile` already exists in the project.
 
 # Module 2 – Development Workflow
 
-### 🌿 Git & Collaboration Rules
+### Adding CI
 
-1. Create a branch:
-   - `feature/dockerize-api`
+After your mentor approves your tests, add CI stages to the existing `.gitlab-ci.yml`.
+The file already includes shared CI jobs for `markdownlint` and `codespell`; these are
+maintained separately and are not part of this exercise. Do not modify or remove them.
+Only add the project-specific stages described below.
 
-2. Use commit conventions:
-   - `FEAT: complete Dockerfile for API`
-   - `FIX: resolve container runtime issue`
+Your CI pipeline must include:
 
-3. Open a Pull Request and request Code Review
+### Creating a Dockerfile
+
+The final step is to containerize the application. Create a `Dockerfile` that builds and
+runs the API.
+
+If you are working internally, **ask your mentor for a base image**. Otherwise, use an
+official Python base image matching the project's Python version.
+
+Guidelines:
+
+- Install dependencies from `requirements.txt` (or equivalent).
+- Expose the port your application listens on.
+- Use a non-root user to run the container.
+- Keep the image small and avoid including unnecessary files.
+
+Do not start this step before your mentor approves your CI pipeline.
 
 ---
 
