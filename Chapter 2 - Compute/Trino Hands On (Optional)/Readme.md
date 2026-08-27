@@ -14,7 +14,7 @@ Clone the starter repository and start the environment:
 
 ```bash
 git clone https://github.com/883G/Onboarding-Newbies.git
-cd ./Onboarding-Newbies/Chapter 2 - Compute/exercise_files/trino-compose
+cd ./Onboarding-Newbies/Chapter 2 - Compute/Trino Hands On (Optional)/trino-compose
 docker compose up -d
 ```
 
@@ -120,21 +120,7 @@ docker compose restart trino
 
 ---
 
-### 🧠 Reflection Questions
-
-All answers should be documented in file!
-
+### 🧠 Extra Questions
 1. What would happen if the catalog file had a typo?  
 2. How does Trino query two completely separate data sources in one query(technically)?  
 3. What happens if you restart only the Hive Metastore?
-
-
-## **Wrapping Up:** :hourglass_flowing_sand:
-Reflect on today's learning's with your mentor and peers. Discuss potential projects or use cases where you can apply Trino for distributed query processing and analytics. Consider how Trino can enhance your data analysis capabilities and streamline your data workflows.
-
-## Recommended Articles and Videos:
-- [Trino Documentation](https://trino.io/docs/current/index.html) - Official documentation to explore Trino's features, architecture, and best practices.
-- [Trino Gateway Documentation](https://trinodb.github.io/trino-gateway/) - Official documentation to Trino Gateway.
-- [Trino: The Definitive Guide](https://dokumen.pub/trino-the-definitive-guide-sql-at-any-scale-on-any-storage-in-any-environment-2nbsped-109813723x-9781098137236.html) - A comprehensive guide to mastering Trino for distributed query processing and analytics.
-- [Trino: An Origin Story](https://www.youtube.com/watch?v=_VUQ-Jh-M68) - A short into video.
--[Trino official youtube channel] (https://www.youtube.com/c/trinodb) - Trino official youtube channel.
