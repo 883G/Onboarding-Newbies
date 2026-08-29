@@ -27,7 +27,7 @@ Think through the following questions; by answering them you’ll touch every ma
 
 2. **Airflow Backend & Architecture:** What are the different components in the Airflow architecture? Define the roles of each component. Why is the `Executor` considered a mechanism/logic rather than a standalone service? Explain the `Deferrable Operator`. Which component makes these possible, and how do they save money/resources in a Big Data stack? What are `Airflow Providers`? and what are the main changes between Airflow 3 and Airflow 2?
 
-3. **Airflow Security:** How does the airflow security model look like? both arcihtecture-wise and client-wise? how cna I integrate airflow with different authentication backends and types? (as if ldap or sso), what are the available permissions that exist in airflow (find place in docs)?
+3. **Airflow Security:** How does the airflow security model look like? both arcihtecture-wise and client-wise? how can I integrate airflow with different authentication backends and types? (as if LDAP or SSO), what are the available permissions that exist in airflow (find place in docs)?
 
 4. **Airflow Task Lifecycle:** What is the full flow of a Dag from being written to being run? What happens when the `Dag Processor` encounters your file? How is `Jinja` parsing different in Dag processing than execution time? At which state does the `Scheduler` stop managing the task, and hand it over to the `Executor`? What is the flow when a task gets to a `Worker`? When does it start running?
 
