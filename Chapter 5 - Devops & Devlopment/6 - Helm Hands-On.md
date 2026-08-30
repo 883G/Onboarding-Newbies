@@ -73,6 +73,13 @@ Tasks:
 After your Dockerfile is ready and approved, deploy the application on OpenShift using a
 minimal Helm chart.
 
+If working locally:
+
+Setup cluster:
+
+- kind create cluster
+- kubectl cluster-info
+
 The deployment must:
 
 - Run **3 replicas** of the application.
@@ -134,7 +141,7 @@ Explore:
 
 By the end of this exercise you must have:
 
-- Working Helm chart for Pizza API  
+- Working Helm chart for ORM API  
 - Application deployed on Kubernetes  
 - Service exposing the API  
 - Demonstrated scaling  

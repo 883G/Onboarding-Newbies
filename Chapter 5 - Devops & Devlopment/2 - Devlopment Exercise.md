@@ -25,7 +25,18 @@ This exercise has three goals:
 2. Show what it means to expose a product through an API.
 3. Give hands-on experience with design and implementation.
 
+## Timeframe & Guidelines
+
+The exercise is divided into the following phases:
+
+- **Development part**: 3 full work days
+- **Testing**: 1 full work day
+
+Do not move to the next phase before updating your mentor and getting approval.
+
 ## Background
+
+Managing HDFS has become exausting. Every time a new customer needs storage, we have to set up their directory, quotas, and replication factor manually. Ongoing updates and deletions are also handled manually, which is inefficient and high-risk for human error.
 
 You will build a Python application that exposes an API for managing HDFS directory
 configurations stored in a database. Each directory configuration is called a **deployment**.
@@ -141,16 +152,6 @@ Common areas to test:
 - Authorization behavior, if authentication is implemented
 
 Wait for your mentor's instructions before writing any tests.
-
-## Timeframe & Guidelines
-
-The exercise is divided into the following phases:
-
-- **Development part**: 3 full work days
-- **Testing**: 1 full work day
-- **CI and Dockerfile and Openshift deployment**: 1.5 work days
-
-Do not move to the next phase before updating your mentor and getting approval.
 
 ### Technical Notes
 

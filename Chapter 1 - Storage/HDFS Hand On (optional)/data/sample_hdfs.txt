@@ -1,0 +1,2 @@
+This is a sample HDFS file for the optional hands-on lab.
+Use it to practice `hdfs dfs -put`, `-cat`, and `-ls` commands.
