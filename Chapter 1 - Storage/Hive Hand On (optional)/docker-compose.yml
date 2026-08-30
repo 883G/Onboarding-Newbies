@@ -1,84 +1,45 @@
-version: "3.8"
-
 services:
-  postgres:
-    image: postgres:9.5
+  metastore:
+    image: apache/hive:4.0.0
     environment:
-      POSTGRES_USER: hive
-      POSTGRES_PASSWORD: hive
-      POSTGRES_DB: metastore
+      SERVICE_NAME: metastore
+    ports:
+      - "9083:9083"
+    volumes:
+      - warehouse:/opt/hive/data/warehouse
+      - ./data:/data/orders:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U hive -d metastore"]
+      test: ["CMD-SHELL", "bash -c '</dev/tcp/localhost/9083'"]
       interval: 10s
       timeout: 5s
-      retries: 5
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      retries: 12
+      start_period: 30s
 
-  hive:
-    image: bde2020/hive:latest
+  hiveserver2:
+    image: apache/hive:4.0.0
     depends_on:
-      postgres:
+      metastore:
         condition: service_healthy
+    environment:
+      SERVICE_NAME: hiveserver2
+      SERVICE_OPTS: >
+        -Dhive.metastore.uris=thrift://metastore:9083
+        -Dhive.server2.thrift.bind.host=0.0.0.0
     ports:
       - "10000:10000"
-      - "9083:9083"
-    entrypoint: ["/bin/bash", "-c"]
-    command:
-      - |
-        /entrypoint.sh echo "Entrypoint done"
-        cat <<'EOF' > /opt/hive/conf/hive-site.xml
-        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-        <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-        <configuration>
-          <property>
-            <name>javax.jdo.option.ConnectionURL</name>
-            <value>jdbc:postgresql://postgres:5432/metastore</value>
-          </property>
-          <property>
-            <name>javax.jdo.option.ConnectionDriverName</name>
-            <value>org.postgresql.Driver</value>
-          </property>
-          <property>
-            <name>javax.jdo.option.ConnectionUserName</name>
-            <value>hive</value>
-          </property>
-          <property>
-            <name>javax.jdo.option.ConnectionPassword</name>
-            <value>hive</value>
-          </property>
-          <property>
-            <name>datanucleus.schema.autoCreateAll</name>
-            <value>true</value>
-          </property>
-          <property>
-            <name>hive.metastore.schema.verification</name>
-            <value>false</value>
-          </property>
-          <property>
-            <name>hive.server2.thrift.bind.host</name>
-            <value>0.0.0.0</value>
-          </property>
-          <property>
-            <name>hive.server2.thrift.port</name>
-            <value>10000</value>
-          </property>
-          <property>
-            <name>hive.execution.engine</name>
-            <value>mr</value>
-          </property>
-          <property>
-            <name>fs.defaultFS</name>
-            <value>file:///</value>
-          </property>
-        </configuration>
-        EOF
-        /opt/hive/bin/schematool -dbType postgres -initSchema
-        /opt/hive/bin/hiveserver2
     volumes:
-      - ./data:/data
-      - ./data/warehouse:/opt/hive/warehouse
+      - warehouse:/opt/hive/data/warehouse
+      - ./data:/data/orders:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "beeline -u 'jdbc:hive2://localhost:10000/default' -n hive -e 'SELECT 1' >/dev/null 2>&1",
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 18
+      start_period: 45s
 
 volumes:
-  postgres_data:
-  data:
+  warehouse:

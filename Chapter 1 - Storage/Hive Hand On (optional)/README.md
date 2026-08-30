@@ -1,67 +1,33 @@
 # Hive Hands-On (Optional)
 
-## Overview
-This optional hands-on lab uses Docker Compose to launch a Hive metastore and Hive server for local experimentation. You'll practice creating Hive databases and tables, loading sample data, and comparing managed vs external tables.
+This lab runs Hive Metastore and HiveServer2 as separate services. Use the exercises to determine the responsibility of each service and distinguish metadata from table data and query execution.
 
-> This exercise is optional, self-contained, and designed for learners who want practical exposure to Hive metadata and table formats.
+Before continuing, inspect `docker-compose.yml`. Identify the services, ports, mounted directories, and named volumes. Predict which component owns each responsibility, then validate your answer during the lab.
 
-## What You Will Learn
-- How to start Hive using Docker Compose
-- How the Hive Metastore stores metadata
-- The difference between managed and external tables
-- How to create and query Hive tables using `beeline`
+## Prerequisites and Startup
 
-## Prerequisites
-- Docker installed
-- Docker Compose available (`docker compose`)
-- At least 2 GB of free RAM available for containers
-
-## How This Lab Works
-- `postgres` stores Hive Metastore metadata in a PostgreSQL database.
-- `hive` runs the Hive service, including HiveServer2, which executes queries.
-- This lab uses container-local storage instead of a full HDFS cluster.
-- Sample data is mounted into the container at `/data`, and Hive warehouse files are preserved in `./data/warehouse`.
-
-## Lab Setup
-1. Open this folder in a terminal.
-2. Inspect `docker-compose.yml`.
-3. Start the environment:
+Use Docker Compose v2, allocate at least 4 GB to Docker, and ensure ports `9083` and `10000` are free.
 
 ```bash
 docker compose up -d
-```
-
-4. Confirm services are running:
-
-```bash
 docker compose ps
+docker compose logs --tail=50 metastore hiveserver2
 ```
 
-## Access Hive
-This environment includes HiveServer2 and a local warehouse directory for tables.
-
-Connect to Hive using the Hive CLI inside the container:
+Wait until both services are healthy, then connect through HiveServer2:
 
 ```bash
-docker compose exec hive bash
-beeline -u jdbc:hive2://localhost:10000 -n hive -p hive
+docker compose exec hiveserver2 \
+  beeline -u 'jdbc:hive2://localhost:10000/default' -n hive
 ```
 
-## Exercise Tasks
-
-### Task 1: Create a Hive database
-In Hive, run:
+## 1. Separate Metadata from Data
 
 ```sql
 CREATE DATABASE IF NOT EXISTS onboarding_hive;
 USE onboarding_hive;
-```
 
-### Task 2: Create an external table
-Create an external table using the same CSV data path:
-
-```sql
-CREATE EXTERNAL TABLE IF NOT EXISTS orders_external (
+CREATE EXTERNAL TABLE orders_external (
   order_id INT,
   customer_name STRING,
   total_amount DOUBLE,
@@ -70,31 +36,121 @@ CREATE EXTERNAL TABLE IF NOT EXISTS orders_external (
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION '/data';
+LOCATION '/data/orders'
+TBLPROPERTIES ('skip.header.line.count'='1');
+
+DESCRIBE FORMATTED orders_external;
+SELECT * FROM orders_external ORDER BY order_id;
 ```
 
-### Task 3: Query the 
-Run these queries and compare results:
+Which service accepted the SQL? Which owns the table definition and location? Which path contains CSV bytes? Does HMS read every row to answer the query?
+
+## 2. Inspect the Plan
 
 ```sql
-SELECT * FROM orders_external LIMIT 10;
-DESCRIBE EXTENDED orders_external;
+EXPLAIN
+SELECT customer_name, SUM(total_amount)
+FROM orders_external
+GROUP BY customer_name;
 ```
 
-### Task 4: Dive Deeper
-Answer the following:
-- Where is metadata stored check how it looks in `postgress` container?
-- What happens if you drop `orders_external`?
-- How does Hive track the data location for the external table?
+Find the scan, map-side work, shuffle/grouping boundary, and aggregation. Explain where HMS information was required and where compute began.
 
+## 3. Test Lifecycle Boundaries
+
+Before dropping the table, predict what will happen to its metadata and CSV files. Then run the statement:
+
+```sql
+DROP TABLE orders_external;
+```
+
+Test the query again and inspect the data path:
+
+```bash
+docker compose exec hiveserver2 ls -l /data/orders
+```
+
+Explain the result, then recreate the table and determine whether the data must be loaded again.
+
+## 4. Discover an Unregistered Partition
+
+In this exercise, investigate the relationship between a partition directory and the information Hive uses when planning a query.
+
+First, create a partitioned external table whose data lives in the shared warehouse volume:
+
+```sql
+CREATE EXTERNAL TABLE orders_partitioned (
+  order_id INT,
+  customer_name STRING,
+  total_amount DOUBLE
+)
+PARTITIONED BY (order_date STRING)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'file:///opt/hive/data/warehouse/onboarding_hive.db/orders_partitioned';
+
+INSERT INTO orders_partitioned
+PARTITION (order_date='2024-02-10')
+VALUES (201, 'Alice Green', 125.50);
+
+SHOW PARTITIONS orders_partitioned;
+SELECT * FROM orders_partitioned;
+```
+
+Leave Beeline open. In another terminal, inspect the physical layout:
+
+```bash
+docker compose exec hiveserver2 \
+  find /opt/hive/data/warehouse/onboarding_hive.db/orders_partitioned \
+  -maxdepth 2 -type f -o -type d
+```
+
+Compare the directory layout with the output of `SHOW PARTITIONS`. Record the naming convention you observe.
+
+Now bypass Hive and add another correctly structured partition directly to the filesystem:
+
+```bash
+docker compose exec hiveserver2 bash -c \
+  "mkdir -p /opt/hive/data/warehouse/onboarding_hive.db/orders_partitioned/order_date=2024-02-15 && \
+   printf '202,Bob Stone,89.90\n' > /opt/hive/data/warehouse/onboarding_hive.db/orders_partitioned/order_date=2024-02-15/orders.csv"
+```
+
+Back in Beeline, investigate before reading the hint:
+
+```sql
+SELECT * FROM orders_partitioned ORDER BY order_date, order_id;
+SHOW PARTITIONS orders_partitioned;
+```
+
+Investigate the result without reading a solution:
+
+1. Prove that the new directory and file exist.
+2. Compare the filesystem directories with `SHOW PARTITIONS`.
+3. Research why the new row is not visible.
+4. Find and run the appropriate Hive command to reconcile the table.
+5. Query the table and inspect its partitions again.
+6. Explain what changed in metadata and whether Hive moved or rewrote the CSV file.
+7. Find a more targeted command for adding one known partition and compare its cost with scanning the full table directory.
+
+## 5. Failure Reasoning
+
+Predict what happens when HiveServer2 stops but HMS is healthy; HMS stops but HiveServer2 is running; or the CSV disappears while its HMS entry remains. Optionally test services with `docker compose stop SERVICE` and restore them with `docker compose start SERVICE`. Do not delete volumes during these tests.
+
+## Completion Checklist
+
+- [ ] Both services became healthy.
+- [ ] I can point to metadata, SQL/query, and data components.
+- [ ] I created, queried, dropped, and recreated an external table.
+- [ ] I identified a shuffle/aggregation boundary with `EXPLAIN`.
+- [ ] I compared filesystem partition directories with HMS partition metadata.
+- [ ] I explained why directly added partition data was initially invisible and found a command that reconciled it.
+- [ ] I can explain the results without treating HMS as the query engine.
 
 ## Clean Up
-When finished, stop the environment:
 
 ```bash
 docker compose down
 ```
 
-## Notes
-- The sample data file is available at `/data/sample_orders.csv` inside the Hive service container.
-- This lab is optional and intended to reinforce Hive table format and metastore concepts.
+To also delete the lab's named volume, use `docker compose down --volumes`.
