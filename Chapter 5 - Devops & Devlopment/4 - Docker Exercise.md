@@ -1,13 +1,9 @@
-# Hands-On Practice: Dockerizing the Pizza API
+# Hands-On Practice:
 
-After implementing and testing the Pizza Delivery API, the next step is to
+After implementing and testing the development part, the next step is to
 run the service inside a Docker container.
 
 This exercise continues the previous assignment.  
-A `Dockerfile` already exists in the project and needs to be completed.
-
-The goal is to make the API runnable via Docker with minimal setup.
-
 ---
 
 ### ⏳ Timeline
@@ -25,22 +21,6 @@ Estimated Duration: 0.5 Day
 ### 📁 Getting Started
 Continue working on the same repository from the previous exercise.
 
-A partial `Dockerfile` already exists in the project.
-
----
-
-### ❓ Your Tasks
-
-1. **Complete the Dockerfile:**  
-   Fill in the missing instructions so the API can run inside a container.
-
-2. **Build the image:**  
-   Build the Docker image and tag it (e.g., `pizza-api`) **MAKE SURE TO MAKE IT A LIGHTWEGIT IMAGE**
-
-3. **Run the container:**  
-   - Run the container locally  
-   - Map ports correctly  
-   - Verify the API is accessible (`/docs`)  
 ---
 
 # Module 2 – Development Workflow
@@ -53,6 +33,10 @@ maintained separately and are not part of this exercise. Do not modify or remove
 Only add the project-specific stages described below.
 
 Your CI pipeline must include:
+1. Installing all project requirements from `requirements.txt`.
+2. Running `ruff format`.
+3. Running `ruff check`.
+4. Running tests with `pytest`.
 
 ### Creating a Dockerfile
 
