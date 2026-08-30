@@ -11,16 +11,15 @@ The goal is to understand *how systems are deployed, configured, and managed*, a
 ### ⏳ Timeline  
 Estimated Duration: 2 Days  
 
-**Day 0.5 – Theory & Concepts**  
-- Kubernetes core architecture    
-- Helm fundamentals and packaging
-- Introduction to GitOps
+**Day 1 – Theory & Concepts**  
+- Kubernetes core architecture  
+- Workloads and networking  
+- Helm fundamentals and packaging  
 
-**Day 1.5 – Hands-On Labs**  
+**Day 2 – Hands-On Labs**  
 - Kubernetes practical labs  
 - Helm chart deployment  
-- Debugging and inspection
-- K8s & Openshift Concepts  
+- Debugging and inspection  
 
 ---
 
@@ -29,8 +28,7 @@ Use the resources below as your primary reference:
 
 - [Kubernetes Documentation](https://kubernetes.io/docs/)  
 - [Helm Documentation](https://helm.sh/docs/)  
-- [OpenShift Documentation](https://docs.openshift.com/)
-- [K8s & Openshift Concepts.md](https://github.com/netagolani/Onboarding-Newbies/blob/refactor/openshift/Chapter%204%20-%20Devops%20%26%20Devlopment/assets/K8s%20%26%20Openshift%20Concepts.md) - Must Knows
+- [OpenShift Documentation](https://docs.openshift.com/)  
 
 ---
 
@@ -40,15 +38,17 @@ Use the resources below as your primary reference:
 
 1. What is Kubernetes, and what problems does it solve compared to running containers manually on vm?  
 
-2. You deploy a deployment specifying replicas: 3 to your cluster, but a node crash reduces the running pods to 2. How does the Kubernetes Controller Manager detect and resolve this discrepancy between the manifest and the cluster? (include `declarative manifest`, `reconciliation` and `controller managers` in your answer)
+2. Describe the main Kubernetes components and architecture.  
+   Include: cluster, nodes, control plane, kubelet, API server, etcd.
 
-3. Describe the main Kubernetes components and architecture.  
-   Include: cluster, nodes, control plane, kubelet, API server, etcd, controllers.
+3. What are the core Kubernetes resources?  
+   Explain Pods, Stateful sets, daemon sets , limit ranges, pv and PVC, namespaces, cronjobs, jobs, roles, rolebindings  Deployments, Services, ConfigMaps, and Secrets, and how they interact.
 
-4. What is Helm, and why is it used?  
+4. How does networking work in Kubernetes?  
+   Explain Service types (ClusterIP, NodePort,Ingress,Internal or external network) and basic communication between pods.
+
+5. What is Helm, and why is it used?  
    Explain charts, values.yaml, templating, and how Helm simplifies deployments.
-
-5. What is GitOps? Compare GitOps to DevOps. What is ArgoCD? Describe the basics operations in ArgoCD. Describe what is Iac and why do we need to use it? 
 
 ---
 

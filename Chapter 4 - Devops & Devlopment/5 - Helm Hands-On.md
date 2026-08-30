@@ -1,6 +1,6 @@
-# Hands-On Practice: Kubernetes & Helm
+# Hands-On Practice: Kubernetes & Helm (Pizza API Deployment)
 
-This module continues the previous fast ORM API exercise by moving from a local service  
+This module continues the previous Pizza API exercise by moving from a local service  
 to a fully containerized deployment running on Kubernetes using Helm.
 
 The goal is to practice packaging applications, deploying them to a cluster,  
@@ -46,13 +46,13 @@ You must ask your mentor which environment to use before starting.
 
 Starting point:
 
-- Working ORM API
+- Working Pizza API
 - Dockerfile from previous exercise  
 - Built image 
 
 Tasks:
 
-1. Create a Helm chart using: helm create ORM-api  
+1. Create a Helm chart using: helm create pizza-api  
 2. Clean unnecessary default templates  
 3. Define deployment:
    - container image  
@@ -68,30 +68,13 @@ Tasks:
 
 Tasks:
 
-### Deploying on OpenShift
+1. Install chart:
+   helm install pizza-release ./pizza-api  
 
-After your Dockerfile is ready and approved, deploy the application on OpenShift using a
-minimal Helm chart.
+2. Verify deployment 
 
-If working locally:
-
-Setup cluster:
-
-- kind create cluster
-- kubectl cluster-info
-
-The deployment must:
-
-- Run **3 replicas** of the application.
-- Make the application **accessible from outside the cluster**.
-
-Before deploying, **ask your mentor**:
-
-- Which OpenShift cluster and project to deploy to.
-- How to authenticate and access the cluster.
-- Whether any organizational conventions or existing Helm charts should be used.
-
-Your mentor will help you with the deployment process.
+3. Expose application
+4. Test API
 
 ---
 
@@ -141,7 +124,7 @@ Explore:
 
 By the end of this exercise you must have:
 
-- Working Helm chart for ORM API  
+- Working Helm chart for Pizza API  
 - Application deployed on Kubernetes  
 - Service exposing the API  
 - Demonstrated scaling  
