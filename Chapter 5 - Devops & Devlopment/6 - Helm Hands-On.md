@@ -134,7 +134,7 @@ Explore:
 
 By the end of this exercise you must have:
 
-- Working Helm chart for Pizza API  
+- Working Helm chart for ORM API  
 - Application deployed on Kubernetes  
 - Service exposing the API  
 - Demonstrated scaling  

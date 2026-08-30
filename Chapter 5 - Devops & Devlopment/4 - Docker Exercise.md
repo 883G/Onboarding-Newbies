@@ -1,13 +1,13 @@
 # Hands-On Practice:
 
-After implementing and testing the development part, the next step is to
+After implementing and testing the fast ORM API exercise, the next step is to
 run the service inside a Docker container.
 
 This exercise continues the previous assignment.  
 ---
 
 ### ⏳ Timeline
-Estimated Duration: 0.5 Day
+Estimated Duration: 1 Day
 
 ---
 
