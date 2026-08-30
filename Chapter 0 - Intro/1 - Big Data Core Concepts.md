@@ -43,7 +43,7 @@ Research the following topics and look for real‑world examples. Discuss your f
 21. **Scale‑out vs. scale‑up**
 22. **High availability**
 23. **Master‑slave vs. masterless architectures**
-24. **Apache data stack**
+24. **CAP theorem
 
 These topics are meant to guide your research. Don’t hesitate to look up other relevant concepts.
 </br>
@@ -51,6 +51,12 @@ These topics are meant to guide your research. Don’t hesitate to look up other
 
 ## Wrapping Up
 
+### Chapter Completion Checklist
+
+- [ ] I labeled the data sources and the five V's.
+- [ ] I showed how data is moved, stored, processed, and presented.
+- [ ] I included data quality, ownership, and governance.
+- [ ] I explained the basic scale, availability, architecture, and CAP choices.
 
 ### Reflection
 Take a few minutes to reflect on what you have learned:
