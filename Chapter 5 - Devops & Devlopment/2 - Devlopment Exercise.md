@@ -27,6 +27,8 @@ This exercise has three goals:
 
 ## Background
 
+Managing HDFS has become exausting. Every time a new customer needs storage, we have to set up their directory, quotas, and replication factor manually. Ongoing updates and deletions are also handled manually, which is inefficient and high-risk for human error.
+
 You will build a Python application that exposes an API for managing HDFS directory
 configurations stored in a database. Each directory configuration is called a **deployment**.
 
