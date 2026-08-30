@@ -1,4 +1,4 @@
-# Apache Hive
+# Apache Hive 🐝
 
 ## Overview
 
@@ -6,9 +6,8 @@ Hive includes several cooperating responsibilities. As you research, distinguish
 
 > **Mental model:** HMS answers *“What is the table and where is it?”* The query engine answers *“How will this query run?”* Storage answers *“Where are the bytes?”*
 
-## Timeline
-
-Estimated duration: one study day.
+### ⏳ Timeline
+Estimated duration: 2 Days 
 
 Complete the research assignments, record the sources you used and the questions that remain open, and review your findings with your mentor.
 
@@ -32,7 +31,7 @@ Choose one Hive table and investigate its complete lifecycle: definition, schema
 
 ### 4. Hive Partitioning
 
-Research partitioning in general and how Hive implements it. Explain how a partitioned table is defined, how partitions affect the filesystem directory structure, and how partitioning can improve or harm query performance. Include the trade-offs involved in choosing partition columns.
+Research partitioning in Hive and how Hive implements it. Explain how a partitioned table is defined, how partitions affect the filesystem directory structure, and how partitioning can improve or harm query performance. Include the trade-offs involved in choosing partition columns.
 
 ### 5. Dedicated MapReduce Exercise: WordCount
 
