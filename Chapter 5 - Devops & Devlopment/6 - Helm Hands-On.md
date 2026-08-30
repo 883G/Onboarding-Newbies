@@ -73,6 +73,13 @@ Tasks:
 After your Dockerfile is ready and approved, deploy the application on OpenShift using a
 minimal Helm chart.
 
+If working locally:
+
+Setup cluster:
+
+- kind create cluster
+- kubectl cluster-info
+
 The deployment must:
 
 - Run **3 replicas** of the application.
