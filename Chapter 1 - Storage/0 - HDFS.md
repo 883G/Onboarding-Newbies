@@ -8,6 +8,7 @@ This session focuses on the core concepts of HDFS, the distributed storage layer
 ## Goals
 - Learn the architecture and roles of HDFS components (NameNode, DataNode, etc.).
 - Understand how HDFS handles storage, replication, and availability.
+- Understand the disadvantages of HDFS, including potential bottlenecks, performance issues, and other possible challenges.
 - Practice planning a self-study day and managing your time.
 
 :warning: **Note:**
@@ -17,18 +18,25 @@ This session focuses on the core concepts of HDFS, the distributed storage layer
 
 ### ⏳ Timeline
 Estimated Duration: 3 Days
-- Day 1-3: Learn the concepts of HDFS; spent time on what is it? on fault tolernce, on failover process and on how reads and writes are being done?
-    - Have a Q&A session at the third day and in between sessions each day
+- Day 1-3: Learn the concepts of HDFS: purpose, historical context, architecture, fault tolerance and the client protocol: how reads and writes are performed.
+    - Have a Q&A session on the third day and in between sessions every day
 
 ## Core Concepts
 
 Consider the following five questions to cover the major HDFS topics:
 
-1. **Architecture & Roles:**  Describe HDFS’s overall architecture, including NameNode(s), DataNodes, blocks, and how the namespace and metadata are managed. Don’t forget the role of ZooKeeper in coordinating HA and keeping track of leases.
+1. **Architecture & Roles:**  Describe HDFS’s overall architecture, including NameNode(s), DataNodes, blocks, and how the namespace and metadata are managed. Explain how DataNodes send block reports, and why these mechanisms matter for everyday operations.
 2. **Storage & Fault Tolerance:**  Explain how HDFS divides files into blocks, uses replication (default factor three), and how it detects and recovers from node failures.
-3. **Topology Awareness & Performance:**  What is rack awareness and why does HDFS replicate across racks? Discuss how block placement, snapshots, and checksums contribute to performance and data integrity.
-4. **High Availability :**  Outline HDFS High Availability (Active/Standby NameNode, JournalNodes). How do these features improve scalability and uptime?
-5. **Protocol & Operations:**  Describe how clients read and write data to HDFS via RPC, how they locate NameNodes and DataNodes, how DataNodes send block reports, and why these mechanisms matter for everyday operations. Cover the runtime behaviour of leases and pipeline formation.
+3. **Block Placement & Performance:**  How does HDFS replicate across nodes? Discuss how block placement, snapshots, and checksums contribute to performance and data integrity.
+4. **High Availability:**  Outline HDFS High Availability (Active/Standby NameNode, JournalNodes). How do these features improve scalability and uptime? Don’t forget the role of ZooKeeper in coordinating HA and keeping track of leases.
+5. **Client Protocol:**  Describe how clients read and write data to HDFS, how they locate NameNodes and DataNodes. Explain the read and write flow in detail: how the client initiates a connection to the cluster, which components it talks to and how ports of communication become known to the client. Explain the protocol alternatives available to the client:
+    - What is native API?
+    - What is HDFS CLI and what protocol does it utilize?
+    - Can you talk to HDFS using REST/HTTP?
+
+    What does a client need to connect to an HDFS cluster using each of the alternatives?
+    
+    What are the two main types of HDFS operations, and how do they differ in terms of the components they interact with?
 
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between HDFS and an industry alternative.
