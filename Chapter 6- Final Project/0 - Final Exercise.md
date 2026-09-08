@@ -39,9 +39,8 @@ Total duration: **1 week + 1 day presentation**
    - **Git / VCS**: version control, collaboration, and change tracking.  
    - **Helm**: packaging and deployment consistency across environments.  
    - **Argo**: GitOps delivery, environment promotion, and continuous deployment.  
-   - **One additional technology not covered in the training**: include one technology outside the formal training materials and explain why it fits into the architecture. This should be chosen with mentor guidance and justified clearly in the design.  
-3. **The project idea must come only from the mentor’s list**.  
-4. **The scenario should only be used to justify the pipeline design**, not to become the main focus.  
+   - **One additional technology not covered in the training**: include one technology outside the formal training materials and explain why it fits into the architecture. This should be chosen with mentor guidance and justified clearly in the design.   
+ 
 5. **Trade-offs and decisions must be documented clearly**, including performance, scaling, and operational complexity.  
 6. **Operational considerations must be included**, such as monitoring, alerting, retries, and failure handling.  
 7. **There is no RDBMS requirement in this exercise**. The focus is on modern data movement, storage, analytics, and deployment patterns.  
@@ -51,23 +50,7 @@ Total duration: **1 week + 1 day presentation**
 
 The scenario should be brief and only provide the business context needed to explain the pipeline and technology choices.
 
-You can define it by:
-- choosing a fictional organization or business domain
-- identifying a problem that requires a data pipeline
-- describing the type of data generated, how often it arrives, and why it needs to be processed
 
-The goal is not storytelling. The main goal is to explain why the architecture makes sense.
-
-The scenario should stay minimal, because the exercise is focused on the architecture and technology choices, not the business narrative.
-
-Example scenarios include:
-- event analytics for a digital platform
-- daily ETL for reporting
-- operational monitoring or log analytics
-
-The data flow should be clear:  
-**Kafka / NiFi → S3/HDFS → Spark → Trino**  
-The design should also show how **Git/VCS, Helm, and Argo** support deployment and delivery.
 
 The key point is to explain the technology decisions, not to build a story around them.
 

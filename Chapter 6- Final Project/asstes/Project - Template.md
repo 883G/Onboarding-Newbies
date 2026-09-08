@@ -25,13 +25,13 @@
 > Include a diagram showing the full data flow from ingestion to storage, processing, orchestration, querying, and deployment.  
 
 **Components & Responsibilities:**  
-- **Ingestion (Kafka / NiFi):**  
-- **Storage (S3/HDFS):**  
-- **Processing (Spark):**  
-- **Orchestration (Airflow):**  
-- **Query Layer (Trino):**  
-- **VCS & DevOps (Git / Helm / Argo):**  
-- **Additional Untrained Technology:**  
+- **Ingestion (Kafka / NiFi)**  
+- **Storage (S3/HDFS)**  
+- **Processing (Spark)**  
+- **Orchestration (Airflow)**  
+- **Query Layer (Trino)**  
+- **VCS & DevOps (Git / Helm / Argo)**  
+- **Additional Untrained Technology**  
 
 ---
 
