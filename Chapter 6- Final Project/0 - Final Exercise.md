@@ -1,219 +1,124 @@
 ## Onboarding Final Exercise 🚀
 
-This exercise focuses on **designing and presenting a complete data pipeline architecture** using the department’s stack: **Airflow, Spark, Trino, S3/HDFS, SQL DB**.  
-The **pipeline and technologies are the core** of this exercise.  
-The scenario/story exists **only to justify the usage of these technologies**, not the other way around. 
-**Pay atention** , using ai tools or viewing past members project doucuments as example are forbidden. 
+This exercise is about designing and presenting a complete data pipeline architecture using the department stack: **ingestion layer, Airflow, Spark, Trino, S3/HDFS, and Hive/Iceberg table format**.  
+The main focus is the pipeline and the technologies behind it.  
+Each trainee must choose a project idea from the **mentor-provided list only**. You are not allowed to pick your own topic or invent a project.  
+The business scenario is only there to justify the technology choices, not the other way around.  
+This is a **design exercise only**. You are expected to explain the architecture, reasoning, and trade-offs, but you are not required to build the actual code or jobs.  
+Please avoid using AI tools or looking at previous members’ project documents for examples.  
 
----
-### 🏗 Core Exercise Requirements
-1. **The pipeline must be the central component** – all stages of the process must be clearly shown.
-2. **Technologies must be justified**:  
-   - **Airflow**: orchestrate dependencies, retries, scheduling.  
-   - **Spark**: distributed processing, transformations, aggregations.  
-   - **Trino**: query analytics, joins, aggregations, partition pruning.  
-   - **S3/HDFS**: scalable storage, partitioning, cost-performance balance.  
-   - **SQL DB**: schema definition, querying.  
-3. **Scenario/story** exists **only to justify pipeline design**.  
-4. **Trade-offs & decisions** must be clearly documented: scaling, performance, operational complexity.  
-5. **Operational considerations** must be included: monitoring, alerting, retries, failure handling.
----
-### 🎯 User Story & Minimal Scenario
-
-The scenario should provide **just enough business context** to justify the pipeline and the technologies used.
-
-To define the scenario, you may:
-- Identify a **fictional organization or business domain** where data plays a crucial role.
-- Define a **problem or challenge** that requires a data pipeline solution.
-- Describe **what data is generated**, how often it arrives, and why it needs to be processed or analyzed.
-
-The goal is **not storytelling**, but rather providing a **clear motivation for the pipeline design**.
-
-The scenario must still **remain minimal**, as the focus of the exercise is the **pipeline architecture and technology usage**, not the business narrative.
-
-Example scenarios may include:
-- Event analytics for a digital platform
-- Daily ETL pipelines for reporting
-- Operational monitoring or log analytics systems
-
-Show the **data flow clearly**:  
-**Ingestion → S3/HDFS → Spark → Trino → SQL queries**
-
-Emphasize **technology choices and architectural reasoning**, not the story itself.
 ---
 ### ⏳ Timeline
-Total Duration: 2 Weeks + 1 Day Presentation
+Total duration: **1 week + 1 day presentation**
 
-#### **Week 1: Planning & Design**
-  - Identify minimal business context that justifies each technology in the stack.  
-  - Define data types, volume, arrival frequency, and latency requirements.  
-  - Sketch **end-to-end pipeline** including ingestion, storage, processing, orchestration, and query layers.  
-  - Decide **Storage layout, partitioning, file formats**, and lifecycle policies.  
-  - Define **Spark job structure**, transformations, dependencies, and failure handling.  
-  - Draft Airflow DAGs: scheduling, dependencies, retries, and monitoring.  
+#### **Week 1: Planning and Design**
+- Identify the minimal business context that justifies the stack.  
+- Define the data types, volume, frequency, and latency requirements.  
+- Sketch the full end-to-end pipeline, including ingestion, storage, processing, orchestration, and querying.  
+- Design the relevant SQL queries that will be used for analytics and reporting, and include them in the final design package.  
+- Decide on storage layout, partitioning, file formats, and lifecycle policies.  
+- Define the Spark processing flow, transformations, dependencies, and failure handling.  
+- Draft the Airflow DAG design, including scheduling, dependencies, retries, and monitoring.  
 
-#### **Week 2: Execution & Refinement**
-  - Finalize pipeline architecture diagrams.  
-  - Model **Trino tables and queries** with optimizations for partitioning, joins, and aggregations.  
-  - Implement the core of the pipeline: simulate workflow orchestration, scaling, and failure scenarios.  
-  - Document pros/cons of each design decision within the stack.  
-  - Prepare **team-focused discussion points** emphasizing design choices and trade-offs.  
+#### **Last Day: Presentation**
+- Prepare a presentation with the full architecture.  
+- Lead a technical discussion covering:  
+  - why each technology is used and how they fit together  
+  - the data flow and orchestration path  
+  - scalability, fault tolerance, and operational strategy  
+  - trade-offs, limitations, and future improvements  
 
-#### ** Last Day: Presentation**
-- Create a presentation that includes the **complete pipeline architecture** to present to the team. 
-- Lead **technical discussion**:
-  - Explain why each technology is used and how it integrates.  
-  - Show **data flow**, orchestration, and query execution.  
-  - Discuss scalability, fault tolerance, and operational strategies.  
-  - Highlight limitations, trade-offs, and future improvements.  
+---
+### 🏗 Core Requirements
+1. **The pipeline should be the central part of the exercise** and all stages should be clearly visible.
+2. **All technologies in the stack must appear in the design**:  
+  - **Ingestion Layer**: data movement, ingestion, buffering, streaming, reliability, and decoupling.  
+   - **Airflow**: orchestration, dependencies, retries, and scheduling.  
+   - **Spark**: distributed processing, transformations, and aggregations.  
+   - **Trino**: analytics, joins, aggregations, and partition pruning.  
+   - **S3/HDFS**: storage, partitioning, and cost-performance trade-offs.  
+  - **Hive/Iceberg table format**: table management, schema evolution, and metadata handling.
+ 
+5. **Trade-offs and decisions must be documented clearly**, including performance, scaling, and operational complexity.  
+6. **Operational considerations must be included**, such as monitoring, alerting, retries, and failure handling.  
+7. **The trainee must design and include SQL queries** that match the business questions, transformations, and reporting layer of the pipeline.  
+
+
+---
+### 🎯 User Story and Minimal Scenario
+
+The scenario should be brief and only provide the business context needed to explain the pipeline and technology choices.
+---
+
+## 🧩 Project Selection and Planning
+
+### ⚠️ Mentor-Approved Project Ideas Only
+
+Before starting the final project, speak with your mentor and ask for the official project ideas list.  
+You must choose exactly one project from that list.  
+
+Rules:
+1. Do not propose your own idea.
+2. Do not choose a project outside the mentor list.
+3. Use the mentor’s guidance to select the most suitable option.
+4. Discuss the scope and constraints with your mentor before you begin.
+
+Your mentor can help you with:
+- understanding the business context
+- defining the technical scope
+- making sure the architecture covers the required stack
+- reviewing your design decisions and trade-offs
 
 ---
 
-### 📚 Resources
-Utilize the resources listed below and master the skill of searching the internet for questions that are not answered by the added documentation.
-- [Project Template](./asstes/Project%20-%20Template.md)
-- [Presentation Template](./asstes/Presentation%20Template.pptx)
-- [Apache Spark Documentation](https://spark.apache.org/docs/latest/) – distributed data processing, transformations, and performance tuning  
-- [Apache Airflow Documentation](https://airflow.apache.org/docs/) – DAG design, scheduling, retries, and monitoring  
-- [Trino Documentation](https://trino.io/docs/current/) – distributed SQL engine, query optimization, partition pruning  
-- [AWS S3 Docs](https://docs.aws.amazon.com/s3/index.html) 
-- [HDFS Design Docs](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) – data lake storage, partitioning, lifecycle  
+### 📋 Required Design Deliverables
 
-> **Tip:** Focus on **design, trade-offs, and pipeline operation** 
+Once you have selected a project from the mentor list, the final submission should be a design-focused presentation that includes:
 
-> **Note⚠️**: Another resource **you must use** is `Trino-Compose` and `AIRFLOW-COMPOSE`, ask your mentor about it.
----
+1. **Data Movement Layer** – ingestion layer design for ingestion, streaming, buffering, and reliability
+2. **Airflow Orchestration** – DAG design with scheduling, retries, and monitoring logic
+3. **Spark Processing Layer** – data processing design with transformations and aggregations
+4. **Storage Layer Design** – file formats, Hive/Iceberg table format, partitioning, and retention strategies
+5. **Query Layer (Trino)** – analytics design, query approach, optimization considerations, and the required SQL queries for the use case
+6. **Operational Considerations** – monitoring, alerting, logging, and failure recovery
+7. **Trade-offs and Design Decisions** – clear reasoning behind the architecture choices
+8. **SQL Query Design** – include the relevant SQL queries the trainee designed to answer business questions and support reporting/analytics
 
-## 🧩 Required Deliverables & Action Items
-The final submission must include **clear artifacts demonstrating the full pipeline implementation and design**.  
-All deliverables should follow the structure described in the **Project Template**.
+The emphasis is on architecture, reasoning, and technical explanation rather than building or deploying a real system.
 
 ---
 
-### 1️⃣ Pipeline Architecture
+### 📞 Mentor Support
+Your mentor is the main source of feedback for:
+- project selection and validation
+- architecture review
+- clarifying technical expectations
+- design validation before submission
 
-Provide a **Pipeline Diagram** that clearly illustrates:
-
-- **End-to-end data flow**
-- Interactions between the main components in the stack:
-  - Airflow
-  - Spark
-  - Storage layer (S3 / HDFS)
-  - Trino
-  - SQL DB layer / analytics consumers
-
-The diagram must include the following stages:
-
-- Data ingestion
-- Storage layer
-- Processing layer
-- Orchestration layer
-- Query / analytics layer
-
-Clearly differentiate between **data flow** and **control flow** where applicable.
-
----
-
-### 2️⃣ Airflow Orchestration
-
-Provide an **Airflow DAG design** that includes:
-
-- DAG structure and task dependencies
-- Scheduling configuration
-- Retry policies
-- Failure handling strategy
-- Backfill strategy
-- Monitoring / alerting considerations
-
-The DAG must orchestrate **at least one Spark application** within the pipeline.
-
----
-
-### 3️⃣ Spark Processing Layer
-
-Implement or design a **Spark application** that demonstrates:
-
-- Data ingestion from the storage layer
-- Transformations and aggregations
-- Writing processed data back to S3/HDFS
-- Handling failures and retries
-- Justification for distributed processing
-
-Explain the **logic of the transformations** and how the Spark job fits into the overall pipeline.
-
----
-
-### 4️⃣ Storage Layer Design
-
-Define how data is stored within **S3 or HDFS**:
-
-- File formats (e.g., Parquet, ORC, etc.)
-- Partitioning strategy
-- Data layout within the data lake
-- Retention or lifecycle policies
-
-Explain how these choices impact **performance, scalability, and cost**.
-
----
-
-### 5️⃣ Query Layer (Trino)
-
-Design the **analytics/query layer** using Trino:
-
-- Trino table definitions
-- Example analytical queries
-- Query optimization strategies such as:
-  - Partition pruning
-  - Join strategies
-  - Aggregation design
-
-Explain how Trino interacts with the underlying storage layer.
-
----
-
-### 6️⃣ Operational Considerations
-
-Describe how the pipeline would be **operated in a production environment**:
-
-- Monitoring
-- Alerting
-- Logging
-- Failure recovery
-
----
-
-### 7️⃣ Trade-offs & Design Decisions
-
-Document the key architectural decisions made during the design process:
-
-- Why each technology in the stack is used
-- Alternative approaches that were considered
-- Trade-offs between:
-  - Performance
-  - Maintainability
-  - Operational complexity
-  - Scalability
-
-Explain the **reasoning behind the final design choices**.
-
----
-
-### 🔎 Technical Discussion Focus
-- **Explain why each technology is mandatory** for this pipeline.  
-- **Show data flow** from ingestion to query.  
-- **Discuss scalability** and **fault tolerance**.  
-- **Highlight trade-offs** between performance, maintainability, and operational complexity.  
-- **Show failure handling**: retries, backfills, monitoring.
+Ask your mentor early and often.
 
 ---
 
 ### 🎨 Presentation Tips
-- Diagrams should illustrate **data flow and component interactions**.  
-- Focus on **design decisions and architecture**, not scenario narrative.  
-- Prepare for questions on:
-  - Spark transformations and distributed processing  
-  - Airflow DAG orchestration and failure handling  
-  - Trino query optimizations and partition pruning  
+- Use diagrams to show data flow and component interaction.  
+- Focus on design decisions and architecture rather than story writing.  
+- Be ready to answer questions on:
+  - Ingestion layer data movement patterns  
+  - Spark transformation and distributed processing  
+  - Airflow orchestration and failure handling  
+  - Trino optimization and partition pruning  
   - S3/HDFS partitioning, cost, and performance  
-  - Pipeline scaling and operational complexity
+  - Hive/Iceberg table format, schema evolution, and metadata management  
+  - pipeline scalability and operational complexity
+
 [Template for Presentation](./asstes/Presentation%20Template.pptx)
+
+### 📚 Resources
+Use the following resources and practice searching the internet when the documentation is not enough.
+- [Project Template](./asstes/Project%20-%20Template.md)
+- [Presentation Template](./asstes/Presentation%20Template.pptx)
+- [Apache Spark Documentation](https://spark.apache.org/docs/latest/) – distributed data processing, transformations, and performance tuning  
+- [Apache Airflow Documentation](https://airflow.apache.org/docs/) – DAG design, scheduling, retries, and monitoring  
+- [Trino Documentation](https://trino.io/docs/current/) – distributed SQL engine, query optimization, and partition pruning  
+- [AWS S3 Docs](https://docs.aws.amazon.com/s3/index.html) 
+- [HDFS Design Docs](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) – storage, partitioning, and lifecycle  

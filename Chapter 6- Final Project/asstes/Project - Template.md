@@ -2,45 +2,56 @@
 ## 1. Project Overview
 **Project Name:**  
 **Date:**  
+**Mentor-Approved Project Idea:**  
 
 **Scenario / Story:**  
-> Minimal description to justify using the stack (Airflow, Spark, Trino, S3/HDFS, SQL).  
+> Minimal story to justify using the stack (ingestion layer, Airflow, Spark, Trino, and S3/HDFS).  
 
 **Core Requirements:**  
-> Briefly describe the goal of the pipeline (e.g., event analytics, ETL for reporting, operational monitoring).  
+> Briefly describe the goal of the pipeline, the data movement pattern, the processing logic, and how the architecture supports operations.  
 
 ---
 
 ## 2. Data Characteristics
-- **Data Types:** (e.g., events, logs, CSV files)  
+- **Data Types:** (e.g., events, logs, CSV files, 
 - **Data Volume:** (e.g., GB/day, millions of rows)  
-- **Arrival Frequency:** (e.g., batch, streaming, hourly)  
+- **Arrival Frequency:** (e.g. hourly)  
 - **Latency Requirements:**  
 
 ---
 
 ## 3. Pipeline Architecture
 **End-to-End Diagram:**  
-> Include diagram showing data flow.  
+> Include a diagram showing the full data flow from ingestion to storage, processing, orchestration, and querying.  
 
 **Components & Responsibilities:**  
-- **Ingestion:**  
-- **Storage (S3/HDFS):**  
-- **Processing (Spark):**  
-- **Orchestration (Airflow):**  
-- **Query Layer (Trino + SQL):**  
+- **Ingestion Layer**  
+- **Storage (S3/HDFS)**  
+- **Table Format (Hive/Iceberg)**  
+- **Processing (Spark)**  
+- **Orchestration (Airflow)**  
+- **Query Layer (Trino)**  
 
 ---
 
-## 4. Storage Design
+## 4. Data Movement Design
+- **Ingestion Pattern:** (batch, event-driven, hybrid)  
+- **Buffering / Reliability:**  
+- **Backpressure / Failure Handling:**  
+- **Why the Ingestion Layer Fits This Design:**  
+
+---
+
+## 5. Storage Design
 - **Partitioning Strategy:**  
+- **Hive/Iceberg Table Format:**  
 - **File Formats:** (Parquet/ORC/etc.)  
 - **Lifecycle Policies / Retention:**  
-- **Include ERD (SQL)**
+- **Why Storage Design Matters for Cost and Performance:**  
 
 ---
 
-## 5. Processing Design (Spark)
+## 6. Processing Design (Spark)
 - **Job Structure / Pipelines:**  
 - **Transformations / Aggregations:**  
 - **Retries / Failure Handling:**  
@@ -48,7 +59,7 @@
 
 ---
 
-## 6. Orchestration Design (Airflow)
+## 7. Orchestration Design (Airflow)
 - **DAG Structure / Dependencies:**  
 - **Scheduling:**  
 - **Retries & Backfills:**  
@@ -56,28 +67,36 @@
 
 ---
 
-## 7.Trino
+## 8. Query Layer (Trino)
 - **Query Patterns:**  
 - **Optimizations (joins, partition pruning, aggregations):**  
 - **Trade-offs / Limitations:**  
 
 ---
 
-## 8. Operational Considerations
-- **Monitoring / Logging:**  
-- **Failure Recovery:**  
-- **Scaling:**  
+## 9. Query Examples
+- **Example Queries:**  
+- **Expected Results / Consumers:**  
+- **Query Performance Considerations:**  
 
 ---
 
-## 9. Trade-offs & Limitations
+## 10. Operational Considerations
+- **Monitoring / Logging:**  
+- **Failure Recovery:**  
+- **Scaling:**  
+- **Alerting Strategy:**  
+
+---
+
+## 11. Trade-offs & Limitations
 - **Pros:**  
 - **Cons:**  
 - **Alternative Designs Considered:**  
 
 ---
 
-## 10. Future Improvements
+## 12. Future Improvements
 - **Scaling Strategies:**  
 - **Performance Tuning:**  
 - **Automation / Observability:**  
