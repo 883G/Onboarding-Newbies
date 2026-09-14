@@ -1,10 +1,10 @@
 ## Onboarding Final Exercise 🚀
 
-This exercise is about designing and presenting a complete data pipeline architecture using the department stack: **Airflow, Kafka, NiFi, Spark, Trino, S3/HDFS, Git/VCS, Helm, and Argo**.  
+This exercise is about designing and presenting a complete data pipeline architecture using the department stack: **ingestion layer, Airflow, Spark, Trino, S3/HDFS, and Hive/Iceberg table format**.  
 The main focus is the pipeline and the technologies behind it.  
 Each trainee must choose a project idea from the **mentor-provided list only**. You are not allowed to pick your own topic or invent a project.  
 The business scenario is only there to justify the technology choices, not the other way around.  
-This is a **design exercise only**. You are expected to explain the architecture, reasoning, and trade-offs, but you are not required to build the actual code, jobs, or deployment.  
+This is a **design exercise only**. You are expected to explain the architecture, reasoning, and trade-offs, but you are not required to build the actual code or jobs.  
 Please avoid using AI tools or looking at previous members’ project documents for examples.  
 
 ---
@@ -15,6 +15,7 @@ Total duration: **1 week + 1 day presentation**
 - Identify the minimal business context that justifies the stack.  
 - Define the data types, volume, frequency, and latency requirements.  
 - Sketch the full end-to-end pipeline, including ingestion, storage, processing, orchestration, and querying.  
+- Design the relevant SQL queries that will be used for analytics and reporting, and include them in the final design package.  
 - Decide on storage layout, partitioning, file formats, and lifecycle policies.  
 - Define the Spark processing flow, transformations, dependencies, and failure handling.  
 - Draft the Airflow DAG design, including scheduling, dependencies, retries, and monitoring.  
@@ -31,31 +32,22 @@ Total duration: **1 week + 1 day presentation**
 ### 🏗 Core Requirements
 1. **The pipeline should be the central part of the exercise** and all stages should be clearly visible.
 2. **All technologies in the stack must appear in the design**:  
-   - **Kafka / NiFi**: data movement, ingestion, buffering, streaming, reliability, and decoupling.  
+  - **Ingestion Layer**: data movement, ingestion, buffering, streaming, reliability, and decoupling.  
    - **Airflow**: orchestration, dependencies, retries, and scheduling.  
    - **Spark**: distributed processing, transformations, and aggregations.  
    - **Trino**: analytics, joins, aggregations, and partition pruning.  
    - **S3/HDFS**: storage, partitioning, and cost-performance trade-offs.  
-   - **Git / VCS**: version control, collaboration, and change tracking.  
-   - **Helm**: packaging and deployment consistency across environments.  
-   - **Argo**: GitOps delivery, environment promotion, and continuous deployment.  
-   - **One additional technology not covered in the training**: include one technology outside the formal training materials and explain why it fits into the architecture. This should be chosen with mentor guidance and justified clearly in the design.   
+  - **Hive/Iceberg table format**: table management, schema evolution, and metadata handling.
  
 5. **Trade-offs and decisions must be documented clearly**, including performance, scaling, and operational complexity.  
 6. **Operational considerations must be included**, such as monitoring, alerting, retries, and failure handling.  
-7. **There is no RDBMS requirement in this exercise**. The focus is on modern data movement, storage, analytics, and deployment patterns.  
+7. **The trainee must design and include SQL queries** that match the business questions, transformations, and reporting layer of the pipeline.  
+
 
 ---
 ### 🎯 User Story and Minimal Scenario
 
 The scenario should be brief and only provide the business context needed to explain the pipeline and technology choices.
-
-
-
-The key point is to explain the technology decisions, not to build a story around them.
-
-> **Tip:** focus on design, trade-offs, and operational decisions.
-
 ---
 
 ## 🧩 Project Selection and Planning
@@ -83,26 +75,16 @@ Your mentor can help you with:
 
 Once you have selected a project from the mentor list, the final submission should be a design-focused presentation that includes:
 
-1. **Data Movement Layer** – Kafka / NiFi design for ingestion, streaming, buffering, and reliability
+1. **Data Movement Layer** – ingestion layer design for ingestion, streaming, buffering, and reliability
 2. **Airflow Orchestration** – DAG design with scheduling, retries, and monitoring logic
 3. **Spark Processing Layer** – data processing design with transformations and aggregations
-4. **Storage Layer Design** – file formats, partitioning, and retention strategies
-5. **Query Layer (Trino)** – analytics design, query approach, and optimization considerations
-6. **VCS and DevOps Layer** – Git/VCS workflow, Helm packaging, and Argo deployment strategy
-7. **Additional Untrained Technology** – one technology not covered in the training, introduced and justified as part of the architecture
-8. **Operational Considerations** – monitoring, alerting, logging, and failure recovery
-9. **Trade-offs and Design Decisions** – clear reasoning behind the architecture choices
+4. **Storage Layer Design** – file formats, Hive/Iceberg table format, partitioning, and retention strategies
+5. **Query Layer (Trino)** – analytics design, query approach, optimization considerations, and the required SQL queries for the use case
+6. **Operational Considerations** – monitoring, alerting, logging, and failure recovery
+7. **Trade-offs and Design Decisions** – clear reasoning behind the architecture choices
+8. **SQL Query Design** – include the relevant SQL queries the trainee designed to answer business questions and support reporting/analytics
 
 The emphasis is on architecture, reasoning, and technical explanation rather than building or deploying a real system.
-
----
-
-### 🎯 Key Points to Remember
-- The pipeline is the main focus.
-- All required technologies should appear in the architecture: Kafka, NiFi, Airflow, Spark, Trino, S3/HDFS, Git/VCS, Helm, Argo, and one additional untrained technology.
-- Project selection is controlled by the mentor.
-- This is a design and presentation exercise, not a coding assignment.
-- Be clear about the trade-offs around scale, reliability, and complexity.
 
 ---
 
@@ -121,14 +103,12 @@ Ask your mentor early and often.
 - Use diagrams to show data flow and component interaction.  
 - Focus on design decisions and architecture rather than story writing.  
 - Be ready to answer questions on:
-  - Kafka / NiFi ingestion and data movement patterns  
+  - Ingestion layer data movement patterns  
   - Spark transformation and distributed processing  
   - Airflow orchestration and failure handling  
   - Trino optimization and partition pruning  
   - S3/HDFS partitioning, cost, and performance  
-  - Git/VCS workflow and release management  
-  - Helm packaging and Argo deployment strategy  
-  - the additional untrained technology and why it fits the architecture  
+  - Hive/Iceberg table format, schema evolution, and metadata management  
   - pipeline scalability and operational complexity
 
 [Template for Presentation](./asstes/Presentation%20Template.pptx)
