@@ -121,42 +121,7 @@ Linux & Infrastructure Core Concepts:
    * Signals such as `SIGTERM`, `SIGKILL`, and `SIGHUP`
    * How to inspect processes with `ps`, `top`, `htop`, and `pstree`
    * How services are started and managed with `systemd` and `systemctl`
-
-4. **How does Linux isolate workloads and control resources?**
-
-   Explain:
-   * cgroups and namespaces
-   * CPU, memory, and I/O isolation
-   * Why containers rely on these mechanisms
-   * Practical examples such as `systemd-run --scope`, `unshare`, and `nsenter`
-   * Network namespaces and virtual interfaces
-   * Resource monitoring and troubleshooting basics
-
-5. **What are the different types of filesystems, and how do they differ? Then focus on Linux filesystems for a deeper understanding.**
-
-   Explain filesystem types across operating systems:
-   * Common filesystem types and their use cases
-   * How different operating systems organize files and directories
-   
-   Then dive deep into Linux filesystems:
-   * How Linux filesystems work in practice
-   * Inodes, directory entries, and why metadata matters
-   * Root filesystem (`/`), mount points, and `/etc/fstab`
-   * Linux filesystem examples such as `ext4`, `xfs`, `btrfs`, `tmpfs`, and `vfat`
-   * Permissions, ownership, and the Linux permission model (`rwx` for user/group/others)
-   * Special permissions such as the sticky bit, setuid, and setgid
-   * Basic commands such as `mount`, `df`, `stat`, `chmod`, and `chown`
-
-6. **What are the essential Linux commands for everyday system management and basic navigation?**
-
-   Explain and demonstrate basic usage of:
-   * Navigation and file handling: `ls`, `cd`, `pwd`, `mkdir`, `cp`, `mv`, `rm`, `touch`, `cat`
-   * Viewing and searching files: `head`, `tail`, `grep`, `sed`, `awk`, `sort`, `uniq`
-   * System administration basics: `systemctl`, `journalctl`, `ps`, `top`, `df`, `du`
-   * File transfer and remote access: `ssh`, `scp`, `rsync`, `curl`
-   * Package management basics with `apt`, `yum`, or `dnf`
-   * Basic shell concepts such as piping, redirection, environment variables, and simple scripting
-
+     
 ---
 > ⚠️ The lab should be done after answering the Guide Questions
 
