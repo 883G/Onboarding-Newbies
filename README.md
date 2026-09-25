@@ -25,6 +25,7 @@ This chapter covers foundational storage concepts, moving from general file syst
 - **[Catalogs & Table Formats](./Chapter%201%20-%20Storage/5%20-%20Catalogs%20&%20table%20formats.md)** – metadata catalogs and modern table formats (Iceberg, Delta, Hudi).
 - **[Data Partitioning](./Chapter%201%20-%20Storage/6%20-%20Partitioning.md)** – partitioning strategy, pruning, maintenance, and interaction with formats.
 - **[Apache Iceberg](./Chapter%201%20-%20Storage/7%20-%20Iceberg.md)** – deep dive on the Iceberg table format questions.
+- **[Isilon OneFS (PowerScale)](./Chapter%201%20-%20Storage/7%20-%20Isilon%20OneFS%20%28PowerScale%29.md)** – symmetric architecture, metadata, FEC data protection, the Job Engine, and the HDFS protocol layer.
 
 - **Practical Exercise 01:** Meet the Hadoop Ecosystem in Action
 - **Showcase 01:** Develop a high-level understanding of the Hadoop ecosystem and its role in big data processing. :mag_right:
