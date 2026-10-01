@@ -84,7 +84,7 @@ What is the process for **safely undoing** a merged PR using git revert?
    Explain how it differs from procedural execution and where it is commonly used.
 
 
-> ⚠️ **Recomnded exercuse**  Please organzie your time and consider trying this git exercise [https://learngitbranching.js.org/]()
+> ⚠️ **Recommended exercise**  Please organzie your time and consider trying this git exercise [https://learngitbranching.js.org/]()
 ---
 
 # Python & API Foundations
