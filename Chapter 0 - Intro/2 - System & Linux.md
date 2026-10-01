@@ -8,7 +8,7 @@ Understanding Linux fundamentals helps engineers troubleshoot systems, manage re
 
 ### ⏳ Timeline
 
-Estimated Duration: 1 Day
+Estimated Duration: 2 Day
 
 Linux & Infrastructure Core Concepts:
 
