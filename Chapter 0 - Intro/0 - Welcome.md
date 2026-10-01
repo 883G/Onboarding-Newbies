@@ -29,98 +29,98 @@ Estimated Duration: 1 Day
 These entries are *the plan* for each week; "Day 1/2/3…" refers to the numbered days of the onboarding schedule, not calendar dates.
 
 <table border="1" cellspacing="0" cellpadding="5" style="border-collapse: collapse; font-family: Arial, sans-serif; width: 100%;">
-  <thead>
-    <tr style="background-color: #f0f0f0;">
-      <th>Week</th>
-      <th>Day 1</th>
-      <th>Day 2</th>
-      <th>Day 3</th>
-      <th>Day 4</th>
-      <th>Day 5</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Week 1</td>
-      <td style="background-color: #ccccff;">Big Data Core Concepts</td>
-      <td style="background-color: #ccccff;">Intro</td>
-      <td style="background-color: #ccccff;">System</td>
-      <td style="background-color: #ccccff;">Kerberos & LDAP</td>
-      <td style="background-color: #ccccff;">Zookeeper</td>
-    </tr>
-    <tr>
-      <td>Week 2</td>
-      <td style="background-color: #ffffcc;">FS + HDFS</td>
-      <td style="background-color: #ffffcc;">HDFS</td>
-      <td style="background-color: #ffffcc;">HDFS + S3</td>
-      <td style="background-color: #ffffcc;">Wide column DB + HBase</td>
-      <td style="background-color: #ffffcc;">HBase</td>
-    </tr>
-    <tr>
-      <td>Week 3</td>
-      <td style="background-color: #ffffcc;">HBase</td>
-      <td style="background-color: #ffffcc;">Hive: HMS & table formats</td>
-      <td style="background-color: #ffffcc;">Hive: MapReduce & Tez</td>
-      <td style="background-color: #ffffcc;">Catalogs & table formats</td>
-      <td style="background-color: #ffffcc;">Partitioning</td>
-    </tr>
-    <tr>
-      <td>Week 4</td>
-      <td style="background-color: #ffffcc;">Iceberg</td>
-      <td style="background-color: #ffffcc;">Iceberg</td>
-      <td style="background-color: #cce5ff;">Trino</td>
-      <td style="background-color: #cce5ff;">Trino</td>
-      <td style="background-color: #cce5ff;">Trino</td>
-    </tr>
-    <tr>
-      <td>Week 5</td>
-      <td style="background-color: #ffccbb;">Spark</td>
-      <td style="background-color: #ffccbb;">Spark</td>
-      <td style="background-color: #ffccbb;">Spark</td>
-      <td style="background-color: #ffccbb;">Scheduling Principles</td>
-      <td style="background-color: #ffccbb;">Airflow</td>
-    </tr>
-    <tr>
-      <td>Week 6</td>
-      <td style="background-color: #ffccbb;">Airflow</td>
-      <td style="background-color: #ffccbb;">Airflow</td>
-      <td style="background-color: #dddddd;">Presentation</td>
-      <td style="background-color: #dddddd;">Simulator</td>
-      <td style="background-color: #dddddd;">Simulator</td>
-    </tr>
-    <tr>
-      <td>Week 7</td>
-      <td style="background-color: #dddddd;">Simulator</td>
-      <td style="background-color: #dddddd;">Simulator</td>
-      <td style="background-color: #dddddd;">Shared simulator</td>
-      <td style="background-color: #ccffcc;">Development Principles</td>
-      <td style="background-color: #ccffcc;">Development Principles</td>
-    </tr>
-    <tr>
-      <td>Week 8</td>
-      <td style="background-color: #ccffcc;">Development Exercise</td>
-      <td style="background-color: #ccffcc;">Development Exercise</td>
-      <td style="background-color: #ccffcc;">Development Exercise</td>
-      <td style="background-color: #ccffcc;">Docker</td>
-      <td style="background-color: #ccffcc;">Docker Practice</td>
-    </tr>
-    <tr>
-      <td>Week 9</td>
-      <td style="background-color: #ccffcc;">Helm</td>
-      <td style="background-color: #ccffcc;">Helm</td>
-      <td style="background-color: #ccffcc;">Helm Hands-On</td>
-      <td style="background-color: #ccffcc;">Helm Hands-On</td>
-      <td style="background-color: #ffccff;">Final Project</td>
-    </tr>
-    <tr>
-      <td>Week 10</td>
-      <td style="background-color: #ffccff;">Final Project</td>
-      <td style="background-color: #ffccff;">Final Project</td>
-      <td style="background-color: #ffccff;">Final Project</td>
-      <td style="background-color: #ffccff;">Final Project</td>
-      <td style="background-color: #ffccff;">Final Project</td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="background-color: #f0f0f0;">
+<th>Week</th>
+<th>Day 1</th>
+<th>Day 2</th>
+<th>Day 3</th>
+<th>Day 4</th>
+<th>Day 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Week 1</td>
+<td style="background-color: #ccccff;">Big Data Core Concepts</td>
+<td style="background-color: #ccccff;">Intro</td>
+<td style="background-color: #ccccff;">System / Linux</td>
+<td style="background-color: #ccccff;">System / Linux</td>
+<td style="background-color: #ccccff;">Kerberos & LDAP</td>
+</tr>
+<tr>
+<td>Week 2</td>
+<td style="background-color: #ccccff;">Zookeeper</td>
+<td style="background-color: #ffffcc;">FS + HDFS</td>
+<td style="background-color: #ffffcc;">HDFS</td>
+<td style="background-color: #ffffcc;">HDFS + S3</td>
+<td style="background-color: #ffffcc;">Wide column DB + HBase</td>
+</tr>
+<tr>
+<td>Week 3</td>
+<td style="background-color: #ffffcc;">HBase</td>
+<td style="background-color: #ffffcc;">HBase</td>
+<td style="background-color: #ffffcc;">Hive: HMS & table formats</td>
+<td style="background-color: #ffffcc;">Hive: MapReduce & Tez</td>
+<td style="background-color: #ffffcc;">Catalogs & table formats</td>
+</tr>
+<tr>
+<td>Week 4</td>
+<td style="background-color: #ffffcc;">Partitioning</td>
+<td style="background-color: #ffffcc;">Iceberg</td>
+<td style="background-color: #ffffcc;">Iceberg</td>
+<td style="background-color: #cce5ff;">Trino</td>
+<td style="background-color: #cce5ff;">Trino</td>
+</tr>
+<tr>
+<td>Week 5</td>
+<td style="background-color: #cce5ff;">Trino</td>
+<td style="background-color: #ffccbb;">Spark</td>
+<td style="background-color: #ffccbb;">Spark</td>
+<td style="background-color: #ffccbb;">Spark</td>
+<td style="background-color: #ffccbb;">Scheduling Principles</td>
+</tr>
+<tr>
+<td>Week 6</td>
+<td style="background-color: #ffccbb;">Airflow</td>
+<td style="background-color: #ffccbb;">Airflow</td>
+<td style="background-color: #ffccbb;">Airflow</td>
+<td style="background-color: #dddddd;">Presentation</td>
+<td style="background-color: #dddddd;">Simulator</td>
+</tr>
+<tr>
+<td>Week 7</td>
+<td style="background-color: #dddddd;">Simulator</td>
+<td style="background-color: #dddddd;">Simulator</td>
+<td style="background-color: #dddddd;">Simulator</td>
+<td style="background-color: #dddddd;">Shared simulator</td>
+<td style="background-color: #ccffcc;">Development Principles</td>
+</tr>
+<tr>
+<td>Week 8</td>
+<td style="background-color: #ccffcc;">Development Principles</td>
+<td style="background-color: #ccffcc;">Development Exercise</td>
+<td style="background-color: #ccffcc;">Development Exercise</td>
+<td style="background-color: #ccffcc;">Development Exercise</td>
+<td style="background-color: #ccffcc;">Docker</td>
+</tr>
+<tr>
+<td>Week 9</td>
+<td style="background-color: #ccffcc;">Docker Practice</td>
+<td style="background-color: #ccffcc;">Helm</td>
+<td style="background-color: #ccffcc;">Helm</td>
+<td style="background-color: #ccffcc;">Helm Hands-On</td>
+<td style="background-color: #ccffcc;">Helm Hands-On</td>
+</tr>
+<tr>
+<td>Week 10</td>
+<td style="background-color: #ffccff;">Final Project</td>
+<td style="background-color: #ffccff;">Final Project</td>
+<td style="background-color: #ffccff;">Final Project</td>
+<td style="background-color: #ffccff;">Final Project</td>
+<td style="background-color: #ffccff;">Final Project</td>
+</tr>
+</tbody>
 </table>
 
 ### **Onboarding Overview:**
