@@ -95,7 +95,7 @@ What is the process for **safely undoing** a merged PR using git revert?
    programming languages (for example c#)?  
    Discuss readability, ecosystem, and runtime behavior.
 compare python uniuqe data type like Tuple vs. List.
-Explain the connection between C and Python
+
 
 2. What is a **REST API**?  
    Explain the core concepts such as resources, HTTP methods, and stateless communication.
