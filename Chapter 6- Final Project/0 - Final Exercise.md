@@ -9,7 +9,7 @@ Please avoid using AI tools or looking at previous members’ project documents 
 
 ---
 ### ⏳ Timeline
-Total duration: **1 week + 1 day presentation**
+Total duration: **4 days  + 1 day for the presentation**
 
 #### **Week 1: Planning and Design**
 - Identify the minimal business context that justifies the stack.  
