@@ -39,9 +39,9 @@ Total duration: **4 days  + 1 day for the presentation**
    - **S3/HDFS**: storage, partitioning, and cost-performance trade-offs.  
   - **Hive/Iceberg table format**: table management, schema evolution, and metadata handling.
  
-5. **Trade-offs and decisions must be documented clearly**, including performance, scaling, and operational complexity.  
-6. **Operational considerations must be included**, such as monitoring, alerting, retries, and failure handling.  
-7. **The trainee must design and include SQL queries** that match the business questions, transformations, and reporting layer of the pipeline.  
+3. **Trade-offs and decisions must be documented clearly**, including performance, scaling, and operational complexity.  
+4. **Operational considerations must be included**, such as monitoring, alerting, retries, and failure handling.  
+5. **The trainee must design and include SQL queries** that match the business questions, transformations, and reporting layer of the pipeline.  
 
 
 ---
