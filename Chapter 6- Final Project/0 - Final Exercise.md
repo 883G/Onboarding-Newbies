@@ -47,7 +47,7 @@ Total duration: **4 days  + 1 day for the presentation**
 ---
 ### 🎯 User Story and Minimal Scenario
 
-The scenario should be brief and only provide the business context needed to explain the pipeline and technology choices.
+<p>The scenario should be brief and only provide the business context needed to explain the pipeline and technology choices.</p>
 ---
 
 ## 🧩 Project Selection and Planning
