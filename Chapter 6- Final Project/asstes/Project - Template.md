@@ -13,7 +13,7 @@
 ---
 
 ## 2. Data Characteristics
-- **Data Types:** (e.g., events, logs, CSV files, 
+- **Data Types:** (e.g., events, logs, file formats)
 - **Data Volume:** (e.g., GB/day, millions of rows)  
 - **Arrival Frequency:** (e.g. hourly)  
 - **Latency Requirements:**  
