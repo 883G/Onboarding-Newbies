@@ -46,7 +46,8 @@ Total Duration: 2 Weeks + 1 Day Presentation
 
 #### **Week 1: Planning & Design**
   - Identify minimal business context that justifies each technology in the stack.  
-  - Define data types, volume, arrival frequency, and latency requirements.  
+  - Define data types, volume, arrival frequency, and latency requirements.
+  - Define the queries.
   - Sketch **end-to-end pipeline** including ingestion, storage, processing, orchestration, and query layers.  
   - Decide **Storage layout, partitioning, file formats**, and lifecycle policies.  
   - Define **Spark job structure**, transformations, dependencies, and failure handling.  
