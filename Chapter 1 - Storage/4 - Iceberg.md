@@ -22,6 +22,7 @@ Use the resources listed below and practice searching the internet for questions
 
 ### Guide Questions❓
 Please use these questions as a guide for your research, dive in, and deepen your understanding of all concepts.
+
 1. What is Apache Iceberg? 
    Explain the problems it solves compared to Hive tables (schema evolution, partitioning, consistency, performance).
 
@@ -30,9 +31,7 @@ Please use these questions as a guide for your research, dive in, and deepen you
    Explain metadata files, manifest files, data files, and snapshots and how they relate to each other.
 
 
-3. What is an Iceberg catalog, and what is its role? 
-   Explain what a catalog manages (table namespace, metadata pointers, commits), why it’s required, and how it differs from a metastore. 
-   Mention common catalog implementations.
+3. What is an Iceberg catalog, and what is its role? Explain what a catalog manages (table namespace, metadata pointers, commits), why it’s required, mention common catalog implementations, and explain how it differs from the Hive Metastore implementation. Describe how catalogs and formats enable multiple compute engines to work on the same data.
 
 
 4. How does Iceberg handle concurrent reads and writes? 
