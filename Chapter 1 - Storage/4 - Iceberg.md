@@ -36,9 +36,7 @@ iceberg:
    Explain metadata files, manifest files, data files, and snapshots and how they relate to each other.
 
 
-3. What is an Iceberg catalog, and what is its role? 
-   Explain what a catalog manages (table namespace, metadata pointers, commits), why it’s required, and how it differs from a metastore. 
-   Mention common catalog implementations.
+3. What is an Iceberg catalog, and what is its role? Explain what a catalog manages (table namespace, metadata pointers, commits), why it’s required, mention common catalog implementations, and explain how it differs from the Hive Metastore implementation. Describe how catalogs and formats enable multiple compute engines to work on the same data.
 
 
 4. How does Iceberg handle concurrent reads and writes? 
