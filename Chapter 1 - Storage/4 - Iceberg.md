@@ -23,11 +23,6 @@ Use the resources listed below and practice searching the internet for questions
 ### Guide Questions❓
 Please use these questions as a guide for your research, dive in, and deepen your understanding of all concepts.
 
-Catalog as a Concept:
-1. The Concept Of Catalog Describe the purpose of a metadata catalog. How does it compare to Hive Metastore (hint: the metastore is a catalog) and why might systems introduce separate catalog layers (e.g. AWS Glue, Databricks Unity Catalog, in‑house catalog backed by PostgreSQL)?
-2. Interoperability & Ecosystem: Describe how catalogs and formats enable multiple compute engines to work on the same data (Spark, Trino, Flink). Why is standardization important? What role do open specifications (e.g. Apache Iceberg spec) play?
-
-iceberg:
 1. What is Apache Iceberg? 
    Explain the problems it solves compared to Hive tables (schema evolution, partitioning, consistency, performance).
 
