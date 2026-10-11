@@ -26,7 +26,8 @@ Estimated Duration: 3 Days
 Consider the following five questions to cover the major HDFS topics:
 
 1. **Architecture & Roles:**  Describe HDFS’s overall architecture, including NameNode(s), DataNodes, blocks, and how the namespace and metadata are managed. Explain how DataNodes send block reports, and why these mechanisms matter for everyday operations.
-
+A:
+ארכיטקטורת master slave. יש לנו שני מכשירים, לפעמים יותר, שהם name nodes. תמיד אחד מהname nodes הוא אקטיבי והשאר פסיבים. הnamenode שהוא אקטיבי אחראי על כל פעולות הלקוח והפסיבי רק מסתנכרן איתו כדי שיוכל להחליף אותו במהירות למקרה שהאקטיבי יפול. בעת פעולת לקוח, הnamenode האקטיבי מוודא שכל המידע שצריך לפעולה הזו טעון ומחולק לבלוקים בתוך slave nodes בשם data nodes. הdata nodes עושים פעולות קריאה וכתיבה ושכפול בהתאם למה שהnamenode אומר להם. הסנכרון בין הnamenodes מתבצע בעזרת edit log משותף. הnamenode הפסבי קורא את הedit log ומסתנכרן לפיו. datanodes צריכים לשלוח block reports לכל הnamenodes, גם האלו הפסיביים, בגלל שהמיפוי של הבלוקים נשמר בזיכרון של namenode ולא בתוך הדיסק. תפקיד נוסף של הפסיביים זה לקחת namespace images, שזה תמונות מצב של כל הfile system namespace ולשמור אותם. המכניזם הזה הוא משמעותי בשביל שמצד אחד המידע יהיה שמור במקרה של קריסת namenode, ומצד שני יהיה סינכרון מספיק טוב בין הnamenodes כך שיהיה לנו high availability וההחלפה תתבצע בצורה מהירה. 
 
 2. **Storage & Fault Tolerance:**  Explain how HDFS divides files into blocks, uses replication (default factor three), and how it detects and recovers from node failures.
 A:
