@@ -26,7 +26,12 @@ Estimated Duration: 3 Days
 Consider the following five questions to cover the major HDFS topics:
 
 1. **Architecture & Roles:**  Describe HDFS’s overall architecture, including NameNode(s), DataNodes, blocks, and how the namespace and metadata are managed. Explain how DataNodes send block reports, and why these mechanisms matter for everyday operations.
+
+
 2. **Storage & Fault Tolerance:**  Explain how HDFS divides files into blocks, uses replication (default factor three), and how it detects and recovers from node failures.
+A:
+בHDFS כמו מערכות קבצים אחרות יש קונספט של בלוקים. במקרה של HDFS, גודל בלוק הוא לרוב 128 MB. ככה שאם יש לי קובץ גדול יותר, הוא יחולק לחלקים בגודל בלוקים שישמרו באופן בלתי תלוי. מה שכן, כן יש פה שכבת אבסטרקציה ככה שאם יש לי קובץ שהוא מתחת לגודל של בלוק, הוא לא בהכרח יתפוס בלוק שלם. כדי לוודא שרידות של הבלוק, כל בלוק משוכפל למספר כלשהו של רכיבים פיזיים שונים. ככה גם אם המידע נהיה אבוד או שהרכיב נפגע, עדיין יש לי דרך אלטרנטיבית להשיג את הבלוק הרצוי.. 
+
 3. **Block Placement & Performance:**  How does HDFS replicate across nodes? Discuss how block placement, snapshots, and checksums contribute to performance and data integrity.
 4. **High Availability:**  Outline HDFS High Availability (Active/Standby NameNode, JournalNodes). How do these features improve scalability and uptime? Don’t forget the role of ZooKeeper in coordinating HA and keeping track of leases.
 5. **Client Protocol:**  Describe how clients read and write data to HDFS, how they locate NameNodes and DataNodes. Explain the read and write flow in detail: how the client initiates a connection to the cluster, which components it talks to and how ports of communication become known to the client. Explain the protocol alternatives available to the client:
