@@ -72,6 +72,21 @@ Zookeeper Core Concepts:
 ארכיטקטוקה של client-server, שלקוחות מדברים עם כמה שרתי zookeeper.
 ---
 
+### Skila questions
+
+
+1. Is the data stored by zookeeper stored in a disk or in memory?
+
+A: נשמר בזיכרון
+
+2. What is zookeeper mainly used for?
+
+A: דברים קלים שתוכנות משתמשות בהן כל הזמן וצריך לשמור על סינכרון מדויק, כגון קבצי קונפיגורציה
+אפשר להשתמש בו בשביל עוד דברים כגון מימוש מנעולים. 
+3. How does zookeeper promise that if at most half the servers crash then nothing is lost?
+A:
+מריצים בreplicated mode. ככה שרת ששומר מידע משוכפל, אוסף של שרתים כאלו נקרא quorum. בגלל שצריך רוב כדי להכריע החלטה, אפשר שעד חצי מהquorum יקרוס כי כל עוד לפחות חצי רץ ותקין אז ניתן להגיע לרוב בהצבעה. 
+A: 
 ### 🔄 Alternatives
 Assignment: Compare two coordination approaches:
 
