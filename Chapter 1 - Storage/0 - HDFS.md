@@ -50,6 +50,9 @@ A:
     What does a client need to connect to an HDFS cluster using each of the alternatives?
     
     What are the two main types of HDFS operations, and how do they differ in terms of the components they interact with?
+A:
+
+הלקוח פונה אל הnamenode דרך פורט TCP קונפיגורבילי. התקשורת מתבצעת בזכות ClientProtocol. לעומת זאת, הData Nodes משתמשים בDatanodeprotocol כדי לתקשר עם הnamenode. נגיד לקוח רוצה ליצור קובץ בHDFS. הלקוח הHDFSי עושה cache למידע של הקובץ והכתיבה מתבצעת לשם עד שהיא סיימה או שהיא עברה גודל של בלוק אחד. ברגע שזה קרה, הלקוח פונה לnamenode שמכניס את שם הקובץ למערכת הקבצים ומקצה עבורו בלוק. הוא מגיב לבקשת הלקוח עם זהות הdatanode הרלוונטי ומיקום הבלוק. הלקוח מכניס את הבלוק הזה שישב בזיכרון אל תוך הdatanode. ברגע שהקובץ נסגר, כל מידע מהקובץ שעוד לא נכנס מהזיכרון לdatanode נכנס. אחרי זה הnamenode מכניס את הקובץ עצמו אל תוך הדיסק. כשיש כתיבה לHDF, גם פה הכתיבה בהתחלה נעשית אל תוך קובץ בזיכרון. כשהכתיבה לקובץ מסתיימת או שהיא נהיית לפחות בגודל בלוק, הלקוח מקבל מהnamenode רשימה של datanodes שיהיו אחראים על הבלוק ועל העותקים שלו. הלקוח מעביר את הבלוק לdatanode הראשון שמקבל את הבלוק בחלקים קטנים, כותב אותם אצלו ומעביר אותם לdatanode הבא ברשימה עד הסוף. 
 
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between HDFS and an industry alternative.
