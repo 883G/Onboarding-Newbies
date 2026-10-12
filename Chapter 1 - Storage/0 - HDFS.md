@@ -96,7 +96,10 @@ A:
 
 1. What is short circuit?
 
+המונח short circuit reads מתאר מצב שבו הלקוח קורא ישירות קובץ, בניגוד לאופן הרגיל שבו התהליך מתבצע דרך הDatanode ששולח ללקוח את המידע. כשזה מתאפשר, זה הרבה יותר מהיר.
+
 2. Fault Tolerance in HDFS 1 vs HDFS 2.
+
 
 3. What different kinds of clients are there?
 
