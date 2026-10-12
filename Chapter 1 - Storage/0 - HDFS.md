@@ -105,7 +105,7 @@ A:
 
 4. What are the different options for journal nodes?
 
-5. What types of block reports exist?
+5. What types of block reports exist? What is sent in heartbeat?
 
 6. What is ACL in the contrxt of hdfs?
 
