@@ -39,6 +39,9 @@ A:
 
 
 4. **High Availability:**  Outline HDFS High Availability (Active/Standby NameNode, JournalNodes). How do these features improve scalability and uptime? Don’t forget the role of ZooKeeper in coordinating HA and keeping track of leases.
+A:
+כפי שהסברנו יש שני namenodes, אחד אקטיבי ואחד פסיבי. האקטיבי אחראי על פעולות הלקוח והפסיבי מסונכרן איתו ומחכה להחליף אותו במהירות במקרה הצורך. הם נשארים בסינכרון על ידי מקום אחסון משותף שהם כותבים וקוראים ממנו. מימוש נפוץ, QJM שזה quorum journal manager, רץ כאוסף של journal nodes כך שכל שינוי צריך להכתב לרובם. למה לרובם? ככה שאם עד חצי נופלים, אני יודע שהמידע קיים. בדיפולטית יש 3 journal nodes, כל העניין קצת מזכיר את הגישה בzookeeper. אבל פה אין שימוש בzookeeper, בניגוד לתהליך החלפת הactive namenode, שם כן יש שימוש. כשיש מעבר מnamenode אקטיבי לפסיבי, הוא מנוהל על ידי הfailover controller. המימוש הדיפולטי משתמש בzookeeper כדי לוודא שרק namenode אחד הוא אקטיבי. הוא פותח session עם הnamenode ושולח לו פינגים ביחד עם health check. אם משהו בnamenode האקטיבי נהיה לא תקין, הhealth checks תופסים את זה ואז הzookeeper בוחר namenode אחר שיהיה האקטיבי. הדברים האלו מאפשרים סקלביליות וuptime כי אין פחד שעומס יגרום לקריסה שתפגע בנו מאוד, בזכות המעבר המהיר עדיין נוכל להשתמש במערכת בלי חשש לאיבוד מידע רב. 
+
 5. **Client Protocol:**  Describe how clients read and write data to HDFS, how they locate NameNodes and DataNodes. Explain the read and write flow in detail: how the client initiates a connection to the cluster, which components it talks to and how ports of communication become known to the client. Explain the protocol alternatives available to the client:
     - What is native API?
     - What is HDFS CLI and what protocol does it utilize?
