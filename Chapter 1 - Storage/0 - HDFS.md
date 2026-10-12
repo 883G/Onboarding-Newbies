@@ -78,9 +78,10 @@ A:
 אפשר לעשות failover ידני לnamenode, סוג של ריסטרט. בזמן שהוא לא פעיל בריסטרט הstandby יחליף אותו, וברגע שהוא עולה הוא חוזר להיות הnamenode האקטיבי.
 
 7. Name of the protocol which datanodes communicate through, what are the pros of it and a little bit implementation.
-הפרוטוקול הינו פרוטוקול RPC 
-    
-8. What is NativeAPO? What implementations does it have?
+הפרוטוקול הינו פרוטוקול RPC, פרוטוקול remote procedure call. הnode מבצע סיריאליזציה להודעה לתוך binary stream, שולח אותה לnode המרוחק והnode המרוחק מפענח את ההודעה.
+יתרונות זה שאפשר לעבוד עם פורמט קומפקטי כדי לעבוד בצורה טובה עם הנפח של הרשת, בנוסף להעביר מידע שעבר סריאליזציה יכול להתבצע בצורה מהירה. מבחינת מימושים, בסריאליזציה יש כמה גישות שונות שאפשר לעבוד איתן. יש את הפורמט Writables שקומפקטי ומהיר אבל קשה יותר לעבוד איתו מחוץ לJava. לכן גם המציאו את הAvro כדי להתמודד עם קשיים של Writables.
+
+8. What is NativeAPI? What implementations does it have?
 
 9. What are snapshots and why are they good?
 
