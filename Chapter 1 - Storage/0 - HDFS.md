@@ -58,6 +58,41 @@ A:
 
 מבחינת הבדלים בין הפרוטוקולים השונים, native API הוא מהיר אבל הוא לא נוח עבור אפליקציות שהן לא מבוססות Java. לכן HTTP/REST פותר את הבעיה הזו ומקל על אפליקציות מבוססות שפות אחרות, אבל הוא איטי יותר. 
 
+### Skila Questions
+
+1. What is nameservice?
+
+2. Who opens the input stream?
+
+3. How can you implement parallel reading on data blocks?
+
+4. Is the default behaviour allocating a whole block for a file way smaller than block size?
+
+5. What is a journal node?
+
+6. When will a failover scenario give back control to the same namenode?
+
+7. Name of the protocol which datanodes communicate through, what are the pros of it and a little bit implementation.
+
+8. What is NativeAPO? What implementations does it have?
+
+9. What are snapshots and why are they good?
+
+*10. What are federations?
+
+*11. What are fencing?
+
+
+
+
+
+
+
+
+
+
+
+
 ### 🔄 Alternatives
 Assignment: You are required to research and write a comparative analysis between HDFS and an industry alternative.
 - Deliverable: A written summary (minimum 1 or 2 sentences).
