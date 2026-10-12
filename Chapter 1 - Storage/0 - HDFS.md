@@ -75,6 +75,7 @@ A:
 5. What is a journal node?
 אוסף של nodes שרצים כך שכל השינויים נכתבים בהם, כל שינוי נכתב ברוב הjournal nodes, הסיבה לרוב היא ככה שאם תהיה נפילה של עד חצי, המידע עדיין ישאר איפשהו. באופן דיפולטי יש 3 journal nodes. 
 6. When will a failover scenario give back control to the same namenode?
+אפשר לעשות failover ידני לnamenode, סוג של ריסטרט. בזמן שהוא לא פעיל בריסטרט הstandby יחליף אותו, וברגע שהוא עולה הוא חוזר להיות הnamenode האקטיבי.
 
 7. Name of the protocol which datanodes communicate through, what are the pros of it and a little bit implementation.
 הפרוטוקול הינו פרוטוקול RPC 
