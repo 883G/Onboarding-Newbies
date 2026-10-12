@@ -73,9 +73,7 @@ A:
 
 לא, מבחינת המרחב שהוא יתפוס בדיסק, זה יהיה הגודל שלו או קירוב שקטן מגודל הבלוק.
 5. What is a journal node?
-
-
-
+אוסף של nodes שרצים כך שכל השינויים נכתבים בהם, כל שינוי נכתב ברוב הjournal nodes, הסיבה לרוב היא ככה שאם תהיה נפילה של עד חצי, המידע עדיין ישאר איפשהו. באופן דיפולטי יש 3 journal nodes. 
 6. When will a failover scenario give back control to the same namenode?
 
 7. Name of the protocol which datanodes communicate through, what are the pros of it and a little bit implementation.
