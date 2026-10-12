@@ -99,7 +99,7 @@ A:
 המונח short circuit reads מתאר מצב שבו הלקוח קורא ישירות קובץ, בניגוד לאופן הרגיל שבו התהליך מתבצע דרך הDatanode ששולח ללקוח את המידע. כשזה מתאפשר, זה הרבה יותר מהיר.
 
 2. Fault Tolerance in HDFS 1 vs HDFS 2.
-
+בHDFS 1 יש לנו single point of failure ענקי בזה שאם הnamenode הראשי קורס אז הכל הלך, לעומת זאת בHDFS 2 יש לנו namenode שהוא standby ששם להחליף את הnamenode הראשי שצריך. 
 
 3. What different kinds of clients are there?
 
