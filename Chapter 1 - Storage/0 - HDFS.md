@@ -61,19 +61,26 @@ A:
 ### Skila Questions
 
 1. What is nameservice?
+המונח nameservice מתאר את שני הnamenodes שמגדירים את הnamespace, האחד הראשי והאחד בstandby (בגרסה הרגילה). 
 
 2. Who opens the input stream?
 
+האובייקט DistributedFileSystem מחזיר ללקוח את הinput stream שעושה עליו read.
 3. How can you implement parallel reading on data blocks?
+אפשר שהתוכנת צד לקוח תבקש מDFSInputStream את הבלוק הבא בthreadים שונים שהיא תרוץ בה וככה תקרא את הבלוקים השונים במקביל.
 
 4. Is the default behaviour allocating a whole block for a file way smaller than block size?
 
+לא, מבחינת המרחב שהוא יתפוס בדיסק, זה יהיה הגודל שלו או קירוב שקטן מגודל הבלוק.
 5. What is a journal node?
+
+
 
 6. When will a failover scenario give back control to the same namenode?
 
 7. Name of the protocol which datanodes communicate through, what are the pros of it and a little bit implementation.
-
+הפרוטוקול הינו פרוטוקול RPC 
+    
 8. What is NativeAPO? What implementations does it have?
 
 9. What are snapshots and why are they good?
