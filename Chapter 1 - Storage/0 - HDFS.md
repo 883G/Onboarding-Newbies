@@ -92,6 +92,26 @@ A:
 *OPTIONAL: 11. What are fencing?
 
 
+### New Questions
+
+1. What is short circuit?
+
+2. Fault Tolerance in HDFS 1 vs HDFS 2.
+
+3. What different kinds of clients are there?
+
+4. What are the different options for journal nodes?
+
+5. What types of block reports exist?
+
+6. What is ACL in the contrxt of hdfs?
+
+7. What is execute in hdfs?
+
+8. Can files later be edited in hdfs?
+
+9. How is the cache in hdfs?
+
 
 
 
