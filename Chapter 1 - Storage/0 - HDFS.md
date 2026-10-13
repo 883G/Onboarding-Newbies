@@ -109,6 +109,11 @@ A:
 
 5. What types of block reports exist? What is sent in heartbeat?
 
+
+יש שני סוגי block reports עיקריים, הblock report הראשוני עבור הdatanode, וכל block report לאחר מכן. יש הבדל באיך הnamenode מתייחס אליהן. בפעם הראשונה יש התייחסות רק לבלוקים תקינים. לאחר מכן יש השוואה עם block reports קודמים ויש ניתוח יותר מעמיק וייחוס לבלוקים לא תקינים מסוגים שונים.
+בנוגע לheartbeat, נשלח כמה דברים. מידע על הרישום שלו, כמה אחסון פנוי בdatanode, כמה העברות יש מהdatanode לאחרים ברגע זה, כמה כאלו יש ככלל, גודל הcache המקסימלי של הdata node, כמה כרגע מנוצל. 
+
+
 6. What is ACL in the contrxt of hdfs?
 
 7. What is execute in hdfs?
