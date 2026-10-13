@@ -103,6 +103,8 @@ A:
 
 3. What different kinds of clients are there?
 
+יש InsecureClient, TokenClient. הInsecureClient משומש כשלא משתמשים באבטחה, ובTokenClient משתמשים כשהלקוח עובר אימות דרך token במנגנון של hadoop. 
+
 4. What are the different options for journal nodes?
 יש את dfs.namenode.shared.edits.dir שקובע את הקישור שמזהה את הjournal nodes שהname nodes יקראו ויכתבו בהם. 
 יש את dfs.journalnode.edits.dir ששם העריכות נשמרות ועוד קצת מידע שהjournal node צריך. 
