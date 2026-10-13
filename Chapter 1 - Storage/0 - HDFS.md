@@ -121,6 +121,7 @@ A:
 
 7. What is execute in hdfs?
 
+בhdfs אי אפשר להריץ קובץ אז אין משמעות לexecute על קובץ. כשמדובר בתיקייה, צריך execute על מנת להכנס אל תוך איברי התיקייה (כמובן שבנוסף להרשאות הקריאה של האיברים עצמם)
 
 
 8. Can files later be edited in hdfs?
