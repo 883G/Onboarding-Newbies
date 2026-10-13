@@ -104,6 +104,8 @@ A:
 3. What different kinds of clients are there?
 
 4. What are the different options for journal nodes?
+יש את dfs.namenode.shared.edits.dir שקובע את הקישור שמזהה את הjournal nodes שהname nodes יקראו ויכתבו בהם. 
+יש את dfs.journalnode.edits.dir ששם העריכות נשמרות ועוד קצת מידע שהjournal node צריך. 
 
 5. What types of block reports exist? What is sent in heartbeat?
 
