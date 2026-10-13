@@ -81,5 +81,5 @@ Go over your answers with your mentor and clarify any uncertainties. Relate HBas
 - Prepare questions for the next mentor Q&A session.
 
 ## Recommended Resources
-- [Official HBase Reference Guide](https://hbase.apache.org/book.html) – the definitive documentation.
+- [Official HBase Reference Guide](https://hbase.apache.org/docs/) – the definitive documentation.
 - *Hadoop: The Definitive Guide* (O'Reilly) – chapters on HBase.
