@@ -20,7 +20,7 @@ Today’s session dives deeper into column‑oriented databases with a focus on 
 
 ### ⏳ Timeline
 Estimated Duration: 3 Days
-- Day 1: Learn the concepts of wide column DB and HBASE specifically; spend the day.
+- Day 1: Learn the concepts of wide column DB and HBase specifically; spend the day.
 - Day 2-3: Get deep into HBASE spesficly
     - Have a Q&A session at the third day and in between sessions each day
 
