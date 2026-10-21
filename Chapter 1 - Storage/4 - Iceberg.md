@@ -17,7 +17,7 @@ Estimated Duration: 2 Days
 ### 📚 Resources
 Use the resources listed below and practice searching the internet for questions not answered by the provided documentation.
 - [Apache Iceberg Official Docs](https://iceberg.apache.org/docs/latest/#documentation)
-- [Apache Iceberg Definitive Guide](http://103.203.175.90:81/fdScript/RootOfEBooks/E%20Book%20collection%20-%202024%20-%20F/CSE%20%20IT%20AIDS%20ML/Apache%20Iceberg%20(2024).pdf)
+- [Apache Iceberg Definitive Guide](https://www.dremio.com/wp-content/uploads/2023/02/apache-iceberg-TDG_ER1.pdf)
 - [Meap Book - Apache Iceberg](./asstes/Architecting_an_Apache_Iceberg_Lakehouse_v3_MEAP.pdf)
 
 ### Guide Questions❓
