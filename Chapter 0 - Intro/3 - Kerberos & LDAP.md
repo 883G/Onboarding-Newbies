@@ -54,6 +54,8 @@ Authentication & Directory Concepts:
 
 6. **How can Kerberos be integrated with LDAP or other directory services in a real deployment?**  
 
+7. **What is SSSD (System Security Services Daemon), how does it facilitate client-side integration with LDAP and Kerberos, and why is its credentials caching mechanism important?**
+
 ---
 
 ### 🔄 Alternatives

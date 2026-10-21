@@ -83,6 +83,8 @@ What is the process for **safely undoing** a merged PR using git revert?
 5. What is **event-driven programming**?  
    Explain how it differs from procedural execution and where it is commonly used.
 
+
+> ⚠️ **Recommended exercise**  Please organzie your time and consider trying this git exercise [https://learngitbranching.js.org/]()
 ---
 
 # Python & API Foundations
@@ -92,6 +94,8 @@ What is the process for **safely undoing** a merged PR using git revert?
 1. What is **Python**, and what are its main characteristics compared to other
    programming languages (for example c#)?  
    Discuss readability, ecosystem, and runtime behavior.
+compare python uniuqe data type like Tuple vs. List.
+
 
 2. What is a **REST API**?  
    Explain the core concepts such as resources, HTTP methods, and stateless communication.
@@ -104,13 +108,10 @@ What is the process for **safely undoing** a merged PR using git revert?
    - What Python 3.14 introduces regarding optionally disabling the GIL and why this is significant  
    - Common strategies to work around its limitations (e.g., multiprocessing)
 
-   **Bonus:** Compare **FastAPI** and **Flask**.
-   What are the architectural differences and when would you use each framework?
+4. What is a linter? read and explain about Ruff.
 
-4. What are e2e testings? What are **tests** in software development, and why are they important?  
-   Explain unit tests, integration tests, and the role of automated testing.
-
-5. What are **mocks**, and why are they used in testing?  
+5. What are e2e testings? What are **tests** in software development, and why are they important?  
+   Explain unit tests, integration tests, and the role of automated testing. What are **mocks**, and why are they used in testing?  
    Compare **pytest** with other Python testing frameworks and explain its advantages.
 
 ---

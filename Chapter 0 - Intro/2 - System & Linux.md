@@ -8,7 +8,7 @@ Understanding Linux fundamentals helps engineers troubleshoot systems, manage re
 
 ### ⏳ Timeline
 
-Estimated Duration: 1 Day
+Estimated Duration: 2 Days
 
 Linux & Infrastructure Core Concepts:
 
@@ -111,16 +111,7 @@ Linux & Infrastructure Core Concepts:
    * Real examples using tools like `strace`, `ltrace`, or `perf` to trace the flow
    * Why this interaction pattern matters for system performance and reliability
 
-2. **How do processes and daemons work in Linux, and how do threads fit into this model?**
 
-   Explain:
-   * Processes vs daemons
-   * Process lifecycle and basic process attributes such as PID and PPID
-   * Privileges, the root user, and why permissions matter
-   * Threads and how they differ from processes
-   * Signals such as `SIGTERM`, `SIGKILL`, and `SIGHUP`
-   * How to inspect processes with `ps`, `top`, `htop`, and `pstree`
-   * How services are started and managed with `systemd` and `systemctl`
      
 ---
 > ⚠️ The lab should be done after answering the Guide Questions
