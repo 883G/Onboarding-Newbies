@@ -58,6 +58,6 @@ Complete the [Docker Compose lab](./Hive%20Hand%20On%20(optional)/README.md) to 
 
 ## Recommended Resources
 
-- [MapReduce video](https://youtu.be/cvhKoniK5Uo?si=MGoozk3SU-uOCGEA) — **Recommended viewing while learning about MapReduce.** It provides a visual explanation to reinforce the map, shuffle and sort, and reduce stages.
+- [MapReduce video](https://www.youtube.com/watch?v=cHGaQz0E7AU) **Recommended viewing while learning about MapReduce.** It provides a visual explanation to reinforce the map, shuffle and sort, and reduce stages.
 
 Review your research and checklist with your mentor. The chapter is complete when you can explain the system in your own words and diagnose a problem by layer instead of only saying that “Hive is broken.”
