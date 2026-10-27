@@ -39,7 +39,7 @@ Batman needs your help to investigate the Joker's online activities! Analyze a l
 ## Exercise 6: Gotham City Crime Decryption: A Spark-Powered Bat-Adventure :bat: :night_with_stars: :detective:
 
 ### a. Deciphering the Batcomputer's Data
-- Access the Batcomputer and load the [gotham_crimes_crime.csv](./dataset/gotham_crime_data.csv) file into a Spark DataFrame.
+- Access the Batcomputer and load the [gotham_crimes_data.csv](./dataset/gotham_crime_data.csv) file into a Spark DataFrame.
 - Reveal the structure of Gotham's crime data by displaying the DataFrame's schema.
 
 ### b. When Does the Joker Laugh? Analyzing Crime by Day
@@ -65,9 +65,9 @@ ii. Develop a program that ensures only one file is saved to the DBFS. Compare d
 1) Discover an alternative way to save only one file.
 2) Discuss the differences between the methods used for saving the data.
 
-### h. Tracking Crime Time: Analyzing the Most and Least Active Hours
+### h. Tracking Crime Time: Analyzing the Most and Least Active Dates
 - Analyze the crime data to determine which day witnessed the most crimes and which had the least.
-- Provide insights to Batman, so he can strategize his patrol hours more effectively.
+- Provide insights to Batman, so he can strategize his patrol dates more effectively.
 
 ## Instructions
 - Use only Spark DataFrame operations for Gotham City Crime Analysis exercises.
