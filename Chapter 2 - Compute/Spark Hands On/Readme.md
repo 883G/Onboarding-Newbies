@@ -13,7 +13,7 @@ You do not need to create or configure a separate Spark cluster. Databricks Free
 ### ⏳ Timeline
 Estimated Duration: 0.5 Days
 
-- Day 1: Do exercises 1 and 2.
+- Day 1: Do exercises 1-6.
 
 ## Exercise 1: The Joker's Challenge - Calculate Factorial
 The Joker has a mathematical puzzle for you! Write a Spark program that receives a number `N` and returns its factorial. Can you solve the Joker's riddle?
