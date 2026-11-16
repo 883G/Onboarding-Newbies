@@ -53,7 +53,7 @@ Use the resources below and practice researching additional information online.
 Why does simple and intuitive software scale well?  
    Why do overly complex systems tend to fail over time?
 
-4. What are the most common **paradigms / programming** (ex. Object Orianted) styles, what are the differences and when should each be used
+4. What are the most common **programming** styles/paradigms (ex: Object-Oriented), what are the differences, and when should each be used?
 
 5. What is **Test Driven Development (TDD)**?  
    Explain the development cycle and how it improves code reliability.
