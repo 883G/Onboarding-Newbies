@@ -73,9 +73,8 @@ What is **squshing**? Why is it common practice to squash commits before the fin
 Find how can you **apply specific fixes** from one branch to another without merging the entire history?
 What is the process for **safely undoing** a merged PR using git revert?
 
-3. Explain the difference between **CLI (Command Line Interface)** and
-   **UI (User Interface)** applications.  
-   What are the benefits of each?
+3. Explain the difference between **CLI (Command Line Interface)** and **GUI (Graphical User Interface)** applications.  
+What are the benefits of each?
 
 4. What is the difference between a **compiler** and an **interpreter**?  
    Provide examples of languages that use each approach.
