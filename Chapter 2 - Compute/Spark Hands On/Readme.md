@@ -10,6 +10,11 @@ Welcome to the Spark RDD Exercises with a Joker and Batman twist! In this exerci
 
 You do not need to create or configure a separate Spark cluster. Databricks Free Edition provides serverless compute for the notebook, and a Spark session is available through the `spark` variable.
  
+### ⏳ Timeline
+Estimated Duration: 0.5 Days
+
+- Day 1: Do exercises 1-6.
+
 ## Exercise 1: The Joker's Challenge - Calculate Factorial
 The Joker has a mathematical puzzle for you! Write a Spark program that receives a number `N` and returns its factorial. Can you solve the Joker's riddle?
 
